@@ -1,8 +1,8 @@
 <script lang="ts">
   import { invoke } from "@tauri-apps/api/core"
 
-  let name = "";
-  let greetMsg = ""
+  let name = $state("")
+  let greetMsg = $state("")
 
   async function greet(){
     // Learn more about Tauri commands at https://tauri.app/v1/guides/features/command
