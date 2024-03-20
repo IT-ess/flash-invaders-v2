@@ -6,10 +6,10 @@ plugins {
 
 android {
     compileSdk = 33
-    namespace = "com.tauri.flash_invaders_v2"
+    namespace = "com.flashinvader.flash_invaders_v2"
     defaultConfig {
         manifestPlaceholders["usesCleartextTraffic"] = "false"
-        applicationId = "com.tauri.flash_invaders_v2"
+        applicationId = "com.flashinvader.flash_invaders_v2"
         minSdk = 24
         targetSdk = 33
         versionCode = 1

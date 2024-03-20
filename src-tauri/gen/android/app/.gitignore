@@ -1,4 +1,4 @@
-/src/main/java/com/tauri/flash_invaders_v2/generated
+/src/main/java/com/flashinvader/flash_invaders_v2/generated
 /src/main/jniLibs/**/*.so
 /src/main/assets/tauri.conf.json
 /tauri.build.gradle.kts
