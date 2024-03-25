@@ -26,3 +26,4 @@ dist-ssr
 # SvelteKit
 .svelte-kit/*
 build
+src-tauri/.cargo/config.toml
