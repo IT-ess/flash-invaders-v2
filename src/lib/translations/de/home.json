@@ -1,0 +1,19 @@
+{
+	"button": {
+		"scan": "Ein Zwietess suchen"
+	},
+	"fail_modal": {
+		"message": "Nichts in der Nähe...",
+		"button": "Zurück",
+		"bad_accuracy": "Unzureichende GPS-Genauigkeit",
+		"medium_accuracy": "Durchschnittliche GPS-Genauigkeit",
+		"good_accuracy": "Ausreichende GPS-Genauigkeit"
+	},
+	"success_modal": {
+		"message": "Sie haben einen Zwietess gefunden!",
+		"button": "Zwietess anzeigen"
+	},
+	"geo_fail_modal": {
+		"message": "Sie haben die Geolokalisierung nicht zugelassen."
+	}
+}

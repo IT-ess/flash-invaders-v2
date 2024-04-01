@@ -1,0 +1,19 @@
+{
+	"button": {
+		"scan": "Chercher un Zwietess"
+	},
+	"fail_modal": {
+		"message": "Rien dans les parages...",
+		"button": "Retour",
+		"bad_accuracy": "Précision GPS insuffisante",
+		"medium_accuracy": "Précision GPS moyenne",
+		"good_accuracy": "Précision GPS suffisante"
+	},
+	"success_modal": {
+		"message": "Vous avez trouvé un Zwietess !",
+		"button": "Voir le Zwietess"
+	},
+	"geo_fail_modal": {
+		"message": "Vous n'avez pas autorisé la géolocalisation."
+	}
+}

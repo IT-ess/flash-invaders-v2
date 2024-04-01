@@ -1,5 +1,6 @@
 <script lang="ts">
 	import Greet from '$lib/components/Greet.svelte';
+	import { t } from '$lib/translations/translations';
 </script>
 
 <main class="container">
@@ -18,6 +19,7 @@
 	</div>
 
 	<p>Click on the Tauri, Vite, and Svelte logos to learn more.</p>
+	<p>Bonjour : {$t('common.nav.gallery')}</p>
 
 	<div class="row">
 		<Greet />
