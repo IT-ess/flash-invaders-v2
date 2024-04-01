@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { Accordion as AccordionPrimitive } from "bits-ui";
 	import ChevronDown from "lucide-svelte/icons/chevron-down";
-	import { cn } from "$lib/utils/utils.ts";
+	import { cn } from "$lib/utils.ts";
 
 	type $$Props = AccordionPrimitive.TriggerProps;
 	type $$Events = AccordionPrimitive.TriggerEvents;
