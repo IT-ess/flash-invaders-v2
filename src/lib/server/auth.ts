@@ -3,11 +3,11 @@ import { neon } from '@neondatabase/serverless';
 
 import { pgTable, text, timestamp } from 'drizzle-orm/pg-core';
 import { drizzle } from 'drizzle-orm/neon-http';
-import { env } from '$env/static/private';
+import { DATABASE_URL } from '$env/static/private';
 import { Lucia } from 'lucia';
 import { dev } from '$app/environment';
 
-const sql = neon(env.DATABASE_URL!);
+const sql = neon(DATABASE_URL!);
 const db = drizzle(sql);
 
 const userTable = pgTable('user', {
