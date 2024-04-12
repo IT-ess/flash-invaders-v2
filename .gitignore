@@ -27,3 +27,4 @@ dist-ssr
 .svelte-kit/*
 build
 src-tauri/.cargo/config.toml
+.vercel
