@@ -10,4 +10,5 @@
 	<Button variant="default" size="default" href="/intro">
 		{$t('common.nav.gallery')}
 	</Button>
+	<Button variant="default" size="default" href="/fr/search">Search</Button>
 </main>
