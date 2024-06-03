@@ -1,5 +1,3 @@
-import { fontFamily } from 'tailwindcss/defaultTheme';
-
 /** @type {import('tailwindcss').Config} */
 const config = {
 	darkMode: ['class'],
@@ -18,18 +16,18 @@ const config = {
 				border: 'hsl(var(--border) / <alpha-value>)',
 				input: 'hsl(var(--input) / <alpha-value>)',
 				ring: 'hsl(var(--ring) / <alpha-value>)',
-				background: 'hsl(var(--background) / <alpha-value>)',
+				background: '#64748B',
 				foreground: 'hsl(var(--foreground) / <alpha-value>)',
 				primary: {
-					DEFAULT: 'hsl(var(--primary) / <alpha-value>)',
-					foreground: 'hsl(var(--primary-foreground) / <alpha-value>)'
+					DEFAULT: '#0074CD',
+					hover: '#2996E9'
 				},
 				secondary: {
-					DEFAULT: 'hsl(var(--secondary) / <alpha-value>)',
+					DEFAULT: '#FFD93E',
 					foreground: 'hsl(var(--secondary-foreground) / <alpha-value>)'
 				},
 				destructive: {
-					DEFAULT: 'hsl(var(--destructive) / <alpha-value>)',
+					DEFAULT: '#FF473D',
 					foreground: 'hsl(var(--destructive-foreground) / <alpha-value>)'
 				},
 				muted: {
@@ -55,7 +53,7 @@ const config = {
 				sm: 'calc(var(--radius) - 4px)'
 			},
 			fontFamily: {
-				sans: [...fontFamily.sans]
+				sans: ['Inter', 'sans-serif']
 			}
 		}
 	}
