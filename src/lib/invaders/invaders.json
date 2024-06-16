@@ -1,0 +1,91 @@
+[
+	{
+		"id": 0,
+		"name": "Le tuto",
+		"latitude": 46.99963718022231,
+		"longitude": -0.8122978309235765,
+		"imageUrl": "https://imagedelivery.net/6ZM0ENVQ5B1N8ekukm4aPw/996c535b-b212-476a-ece8-ec0f11802e00/public"
+	},
+	{
+		"id": 1,
+		"name": "La ronde",
+		"latitude": 47.0050635,
+		"longitude": -0.8502914,
+		"imageUrl": "https://imagedelivery.net/6ZM0ENVQ5B1N8ekukm4aPw/5eb0613b-274f-4694-9e96-4aac082f8200/public"
+	},
+	{
+		"id": 2,
+		"name": "Le clocher",
+		"location": "-0.8511354176095234,47.004946958638584",
+		"imageUrl": "https://imagedelivery.net/6ZM0ENVQ5B1N8ekukm4aPw/59c0c22d-f3e3-4933-6f7f-3abd34406800/public"
+	},
+	{
+		"id": 3,
+		"name": "La paix",
+		"location": "-0.8523743877935895,47.004980731767795",
+		"imageUrl": "https://imagedelivery.net/6ZM0ENVQ5B1N8ekukm4aPw/f3bde009-2088-446c-f5de-809d79d1dd00/public"
+	},
+	{
+		"id": 4,
+		"name": "Le voyage",
+		"latitude": 47.004983296815865,
+		"longitude": -0.8519022234753352,
+		"imageUrl": "https://imagedelivery.net/6ZM0ENVQ5B1N8ekukm4aPw/0e034fa6-51cd-479e-e80c-cb9169a2db00/public"
+	},
+	{
+		"id": 5,
+		"name": "La musique",
+		"latitude": 47.0055787,
+		"longitude": -0.8551144,
+		"imageUrl": "https://imagedelivery.net/6ZM0ENVQ5B1N8ekukm4aPw/008f6a98-2e7b-4e75-7e50-b68e117a8900/public"
+	},
+	{
+		"id": 6,
+		"name": "La Hockete",
+		"latitude": 47.0075601,
+		"longitude": -0.8518778,
+		"imageUrl": "https://imagedelivery.net/6ZM0ENVQ5B1N8ekukm4aPw/0bdd39cd-6ce4-4854-bdae-b250e2997f00/public"
+	},
+	{
+		"id": 7,
+		"name": "La mairie",
+		"latitude": 47.0047309,
+		"longitude": -0.850128,
+		"imageUrl": "https://imagedelivery.net/6ZM0ENVQ5B1N8ekukm4aPw/6e188f52-e0fc-47a3-ffb0-a687a61aa800/public"
+	},
+	{
+		"id": 8,
+		"name": "La bière",
+		"latitude": 47.00522784178306,
+		"longitude": -0.8472995324521793,
+		"imageUrl": "https://imagedelivery.net/6ZM0ENVQ5B1N8ekukm4aPw/1b8d3a3c-d921-40d8-2cf4-9807e32a7400/public"
+	},
+	{
+		"id": 9,
+		"name": "La culture",
+		"latitude": 47.00344172476325,
+		"longitude": -0.85728023215241,
+		"imageUrl": "https://imagedelivery.net/6ZM0ENVQ5B1N8ekukm4aPw/6f3b0765-1ba1-4738-abdb-6a1af8986700/public"
+	},
+	{
+		"id": 10,
+		"name": "Les émotions",
+		"latitude": 47.00247501325306,
+		"longitude": -0.8573560045634288,
+		"imageUrl": "https://imagedelivery.net/6ZM0ENVQ5B1N8ekukm4aPw/4795959e-115f-40f2-fdd4-af869a17f600/public"
+	},
+	{
+		"id": 11,
+		"name": "Le prix",
+		"latitude": 47.000883875400184,
+		"longitude": -0.8558925547807724,
+		"imageUrl": "/zwietess/11.webp"
+	},
+	{
+		"id": 12,
+		"name": "Test toulouse",
+		"latitude": 43.600883875400184,
+		"longitude": 1.4417,
+		"imageUrl": "/zwietess/11.webp"
+	}
+]

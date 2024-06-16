@@ -23,6 +23,9 @@ importers:
       dotenv:
         specifier: ^16.4.5
         version: 16.4.5
+      geolocation-utils:
+        specifier: ^1.2.5
+        version: 1.2.5
       lucide-svelte:
         specifier: ^0.390.0
         version: 0.390.0(svelte@5.0.0-next.155)
@@ -781,6 +784,9 @@ packages:
   function-bind@1.1.2:
     resolution: {integrity: sha512-7XHNxH7qX9xG5mIwxkhumTox/MIRNcOgDrxWsMt2pAr23WHp6MrRlN7FBSFpCpr+oVO0F744iUgR82nJMfG2SA==}
 
+  geolocation-utils@1.2.5:
+    resolution: {integrity: sha512-ts7KTV7dSs0nrBh6q9M6Z7+tpponHMHKQ39ieloQizUjIOO8ZT7mAmQX+M313Y+2J0ifiS3Culjq3Eu1s0YYHw==}
+
   get-stream@6.0.1:
     resolution: {integrity: sha512-ts6Wi+2j3jQjqi70w5AlN8DFnkSwC+MqmxEzdEALB2qXZYV3X/b1CTfgPLGJNMeAWxdPfU8FO1ms3NUfaHCPYg==}
     engines: {node: '>=10'}
@@ -1077,6 +1083,9 @@ packages:
   pirates@4.0.6:
     resolution: {integrity: sha512-saLsH7WeYYPiD25LDuLRRY/i+6HaPYr6G1OUlN39otzkSTxKnubR9RTxS3/Kk50s1g2JTgFwWQDQyplC5/SHZg==}
     engines: {node: '>= 6'}
+
+  point-in-polygon@1.0.1:
+    resolution: {integrity: sha512-7xblajMJtE9xOfDXkZrq98kjnoazmNPfNXqu9XCKk0uhtjImNdTRjkckIWKirtlyUocWU9XyzTyE2y5/E45v5A==}
 
   postcss-import@15.1.0:
     resolution: {integrity: sha512-hpr+J05B2FVYUAXHeK1YyI267J/dDDhMU6B6civm8hSY1jYJnBXxzKDKDswzJmtLHryrjhnDjqqp/49t8FALew==}
@@ -2021,6 +2030,10 @@ snapshots:
 
   function-bind@1.1.2: {}
 
+  geolocation-utils@1.2.5:
+    dependencies:
+      point-in-polygon: 1.0.1
+
   get-stream@6.0.1: {}
 
   glob-parent@5.1.2:
@@ -2261,6 +2274,8 @@ snapshots:
   pify@2.3.0: {}
 
   pirates@4.0.6: {}
+
+  point-in-polygon@1.0.1: {}
 
   postcss-import@15.1.0(postcss@8.4.38):
     dependencies:
