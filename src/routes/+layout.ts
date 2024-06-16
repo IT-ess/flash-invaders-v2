@@ -1,17 +1,18 @@
 // Tauri doesn't have a Node.js server to do proper SSR
 // so we will use adapter-static to prerender the app (SSG)
 // See: https://beta.tauri.app/start/frontend/sveltekit/ for more info
-import { loadTranslations } from "$lib/translations/translations.ts";
+import { loadTranslations } from '$lib/translations/translations.ts';
+import type { LayoutLoad } from './$types';
 
 export const prerender = true;
 export const ssr = false;
 
-export const load = async ({ url }) => {
-  const { pathname } = url;
+export const load: LayoutLoad = async ({ url }) => {
+	const { pathname } = url;
 
-  const initLocale = "fr"; // get from cookie, user session, ...
+	const initLocale = 'fr'; // get from cookie, user session, ...
 
-  await loadTranslations(initLocale, pathname); // keep this just before the `return`
+	await loadTranslations(initLocale, pathname); // keep this just before the `return`
 
-  return {};
+	return {};
 };
