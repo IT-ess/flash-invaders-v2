@@ -24,9 +24,13 @@
 	</Button>
 	<p>{$t('common.zwt3.name')}</p>
 	<Button variant="default" size="default" href="/search">Search</Button>
+	<Button
+		variant="default"
+		size="default"
+		href="https://www.google.com/maps/d/viewer?mid=1qDy-Qcv9ScGx97vlB1Wy_9tvOIumt0I">Maps</Button
+	>
 
 	<br />
-
 	<div class="row">
 		<a href="https://vitejs.dev" target="_blank">
 			<img src="/vite.svg" class="logo vite" alt="Vite Logo" />
