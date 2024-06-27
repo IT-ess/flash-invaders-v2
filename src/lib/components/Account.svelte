@@ -4,12 +4,12 @@
 	import { supabase } from '../supabase-client';
 	import Avatar from './Avatar.svelte';
 
-	export let session: AuthSession;
+	let { session }: { session: AuthSession } = $props();
 
-	let loading = false;
-	let username: string | null = null;
-	let website: string | null = null;
-	let avatarUrl: string | null = null;
+	let loading = $state(false);
+	let username: string | null = $state(null);
+	let website: string | null = $state(null);
+	let avatarUrl: string | null = $state(null);
 
 	onMount(() => {
 		getProfile();
@@ -70,8 +70,8 @@
 	};
 </script>
 
-<form on:submit|preventDefault={updateProfile} class="form-widget">
-	<Avatar bind:url={avatarUrl} size={150} on:upload={updateProfile} />
+<form onsubmit={updateProfile} class="form-widget">
+	<Avatar bind:url={avatarUrl} size={150} upload={() => updateProfile()} />
 	<div>Email: {session.user.email}</div>
 	<div>
 		<label for="username">Name</label>
@@ -86,7 +86,7 @@
 			{loading ? 'Saving ...' : 'Update profile'}
 		</button>
 	</div>
-	<button type="button" class="button block" on:click={() => supabase.auth.signOut()}>
+	<button type="button" class="button block" onclick={() => supabase.auth.signOut()}>
 		Sign Out
 	</button>
 </form>

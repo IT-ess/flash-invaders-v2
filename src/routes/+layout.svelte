@@ -20,6 +20,7 @@
 			session = _session;
 		});
 	});
+	// change by the load function of each component and put this in layout.ts ?
 
 	onNavigate((navigation) => {
 		if (!document.startViewTransition) return;
@@ -37,8 +38,11 @@
 	{#if !session}
 		<Auth />
 	{:else}
+		<!-- {JSON.stringify(session.user)} -->
 		<Account {session} />
-		{@render children()}
+		<!-- I should handle account here, as a burger menu or something, maybe Sheet component of shadcn -->
+		<!-- {@render children() {session}} -->
+		<!-- <slot /> -->
 	{/if}
 </div>
 

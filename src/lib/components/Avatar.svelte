@@ -1,15 +1,15 @@
 <script lang="ts">
-	import { createEventDispatcher } from 'svelte';
 	import { supabase } from '../supabase-client';
 
-	export let size: number;
-	export let url: string;
+	let {
+		size,
+		url = $bindable(),
+		upload
+	}: { size: number; url: string | null; upload: Function } = $props();
 
-	let avatarUrl: string | null = null;
-	let uploading = false;
-	let files: FileList;
-
-	const dispatch = createEventDispatcher();
+	let avatarUrl: string | null = $state(null);
+	let uploading = $state(false);
+	let files: FileList | undefined = $state();
 
 	const downloadImage = async (path: string) => {
 		try {
@@ -47,7 +47,7 @@
 			}
 
 			url = filePath;
-			dispatch('upload');
+			upload();
 		} catch (error) {
 			if (error instanceof Error) {
 				alert(error.message);
@@ -57,7 +57,9 @@
 		}
 	};
 
-	$: if (url) downloadImage(url);
+	$effect(() => {
+		if (url) downloadImage(url);
+	});
 </script>
 
 <div style="width: {size}px" aria-live="polite">
@@ -81,7 +83,7 @@
 				id="single"
 				accept="image/*"
 				bind:files
-				on:change={uploadAvatar}
+				onchange={uploadAvatar}
 				disabled={uploading}
 			/>
 		</span>

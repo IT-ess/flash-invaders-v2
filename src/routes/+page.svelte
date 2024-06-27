@@ -2,19 +2,10 @@
 	import { t } from '$lib/translations/translations';
 	import Button from '$lib/components/ui/button/button.svelte';
 	import type { PageData } from './$types';
-	// import { supabase } from '$lib/supabase-client';
+	import Account from '$lib/components/Account.svelte';
+	import type { AuthSession } from '@supabase/supabase-js';
 
-	// async function signUpNewUser() {
-	// 	const { data, error } = await supabase.auth.signUp({
-	// 		email: 'example@email.com',
-	// 		password: 'example-password',
-	// 		options: {
-	// 			data: { full_name: 'John Doe' }
-	// 		}
-	// 	});
-	// }
-
-	export let data: PageData;
+	let { data, session }: { data: PageData; session: AuthSession } = $props();
 </script>
 
 <ul>
@@ -26,6 +17,8 @@
 <div class="container">
 	<h1>Welcome to Tauri!</h1>
 	<h2 class="font-bold">Bonjour !</h2>
+
+	<!-- <Account {session} /> -->
 
 	<div>
 		<h1 class="justify-center">Zwietess</h1>
