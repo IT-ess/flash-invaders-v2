@@ -16,6 +16,7 @@
 			loading = true;
 			const { error } = await supabase.auth.signUp({ email, password });
 			if (error) throw error;
+			goto('/');
 		} catch (error) {
 			if (error instanceof Error) {
 				alert(error.message);
@@ -23,7 +24,6 @@
 			}
 		} finally {
 			loading = false;
-			goto('/');
 		}
 	};
 
@@ -33,6 +33,7 @@
 			loading = true;
 			const { error } = await supabase.auth.signInWithPassword({ email, password });
 			if (error) throw error;
+			goto('/');
 		} catch (error) {
 			if (error instanceof Error) {
 				alert(error.message);
@@ -40,7 +41,6 @@
 			}
 		} finally {
 			loading = false;
-			goto('/');
 		}
 	};
 </script>
