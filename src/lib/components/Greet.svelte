@@ -11,7 +11,7 @@
 </script>
 
 <div>
-	<form class="row" on:submit|preventDefault={greet}>
+	<form class="row" onsubmit={greet}>
 		<input id="greet-input" placeholder="Enter a name..." bind:value={name} />
 		<button type="submit">Greet</button>
 	</form>

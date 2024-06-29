@@ -1,5 +1,6 @@
 <script lang="ts">
-	import { supabase } from '../supabase-client';
+	import { goto } from '$app/navigation';
+	import { supabase } from '$lib/supabase-client';
 
 	let isSignUp = $state(true);
 	let loading = $state(false);
@@ -19,6 +20,7 @@
 			}
 		} finally {
 			loading = false;
+			goto('/');
 		}
 	};
 
@@ -35,6 +37,7 @@
 			}
 		} finally {
 			loading = false;
+			goto('/');
 		}
 	};
 </script>

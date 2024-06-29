@@ -1,26 +1,11 @@
 <script lang="ts">
 	import '../app.pcss';
-	import { onNavigate } from '$app/navigation';
+	import { goto, onNavigate } from '$app/navigation';
 
-	import { onMount } from 'svelte';
-	import { supabase } from '$lib/supabase-client';
-	import type { AuthSession } from '@supabase/supabase-js';
-	import Account from '$lib/components/Account.svelte';
-	import Auth from '$lib/components/Auth.svelte';
+	import { type Snippet } from 'svelte';
+	import { getSessionState, setSessionState } from '$lib/session-state.svelte';
 
-	let session: AuthSession | null = $state(null);
-	let { children } = $props();
-
-	onMount(() => {
-		supabase.auth.getSession().then(({ data }) => {
-			session = data.session;
-		});
-
-		supabase.auth.onAuthStateChange((_event, _session) => {
-			session = _session;
-		});
-	});
-	// change by the load function of each component and put this in layout.ts ?
+	let { children }: { children: Snippet } = $props();
 
 	onNavigate((navigation) => {
 		if (!document.startViewTransition) return;
@@ -32,18 +17,18 @@
 			});
 		});
 	});
+
+	setSessionState();
+	const { session } = getSessionState();
+
+	if (session === null) {
+		goto('/auth');
+	}
 </script>
 
 <div class="container" style="padding: 50px 0 100px 0">
-	{#if !session}
-		<Auth />
-	{:else}
-		<!-- {JSON.stringify(session.user)} -->
-		<Account {session} />
-		<!-- I should handle account here, as a burger menu or something, maybe Sheet component of shadcn -->
-		<!-- {@render children() {session}} -->
-		<!-- <slot /> -->
-	{/if}
+	<!-- I should handle account here, as a burger menu or something, maybe Sheet component of shadcn -->
+	{@render children()}
 </div>
 
 <style>

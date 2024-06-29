@@ -11,7 +11,7 @@
 	let website: string | null = $state(null);
 	let avatarUrl: string | null = $state(null);
 
-	onMount(() => {
+	$effect(() => {
 		getProfile();
 	});
 
