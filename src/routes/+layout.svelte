@@ -19,11 +19,15 @@
 	});
 
 	setSessionState();
-	const { session } = getSessionState();
+	const session = getSessionState().getSession;
 
-	if (session === null) {
-		goto('/auth');
-	}
+	$effect(() => {
+		if (session === null) {
+			goto('/auth');
+		} else {
+			goto('/');
+		}
+	});
 </script>
 
 <div class="container" style="padding: 50px 0 100px 0">

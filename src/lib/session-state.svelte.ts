@@ -3,7 +3,7 @@ import type { AuthSession } from '@supabase/supabase-js';
 import { supabase } from './supabase-client';
 
 export class SessionState {
-	session = $state<AuthSession | null>(null);
+	private session = $state<AuthSession | null>(null);
 
 	constructor() {
 		// onDestroy(() => {
@@ -18,6 +18,15 @@ export class SessionState {
 		supabase.auth.onAuthStateChange((_event, _session) => {
 			this.session = _session;
 		});
+	}
+
+	get getSession() {
+		return this.session;
+	}
+
+	signOut() {
+		supabase.auth.signOut();
+		this.session = null;
 	}
 }
 

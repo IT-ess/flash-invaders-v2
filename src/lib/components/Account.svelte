@@ -1,10 +1,11 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
-	import type { AuthSession } from '@supabase/supabase-js';
 	import { supabase } from '../supabase-client';
 	import Avatar from './Avatar.svelte';
+	import { getSessionState } from '$lib/session-state.svelte';
+	import { goto } from '$app/navigation';
 
-	let { session }: { session: AuthSession } = $props();
+	const sessionState = getSessionState();
+	const session = sessionState.getSession;
 
 	let loading = $state(false);
 	let username: string | null = $state(null);
@@ -16,6 +17,9 @@
 	});
 
 	const getProfile = async () => {
+		if (session === null) {
+			throw Error('Not authenticated'); // I should handle this better
+		}
 		try {
 			loading = true;
 			const { user } = session;
@@ -43,6 +47,9 @@
 	};
 
 	const updateProfile = async () => {
+		if (session === null) {
+			throw Error('Not authenticated'); // I should handle this better
+		}
 		try {
 			loading = true;
 			const { user } = session;
@@ -68,11 +75,16 @@
 			loading = false;
 		}
 	};
+
+	const handleSignOut = () => {
+		sessionState.signOut();
+		goto('/auth');
+	};
 </script>
 
 <form onsubmit={updateProfile} class="form-widget">
 	<Avatar bind:url={avatarUrl} size={150} upload={() => updateProfile()} />
-	<div>Email: {session.user.email}</div>
+	<div>Email: {session?.user.email}</div>
 	<div>
 		<label for="username">Name</label>
 		<input id="username" type="text" bind:value={username} />
@@ -86,7 +98,5 @@
 			{loading ? 'Saving ...' : 'Update profile'}
 		</button>
 	</div>
-	<button type="button" class="button block" onclick={() => supabase.auth.signOut()}>
-		Sign Out
-	</button>
+	<button type="button" class="button block" onclick={handleSignOut}> Sign Out </button>
 </form>

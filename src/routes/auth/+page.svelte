@@ -1,11 +1,14 @@
 <script lang="ts">
 	import { goto } from '$app/navigation';
+	import { getSessionState } from '$lib/session-state.svelte';
 	import { supabase } from '$lib/supabase-client';
 
 	let isSignUp = $state(true);
 	let loading = $state(false);
 	let email = $state('');
 	let password = $state('');
+
+	const session = getSessionState().getSession;
 
 	const handleSignup = async () => {
 		try {

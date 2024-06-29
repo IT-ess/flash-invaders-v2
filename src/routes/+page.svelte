@@ -6,45 +6,32 @@
 	import { getSessionState } from '$lib/session-state.svelte';
 
 	let { data }: { data: PageData } = $props();
-
-	// $effect(() => {
-	// 	session = getContext<AuthSession | null>('session');
-	// 	if (session) {
-	// 		console.log('session', session);
-	// 	}
-	// });
-	//
-	const { session } = getSessionState();
 </script>
 
-{#if session}
-	<ul>
-		{#each data.countries as country}
-			<li>{country.name}</li>
-		{/each}
-	</ul>
+<ul>
+	{#each data.countries as country}
+		<li>{country.name}</li>
+	{/each}
+</ul>
 
-	<div class="container">
-		<h1>Welcome to Tauri!</h1>
-		<h2 class="font-bold">Bonjour !</h2>
+<div class="container">
+	<h1>Welcome to Tauri!</h1>
+	<h2 class="font-bold">Bonjour !</h2>
 
-		<Account {session} />
+	<Account />
 
-		<div>
-			<h1 class="justify-center">Zwietess</h1>
-		</div>
-		<Button variant="default" size="default" href="/intro">
-			{$t('common.nav.gallery')}
-		</Button>
-		<p>{$t('common.zwt3.name')}</p>
-		<Button variant="default" size="default" href="/search">Search</Button>
-		<Button
-			variant="default"
-			size="default"
-			href="https://www.google.com/maps/d/viewer?mid=1qDy-Qcv9ScGx97vlB1Wy_9tvOIumt0I">Maps</Button
-		>
-		<Button variant="default" size="default" href="/signup">Login</Button>
+	<div>
+		<h1 class="justify-center">Zwietess</h1>
 	</div>
-{:else}
-	<p>Not logged inn</p>
-{/if}
+	<Button variant="default" size="default" href="/intro">
+		{$t('common.nav.gallery')}
+	</Button>
+	<p>{$t('common.zwt3.name')}</p>
+	<Button variant="default" size="default" href="/search">Search</Button>
+	<Button
+		variant="default"
+		size="default"
+		href="https://www.google.com/maps/d/viewer?mid=1qDy-Qcv9ScGx97vlB1Wy_9tvOIumt0I">Maps</Button
+	>
+	<Button variant="default" size="default" href="/signup">Login</Button>
+</div>
