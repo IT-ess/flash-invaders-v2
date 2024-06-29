@@ -7,6 +7,17 @@
 
 	let { children }: { children: Snippet } = $props();
 
+	setSessionState();
+
+	$effect(() => {
+		const session = getSessionState().getSession;
+		if (session === null) {
+			goto('/auth');
+		} else {
+			goto('/');
+		}
+	});
+
 	onNavigate((navigation) => {
 		if (!document.startViewTransition) return;
 
@@ -16,17 +27,6 @@
 				await navigation.complete;
 			});
 		});
-	});
-
-	setSessionState();
-	const session = getSessionState().getSession;
-
-	$effect(() => {
-		if (session === null) {
-			goto('/auth');
-		} else {
-			goto('/');
-		}
 	});
 </script>
 

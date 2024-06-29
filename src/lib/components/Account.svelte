@@ -3,16 +3,20 @@
 	import Avatar from './Avatar.svelte';
 	import { getSessionState } from '$lib/session-state.svelte';
 	import { goto } from '$app/navigation';
-
-	const sessionState = getSessionState();
-	const session = sessionState.getSession;
+	import type { AuthSession } from '@supabase/supabase-js';
 
 	let loading = $state(false);
 	let username: string | null = $state(null);
 	let website: string | null = $state(null);
 	let avatarUrl: string | null = $state(null);
 
+	let session = $state<AuthSession | null>(null);
+	const sessionState = getSessionState();
+
 	$effect(() => {
+		session = sessionState.getSession;
+		// TODO: getProfile currently runs twice, before the session retrieval (and it results in an error), and after (it succeeds).
+		// I should find a way to handle this better
 		getProfile();
 	});
 
