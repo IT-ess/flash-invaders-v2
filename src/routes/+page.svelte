@@ -5,14 +5,8 @@
 	import Account from '$lib/components/Account.svelte';
 	import { getSessionState } from '$lib/session-state.svelte';
 
-	let { data }: { data: PageData } = $props();
+	// let { data }: { data: PageData } = $props();
 </script>
-
-<ul>
-	{#each data.countries as country}
-		<li>{country.name}</li>
-	{/each}
-</ul>
 
 <div class="container">
 	<h1>Welcome to Tauri!</h1>

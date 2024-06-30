@@ -4,8 +4,9 @@
 	let {
 		size,
 		url = $bindable(),
-		upload
-	}: { size: number; url: string | null; upload: Function } = $props();
+		upload,
+		userId
+	}: { size: number; url: string | null; upload: Function; userId: string | undefined } = $props();
 
 	let avatarUrl: string | null = $state(null);
 	let uploading = $state(false);
@@ -35,10 +36,13 @@
 			if (!files || files.length === 0) {
 				throw new Error('You must select an image to upload.');
 			}
+			if (userId === undefined) {
+				throw new Error("You aren't authenicated");
+			}
 
 			const file = files[0];
 			const fileExt = file.name.split('.').pop();
-			const filePath = `${Math.random()}.${fileExt}`;
+			const filePath = `${userId}/${Math.random()}.${fileExt}`;
 
 			let { error } = await supabase.storage.from('avatars').upload(filePath, file);
 
