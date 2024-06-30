@@ -2,7 +2,6 @@
 	import Button from '$lib/components/ui/button/button.svelte';
 	import { t } from '$lib/translations/translations';
 	import { invoke } from '@tauri-apps/api/core';
-	import type { PageData } from './$types';
 
 	let name = '';
 	let greetMsg = '';
@@ -11,15 +10,7 @@
 		// Learn more about Tauri commands at https://tauri.app/v1/guides/features/command
 		greetMsg = await invoke('greet', { name });
 	}
-
-	export let data: PageData;
 </script>
-
-<ul>
-	{#each data.countries as country}
-		<li>{country.name}</li>
-	{/each}
-</ul>
 
 <div class="container">
 	<h1>Welcome to Tauri!</h1>

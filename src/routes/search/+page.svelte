@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { INVADERS, type Invader } from '$lib/invaders/invaders';
+	import { INVADERS, type Invader } from '$lib/game-data/invaders';
 	// import Button from '$lib/components/ui/button/button.svelte';
 	// import { t } from '$lib/translations/translations';
 	import { insideCircle, type LatitudeLongitude } from 'geolocation-utils';

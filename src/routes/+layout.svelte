@@ -15,7 +15,7 @@
 			goto('/auth');
 		} else {
 			goto('/');
-		}
+		} // I must find a better way to handle null sessions
 	});
 
 	onNavigate((navigation) => {

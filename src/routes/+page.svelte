@@ -27,5 +27,6 @@
 		size="default"
 		href="https://www.google.com/maps/d/viewer?mid=1qDy-Qcv9ScGx97vlB1Wy_9tvOIumt0I">Maps</Button
 	>
-	<Button variant="default" size="default" href="/signup">Login</Button>
 </div>
+
+<!-- TODO: insert bottom nav here -->
