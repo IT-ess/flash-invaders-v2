@@ -11,31 +11,31 @@ const config: Config = {
 		{
 			locale: 'fr',
 			key: 'home',
-			routes: ['/search'],
+			// routes: ['/search'],
 			loader: async () => (await import('./fr/home.json')).default
 		},
 		{
 			locale: 'fr',
 			key: 'auth',
-			routes: ['/auth/register'],
+			// routes: ['/auth/register'],
 			loader: async () => (await import('./fr/auth.json')).default
 		},
 		{
 			locale: 'fr',
 			key: 'context',
-			routes: [/\/context\/\d+/],
+			// routes: [/\/invader\/\d+/],
 			loader: async () => (await import('./fr/context.json')).default
 		},
 		{
 			locale: 'fr',
 			key: 'quiz',
-			routes: [/^\/context\/([0-9]|1[01])\/quiz$/],
+			// routes: [/^\/invader\/([0-9]|1[01])\/quiz$/],
 			loader: async () => (await import('./fr/quiz.json')).default
 		},
 		{
 			locale: 'fr',
 			key: 'tutorial',
-			routes: ['/tutorial'],
+			// routes: ['/tutorial'],
 			loader: async () => (await import('./fr/tutorial.json')).default
 		},
 		{
@@ -46,31 +46,31 @@ const config: Config = {
 		{
 			locale: 'de',
 			key: 'home',
-			routes: ['/search'],
+			// routes: ['/search'],
 			loader: async () => (await import('./de/home.json')).default
 		},
 		{
 			locale: 'de',
 			key: 'auth',
-			routes: ['/auth/register'],
+			// routes: ['/auth/register'],
 			loader: async () => (await import('./de/auth.json')).default
 		},
 		{
 			locale: 'de',
 			key: 'context',
-			routes: [/\/context\/\d+/],
+			// routes: [/\/invader\/\d+/],
 			loader: async () => (await import('./de/context.json')).default
 		},
 		{
 			locale: 'de',
 			key: 'quiz',
-			routes: [/^\/context\/([0-9]|1[01])\/quiz$/],
+			// routes: [/^\/invader\/([0-9]|1[01])\/quiz$/],
 			loader: async () => (await import('./de/quiz.json')).default
 		},
 		{
 			locale: 'de',
 			key: 'tutorial',
-			routes: ['/tutorial'],
+			// routes: ['/tutorial'],
 			loader: async () => (await import('./de/tutorial.json')).default
 		}
 	]

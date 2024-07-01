@@ -1,12 +1,37 @@
 <script lang="ts">
+	import { QUIZ_DATA } from '$lib/game-data/quiz';
 	import { t } from '$lib/translations/translations';
+	import { Button } from '$lib/components/ui/button';
+	import { page } from '$app/stores';
 
 	// import type { PageData } from './$types';
 	// import { Button, Blockquote, Progressbar, P } from 'flowbite-svelte';
 
 	// export let data: PageData;
 
-	const questions = data.questions ?? []; // Bof bof
+	const flatQuestions = QUIZ_DATA.fr[+$page.params.id];
+	const questions = [
+		{
+			question: flatQuestions.question1,
+			options: flatQuestions.options1,
+			correctIndex: flatQuestions.index1
+		},
+		{
+			question: flatQuestions.question2,
+			options: flatQuestions.options2,
+			correctIndex: flatQuestions.index2
+		},
+		{
+			question: flatQuestions.question3,
+			options: flatQuestions.options3,
+			correctIndex: flatQuestions.index3
+		},
+		{
+			question: flatQuestions.question4,
+			options: flatQuestions.options4,
+			correctIndex: flatQuestions.index4
+		}
+	];
 
 	const themeColorsBg = ['bg-bluejum', 'bg-yellowjum', 'bg-blackjum', 'bg-redjum'];
 	const themeColorsBgHover = [
@@ -44,23 +69,23 @@
 <div class="relative w-screen h-screen flex flex-col">
 	{#if !(questionPointer > answers.length - 1)}
 		<div class="w-full h-full flex flex-col">
-			<div class="my-0">
+			<!-- <div class="my-0">
 				<Progressbar progress="+{(questionPointer / questions.length) * 100}" size="h-1.5" />
-			</div>
+			</div> -->
 			<div class="p-6 mt-9 bg-white min-h-1/4 flex-initial">
-				<Blockquote>
+				<p>
 					{questions[questionPointer].question}
-				</Blockquote>
-				<span class="text-bluejum" /><span class="text-redjum" /><span
+				</p>
+				<span class="text-bluejum"></span><span class="text-redjum"></span><span
 					class="text-yellowjum"
-				/><span class="text-blackjum" />
+				></span><span class="text-blackjum"></span>
 			</div>
 
 			{#if showAnswer}
 				<div class="flex flex-col items-center justify-evenly flex-grow overflow-y-auto">
 					{#each questions[questionPointer].options as opt, i}
 						<Button
-							btnClass="text-center font-medium inline-flex items-center justify-center px-5 py-6 text-m text-white {getRingClassFromAnswer(
+							class="text-center font-medium inline-flex items-center justify-center px-5 py-6 text-m text-white {getRingClassFromAnswer(
 								questionPointer,
 								i
 							)} rounded-lg w-full {themeColorsBg[i] !== undefined
@@ -98,16 +123,16 @@
 						>
 					</Button>
 					{#if questions[questionPointer].correctIndex === answers[questionPointer]}
-						<P color="text-green-700" size="lg" weight="extrabold">
+						<p color="text-green-700">
 							+{(questionPointer + 1) * 10}
-						</P>
+						</p>
 					{/if}
 				</div>
 			{:else}
 				<div class="flex flex-col items-center justify-evenly flex-grow overflow-y-auto">
 					{#each questions[questionPointer].options as opt, i}
 						<Button
-							btnClass="text-center font-medium focus:ring-4 inline-flex items-center justify-center px-5 py-6 text-m text-white focus:ring-blue-300 rounded-lg w-full {themeColorsBg[
+							class="text-center font-medium focus:ring-4 inline-flex items-center justify-center px-5 py-6 text-m text-white focus:ring-blue-300 rounded-lg w-full {themeColorsBg[
 								i
 							] !== undefined
 								? themeColorsBg[i] + ' ' + themeColorsBgHover[i] + ' ' + themeColorsBgFocus[i]
@@ -165,8 +190,8 @@
 				</Button>
 			</form>
 		</div>
-		<P align="center" height="loose" size="xl" weight="extrabold">
+		<p>
 			Score : {score} / 100
-		</P>
+		</p>
 	{/if}
 </div>

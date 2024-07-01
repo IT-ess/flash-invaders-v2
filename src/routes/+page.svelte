@@ -22,6 +22,8 @@
 	</Button>
 	<p>{$t('common.zwt3.name')}</p>
 	<Button variant="default" size="default" href="/search">Search</Button>
+	<Button variant="default" size="default" href="/invader/1">Invader</Button>
+	<Button variant="default" size="default" href="/invader/1/quiz">Invader</Button>
 	<Button
 		variant="default"
 		size="default"

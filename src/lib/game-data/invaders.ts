@@ -17,8 +17,7 @@ export let INVADERS: Invader[] = [
 		name: 'Le tuto',
 		latitude: 46.99963718022231,
 		longitude: -0.8122978309235765,
-		imageUrl:
-			'https://imagedelivery.net/6ZM0ENVQ5B1N8ekukm4aPw/996c535b-b212-476a-ece8-ec0f11802e00/public',
+		imageUrl: '/zwietess/0.webp',
 		carouselCaptions: ['Jeu concours 1983', 'Arrosoirs', 'Logos'],
 		carouselUrls: ['/context/0-1.jpg', '/context/0-2.jpg', '/context/0-3.jpg'],
 		itemsTypes: ['text'],
@@ -30,8 +29,7 @@ export let INVADERS: Invader[] = [
 		name: 'La ronde',
 		latitude: 47.0050635,
 		longitude: -0.8502914,
-		imageUrl:
-			'https://imagedelivery.net/6ZM0ENVQ5B1N8ekukm4aPw/5eb0613b-274f-4694-9e96-4aac082f8200/public',
+		imageUrl: '/zwietess/1.webp',
 		carouselCaptions: ['Coeur logo', 'Ronde présentation', 'Arrivée 40e', 'BD Cercle'],
 		carouselUrls: ['/context/1-1.jpg', '/context/1-2.jpg', '/context/1-3.jpg', '/context/1-4.jpg'],
 		itemsTypes: ['text'],
@@ -43,8 +41,7 @@ export let INVADERS: Invader[] = [
 		name: 'Le clocher',
 		latitude: 47.004946958638584,
 		longitude: -0.8511354176095234,
-		imageUrl:
-			'https://imagedelivery.net/6ZM0ENVQ5B1N8ekukm4aPw/59c0c22d-f3e3-4933-6f7f-3abd34406800/public',
+		imageUrl: '/zwietess/2.webp',
 		carouselCaptions: ['Clochers réunis', 'Vue face église Zwief', 'Vue intérieure église Zwief'],
 		carouselUrls: ['/context/2-1.jpg', '/context/2-2.jpg', '/context/2-3.jpg'],
 		itemsTypes: ['text'],
@@ -56,8 +53,7 @@ export let INVADERS: Invader[] = [
 		name: 'La paix',
 		latitude: 47.004980731767795,
 		longitude: -0.8523743877935895,
-		imageUrl:
-			'https://imagedelivery.net/6ZM0ENVQ5B1N8ekukm4aPw/f3bde009-2088-446c-f5de-809d79d1dd00/public',
+		imageUrl: '/zwietess/3.webp',
 		carouselCaptions: [
 			'Elus fleur',
 			'Balons paix',
@@ -81,8 +77,7 @@ export let INVADERS: Invader[] = [
 		name: 'Le voyage',
 		latitude: 47.004983296815865,
 		longitude: -0.8519022234753352,
-		imageUrl:
-			'https://imagedelivery.net/6ZM0ENVQ5B1N8ekukm4aPw/0e034fa6-51cd-479e-e80c-cb9169a2db00/public',
+		imageUrl: '/zwietess/4.webp',
 		carouselCaptions: [
 			'Front de bus 1',
 			'Front de bus 2',
@@ -114,8 +109,7 @@ export let INVADERS: Invader[] = [
 		name: 'La musique',
 		latitude: 47.0055787,
 		longitude: -0.8551144,
-		imageUrl:
-			'https://imagedelivery.net/6ZM0ENVQ5B1N8ekukm4aPw/008f6a98-2e7b-4e75-7e50-b68e117a8900/public',
+		imageUrl: '/zwietess/5.webp',
 		carouselCaptions: ['Partition', 'Concert église', 'Weinrauch', 'BD chants'],
 		carouselUrls: ['/context/5-1.jpg', '/context/5-2.jpg', '/context/5-3.jpg', '/context/5-4.jpg'],
 		itemsTypes: ['text', 'audio'],
@@ -127,8 +121,7 @@ export let INVADERS: Invader[] = [
 		name: 'La Hockete',
 		latitude: 47.0075601,
 		longitude: -0.8518778,
-		imageUrl:
-			'https://imagedelivery.net/6ZM0ENVQ5B1N8ekukm4aPw/0bdd39cd-6ce4-4854-bdae-b250e2997f00/public',
+		imageUrl: '/zwietess/6.webp',
 		carouselCaptions: ['Vue fête', 'Affiche', 'BD Hockete', 'Fête2', 'Album musique', 'Invitation'],
 		carouselUrls: [
 			'/context/6-1.jpg',
@@ -147,8 +140,7 @@ export let INVADERS: Invader[] = [
 		name: 'La mairie',
 		latitude: 47.0047309,
 		longitude: -0.850128,
-		imageUrl:
-			'https://imagedelivery.net/6ZM0ENVQ5B1N8ekukm4aPw/6e188f52-e0fc-47a3-ffb0-a687a61aa800/public',
+		imageUrl: '/zwietess/7.webp',
 		carouselCaptions: ['Elus', 'Blason LT', 'Blason Zwief'],
 		carouselUrls: ['/context/7-1.jpg', '/context/7-2.jpg', '/context/7-3.jpg'],
 		itemsTypes: ['text'],
@@ -160,8 +152,7 @@ export let INVADERS: Invader[] = [
 		name: 'La bière',
 		latitude: 47.00522784178306,
 		longitude: -0.8472995324521793,
-		imageUrl:
-			'https://imagedelivery.net/6ZM0ENVQ5B1N8ekukm4aPw/1b8d3a3c-d921-40d8-2cf4-9807e32a7400/public',
+		imageUrl: '/zwietess/8.webp',
 		carouselCaptions: ['Caisse jaune', 'Camion', 'Camion2', 'Local', 'Echope', 'Charette'],
 		carouselUrls: [
 			'/context/8-1.jpg',
@@ -180,8 +171,7 @@ export let INVADERS: Invader[] = [
 		name: 'La culture',
 		latitude: 47.00344172476325,
 		longitude: -0.85728023215241,
-		imageUrl:
-			'https://imagedelivery.net/6ZM0ENVQ5B1N8ekukm4aPw/6f3b0765-1ba1-4738-abdb-6a1af8986700/public',
+		imageUrl: '/zwietess/9.webp',
 		carouselCaptions: ['Masques Fasnet', 'Tessalis inauguration', 'Carnaval défilé'],
 		carouselUrls: ['/context/9-1.jpg', '/context/9-2.jpg', '/context/9-3.jpg'],
 		itemsTypes: ['text', 'video', 'video'],
@@ -193,8 +183,7 @@ export let INVADERS: Invader[] = [
 		name: 'Les émotions',
 		latitude: 47.00247501325306,
 		longitude: -0.8573560045634288,
-		imageUrl:
-			'https://imagedelivery.net/6ZM0ENVQ5B1N8ekukm4aPw/4795959e-115f-40f2-fdd4-af869a17f600/public',
+		imageUrl: '/zwietess/10.webp',
 		carouselCaptions: ['Musique', 'Soirée thème gaulois', "Soirée d'adieu à l'ancienne"],
 		carouselUrls: ['/context/10-1.jpg', '/context/10-2.jpg', '/context/10-3.jpg'],
 		itemsTypes: ['text', 'video', 'video'],

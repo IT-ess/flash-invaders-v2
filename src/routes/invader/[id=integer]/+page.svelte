@@ -3,32 +3,33 @@
 	import * as Carousel from '$lib/components/ui/carousel/index.ts';
 	import { Button } from '$lib/components/ui/button';
 	import { page } from '$app/stores';
-	import { onMount } from 'svelte';
+	import { INVADERS } from '$lib/game-data/invaders';
 
-	let showThumbs = false;
-	let showCaptions = false;
-	let showIndicators = false;
 	// const images = data.context.carousel;
 	const content = [{ source: '', type: '', caption: '' }]; // data.context.items;
 
-	// onMount(() => {
-	// 	preloadImages();
-	// });
+	const { carouselCaptions, carouselUrls, itemsTypes, itemsSources, itemsCaptions } =
+		INVADERS[+$page.params.id];
 
-	// function preloadImages() {
-	// 	images.forEach(({ imgurl }) => {
-	// 		const img = new Image();
-	// 		img.src = imgurl;
-	// 	});
-	// }
+	const carouselItems = carouselCaptions.map((caption, index) => ({
+		caption,
+		url: carouselUrls[index]
+	}));
+
+	const contents = itemsSources.map((source, index) => ({
+		source,
+		caption: itemsCaptions[index],
+		type: itemsTypes[index]
+	}));
 </script>
 
 <div class="relative min-h-screen flex flex-col bg-gray-100">
 	<div class="bg-white pt-4 px-8 flex-grow flex flex-col overflow-y-auto pb-6">
 		<Carousel.Root>
 			<Carousel.Content>
-				<Carousel.Item>...</Carousel.Item>
-				<Carousel.Item>...</Carousel.Item>
+				{#each carouselItems as { url, caption }}
+					<Carousel.Item><img src={url} alt={caption} /></Carousel.Item>
+				{/each}
 			</Carousel.Content>
 			<Carousel.Previous />
 			<Carousel.Next />
@@ -37,7 +38,7 @@
 		<div class="pb-4 mt-4">
 			<h1>{$t(`common.zwt${$page.params.id}.name`)}</h1>
 		</div>
-		{#each content as { source, type, caption }}
+		{#each contents as { source, type, caption }}
 			{#if type === 'text'}
 				<div>
 					<p>
@@ -56,7 +57,7 @@
 					{#if caption}
 						<p>{caption}</p>
 					{/if}
-					<audio controls src={source} />
+					<audio controls src={source}></audio>
 				</div>
 			{:else}
 				<p>Wrong type of content</p>
