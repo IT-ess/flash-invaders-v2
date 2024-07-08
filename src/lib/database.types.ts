@@ -117,7 +117,14 @@ export type Database = {
 			[_ in never]: never;
 		};
 		Functions: {
-			[_ in never]: never;
+			update_invader_permission: {
+				Args: {
+					user_id_input: string;
+					invader_id: number;
+					permission_level: number;
+				};
+				Returns: undefined;
+			};
 		};
 		Enums: {
 			[_ in never]: never;

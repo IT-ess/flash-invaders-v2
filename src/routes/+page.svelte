@@ -1,11 +1,7 @@
 <script lang="ts">
 	import { t } from '$lib/translations/translations';
 	import Button from '$lib/components/ui/button/button.svelte';
-	import type { PageData } from './$types';
 	import Account from '$lib/components/Account.svelte';
-	import { getSessionState } from '$lib/session-state.svelte';
-
-	// let { data }: { data: PageData } = $props();
 </script>
 
 <div class="container">

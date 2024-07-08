@@ -3,6 +3,8 @@
 
 	import type { PageData } from './$types';
 	import * as Card from '$lib/components/ui/card';
+	import { AspectRatio } from '$lib/components/ui/aspect-ratio';
+
 	let { data }: { data: PageData } = $props();
 	data.invadersInfos;
 </script>
@@ -15,7 +17,9 @@
 				<Card.Description>Card Description (localization)</Card.Description>
 			</Card.Header>
 			<Card.Content>
-				<img src={infos.img} alt={infos.alt} />
+				<AspectRatio ratio={16 / 9} class="bg-muted">
+					<img src={infos.img} alt={infos.alt} />
+				</AspectRatio>
 			</Card.Content>
 		</Card.Root>
 	</div>
