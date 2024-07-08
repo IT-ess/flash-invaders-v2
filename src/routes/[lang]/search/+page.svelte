@@ -1,9 +1,9 @@
 <script lang="ts">
 	import { INVADERS, type Invader } from '$lib/game-data/invaders';
+	import { PUBLIC_SEARCH_RADIUS } from '$env/static/public';
 	import * as Dialog from '$lib/components/ui/dialog';
 	import { Button, buttonVariants } from '$lib/components/ui/button';
 	import { supabase } from '$lib/supabase-client';
-	// import Button from '$lib/components/ui/button/button.svelte';
 	// import { t } from '$lib/translations/translations';
 	import { insideCircle, type LatitudeLongitude } from 'geolocation-utils';
 	import { getSessionState } from '$lib/session-state.svelte';
@@ -11,6 +11,7 @@
 	import { goto } from '$app/navigation';
 
 	let successModal = $state(false);
+	let foundId: number | undefined = $state();
 	// let failModal = $state(false);
 	let geoFailModal = $state(false);
 	let loading = $state(false);
@@ -68,6 +69,7 @@
 			if (error) {
 				console.error('Error updating user profile', error);
 			}
+			foundId = id;
 		}
 
 		successModal = true;
@@ -76,7 +78,7 @@
 	}
 
 	const matchLocalInvaders = (invader: Invader, userGeoLocation: LatitudeLongitude): Boolean =>
-		insideCircle(userGeoLocation, invader, 1000000000);
+		insideCircle(userGeoLocation, invader, +PUBLIC_SEARCH_RADIUS);
 </script>
 
 <main class="container">
@@ -94,7 +96,7 @@
 				</Dialog.Description>
 			</Dialog.Header>
 			<Dialog.Footer>
-				<Button type="submit" onclick={() => goto('/invaders/1')}>Save changes</Button>
+				<Button type="submit" onclick={() => goto(`/invaders/${foundId}`)}>Save changes</Button>
 			</Dialog.Footer>
 		</Dialog.Content>
 	</Dialog.Root>
