@@ -1,9 +1,9 @@
 <script lang="ts">
 	import { supabase } from '../supabase-client';
 	import Avatar from './Avatar.svelte';
-	import { getSessionState } from '$lib/session-state.svelte';
 	import { goto } from '$app/navigation';
 	import type { AuthSession } from '@supabase/supabase-js';
+	import { sessionState } from '$lib/session-state.svelte.ts';
 
 	let loading = $state(false);
 	let username: string | null = $state(null);
@@ -11,7 +11,6 @@
 	let userId: string | undefined = $state();
 
 	let session = $state<AuthSession | null>(null);
-	const sessionState = getSessionState();
 
 	$effect(() => {
 		session = sessionState.getSession;

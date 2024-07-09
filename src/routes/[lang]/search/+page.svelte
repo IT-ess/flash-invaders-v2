@@ -6,7 +6,7 @@
 	import { supabase } from '$lib/supabase-client';
 	// import { t } from '$lib/translations/translations';
 	import { insideCircle, type LatitudeLongitude } from 'geolocation-utils';
-	import { getSessionState } from '$lib/session-state.svelte';
+	import { sessionState } from '$lib/session-state.svelte.ts';
 	import { redirect } from '@sveltejs/kit';
 	import { goto } from '$app/navigation';
 
@@ -19,7 +19,7 @@
 	let localInvader: Invader | null = $state(null);
 	let foundInvader: Boolean = $state(false);
 
-	const session = getSessionState().getSession;
+	const session = sessionState.getSession;
 	if (session === null) {
 		redirect(302, '/auth');
 	}

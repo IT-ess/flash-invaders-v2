@@ -5,9 +5,9 @@
 	import { Progress } from '$lib/components/ui/progress';
 	import { page } from '$app/stores';
 	import { supabase } from '$lib/supabase-client';
-	import { getSessionState } from '$lib/session-state.svelte';
 	import { redirect } from '@sveltejs/kit';
 	import { goto } from '$app/navigation';
+	import { sessionState } from '$lib/session-state.svelte.ts';
 
 	// import type { PageData } from './$types';
 	// import { Button, Blockquote, Progressbar, P } from 'flowbite-svelte';
@@ -17,7 +17,7 @@
 	const pageId = +$page.params.id;
 	let score = $state(0);
 
-	const session = getSessionState().getSession;
+	const session = sessionState.getSession;
 	if (session === null) {
 		throw redirect(302, '/auth'); // TODO: this redirect doesn't work
 	}

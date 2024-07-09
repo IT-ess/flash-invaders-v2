@@ -1,16 +1,14 @@
 <script lang="ts">
 	import '../app.pcss';
 	import { goto, onNavigate } from '$app/navigation';
+	import { sessionState } from '$lib/session-state.svelte.ts';
 
 	import { type Snippet } from 'svelte';
-	import { getSessionState, setSessionState } from '$lib/session-state.svelte';
 
 	let { children }: { children: Snippet } = $props();
 
-	setSessionState();
-
 	$effect(() => {
-		const session = getSessionState().getSession;
+		const session = sessionState.getSession;
 		if (session === null) {
 			goto('/auth');
 		} else {

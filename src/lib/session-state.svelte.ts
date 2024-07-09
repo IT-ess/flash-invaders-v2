@@ -1,18 +1,13 @@
-import { getContext, onDestroy, setContext } from 'svelte';
 import type { AuthSession } from '@supabase/supabase-js';
 import { supabase } from './supabase-client';
 
 export class SessionState {
 	private session = $state<AuthSession | null>(null);
 
-	constructor() {
-		// onDestroy(() => {
-		// 	for (const timeout of this.toastToTimeoutMap.values()) {
-		// 		clearTimeout(timeout);
-		// 	}
-		// 	this.toastToTimeoutMap.clear();
-		// });
-		supabase.auth.getSession().then(({ data }) => {
+	constructor() {}
+
+	async init() {
+		await supabase.auth.getSession().then(({ data }) => {
 			this.session = data.session;
 		});
 		supabase.auth.onAuthStateChange((_event, _session) => {
@@ -30,12 +25,8 @@ export class SessionState {
 	}
 }
 
-const SESSION_KEY = Symbol('SESSION');
+const sessionState = new SessionState();
 
-export function setSessionState() {
-	return setContext(SESSION_KEY, new SessionState());
-}
+await sessionState.init();
 
-export function getSessionState() {
-	return getContext<ReturnType<typeof setSessionState>>(SESSION_KEY);
-}
+export { sessionState as sessionState };
