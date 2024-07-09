@@ -117,11 +117,12 @@ export type Database = {
 			[_ in never]: never;
 		};
 		Functions: {
-			update_invader_permission: {
+			update_user_permissions_and_score: {
 				Args: {
 					user_id_input: string;
 					invader_id: number;
 					permission_level: number;
+					incremented_score: number;
 				};
 				Returns: undefined;
 			};

@@ -15,7 +15,7 @@
 	// let failModal = $state(false);
 	let geoFailModal = $state(false);
 	let loading = $state(false);
-	let positionglob = $state();
+	let positionglob: GeolocationPosition | undefined = $state();
 	let localInvader: Invader | null = $state(null);
 	let foundInvader: Boolean = $state(false);
 
@@ -60,11 +60,11 @@
 			localInvader = foundInvaders[0];
 			const { id } = localInvader;
 
-			// const { error } = await supabase.from('profiles').update({ inv1: 1 }).eq('id', user.id);
-			const { error } = await supabase.rpc('update_invader_permission', {
+			const { error } = await supabase.rpc('update_user_permissions_and_score', {
 				invader_id: id,
 				user_id_input: user.id,
-				permission_level: 1
+				permission_level: 1,
+				incremented_score: 0
 			});
 			if (error) {
 				console.error('Error updating user profile', error);

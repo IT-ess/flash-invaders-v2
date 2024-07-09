@@ -2,14 +2,28 @@
 	import { QUIZ_DATA } from '$lib/game-data/quiz';
 	import { t } from '$lib/translations/translations';
 	import { Button } from '$lib/components/ui/button';
+	import { Progress } from '$lib/components/ui/progress';
 	import { page } from '$app/stores';
+	import { supabase } from '$lib/supabase-client';
+	import { getSessionState } from '$lib/session-state.svelte';
+	import { redirect } from '@sveltejs/kit';
+	import { goto } from '$app/navigation';
 
 	// import type { PageData } from './$types';
 	// import { Button, Blockquote, Progressbar, P } from 'flowbite-svelte';
 
 	// export let data: PageData;
+	//
+	const pageId = +$page.params.id;
+	let score = $state(0);
 
-	const flatQuestions = QUIZ_DATA.fr[+$page.params.id];
+	const session = getSessionState().getSession;
+	if (session === null) {
+		throw redirect(302, '/auth'); // TODO: this redirect doesn't work
+	}
+	const { user } = session;
+
+	const flatQuestions = QUIZ_DATA.fr[pageId];
 	const questions = [
 		{
 			question: flatQuestions.question1,
@@ -58,20 +72,32 @@
 		return '';
 	}
 
-	let questionPointer = 0;
-	let score = 0;
-	let showAnswer: boolean;
-	$: {
-		showAnswer = false;
+	async function submitScore() {
+		const { error } = await supabase.rpc('update_user_permissions_and_score', {
+			invader_id: pageId,
+			user_id_input: user.id,
+			permission_level: 2,
+			incremented_score: score
+		});
+		if (error) {
+			console.error('Error updating user permissions and score:', error.message);
+		}
 	}
+	async function onClickGoToHome() {
+		goto('/');
+	}
+
+	let questionPointer = $state(0);
+
+	let showAnswer = $state(false);
 </script>
 
 <div class="relative w-screen h-screen flex flex-col">
 	{#if !(questionPointer > answers.length - 1)}
 		<div class="w-full h-full flex flex-col">
-			<!-- <div class="my-0">
-				<Progressbar progress="+{(questionPointer / questions.length) * 100}" size="h-1.5" />
-			</div> -->
+			<div class="my-0">
+				<Progress value={(questionPointer / questions.length) * 100} />
+			</div>
 			<div class="p-6 mt-9 bg-white min-h-1/4 flex-initial">
 				<p>
 					{questions[questionPointer].question}
@@ -169,11 +195,12 @@
 			{/if}
 		</div>
 	{:else}
-		<div class="w-full h-full flex flex-col justify-center items-center">
-			<h1>{$t('quiz.submitted')}</h1>
-			<form method="POST" action="?/submitScoreAndReturnHome">
-				<input name="score" type="hidden" value={score} />
-				<Button type="submit">
+		{#await submitScore()}
+			<p>Submitting...</p>
+		{:then _}
+			<div class="w-full h-full flex flex-col justify-center items-center">
+				<h1>{$t('quiz.submitted')}</h1>
+				<Button type="submit" onclick={onClickGoToHome}>
 					{$t('quiz.home')}
 					<svg
 						aria-hidden="true"
@@ -188,10 +215,10 @@
 						/></svg
 					>
 				</Button>
-			</form>
-		</div>
-		<p>
-			Score : {score} / 100
-		</p>
+			</div>
+			<p>
+				Score : {score} / 100
+			</p>
+		{/await}
 	{/if}
 </div>

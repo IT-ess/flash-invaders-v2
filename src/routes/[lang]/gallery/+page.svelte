@@ -4,6 +4,7 @@
 	import type { PageData } from './$types';
 	import * as Card from '$lib/components/ui/card';
 	import { AspectRatio } from '$lib/components/ui/aspect-ratio';
+	import type { InvadersInfos } from './+page.ts';
 
 	let { data }: { data: PageData } = $props();
 	data.invadersInfos;
