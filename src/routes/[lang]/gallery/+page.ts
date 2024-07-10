@@ -2,6 +2,11 @@ import { redirect } from '@sveltejs/kit';
 import type { PageLoad } from './$types';
 import { supabase, type ProfileRow } from '$lib/supabase-client';
 import { INVADERS } from '$lib/game-data/invaders';
+import type { EntryGenerator } from './$types';
+
+export const entries: EntryGenerator = () => {
+	return [{ lang: 'fr' }, { lang: 'de' }];
+};
 
 export const load: PageLoad = async (event) => {
 	const session = await supabase.auth.getSession();

@@ -10,6 +10,11 @@ const config = {
 	kit: {
 		adapter: adapter()
 	}
+	//	prerender: { currently doesn't work, I had to declare manually each route.
+	//		crawl: true,
+	//		entries: ['*', '/fr/*', '/de/*'],
+	//		handleHttpError: 'warn'
+	//	}
 };
 
 export default config;

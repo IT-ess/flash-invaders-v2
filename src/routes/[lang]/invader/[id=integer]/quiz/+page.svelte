@@ -8,13 +8,15 @@
 	import { redirect } from '@sveltejs/kit';
 	import { goto } from '$app/navigation';
 	import { sessionState } from '$lib/session-state.svelte.ts';
+	import { onMount } from 'svelte';
 
-	// import type { PageData } from './$types';
-	// import { Button, Blockquote, Progressbar, P } from 'flowbite-svelte';
+	let pageId = 0;
 
-	// export let data: PageData;
-	//
-	const pageId = +$page.params.id;
+	onMount(() => {
+		pageId = +$page.params.id;
+		// see https://kit.svelte.dev/docs/page-options#prerender-when-not-to-prerender
+	});
+
 	let score = $state(0);
 
 	const session = sessionState.getSession;

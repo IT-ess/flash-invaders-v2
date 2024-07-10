@@ -14,6 +14,9 @@ export default defineConfig(async () => ({
 			compiler: 'svelte'
 		})
 	],
+	build: {
+		target: 'ES2022'
+	},
 
 	// Vite options tailored for Tauri development and only applied in `tauri dev` or `tauri build`
 	//

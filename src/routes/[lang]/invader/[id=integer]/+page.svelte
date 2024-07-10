@@ -4,12 +4,17 @@
 	import { Button } from '$lib/components/ui/button';
 	import { page } from '$app/stores';
 	import { INVADERS } from '$lib/game-data/invaders';
+	import { onMount } from 'svelte';
 
-	// const images = data.context.carousel;
-	const content = [{ source: '', type: '', caption: '' }]; // data.context.items;
+	let pageId = 0;
+
+	onMount(() => {
+		pageId = +$page.params.id;
+		// see https://kit.svelte.dev/docs/page-options#prerender-when-not-to-prerender
+	});
 
 	const { carouselCaptions, carouselUrls, itemsTypes, itemsSources, itemsCaptions } =
-		INVADERS[+$page.params.id];
+		INVADERS[pageId];
 
 	const carouselItems = carouselCaptions.map((caption, index) => ({
 		caption,
