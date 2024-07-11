@@ -3,6 +3,7 @@ import { supabase } from './supabase-client';
 
 export class SessionState {
 	private session = $state<AuthSession | null>(null);
+	private userId = $state<string | null>(null);
 
 	constructor() {}
 
@@ -13,10 +14,15 @@ export class SessionState {
 		supabase.auth.onAuthStateChange((_event, _session) => {
 			this.session = _session;
 		});
+		this.userId = this.session?.user?.id ?? null;
 	}
 
 	get getSession() {
 		return this.session;
+	}
+
+	get getUserId() {
+		return this.userId;
 	}
 
 	signOut() {

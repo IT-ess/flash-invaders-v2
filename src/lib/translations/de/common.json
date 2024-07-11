@@ -41,7 +41,8 @@
 	"nav": {
 		"gallery": "Galerie",
 		"search": "Suche nach einem Zwietess",
-		"map": "Karte"
+		"map": "Karte",
+		"auth": "Authentifizieren"
 	},
 	"headers": {
 		"/de/home": "Suche",

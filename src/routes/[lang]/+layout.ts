@@ -1,4 +1,6 @@
+import { sessionState } from '$lib/session-state.svelte';
 import { loadTranslations } from '$lib/translations/translations';
+import { error } from '@sveltejs/kit';
 import type { LayoutLoad } from './$types';
 
 export const load: LayoutLoad = async ({ url, params }) => {
@@ -7,5 +9,11 @@ export const load: LayoutLoad = async ({ url, params }) => {
 	const initLocale = params.lang || defaultLocale; // set default if no locale already set, I use directly path params rather than the global 'locale' store. I must provide some validation here.
 	await loadTranslations(initLocale, pathname); // keep this just before the `return`
 
-	return {};
+	if (!sessionState.getSession) {
+		error(401, { message: 'Unauthorized' });
+	}
+	return {
+		session: sessionState.getSession,
+		userId: sessionState.getUserId
+	};
 };

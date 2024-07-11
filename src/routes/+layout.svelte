@@ -1,20 +1,10 @@
 <script lang="ts">
 	import '../app.pcss';
-	import { goto, onNavigate } from '$app/navigation';
-	import { sessionState } from '$lib/session-state.svelte.ts';
+	import { onNavigate } from '$app/navigation';
 
 	import { type Snippet } from 'svelte';
 
 	let { children }: { children: Snippet } = $props();
-
-	$effect(() => {
-		const session = sessionState.getSession;
-		if (session === null) {
-			goto('/auth');
-		} else {
-			goto('/');
-		} // I must find a better way to handle null sessions
-	});
 
 	onNavigate((navigation) => {
 		if (!document.startViewTransition) return;
