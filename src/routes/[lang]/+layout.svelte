@@ -3,8 +3,6 @@
 	import { MediaQuery } from 'runed';
 	import * as Dialog from '$lib/components/ui/dialog/index.js';
 	import * as Drawer from '$lib/components/ui/drawer/index.js';
-	import { Input } from '$lib/components/ui/input/index.js';
-	import { Label } from '$lib/components/ui/label/index.js';
 	import { Button } from '$lib/components/ui/button/index.js';
 	import * as Avatar from '$lib/components/ui/avatar';
 	import type { LayoutData } from './$types';
@@ -24,7 +22,14 @@
 		{#if isDesktop.matches}
 			<Dialog.Root bind:open>
 				<Dialog.Trigger asChild let:builder>
-					{@render miniAvatar(builder)}
+					<Button variant="ghost" builders={[builder]}
+						><Avatar.Root>
+							<Avatar.Image src={url} alt={username} />
+							<Avatar.Fallback
+								>{username !== null ? username[0].toUpperCase() : 'U'}</Avatar.Fallback
+							>
+						</Avatar.Root></Button
+					>
 				</Dialog.Trigger>
 				<Dialog.Content class="sm:max-w-[425px]">
 					<Dialog.Header>
@@ -39,7 +44,14 @@
 		{:else}
 			<Drawer.Root bind:open>
 				<Drawer.Trigger asChild let:builder>
-					{@render miniAvatar(builder)}
+					<Button variant="ghost" builders={[builder]}
+						><Avatar.Root>
+							<Avatar.Image src={url} alt={username} />
+							<Avatar.Fallback
+								>{username !== null ? username[0].toUpperCase() : 'U'}</Avatar.Fallback
+							>
+						</Avatar.Root></Button
+					>
 				</Drawer.Trigger>
 				<Drawer.Content>
 					<Drawer.Header class="text-left">
@@ -60,12 +72,3 @@
 	</div>
 	{@render children()}
 </div>
-
-{#snippet miniAvatar(builder)}
-	<Button variant="ghost" builders={[builder]}
-		><Avatar.Root>
-			<Avatar.Image src={url} alt={username} />
-			<Avatar.Fallback>{username !== null ? username[0] : 'U'}</Avatar.Fallback>
-		</Avatar.Root></Button
-	>
-{/snippet}
