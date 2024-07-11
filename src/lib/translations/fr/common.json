@@ -42,7 +42,8 @@
 		"gallery": "Galerie",
 		"search": "Rechercher un Zwietess",
 		"map": "Carte",
-		"auth": "S'authentifier"
+		"auth": "S'authentifier",
+		"home": "Accueil"
 	},
 	"headers": {
 		"/fr/home": "Recherche",

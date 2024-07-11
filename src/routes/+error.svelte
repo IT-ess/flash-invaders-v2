@@ -5,6 +5,12 @@
 </script>
 
 <h1>{$page.status}: {$page.error?.message}</h1>
-<Button variant="default" size="default" href="/auth">
-	{$t('common.nav.auth')}
-</Button>
+{#if $page.status === 401}
+	<Button variant="default" size="default" href="/auth">
+		{$t('common.nav.auth')}
+	</Button>
+{:else}
+	<Button variant="default" size="default" href="/">
+		{$t('common.nav.home')}
+	</Button>
+{/if}
