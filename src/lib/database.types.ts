@@ -117,6 +117,12 @@ export type Database = {
 			[_ in never]: never;
 		};
 		Functions: {
+			count_found_invaders: {
+				Args: {
+					profile_id: string;
+				};
+				Returns: number;
+			};
 			update_user_permissions_and_score: {
 				Args: {
 					user_id_input: string;

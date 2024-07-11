@@ -19,7 +19,6 @@
 </script>
 
 <div class="container" style="padding: 50px 0 100px 0">
-	<!-- I should handle account here, as a burger menu or something, maybe Sheet component of shadcn -->
 	{@render children()}
 </div>
 
