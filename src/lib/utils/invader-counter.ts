@@ -8,3 +8,13 @@ export async function invaderCounter(userId: string): Promise<number> {
 	if (error) console.error(error);
 	return data ?? 0;
 }
+
+export async function checkInvaderPrivilege(userId: string, invaderId: number): Promise<number> {
+	let { data, error } = await supabase.rpc('check_invader_privilege', {
+		profile_id: userId,
+		invader_id: invaderId
+	});
+
+	if (error) console.error(error);
+	return data ?? 0;
+}

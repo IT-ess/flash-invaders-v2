@@ -10,12 +10,7 @@
 	import { sessionState } from '$lib/session-state.svelte.ts';
 	import { onMount } from 'svelte';
 
-	let pageId = 0;
-
-	onMount(() => {
-		pageId = +$page.params.id;
-		// see https://kit.svelte.dev/docs/page-options#prerender-when-not-to-prerender
-	});
+	let pageId = +$page.params.id;
 
 	let score = $state(0);
 

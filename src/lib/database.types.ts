@@ -117,6 +117,13 @@ export type Database = {
 			[_ in never]: never;
 		};
 		Functions: {
+			check_invader_privilege: {
+				Args: {
+					profile_id: string;
+					invader_id: number;
+				};
+				Returns: number;
+			};
 			count_found_invaders: {
 				Args: {
 					profile_id: string;

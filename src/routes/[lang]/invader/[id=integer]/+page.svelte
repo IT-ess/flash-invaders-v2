@@ -5,13 +5,9 @@
 	import { page } from '$app/stores';
 	import { INVADERS } from '$lib/game-data/invaders';
 	import { onMount } from 'svelte';
+	import { MediaQuery } from 'runed';
 
-	let pageId = 0;
-
-	onMount(() => {
-		pageId = +$page.params.id;
-		// see https://kit.svelte.dev/docs/page-options#prerender-when-not-to-prerender
-	});
+	let pageId = +$page.params.id;
 
 	const { carouselCaptions, carouselUrls, itemsTypes, itemsSources, itemsCaptions } =
 		INVADERS[pageId];
@@ -26,6 +22,8 @@
 		caption: itemsCaptions[index],
 		type: itemsTypes[index]
 	}));
+
+	const isDesktop = new MediaQuery('(min-width: 768px)');
 </script>
 
 <div class="relative min-h-screen flex flex-col bg-gray-100">
@@ -36,8 +34,10 @@
 					<Carousel.Item><img src={url} alt={caption} /></Carousel.Item>
 				{/each}
 			</Carousel.Content>
-			<Carousel.Previous />
-			<Carousel.Next />
+			{#if isDesktop.matches}
+				<Carousel.Previous />
+				<Carousel.Next />
+			{/if}
 		</Carousel.Root>
 		<!-- <Carousel {images} {showThumbs} {showCaptions} {showIndicators} /> -->
 		<div class="pb-4 mt-4">

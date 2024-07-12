@@ -18,7 +18,7 @@
 	});
 </script>
 
-<div class="container" style="pt-12">
+<div class="container">
 	{@render children()}
 </div>
 
