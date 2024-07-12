@@ -43,7 +43,8 @@
 		"search": "Rechercher un Zwietess",
 		"map": "Carte",
 		"auth": "S'authentifier",
-		"home": "Accueil"
+		"home": "Accueil",
+		"profile": "Mon profil"
 	},
 	"headers": {
 		"/fr/home": "Recherche",
