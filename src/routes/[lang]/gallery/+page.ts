@@ -28,17 +28,21 @@ function getInvaderFromState(userData: ProfileRow): InvadersInfos[] {
 	for (let i = 0; i < 12; i++) {
 		const invaderState = userData[`inv${i}` as keyof ProfileRow] as number;
 		if (invaderState > 0) {
-			const { id, imageUrl, name } = INVADERS[i];
+			const { id, imageUrl, name, latitude, longitude } = INVADERS[i];
 			invadersInfos.push({
 				id,
 				alt: name,
-				img: imageUrl
+				img: imageUrl,
+				lat: latitude,
+				long: longitude
 			});
 		} else {
 			invadersInfos.push({
 				id: 100,
 				alt: 'placeholder',
-				img: '/question_mark.png'
+				img: '/question_mark.png',
+				lat: 0,
+				long: 0
 			});
 		}
 	}
@@ -49,4 +53,6 @@ export type InvadersInfos = {
 	id: number;
 	alt: string;
 	img: string;
+	lat: number;
+	long: number;
 };

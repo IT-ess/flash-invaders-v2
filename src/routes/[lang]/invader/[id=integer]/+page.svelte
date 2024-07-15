@@ -1,13 +1,17 @@
 <script lang="ts">
 	import { t } from '$lib/translations/translations';
 	import * as Carousel from '$lib/components/ui/carousel/index.ts';
+	import { Video } from 'flowbite-svelte';
 	import { Button } from '$lib/components/ui/button';
 	import { page } from '$app/stores';
 	import { INVADERS } from '$lib/game-data/invaders';
 	import { onMount } from 'svelte';
 	import { MediaQuery } from 'runed';
+	import type { PageData } from './$types';
 
 	let pageId = +$page.params.id;
+
+	let { data }: { data: PageData } = $props();
 
 	const { carouselCaptions, carouselUrls, itemsTypes, itemsSources, itemsCaptions } =
 		INVADERS[pageId];
@@ -39,7 +43,6 @@
 				<Carousel.Next />
 			{/if}
 		</Carousel.Root>
-		<!-- <Carousel {images} {showThumbs} {showCaptions} {showIndicators} /> -->
 		<div class="pb-4 mt-4">
 			<h1>{$t(`common.zwt${$page.params.id}.name`)}</h1>
 		</div>
@@ -55,7 +58,11 @@
 					{#if caption}
 						<p>{caption}</p>
 					{/if}
-					<!-- <Video src={source} controls /> -->
+					<Video
+						src={source}
+						controls
+						class="w-full max-w-full h-auto rounded-lg border border-gray-200 dark:border-gray-700"
+					/>
 				</div>
 			{:else if type === 'audio'}
 				<div>
@@ -72,5 +79,8 @@
 	</div>
 	<div class="w-full h-24 flex justify-center items-center bg-gray-200 space-x-4">
 		<Button href="/{$page.params.lang}/gallery">{$t('context.gallery')}</Button>
+		{#if !data.answered}
+			<Button href="./{$page.params.id}/quiz">{$t(`context.quiz`)}</Button>
+		{/if}
 	</div>
 </div>

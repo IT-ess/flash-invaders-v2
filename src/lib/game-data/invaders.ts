@@ -173,7 +173,7 @@ export let INVADERS: Invader[] = [
 		longitude: -0.85728023215241,
 		imageUrl: '/zwietess/9.webp',
 		carouselCaptions: ['Masques Fasnet', 'Tessalis inauguration', 'Carnaval défilé'],
-		carouselUrls: ['/context/9-1.jpg', '/context/9-2.jpg', '/context/9-3.jpg'],
+		carouselUrls: ['/context/9-1.jpg', '/context/9-2.jpg', '/context/9-3.png'],
 		itemsTypes: ['text', 'video', 'video'],
 		itemsSources: ['context.zwt9.content', '/fasnet1.mp4', '/fasnet2.mp4'],
 		itemsCaptions: ['', 'Fasnet 1', 'Fasnet 2']

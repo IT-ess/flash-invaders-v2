@@ -18,9 +18,6 @@
 		score: number;
 		invaderCount: number;
 	} = $props();
-	$effect(() => {
-		console.log('account', url);
-	});
 
 	let loading = $state(false);
 

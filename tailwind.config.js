@@ -1,3 +1,5 @@
+import flowbitePlugin from 'flowbite/plugin';
+
 /** @type {import('tailwindcss').Config} */
 const config = {
 	darkMode: ['class'],
@@ -56,7 +58,8 @@ const config = {
 				sans: ['Inter', 'sans-serif']
 			}
 		}
-	}
+	},
+	plugins: [flowbitePlugin]
 };
 
 export default config;

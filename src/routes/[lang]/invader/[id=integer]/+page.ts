@@ -1,7 +1,6 @@
 import { redirect } from '@sveltejs/kit';
 import { sessionState } from '$lib/session-state.svelte';
 import type { EntryGenerator, PageLoad } from './$types';
-import { supabase } from '$lib/supabase-client';
 import { checkInvaderPrivilege } from '$lib/utils/invader-counter';
 
 export const entries: EntryGenerator = () => {
