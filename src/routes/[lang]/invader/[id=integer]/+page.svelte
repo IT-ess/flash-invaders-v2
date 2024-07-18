@@ -78,7 +78,7 @@
 		<div class="pr-2 flex-grow space-y-8"></div>
 	</div>
 	<div class="w-full h-24 flex justify-center items-center bg-gray-200 space-x-4">
-		<Button href="/{$page.params.lang}/gallery">{$t('context.gallery')}</Button>
+		<Button variant="secondary" href="/{$page.params.lang}/gallery">{$t('context.gallery')}</Button>
 		{#if !data.answered}
 			<Button href="./{$page.params.id}/quiz">{$t(`context.quiz`)}</Button>
 		{/if}

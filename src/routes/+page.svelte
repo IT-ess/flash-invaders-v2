@@ -14,7 +14,7 @@
 		{$t('common.nav.gallery')}
 	</Button>
 	<p>{$t('common.zwt3.name')}</p>
-	<Button variant="default" size="default" href="/fr/search">Search</Button>
+	<Button variant="default" size="default" href="/fr/home">Home</Button>
 	<Button variant="default" size="default" href="/fr/invader/1">Invader</Button>
 	<Button variant="default" size="default" href="/fr/invader/1/quiz">Quiz</Button>
 	<Button variant="default" size="default" href="/fr/tutorial">Tuto</Button>

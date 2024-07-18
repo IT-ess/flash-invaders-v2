@@ -28,12 +28,13 @@
 		"vaul-svelte": "^0.3.2"
 	},
 	"devDependencies": {
-		"@iconify/json": "^2.2.228",
+		"@iconify/json": "^2.2.229",
 		"@sveltejs/adapter-static": "^3.0.2",
 		"@sveltejs/kit": "^2.5.18",
 		"@sveltejs/vite-plugin-svelte": "^3.1.1",
 		"@tauri-apps/cli": "2.0.0-beta.21",
 		"@types/dom-view-transitions": "^1.0.4",
+		"@types/node": "^20.14.11",
 		"autoprefixer": "^10.4.19",
 		"flowbite": "^2.4.1",
 		"flowbite-svelte": "^0.46.15",
@@ -41,15 +42,15 @@
 		"postcss": "^8.4.39",
 		"postcss-loader": "^8.1.1",
 		"prettier": "^3.3.3",
-		"prettier-plugin-svelte": "^3.2.5",
+		"prettier-plugin-svelte": "^3.2.6",
 		"runed": "^0.15.0",
-		"svelte": "5.0.0-next.190",
+		"svelte": "5.0.0-next.191",
 		"svelte-check": "^3.8.4",
 		"sveltekit-i18n": "^2.4.2",
-		"tailwindcss": "^3.4.5",
+		"tailwindcss": "^3.4.6",
 		"tslib": "^2.6.3",
 		"typescript": "^5.5.3",
 		"unplugin-icons": "^0.19.0",
-		"vite": "^5.3.3"
+		"vite": "^5.3.4"
 	}
 }
