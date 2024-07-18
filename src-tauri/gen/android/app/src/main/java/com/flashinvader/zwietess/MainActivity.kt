@@ -1,3 +1,3 @@
-package com.flashinvader.dev
+package com.flashinvader.zwietess
 
 class MainActivity : TauriActivity()

@@ -1,7 +1,7 @@
 {
-	"productName": "flash-invaders-v2",
+	"productName": "Zwietess",
 	"version": "0.0.1",
-	"identifier": "com.flashinvader.dev",
+	"identifier": "com.flashinvader.zwietess",
 	"build": {
 		"beforeDevCommand": "pnpm dev",
 		"devUrl": "http://localhost:1420",
@@ -11,7 +11,7 @@
 	"app": {
 		"windows": [
 			{
-				"title": "flash-invaders-v2",
+				"title": "Zwietess",
 				"width": 800,
 				"height": 600
 			}
