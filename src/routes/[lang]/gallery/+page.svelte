@@ -35,7 +35,7 @@
 			</Card.Header>
 			<Card.Content>
 				<AspectRatio ratio={16 / 9} class="bg-muted">
-					<img src={infos.img} alt={infos.alt} />
+					<img src={infos.img} alt={infos.alt} class="rounded-md object-cover" />
 				</AspectRatio>
 			</Card.Content>
 		</Card.Root>
