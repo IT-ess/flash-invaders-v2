@@ -10,7 +10,6 @@ export const load: LayoutLoad = async ({ url, params }) => {
 	const { pathname } = url;
 	const defaultLocale = navigator.language.startsWith('de') ? 'de' : 'fr'; // get from cookie, user session, ...
 	const initLocale = params.lang || defaultLocale; // set default if no locale already set, I use directly path params rather than the global 'locale' store. I must provide some validation here.
-	await loadTranslations(initLocale, pathname); // keep this just before the `return`
 
 	if (!sessionState.getSession) {
 		error(401, { message: 'Unauthorized' });
@@ -39,6 +38,8 @@ export const load: LayoutLoad = async ({ url, params }) => {
 				console.log('Error downloading image: ', error.message);
 			}
 		}
+
+		await loadTranslations(initLocale, pathname); // keep this just before the `return`
 		return {
 			session: sessionState.getSession,
 			userId,

@@ -17,7 +17,7 @@
 	<Button variant="default" size="default" href="/fr/home">Home</Button>
 	<Button variant="default" size="default" href="/fr/invader/1">Invader</Button>
 	<Button variant="default" size="default" href="/fr/invader/1/quiz">Quiz</Button>
-	<Button variant="default" size="default" href="/fr/tutorial">Tuto</Button>
+	<Button variant="default" size="default" href="tutorial">Tuto</Button>
 	<Button variant="default" size="default" href="/fr/gallery">Gallery</Button>
 	<Button variant="default" size="default" href="/fr/ranking">Top10</Button>
 	<Button

@@ -10,15 +10,15 @@
 
 <div class="flex flex-col grow w-full justify-center items-center font-sans text-center">
 	<div class="p-6 bg-white min-h-1/4 flex-initial">
-		<p>
-			{$t(`tutorial.welcome.p1`)} <span class="text-bluejum">Zw</span><span class="text-redjum"
-				>ie</span
-			><span class="text-blackjum">te</span><span class="text-yellowjum">ss</span> !
+		<p class="font-bold">
+			{$t(`tutorial.welcome.p1`)} <span class="text-blue-600 italic">Zw</span><span
+				class="text-red-500 italic">ie</span
+			><span class="text-black italic">te</span><span class="text-yellow-300 italic">ss</span> !
 			{$t(`tutorial.welcome.p2`)}
 		</p>
 	</div>
 
-	<Accordion.Root>
+	<Accordion.Root class="w-full sm:max-w-[70%]">
 		<Accordion.Item value="item-1">
 			<Accordion.Trigger
 				><div class="w-6 h-6"><OcticonRadioTower /></div>

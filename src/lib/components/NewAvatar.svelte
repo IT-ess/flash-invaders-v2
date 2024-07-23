@@ -50,7 +50,7 @@
 	};
 </script>
 
-<div>
+<div class="text-center">
 	<span style="display:none">
 		<input
 			type="file"
@@ -62,9 +62,11 @@
 		/>
 	</span>
 	<label for="single">
-		<Avatar.Root class="h-20 w-20 mx-auto">
-			<Avatar.Image src={url} alt={username} />
-			<Avatar.Fallback>{username !== null ? username[0] : 'U'}</Avatar.Fallback>
-		</Avatar.Root>
+		<div class="inline-block">
+			<Avatar.Root class="h-20 w-20 mx-auto border-2 border-primary">
+				<Avatar.Image src={url} alt={username} />
+				<Avatar.Fallback>{username !== null ? username[0] : 'U'}</Avatar.Fallback>
+			</Avatar.Root>
+		</div>
 	</label>
 </div>

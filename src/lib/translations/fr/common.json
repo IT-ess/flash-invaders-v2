@@ -44,7 +44,10 @@
 		"map": "Carte",
 		"auth": "S'authentifier",
 		"home": "Accueil",
-		"profile": "Mon profil"
+		"profile": {
+			"title": "Mon profil",
+			"description": "Modifiez votre pseudo ici ou cliquez sur l'avatar pour le modifier."
+		}
 	},
 	"headers": {
 		"/fr/home": "Recherche",

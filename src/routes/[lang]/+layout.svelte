@@ -10,9 +10,6 @@
 	import NewAccount from '$lib/components/NewAccount.svelte';
 	import { page } from '$app/stores';
 	import { goto } from '$app/navigation';
-	import Fa6RegularImages from '~icons/fa6-regular/images';
-	import MaterialSymbolsPinDropOutline from '~icons/material-symbols/pin-drop-outline';
-	import IonIosRadio from '~icons/ion/ios-radio';
 	import BottomNav from '$lib/components/BottomNav.svelte';
 
 	let { children, data }: { children: Snippet; data: LayoutData } = $props();
@@ -48,9 +45,9 @@
 				</Dialog.Trigger>
 				<Dialog.Content class="sm:max-w-[425px]">
 					<Dialog.Header>
-						<Dialog.Title>{$t('common.nav.profile')}</Dialog.Title>
+						<Dialog.Title>{$t('common.nav.profile.title')}</Dialog.Title>
 						<Dialog.Description>
-							Make changes to your profile here. Click save when you're done.
+							{$t('common.nav.profile.description')}
 						</Dialog.Description>
 					</Dialog.Header>
 					<NewAccount bind:url {userId} {username} {score} {invaderCount} />
@@ -72,9 +69,9 @@
 				</Drawer.Trigger>
 				<Drawer.Content>
 					<Drawer.Header class="text-left">
-						<Drawer.Title>{$t('common.nav.profile')}</Drawer.Title>
+						<Drawer.Title>{$t('common.nav.profile.title')}</Drawer.Title>
 						<Drawer.Description class="text-red-300">
-							Make changes to your profile here. Click save when you're done.
+							{$t('common.nav.profile.description')}
 						</Drawer.Description>
 					</Drawer.Header>
 					<NewAccount bind:url {userId} {username} {score} {invaderCount} />

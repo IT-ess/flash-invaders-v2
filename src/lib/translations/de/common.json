@@ -44,7 +44,10 @@
 		"map": "Karte",
 		"auth": "Authentifizieren",
 		"home": "Homepage",
-		"profile": "Mein Profil"
+		"profile": {
+			"title": "Mein Profil",
+			"description": "Ändern Sie Ihren Nickname hier oder klicken Sie auf den Avatar, um ihn zu bearbeiten."
+		}
 	},
 	"headers": {
 		"/de/home": "Suche",
