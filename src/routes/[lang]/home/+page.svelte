@@ -19,7 +19,6 @@
 	let loading = $state(false);
 	let foundInvader: Invader | undefined = $state();
 	let accuracy = $state(40);
-	let positionglob: GeolocationPosition | undefined = $state();
 	let localInvader: Invader | null = $state(null);
 
 	let { data }: { data: PageData } = $props();
@@ -28,7 +27,6 @@
 		return new Promise((resolve, reject) => {
 			navigator.geolocation.getCurrentPosition(
 				(position: GeolocationPosition) => {
-					positionglob = position;
 					resolve(position);
 				},
 				(error: GeolocationPositionError) => {
@@ -92,9 +90,7 @@
 		insideCircle(userGeoLocation, invader, +PUBLIC_SEARCH_RADIUS);
 </script>
 
-<div class="container">
-	<p>Score: {data.score}</p>
-
+<div class="container my-8">
 	<main>
 		<div class="flex flex-grow bg-gray-200 items-center justify-evenly w-full">
 			<div class="m-auto mt-14">
@@ -128,7 +124,7 @@
 		</div>
 
 		<div class="p-4 w-full h-24 flex justify-center items-center">
-			<Button variant="default" onclick={getInvadersWithinRadius}>Recherche</Button>
+			<Button variant="default" onclick={getInvadersWithinRadius}>{$t('home.button.scan')}</Button>
 		</div>
 
 		<Dialog.Root bind:open={successModal} closeOnOutsideClick={false}>
@@ -213,23 +209,9 @@
 				</Dialog.Footer>
 			</Dialog.Content>
 		</Dialog.Root>
-		<div>
-			{#if positionglob}
-				<p>Latitude: {positionglob.coords.latitude}</p>
-				<p>Longitude: {positionglob.coords.longitude}</p>
-				<p>Accuracy: {positionglob.coords.accuracy}</p>
-			{/if}
-		</div>
-		<div>
-			{#if localInvader}
-				<p>Coucou</p>
-				<p>Latitude: {localInvader.latitude}</p>
-				<p>Longitude: {localInvader.longitude}</p>
-			{/if}
-			{foundInvader}
-		</div>
 	</main>
 
+	<p>Score: {data.score}</p>
 	<Button variant="default" size="default" href="/fr/search">Search</Button>
 	<Button variant="default" size="default" href="/fr/invader/1">Invader</Button>
 	<Button variant="default" size="default" href="/fr/invader/1/quiz">Quiz</Button>

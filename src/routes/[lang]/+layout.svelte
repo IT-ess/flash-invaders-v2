@@ -29,7 +29,9 @@
 	const isDesktop = new MediaQuery('(min-width: 768px)');
 </script>
 
-<div class="fixed left-0 right-0 z-10 flex justify-between items-center bg-primary shadow-md p-4">
+<div
+	class="fixed left-0 right-0 z-10 flex justify-between items-center shadow-md p-4 border-b-2 border-slate-300"
+>
 	{#if isDesktop.matches}
 		<div>
 			<Dialog.Root bind:open>
@@ -55,7 +57,7 @@
 			</Dialog.Root>
 		</div>
 	{:else}
-		<div>
+		<div class="pt-1">
 			<Drawer.Root bind:open>
 				<Drawer.Trigger asChild let:builder>
 					<Button variant="ghost" builders={[builder]}
@@ -84,8 +86,9 @@
 			</Drawer.Root>
 		</div>
 	{/if}
+	<h1 class="text-lg mr-4 font-medium">{$t(`common.headers.${$page.url.pathname}`)}</h1>
 	{#if $page.params.lang !== undefined && !$page.url.pathname.match('quiz')}
-		<div class="my-2">
+		<div class="m-2">
 			<Button variant="outline" class="!p-2" onclick={() => goto(newUrl)}>
 				{#if $page.params.lang === 'fr'}
 					🇫🇷

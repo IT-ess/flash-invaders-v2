@@ -52,7 +52,7 @@
 	"headers": {
 		"/de/home": "Suche",
 		"/de/tutorial": "Anleitung",
-		"/de/map": "Karte",
-		"/de/gallery": "Galerie"
+		"/de/gallery": "Galerie",
+		"/de/ranking": "Rangliste"
 	}
 }

@@ -39,6 +39,12 @@ const config: Config = {
 			loader: async () => (await import('./fr/tutorial.json')).default
 		},
 		{
+			locale: 'fr',
+			key: 'ranking',
+			// routes: ['/tutorial'],
+			loader: async () => (await import('./fr/ranking.json')).default
+		},
+		{
 			locale: 'de',
 			key: 'common',
 			loader: async () => (await import('./de/common.json')).default
@@ -72,6 +78,12 @@ const config: Config = {
 			key: 'tutorial',
 			// routes: ['/tutorial'],
 			loader: async () => (await import('./de/tutorial.json')).default
+		},
+		{
+			locale: 'de',
+			key: 'ranking',
+			// routes: ['/tutorial'],
+			loader: async () => (await import('./de/ranking.json')).default
 		}
 	]
 };
