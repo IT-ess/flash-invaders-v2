@@ -53,6 +53,18 @@
 		"/de/home": "Suche",
 		"/de/tutorial": "Anleitung",
 		"/de/gallery": "Galerie",
-		"/de/ranking": "Rangliste"
+		"/de/ranking": "Rangliste",
+		"/de/invader/0": "Die Anleitung",
+		"/de/invader/1": "Die Runde",
+		"/de/invader/2": "Der Turm",
+		"/de/invader/3": "Der Frieden",
+		"/de/invader/4": "Die Reise",
+		"/de/invader/5": "Der Gesang",
+		"/de/invader/6": "Die Hockete",
+		"/de/invader/7": "Die Städtepartnerschaft",
+		"/de/invader/8": "Das Bier",
+		"/de/invader/9": "Die Kultur",
+		"/de/invader/10": "Die Emotionen",
+		"/de/invader/11": "Der Preis"
 	}
 }

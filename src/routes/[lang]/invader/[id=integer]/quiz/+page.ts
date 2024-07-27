@@ -2,6 +2,7 @@ import { redirect } from '@sveltejs/kit';
 import { sessionState } from '$lib/session-state.svelte';
 import type { EntryGenerator, PageLoad } from './$types';
 import { checkInvaderPrivilege } from '$lib/utils/invader-counter';
+import { QUIZ_DATA } from '$lib/game-data/quiz';
 
 export const entries: EntryGenerator = () => {
 	const entries = [];
@@ -15,27 +16,53 @@ export const entries: EntryGenerator = () => {
 export const load = (async ({ params }) => {
 	const session = sessionState.getSession;
 	const invaderId = +params.id;
+	const lang = params.lang;
 
 	if (!session) {
 		redirect(302, '/');
 	}
 	if (invaderId > 11) {
 		// should be ok since the matcher is restrictive
-		redirect(307, `/${params.lang}/home`);
+		redirect(307, `/${lang}/home`);
 	}
 	const { user } = session;
 
+	if (user === null) {
+		redirect(307, `/${lang}/home`);
+	}
+
 	const invaderPrivilege = await checkInvaderPrivilege(user.id, invaderId);
 
-	if (user === null) {
-		redirect(307, `/${params.lang}/home`);
-	}
+	const questionsByLang = lang === 'fr' ? QUIZ_DATA.fr : QUIZ_DATA.de;
+	const flatQuestions = questionsByLang[invaderId];
+	const questions = [
+		{
+			question: flatQuestions.question1,
+			options: flatQuestions.options1,
+			correctIndex: flatQuestions.index1
+		},
+		{
+			question: flatQuestions.question2,
+			options: flatQuestions.options2,
+			correctIndex: flatQuestions.index2
+		},
+		{
+			question: flatQuestions.question3,
+			options: flatQuestions.options3,
+			correctIndex: flatQuestions.index3
+		},
+		{
+			question: flatQuestions.question4,
+			options: flatQuestions.options4,
+			correctIndex: flatQuestions.index4
+		}
+	];
 
 	switch (invaderPrivilege) {
 		case 0:
 			redirect(307, `/${params.lang}/home`);
 		case 1:
-			return { user };
+			return { user, questions };
 		case 2:
 			return redirect(307, `/${params.lang}/invader/${params.id}`);
 		default:

@@ -52,8 +52,19 @@
 	"headers": {
 		"/fr/home": "Recherche",
 		"/fr/tutorial": "Tutoriel",
-		"/fr/map": "Carte",
 		"/fr/gallery": "Galerie",
-		"/fr/ranking": "Classement"
+		"/fr/ranking": "Classement",
+		"/fr/invader/0": "Le tuto",
+		"/fr/invader/1": "La ronde",
+		"/fr/invader/2": "Le clocher",
+		"/fr/invader/3": "La paix",
+		"/fr/invader/4": "Le voyage",
+		"/fr/invader/5": "Le chant",
+		"/fr/invader/6": "La Hockete",
+		"/fr/invader/7": "Le jumelage",
+		"/fr/invader/8": "La bière",
+		"/fr/invader/9": "La culture",
+		"/fr/invader/10": "Les émotions",
+		"/fr/invader/11": "Le prix"
 	}
 }

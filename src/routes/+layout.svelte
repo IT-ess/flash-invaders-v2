@@ -18,7 +18,7 @@
 	});
 </script>
 
-<div class="container">
+<div class="container mx-auto">
 	{@render children()}
 </div>
 

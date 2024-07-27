@@ -30,7 +30,7 @@
 	const isDesktop = new MediaQuery('(min-width: 768px)');
 </script>
 
-<div class="relative min-h-screen flex flex-col bg-gray-100">
+<div class="relative min-h-screen flex flex-col bg-gray-100 mt-8">
 	<div class="bg-white pt-4 px-8 flex-grow flex flex-col overflow-y-auto pb-6">
 		<Carousel.Root>
 			<Carousel.Content>
