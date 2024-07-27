@@ -1,4 +1,6 @@
 <script lang="ts">
+	import Button from '$lib/components/ui/button/button.svelte';
+	import { t } from '$lib/translations/translations';
 	import * as Form from '$lib/components/ui/form';
 	import { Input } from '$lib/components/ui/input';
 	import { goto } from '$app/navigation';
@@ -6,6 +8,12 @@
 	import { formSchema, type FormSchema } from './zod-schema';
 	import { type SuperValidated, type Infer, superForm } from 'sveltekit-superforms';
 	import { zodClient } from 'sveltekit-superforms/adapters';
+	import * as Card from '$lib/components/ui/card';
+	import OcticonMail16 from '~icons/octicon/mail-16';
+	import OcticonKeyAsterisk16 from '~icons/octicon/key-asterisk-16';
+	import { AuthError } from '@supabase/supabase-js';
+	import OcticonArrowRight16 from '~icons/octicon/arrow-right-16';
+	import LoaderCircle from 'lucide-svelte/icons/loader-circle';
 
 	let { data }: { data: SuperValidated<Infer<FormSchema>> } = $props();
 
@@ -20,31 +28,19 @@
 	let loading = $state(false);
 	const defaultLocale = navigator.language.startsWith('de') ? 'de' : 'fr'; // get from cookie, user session, ...
 
-	const handleSignup = async (event: Event) => {
+	const handleSubmission = async (event: Event) => {
 		try {
-			event.preventDefault(); // Is that even useful ?
+			event.preventDefault();
 			loading = true;
 			const email = $formData.email;
 			const password = $formData.password;
-			const { error } = await supabase.auth.signUp({ email, password });
-			if (error) throw error;
-			goto(`${defaultLocale}/home`);
-		} catch (error) {
-			if (error instanceof Error) {
-				alert(error.message);
-			}
-		} finally {
-			loading = false;
-		}
-	};
 
-	const handleSignIn = async (event: Event) => {
-		try {
-			event.preventDefault(); // Is that even useful ?
-			loading = true;
-			const email = $formData.email;
-			const password = $formData.password;
-			const { error } = await supabase.auth.signInWithPassword({ email, password });
+			let error: AuthError | null = null;
+			if (isSignUp) {
+				error = (await supabase.auth.signUp({ email, password })).error;
+			} else {
+				error = (await supabase.auth.signInWithPassword({ email, password })).error;
+			}
 			if (error) throw error;
 			goto(`${defaultLocale}/home`);
 		} catch (error) {
@@ -57,39 +53,68 @@
 	};
 </script>
 
-{#if isSignUp}
-	{@render formSnippet(handleSignup)}
-	<br />
-	<button onclick={() => (isSignUp = false)}>Already have an account? Sign in instead</button>
-{:else}
-	{@render formSnippet(handleSignIn)}
-	<br />
-	<button onclick={() => (isSignUp = true)}>Don't have an account? Sign up instead</button>
-{/if}
-
-{#snippet formSnippet(idFunction)}
-	<div class="row flex-center flex">
-		<div class="col-6 form-widget" aria-live="polite">
-			<h1 class="header">Supabase + Svelte</h1>
-			<form method="POST" use:enhance onsubmit={idFunction}>
-				<Form.Field {form} name="email">
-					<Form.Control let:attrs>
-						<Form.Label>Email</Form.Label>
-						<Input {...attrs} type="email" bind:value={$formData.email} />
-					</Form.Control>
-					<Form.Description>It's preferred that you use your company email.</Form.Description>
-					<Form.FieldErrors />
-				</Form.Field>
-				<Form.Field {form} name="password">
-					<Form.Control let:attrs>
-						<Form.Label>Password</Form.Label>
-						<Input {...attrs} type="password" bind:value={$formData.password} />
-					</Form.Control>
-					<Form.Description>Ensure the password is at least 8 characters.</Form.Description>
-					<Form.FieldErrors />
-				</Form.Field>
-				<Form.Button>Submit</Form.Button>
-			</form>
-		</div>
-	</div>
-{/snippet}
+<div class="min-h-screen flex items-center justify-center">
+	<Card.Root>
+		<Card.Header>
+			<Card.Title>{$t(`auth.register`)}</Card.Title>
+			<Card.Description>{$t(`auth.caption`)}</Card.Description>
+		</Card.Header>
+		<Card.Content>
+			<div class="row flex-center flex mt-4">
+				<div class="col-6 form-widget" aria-live="polite">
+					<form method="POST" use:enhance onsubmit={handleSubmission}>
+						<Form.Field {form} name="email">
+							<Form.Control let:attrs>
+								<Form.Label class="flex items-center">
+									<OcticonMail16 class="mr-1" />{$t(`auth.email.label`)}
+								</Form.Label>
+								<Input {...attrs} type="email" bind:value={$formData.email} />
+							</Form.Control>
+							<Form.Description>{$t(`auth.email.helper`)}</Form.Description>
+							<Form.FieldErrors />
+						</Form.Field>
+						<Form.Field {form} name="password" class="mt-6">
+							<Form.Control let:attrs>
+								<Form.Label class="flex items-center"
+									><OcticonKeyAsterisk16 class="mr-1" />{$t(`auth.password.label`)}</Form.Label
+								>
+								<Input {...attrs} type="password" bind:value={$formData.password} />
+							</Form.Control>
+							<Form.Description>{$t(`auth.password.helper`)}</Form.Description>
+							<Form.FieldErrors />
+						</Form.Field>
+						{#if !loading}
+							<Form.Button class="text-white mt-4"
+								>{#if isSignUp}
+									{$t(`auth.signUp`)}
+								{:else}
+									{$t(`auth.signIn`)}
+								{/if}<OcticonArrowRight16 /></Form.Button
+							>
+						{:else}
+							<Form.Button disabled class="text-white mt-4">
+								<LoaderCircle class="mr-2 h-4 w-4 animate-spin" />
+								{#if isSignUp}
+									{$t(`auth.signUp`)}
+								{:else}
+									{$t(`auth.signIn`)}
+								{/if}
+							</Form.Button>
+						{/if}
+					</form>
+				</div>
+			</div>
+		</Card.Content>
+		<Card.Footer>
+			{#if isSignUp}
+				<Button variant="link" onclick={() => (isSignUp = false)}
+					>{$t(`auth.signUpSwitch.toSignIn`)}<OcticonArrowRight16 /></Button
+				>
+			{:else}
+				<Button variant="link" onclick={() => (isSignUp = true)}
+					>{$t(`auth.signUpSwitch.toSignUp`)}<OcticonArrowRight16 />
+				</Button>
+			{/if}
+		</Card.Footer>
+	</Card.Root>
+</div>

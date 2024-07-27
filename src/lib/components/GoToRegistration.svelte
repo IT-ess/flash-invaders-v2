@@ -22,7 +22,7 @@
 		>{$t('tutorial.register')} <OcticonArrowRight16 class="ml-1" />
 	</Button>
 {:else}
-	<Button href="/{$page.params.lang}/auth" variant="default">
+	<Button href="/auth" variant="default">
 		{$t('tutorial.register')}
 		<OcticonArrowRight16 class="ml-1" />
 	</Button>
