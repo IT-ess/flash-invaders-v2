@@ -51,7 +51,6 @@
 	},
 	"headers": {
 		"/fr/home": "Recherche",
-		"/fr/tutorial": "Tutoriel",
 		"/fr/gallery": "Galerie",
 		"/fr/ranking": "Classement",
 		"/fr/invader/0": "Le tuto",

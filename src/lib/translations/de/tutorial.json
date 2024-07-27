@@ -1,5 +1,6 @@
 {
-	"register": "Ich melde mich an ! 🇩🇪",
+	"header": "Spielregeln",
+	"register": "Ich melde mich an ",
 	"welcome": {
 		"p1": "Willkommen bei der großen Jagd nach",
 		"p2": "Unten finden Sie einige wichtige Spielregeln..."

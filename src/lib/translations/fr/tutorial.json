@@ -1,5 +1,6 @@
 {
-	"register": "Je m'enregistre ! 🇫🇷",
+	"header": "Règles du jeu",
+	"register": "Je m'enregistre ",
 	"welcome": {
 		"p1": "Bienvenue à la grande chasse aux",
 		"p2": "Vous trouverez ci-après plusieurs éléments des règles du jeu..."
