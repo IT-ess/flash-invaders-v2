@@ -11,6 +11,9 @@
 	import { page } from '$app/stores';
 	import { goto } from '$app/navigation';
 	import BottomNav from '$lib/components/BottomNav.svelte';
+	import * as AlertDialog from '$lib/components/ui/alert-dialog';
+	import MaterialSymbolsExitToAppRounded from '~icons/material-symbols/exit-to-app-rounded';
+	import { buttonVariants } from '$lib/components/ui/button';
 
 	let { children, data }: { children: Snippet; data: LayoutData } = $props();
 	let newLang: string = $state('');
@@ -22,11 +25,16 @@
 		document.documentElement.lang = $page.params.lang;
 	});
 
-	let { score, fetchedImage, username, invaderCount, userId } = data;
+	let { sessionState, score, fetchedImage, username, invaderCount, userId } = data;
 
 	let url = $state(fetchedImage);
 	let open = $state(false);
 	const isDesktop = new MediaQuery('(min-width: 768px)');
+
+	function onClickSignOutAndGoToRoot() {
+		sessionState.signOut();
+		goto('/');
+	}
 </script>
 
 <div
@@ -46,9 +54,10 @@
 					>
 				</Dialog.Trigger>
 				<Dialog.Content class="sm:max-w-[425px]">
+					{@render alertDisconnect()}
 					<Dialog.Header>
 						<Dialog.Title>{$t('common.nav.profile.title')}</Dialog.Title>
-						<Dialog.Description>
+						<Dialog.Description class="font-medium text-black">
 							{$t('common.nav.profile.description')}
 						</Dialog.Description>
 					</Dialog.Header>
@@ -70,9 +79,10 @@
 					>
 				</Drawer.Trigger>
 				<Drawer.Content>
+					{@render alertDisconnect()}
 					<Drawer.Header class="text-left">
 						<Drawer.Title>{$t('common.nav.profile.title')}</Drawer.Title>
-						<Drawer.Description class="text-red-300">
+						<Drawer.Description class="font-medium text-black">
 							{$t('common.nav.profile.description')}
 						</Drawer.Description>
 					</Drawer.Header>
@@ -105,3 +115,26 @@
 {#if !$page.url.pathname.match('invader')}
 	<BottomNav />
 {/if}
+
+{#snippet alertDisconnect()}
+	<AlertDialog.Root>
+		<AlertDialog.Trigger class="absolute right-0 m-4"
+			><MaterialSymbolsExitToAppRounded class="text-destructive h-8 w-8" /></AlertDialog.Trigger
+		>
+		<AlertDialog.Content>
+			<AlertDialog.Header>
+				<AlertDialog.Title>Disconnect</AlertDialog.Title>
+				<AlertDialog.Description class="text-black">
+					You will be disconnected from your account, are you sure ?
+				</AlertDialog.Description>
+			</AlertDialog.Header>
+			<AlertDialog.Footer>
+				<AlertDialog.Cancel>Cancel</AlertDialog.Cancel>
+				<AlertDialog.Action
+					class={buttonVariants({ variant: 'destructive' })}
+					onclick={onClickSignOutAndGoToRoot}>Disconnect</AlertDialog.Action
+				>
+			</AlertDialog.Footer>
+		</AlertDialog.Content>
+	</AlertDialog.Root>
+{/snippet}

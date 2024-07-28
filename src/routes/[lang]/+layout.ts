@@ -41,6 +41,7 @@ export const load: LayoutLoad = async ({ url, params }) => {
 
 		await loadTranslations(initLocale, pathname); // keep this just before the `return`
 		return {
+			sessionState,
 			session: sessionState.getSession,
 			userId,
 			fetchedImage: (await downloadAvatar(avatarUrl)) ?? null,

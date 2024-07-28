@@ -8,9 +8,7 @@
 	let {
 		url = $bindable(),
 		userId,
-		username,
-		score,
-		invaderCount
+		username
 	}: {
 		url: string | null;
 		userId: string;
@@ -50,10 +48,6 @@
 <div>
 	<div>
 		<NewAvatar bind:url {username} {userId} />
-	</div>
-	<div>
-		<p>Current score: {score}</p>
-		<p>Zwietess found : {invaderCount}/12</p>
 	</div>
 	<form onsubmit={updateProfile} class="grid items-start gap-4 px-4">
 		<div class="grid gap-2">
