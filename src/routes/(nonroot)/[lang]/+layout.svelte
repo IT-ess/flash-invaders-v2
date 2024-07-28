@@ -57,9 +57,9 @@
 				<Dialog.Content class="sm:max-w-[425px]">
 					{@render alertDisconnect()}
 					<Dialog.Header>
-						<Dialog.Title>{$t('common.nav.profile.title')}</Dialog.Title>
+						<Dialog.Title>{$t('common.profile.title')}</Dialog.Title>
 						<Dialog.Description class="font-medium text-black">
-							{$t('common.nav.profile.description')}
+							{$t('common.profile.description')}
 						</Dialog.Description>
 					</Dialog.Header>
 					<NewAccount bind:url {userId} {username} {score} {invaderCount} />
@@ -82,15 +82,15 @@
 				<Drawer.Content>
 					{@render alertDisconnect()}
 					<Drawer.Header class="text-left">
-						<Drawer.Title>{$t('common.nav.profile.title')}</Drawer.Title>
+						<Drawer.Title>{$t('common.profile.title')}</Drawer.Title>
 						<Drawer.Description class="font-medium text-black">
-							{$t('common.nav.profile.description')}
+							{$t('common.profile.description')}
 						</Drawer.Description>
 					</Drawer.Header>
 					<NewAccount bind:url {userId} {username} {score} {invaderCount} />
 					<Drawer.Footer class="pt-2">
 						<Drawer.Close asChild let:builder>
-							<Button variant="outline" builders={[builder]}>Cancel</Button>
+							<Button variant="outline" builders={[builder]}>{$t('common.nav.cancel')}</Button>
 						</Drawer.Close>
 					</Drawer.Footer>
 				</Drawer.Content>
@@ -126,17 +126,19 @@
 		>
 		<AlertDialog.Content>
 			<AlertDialog.Header>
-				<AlertDialog.Title>Disconnect</AlertDialog.Title>
+				<AlertDialog.Title>{$t('common.profile.disconnect')}</AlertDialog.Title>
 				<AlertDialog.Description class="text-black">
-					You will be disconnected from your account, are you sure ?
+					{$t('common.profile.disconnect_confirm')}
 				</AlertDialog.Description>
 			</AlertDialog.Header>
 			<AlertDialog.Footer>
-				<AlertDialog.Cancel>Cancel</AlertDialog.Cancel>
+				<AlertDialog.Cancel>{$t('common.nav.cancel')}</AlertDialog.Cancel>
 				<AlertDialog.Action
 					class={buttonVariants({ variant: 'destructive' })}
-					onclick={onClickSignOutAndGoToRoot}>Disconnect</AlertDialog.Action
+					onclick={onClickSignOutAndGoToRoot}
 				>
+					{$t('common.profile.signOut')}
+				</AlertDialog.Action>
 			</AlertDialog.Footer>
 		</AlertDialog.Content>
 	</AlertDialog.Root>

@@ -3,6 +3,7 @@
 	import Button from '$lib/components/ui/button/button.svelte';
 	import { Marquee } from '$lib/components/ui/marquee';
 	import type { PageData } from './$types';
+	import OcticonArrowRight16 from '~icons/octicon/arrow-right-16';
 
 	let { data }: { data: PageData } = $props();
 	const { firstMarquee, secondMarquee } = data;
@@ -29,8 +30,10 @@
 		</Marquee>
 	</div>
 	<div class="items-center justify-center flex space-x-6">
-		<Button size="lg" variant="default" href="{defaultLocale}/home">Home</Button>
-		<Button size="lg" variant="default" href="tutorial">Tuto</Button>
+		<Button size="lg" variant="default" href="{defaultLocale}/home">{$t(`common.nav.home`)}</Button>
+		<Button size="lg" variant="default" href="tutorial">
+			{$t(`common.nav.begin`)}<OcticonArrowRight16 class="ml-1 mb-[4px]" /></Button
+		>
 	</div>
 </div>
 

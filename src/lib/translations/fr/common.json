@@ -44,10 +44,17 @@
 		"map": "Carte",
 		"auth": "S'authentifier",
 		"home": "Accueil",
-		"profile": {
-			"title": "Mon profil",
-			"description": "Modifiez votre pseudo ici ou cliquez sur l'avatar pour le modifier."
-		}
+		"begin": "Commencer",
+		"submit": "Sauvegarder",
+		"cancel": "Annuler"
+	},
+	"profile": {
+		"title": "Mon profil",
+		"description": "Modifiez votre pseudo ici ou cliquez sur l'avatar pour le modifier.",
+		"username": "Pseudo",
+		"disconnect": "Déconnexion",
+		"disconnect_confirm": "Êtes-vous sûr de vouloir vous déconnecter ?",
+		"signOut": "Se déconnecter"
 	},
 	"headers": {
 		"/fr/home": "Recherche",

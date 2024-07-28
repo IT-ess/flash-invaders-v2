@@ -10,6 +10,8 @@
 	import { insideCircle, type LatitudeLongitude } from 'geolocation-utils';
 	import { goto } from '$app/navigation';
 	import OcticonRadioTower from '~icons/octicon/radio-tower';
+	import OcticonAlert from '~icons/octicon/alert';
+	import LogosGoogleMaps from '~icons/logos/google-maps';
 	import type { ProfileRow } from '$lib/supabase-client';
 	import { Progress } from '$lib/components/ui/progress';
 
@@ -124,23 +126,10 @@
 		<Dialog.Root bind:open={failModal}>
 			<Dialog.Content>
 				<Dialog.Header>
-					<Dialog.Title>Fail modal [titre à trouver]</Dialog.Title>
+					<Dialog.Title>{$t('home.fail_modal.title')}</Dialog.Title>
 					<Dialog.Description>
 						<div class="text-center">
-							<svg
-								aria-hidden="true"
-								class="mx-auto mb-4 w-14 h-14 text-gray-400 dark:text-gray-200"
-								fill="none"
-								stroke="currentColor"
-								viewBox="0 0 24 24"
-								xmlns="http://www.w3.org/2000/svg"
-								><path
-									stroke-linecap="round"
-									stroke-linejoin="round"
-									stroke-width="2"
-									d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-								/></svg
-							>
+							<OcticonAlert class="text-destructive h-12 w-12 text-center" />
 							<h4 class="mb-5 text-lg font-normal text-white dark:text-gray-400">
 								{$t('home.fail_modal.message')}
 							</h4>
@@ -169,7 +158,7 @@
 		</Dialog.Root>
 		<Dialog.Root bind:open={geoFailModal}>
 			<Dialog.Content>
-				<Dialog.Title>Are you sure absolutely sure?</Dialog.Title>
+				<Dialog.Title>{$t('home.geo_fail_modal.title')}</Dialog.Title>
 				<Dialog.Description>
 					<div class="text-center">
 						<div class="mx-auto mb-4 w-14 h-14 text-white dark:text-gray-200">
@@ -213,15 +202,20 @@
 				variant="secondary"
 				size="lg"
 				href="https://www.google.com/maps/d/viewer?mid=1qDy-Qcv9ScGx97vlB1Wy_9tvOIumt0I"
-				>Maps</Button
+				>Maps<LogosGoogleMaps class="ml-1 mb-[4px]" /></Button
 			>
 		</div>
-		<div>
-			<p class="flex justify-between"><span>Score</span><span>{score}/1200</span></p>
-			<Progress value={displayedScore} max={1200} />
-
-			<p class="flex justify-between"><span>Zwietess found</span><span>{invaderCount}/12</span></p>
-			<Progress value={displayedInvaderCount} max={12} barBgClass="bg-secondary" />
+		<div class="space-y-4">
+			<div>
+				<p class="flex justify-between"><span>Score</span><span>{score}/1200</span></p>
+				<Progress value={displayedScore} max={1200} />
+			</div>
+			<div>
+				<p class="flex justify-between">
+					<span>{$t('home.invaders_found')}</span><span>{invaderCount}/12</span>
+				</p>
+				<Progress value={displayedInvaderCount} max={12} barBgClass="bg-secondary" />
+			</div>
 		</div>
 	</main>
 </div>

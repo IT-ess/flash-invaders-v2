@@ -128,7 +128,7 @@
 {:else}
 	<div>
 		{#await submitScore()}
-			<p>Submitting...</p>
+			<p>...</p>
 		{:then _}
 			<div class="flex flex-col h-screen justify-center items-center space-y-4">
 				<h2 class="text-xl font-extrabold text-accent">{$t('quiz.submitted')}</h2>

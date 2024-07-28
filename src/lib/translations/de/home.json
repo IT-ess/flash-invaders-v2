@@ -3,6 +3,7 @@
 		"scan": "Ein Zwietess suchen"
 	},
 	"fail_modal": {
+		"title": "Erneut versuchen!",
 		"message": "Nichts in der Nähe...",
 		"button": "Zurück",
 		"bad_accuracy": "Unzureichende GPS-Genauigkeit",
@@ -14,6 +15,8 @@
 		"button": "Zwietess anzeigen"
 	},
 	"geo_fail_modal": {
+		"title": "Geolokalisierung fehlgeschlagen!",
 		"message": "Sie haben die Geolokalisierung nicht zugelassen."
-	}
+	},
+	"invaders_found": "Zwietess gefunden"
 }

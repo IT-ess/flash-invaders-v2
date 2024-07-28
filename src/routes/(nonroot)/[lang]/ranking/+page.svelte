@@ -10,7 +10,7 @@
 <div class="my-8">
 	<h1>Top 10</h1>
 	<Table.Root class="my-4">
-		<Table.Caption class="text-red-100">Top 10 Invader Hunters !</Table.Caption>
+		<Table.Caption class="text-red-100">{$t('ranking.caption')}</Table.Caption>
 		<Table.Header class="bg-red-200">
 			<Table.Row>
 				<Table.Head class="w-[100px]">{$t('ranking.rank')}</Table.Head>

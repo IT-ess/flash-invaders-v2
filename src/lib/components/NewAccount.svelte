@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { t } from '$lib/translations/translations';
 	import { Input } from '$lib/components/ui/input/index.js';
 	import { Label } from '$lib/components/ui/label/index.js';
 	import { Button } from '$lib/components/ui/button/index.js';
@@ -51,9 +52,9 @@
 	</div>
 	<form onsubmit={updateProfile} class="grid items-start gap-4 px-4">
 		<div class="grid gap-2">
-			<Label for="username">Username</Label>
+			<Label for="username">{$t(`common.profile.username`)}</Label>
 			<Input id="username" bind:value={username} />
 		</div>
-		<Button type="submit">Save changes</Button>
+		<Button type="submit">{$t(`common.nav.submit`)}</Button>
 	</form>
 </div>

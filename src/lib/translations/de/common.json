@@ -44,10 +44,17 @@
 		"map": "Karte",
 		"auth": "Authentifizieren",
 		"home": "Homepage",
-		"profile": {
-			"title": "Mein Profil",
-			"description": "Ändern Sie Ihren Nickname hier oder klicken Sie auf den Avatar, um ihn zu bearbeiten."
-		}
+		"begin": "Beginnen",
+		"submit": "Einreichen",
+		"cancel": "Abbrechen"
+	},
+	"profile": {
+		"title": "Mein Profil",
+		"description": "Ändern Sie Ihren Nickname hier oder klicken Sie auf den Avatar, um ihn zu bearbeiten.",
+		"username": "Benutzername",
+		"disconnect": "Trennen",
+		"disconnect_confirm": "Möchten Sie sich wirklich abmelden?",
+		"signOut": "Abmelden"
 	},
 	"headers": {
 		"/de/home": "Suche",
