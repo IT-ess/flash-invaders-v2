@@ -24,11 +24,6 @@ export class SessionState {
 	get getUserId() {
 		return this.userId;
 	}
-
-	signOut() {
-		supabase.auth.signOut();
-		this.session = null;
-	}
 }
 
 const sessionState = new SessionState();

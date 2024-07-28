@@ -14,6 +14,7 @@
 	import * as AlertDialog from '$lib/components/ui/alert-dialog';
 	import MaterialSymbolsExitToAppRounded from '~icons/material-symbols/exit-to-app-rounded';
 	import { buttonVariants } from '$lib/components/ui/button';
+	import { supabase } from '$lib/supabase-client';
 
 	let { children, data }: { children: Snippet; data: LayoutData } = $props();
 	let newLang: string = $state('');
@@ -25,14 +26,14 @@
 		document.documentElement.lang = $page.params.lang;
 	});
 
-	let { sessionState, score, fetchedImage, username, invaderCount, userId } = data;
+	let { score, fetchedImage, username, invaderCount, userId } = data;
 
 	let url = $state(fetchedImage);
 	let open = $state(false);
 	const isDesktop = new MediaQuery('(min-width: 768px)');
 
 	function onClickSignOutAndGoToRoot() {
-		sessionState.signOut();
+		supabase.auth.signOut();
 		goto('/');
 	}
 </script>
