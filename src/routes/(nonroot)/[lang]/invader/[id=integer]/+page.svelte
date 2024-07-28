@@ -5,7 +5,6 @@
 	import { Button } from '$lib/components/ui/button';
 	import { page } from '$app/stores';
 	import { INVADERS } from '$lib/game-data/invaders';
-	import { onMount } from 'svelte';
 	import { MediaQuery } from 'runed';
 	import type { PageData } from './$types';
 

@@ -119,7 +119,9 @@
 {#snippet alertDisconnect()}
 	<AlertDialog.Root>
 		<AlertDialog.Trigger class="absolute right-0 m-4"
-			><MaterialSymbolsExitToAppRounded class="text-destructive h-8 w-8" /></AlertDialog.Trigger
+			><Button variant="ghost" size="icon"
+				><MaterialSymbolsExitToAppRounded class="text-destructive h-8 w-8" /></Button
+			></AlertDialog.Trigger
 		>
 		<AlertDialog.Content>
 			<AlertDialog.Header>

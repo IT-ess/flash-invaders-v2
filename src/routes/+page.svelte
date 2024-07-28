@@ -1,30 +1,49 @@
 <script lang="ts">
 	import { t } from '$lib/translations/translations';
 	import Button from '$lib/components/ui/button/button.svelte';
+	import { Marquee } from '$lib/components/ui/marquee';
+	import type { PageData } from './$types';
+
+	let { data }: { data: PageData } = $props();
+	const { firstMarquee, secondMarquee } = data;
+	const defaultLocale = navigator.language.startsWith('de') ? 'de' : 'fr'; // get from cookie, user session, ...
 </script>
 
-<div class="container">
-	<h1>Welcome to Tauri!</h1>
-	<h2 class="font-bold">Bonjour !</h2>
-
-	<div>
-		<h1 class="justify-center">Zwietess</h1>
-	</div>
-	<Button variant="default" size="default" href="/intro">
-		{$t('common.nav.gallery')}
-	</Button>
-	<p>{$t('common.zwt3.name')}</p>
-	<Button variant="default" size="default" href="/fr/home">Home</Button>
-	<Button variant="default" size="default" href="/fr/invader/1">Invader</Button>
-	<Button variant="default" size="default" href="/fr/invader/1/quiz">Quiz</Button>
-	<Button variant="default" size="default" href="tutorial">Tuto</Button>
-	<Button variant="default" size="default" href="/fr/gallery">Gallery</Button>
-	<Button variant="default" size="default" href="/fr/ranking">Top10</Button>
-	<Button
-		variant="default"
-		size="default"
-		href="https://www.google.com/maps/d/viewer?mid=1qDy-Qcv9ScGx97vlB1Wy_9tvOIumt0I">Maps</Button
+<div class="h-screen w-screen bg-black flex flex-col justify-evenly">
+	<h1
+		class="w-[246px] h-[52px] text-center text-5xl font-extrabold leading-[48px] text-stroke mt-4 mx-auto"
 	>
+		<span class="text-black">z</span><span class="text-[#ff473d]">w</span><span
+			class="text-[#ffd93e]">ie</span
+		><span class="text-[#0074cd]">te</span><span class="text-white">s</span><span
+			class="text-[#ff473d]">s</span
+		>
+	</h1>
+
+	<div class="flex flex-col space-y-4">
+		<Marquee fade={true}>
+			{@render marqueeContent(firstMarquee)}
+		</Marquee>
+		<Marquee reverse={true} fade={true}>
+			{@render marqueeContent(secondMarquee)}
+		</Marquee>
+	</div>
+	<div class="items-center justify-center flex space-x-6">
+		<Button size="lg" variant="default" href="{defaultLocale}/home">Home</Button>
+		<Button size="lg" variant="default" href="tutorial">Tuto</Button>
+	</div>
 </div>
 
-<!-- TODO: insert bottom nav here -->
+{#snippet marqueeContent(marquee)}
+	{#each marquee as { img, alt, color }}
+		<div class="w-[130px] h-[130px] {color} rounded-lg flex items-center justify-center">
+			<img class="m-8" src={img} {alt} />
+		</div>
+	{/each}
+{/snippet}
+
+<style>
+	.text-stroke {
+		-webkit-text-stroke: 2px white;
+	}
+</style>
