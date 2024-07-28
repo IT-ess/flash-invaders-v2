@@ -13,7 +13,10 @@
 	import OcticonKeyAsterisk16 from '~icons/octicon/key-asterisk-16';
 	import { AuthError } from '@supabase/supabase-js';
 	import OcticonArrowRight16 from '~icons/octicon/arrow-right-16';
+	import MaterialSymbolsAccountCircle from '~icons/material-symbols/account-circle';
 	import LoaderCircle from 'lucide-svelte/icons/loader-circle';
+	import { invalidateAll } from '$app/navigation';
+	import { onMount } from 'svelte';
 
 	let { data }: { data: SuperValidated<Infer<FormSchema>> } = $props();
 
@@ -23,6 +26,11 @@
 	});
 
 	const { form: formData, enhance } = form;
+
+	onMount(() => {
+		// clear all data after deconnection
+		invalidateAll();
+	});
 
 	let isSignUp = $state(true);
 	let loading = $state(false);
@@ -34,10 +42,21 @@
 			loading = true;
 			const email = $formData.email;
 			const password = $formData.password;
+			const username = $formData.username;
 
 			let error: AuthError | null = null;
 			if (isSignUp) {
-				error = (await supabase.auth.signUp({ email, password })).error;
+				error = (
+					await supabase.auth.signUp({
+						email,
+						password,
+						options: {
+							data: {
+								username
+							}
+						}
+					})
+				).error;
 			} else {
 				error = (await supabase.auth.signInWithPassword({ email, password })).error;
 			}
@@ -63,26 +82,46 @@
 			<div class="row flex-center flex mt-4">
 				<div class="col-6 form-widget" aria-live="polite">
 					<form method="POST" use:enhance onsubmit={handleSubmission}>
-						<Form.Field {form} name="email">
+						<Form.Field {form} name="email" class="min-w-96">
 							<Form.Control let:attrs>
 								<Form.Label class="flex items-center">
-									<OcticonMail16 class="mr-1" />{$t(`auth.email.label`)}
+									<OcticonMail16 class="mr-1 mb-[1px]" />{$t(`auth.email.label`)}
 								</Form.Label>
 								<Input {...attrs} type="email" bind:value={$formData.email} />
 							</Form.Control>
-							<Form.Description>{$t(`auth.email.helper`)}</Form.Description>
+							{#if isSignUp}
+								<Form.Description>{$t(`auth.email.helper`)}</Form.Description>
+							{/if}
 							<Form.FieldErrors />
 						</Form.Field>
 						<Form.Field {form} name="password" class="mt-6">
 							<Form.Control let:attrs>
 								<Form.Label class="flex items-center"
-									><OcticonKeyAsterisk16 class="mr-1" />{$t(`auth.password.label`)}</Form.Label
+									><OcticonKeyAsterisk16 class="mr-1 mb-[1px]" />{$t(
+										`auth.password.label`
+									)}</Form.Label
 								>
 								<Input {...attrs} type="password" bind:value={$formData.password} />
 							</Form.Control>
-							<Form.Description>{$t(`auth.password.helper`)}</Form.Description>
+							{#if isSignUp}
+								<Form.Description>{$t(`auth.password.helper`)}</Form.Description>
+							{/if}
 							<Form.FieldErrors />
 						</Form.Field>
+						{#if isSignUp}
+							<Form.Field {form} name="username" class="mt-6">
+								<Form.Control let:attrs>
+									<Form.Label class="flex items-center"
+										><MaterialSymbolsAccountCircle class="mr-1 mb-[1px]" />{$t(
+											`auth.username.label`
+										)}</Form.Label
+									>
+									<Input {...attrs} type="text" bind:value={$formData.username} />
+								</Form.Control>
+								<Form.Description>{$t(`auth.username.helper`)}</Form.Description>
+								<Form.FieldErrors />
+							</Form.Field>
+						{/if}
 						{#if !loading}
 							<Form.Button class="text-white mt-4"
 								>{#if isSignUp}

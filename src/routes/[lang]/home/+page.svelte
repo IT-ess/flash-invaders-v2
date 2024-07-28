@@ -11,6 +11,7 @@
 	import { goto } from '$app/navigation';
 	import OcticonRadioTower from '~icons/octicon/radio-tower';
 	import type { ProfileRow } from '$lib/supabase-client';
+	import { Progress } from '$lib/components/ui/progress';
 
 	let successModal = $state(false);
 	let foundId: number | undefined = $state();
@@ -22,6 +23,18 @@
 	let localInvader: Invader | null = $state(null);
 
 	let { data }: { data: PageData } = $props();
+
+	let { score, invaderCount } = data;
+	let displayedScore = $state(0);
+	let displayedInvaderCount = $state(0);
+
+	$effect(() => {
+		const timer = setTimeout(() => {
+			displayedScore = score;
+			displayedInvaderCount = invaderCount;
+		}, 500);
+		return () => clearTimeout(timer);
+	});
 
 	function getCurrentLocation(): Promise<GeolocationPosition> {
 		return new Promise((resolve, reject) => {
@@ -92,41 +105,6 @@
 
 <div class="container my-8">
 	<main>
-		<div class="flex flex-grow bg-gray-200 items-center justify-evenly w-full">
-			<div class="m-auto mt-14">
-				<div class="box-content h-44 w-44 p-4">
-					{#if loading}
-						<Spinner color="yellow" size="40" />
-						<svg
-							xmlns="http://www.w3.org/2000/svg"
-							width="40"
-							height="40"
-							viewBox="0 0 24 24"
-							fill="none"
-							stroke="currentColor"
-							stroke-width="2"
-							stroke-linecap="round"
-							stroke-linejoin="round"
-							class="animate-spin"
-						>
-							<path d="M21 12a9 9 0 1 1-6.219-8.56" />
-						</svg>
-					{:else}
-						<span class="relative flex h-full w-full">
-							<OcticonRadioTower />
-							<span
-								class="animate-[ping_3s_infinite] absolute inline-flex h-full w-full rounded-full bg-bluejum-lighter opacity-25"
-							></span>
-						</span>
-					{/if}
-				</div>
-			</div>
-		</div>
-
-		<div class="p-4 w-full h-24 flex justify-center items-center">
-			<Button variant="default" onclick={getInvadersWithinRadius}>{$t('home.button.scan')}</Button>
-		</div>
-
 		<Dialog.Root bind:open={successModal} closeOnOutsideClick={false}>
 			<Dialog.Content>
 				<Dialog.Header>
@@ -209,17 +187,41 @@
 				</Dialog.Footer>
 			</Dialog.Content>
 		</Dialog.Root>
-	</main>
 
-	<p>Score: {data.score}</p>
-	<Button variant="default" size="default" href="/fr/search">Search</Button>
-	<Button variant="default" size="default" href="/fr/invader/1">Invader</Button>
-	<Button variant="default" size="default" href="/fr/invader/1/quiz">Quiz</Button>
-	<Button variant="default" size="default" href="/tutorial">Tuto</Button>
-	<Button variant="default" size="default" href="/fr/gallery">Gallery</Button>
-	<Button
-		variant="default"
-		size="default"
-		href="https://www.google.com/maps/d/viewer?mid=1qDy-Qcv9ScGx97vlB1Wy_9tvOIumt0I">Maps</Button
-	>
+		<div class="flex flex-grow bg-gray-200 items-center justify-evenly w-full">
+			<div class="m-auto mt-14">
+				<div class="box-content h-44 w-44 p-4">
+					{#if loading}
+						<Spinner color="yellow" size="40" />
+					{:else}
+						<span class="relative flex h-full w-full">
+							<OcticonRadioTower />
+							<span
+								class="animate-[ping_3s_infinite] absolute inline-flex h-full w-full rounded-full bg-bluejum-lighter opacity-25"
+							></span>
+						</span>
+					{/if}
+				</div>
+			</div>
+		</div>
+
+		<div class="p-4 w-full h-24 flex justify-center items-center space-x-4">
+			<Button variant="default" size="lg" onclick={getInvadersWithinRadius}
+				>{$t('home.button.scan')}</Button
+			>
+			<Button
+				variant="secondary"
+				size="lg"
+				href="https://www.google.com/maps/d/viewer?mid=1qDy-Qcv9ScGx97vlB1Wy_9tvOIumt0I"
+				>Maps</Button
+			>
+		</div>
+		<div>
+			<p class="flex justify-between"><span>Score</span><span>{score}/1200</span></p>
+			<Progress value={displayedScore} max={1200} />
+
+			<p class="flex justify-between"><span>Zwietess found</span><span>{invaderCount}/12</span></p>
+			<Progress value={displayedInvaderCount} max={12} barBgClass="bg-secondary" />
+		</div>
+	</main>
 </div>

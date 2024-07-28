@@ -21,7 +21,7 @@
 			</Table.Row>
 		</Table.Header>
 		<Table.Body>
-			{#each data.profiles as { avatar, username, score }, i}
+			{#each data.profiles as { avatar, username, score, invaderCount }, i}
 				<Table.Row>
 					<Table.Cell class="font-medium">{i + 1}</Table.Cell>
 					<Table.Cell
@@ -33,7 +33,7 @@
 						</Avatar.Root></Table.Cell
 					>
 					<Table.Cell>{username}</Table.Cell>
-					<Table.Cell>{data.invaderCount}/12 👾</Table.Cell>
+					<Table.Cell>{invaderCount}/12 👾</Table.Cell>
 					<Table.Cell class="text-right">{score}</Table.Cell>
 				</Table.Row>
 			{/each}

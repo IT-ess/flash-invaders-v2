@@ -8,7 +8,7 @@
 	let {
 		url = $bindable(),
 		userId,
-		username
+		username = $bindable()
 	}: {
 		url: string | null;
 		userId: string;
