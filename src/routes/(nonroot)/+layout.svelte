@@ -17,7 +17,7 @@
 	});
 </script>
 
-<div class="container">
+<div class="container relative font-firava">
 	{@render children()}
 </div>
 

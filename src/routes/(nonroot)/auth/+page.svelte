@@ -27,11 +27,6 @@
 
 	const { form: formData, enhance } = form;
 
-	onMount(() => {
-		// clear all data after deconnection
-		invalidateAll();
-	});
-
 	let isSignUp = $state(true);
 	let loading = $state(false);
 	const defaultLocale = navigator.language.startsWith('de') ? 'de' : 'fr'; // get from cookie, user session, ...

@@ -59,7 +59,7 @@ const config = {
 				sm: 'calc(var(--radius) - 4px)'
 			},
 			fontFamily: {
-				sans: ['Fira', 'sans']
+				firava: ['Firava']
 			},
 			keyframes: {
 				'marquee-left': {
