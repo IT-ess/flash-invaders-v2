@@ -8,12 +8,13 @@
 	import * as Dialog from '$lib/components/ui/dialog';
 	import { supabase } from '$lib/supabase-client';
 	import { insideCircle, type LatitudeLongitude } from 'geolocation-utils';
-	import { goto } from '$app/navigation';
+	import { goto, preloadData } from '$app/navigation';
 	import OcticonRadioTower from '~icons/octicon/radio-tower';
 	import OcticonAlert from '~icons/octicon/alert';
 	import LogosGoogleMaps from '~icons/logos/google-maps';
 	import type { ProfileRow } from '$lib/supabase-client';
 	import { Progress } from '$lib/components/ui/progress';
+	import { page } from '$app/stores';
 
 	let successModal = $state(false);
 	let foundId: number | undefined = $state();
@@ -25,6 +26,8 @@
 	let localInvader: Invader | null = $state(null);
 
 	let { data }: { data: PageData } = $props();
+
+	let { lang } = $page.params;
 
 	let { score, invaderCount } = data;
 	let displayedScore = $state(0);
@@ -103,6 +106,9 @@
 
 	const matchLocalInvaders = (invader: Invader, userGeoLocation: LatitudeLongitude): Boolean =>
 		insideCircle(userGeoLocation, invader, +PUBLIC_SEARCH_RADIUS);
+
+	preloadData(`/${lang}/ranking`);
+	preloadData(`/${lang}/gallery`);
 </script>
 
 <div class="container my-8">

@@ -8,6 +8,8 @@
 	let { data }: { data: PageData } = $props();
 	const { firstMarquee, secondMarquee } = data;
 	const defaultLocale = navigator.language.startsWith('de') ? 'de' : 'fr'; // get from cookie, user session, ...
+	const localStorageMatchingKeys = localStorage.key(0)?.match('sb') ?? [];
+	const isAlreadyLoggedId = localStorageMatchingKeys.length > 0;
 </script>
 
 <div class="h-screen w-screen bg-black flex flex-col justify-evenly">
@@ -30,8 +32,11 @@
 		</Marquee>
 	</div>
 	<div class="items-center justify-center flex space-x-6">
-		<Button size="lg" variant="default" href="{defaultLocale}/home">{$t(`common.nav.home`)}</Button>
-		<Button size="lg" variant="default" href="tutorial">
+		<Button
+			size="lg"
+			variant="default"
+			href={isAlreadyLoggedId ? `${defaultLocale}/home` : 'tutorial'}
+		>
 			{$t(`common.nav.begin`)}<OcticonArrowRight16 class="ml-1 mb-[4px]" /></Button
 		>
 	</div>

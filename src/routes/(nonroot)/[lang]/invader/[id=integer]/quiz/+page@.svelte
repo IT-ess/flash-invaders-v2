@@ -9,6 +9,7 @@
 	import type { PageData } from './$types';
 
 	let pageId = +$page.params.id;
+	let lang = $page.params.lang;
 
 	let { data }: { data: PageData } = $props();
 
@@ -32,7 +33,7 @@
 	}
 
 	async function onClickGoToHome() {
-		goto('/');
+		goto(`${lang}/home`);
 	}
 
 	const themeColorsBg = ['bg-bluejum', 'bg-yellowjum', 'bg-blackjum', 'bg-redjum'];
