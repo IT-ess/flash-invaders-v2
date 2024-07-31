@@ -40,13 +40,14 @@
 	},
 	"nav": {
 		"gallery": "Galerie",
-		"search": "Suche nach einem Zwietess",
+		"search": "Suche",
 		"map": "Karte",
 		"auth": "Authentifizieren",
 		"home": "Homepage",
 		"begin": "Beginnen",
 		"submit": "Einreichen",
-		"cancel": "Abbrechen"
+		"cancel": "Abbrechen",
+		"ranking": "Rangliste"
 	},
 	"profile": {
 		"title": "Mein Profil",

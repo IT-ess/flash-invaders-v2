@@ -10,11 +10,25 @@
 	import NewAccount from '$lib/components/NewAccount.svelte';
 	import { page } from '$app/stores';
 	import { goto } from '$app/navigation';
-	import BottomNav from '$lib/components/BottomNav.svelte';
+	import NavbarSlider from '$lib/components/NavbarSlider.svelte';
 	import * as AlertDialog from '$lib/components/ui/alert-dialog';
 	import MaterialSymbolsExitToAppRounded from '~icons/material-symbols/exit-to-app-rounded';
 	import { buttonVariants } from '$lib/components/ui/button';
 	import { supabase } from '$lib/supabase-client';
+	import { Medal, Images, Radio } from 'lucide-svelte';
+
+	const menuItems = [
+		{ text: 'common.nav.gallery', icon: Images, path: 'gallery' },
+		{ text: 'common.nav.search', icon: Radio, path: 'home' },
+		{ text: 'common.nav.ranking', icon: Medal, path: 'ranking' }
+	];
+
+	let activeIndex = $state(1);
+	let position: 'left' | 'bottom' | 'top' = $state('bottom');
+
+	function handleTabSwitch(index: number, item: any) {
+		activeIndex = index;
+	}
 
 	let { children, data }: { children: Snippet; data: LayoutData } = $props();
 	let newLang: string = $state('');
@@ -114,7 +128,7 @@
 	{@render children()}
 </div>
 {#if !$page.url.pathname.match('invader')}
-	<BottomNav />
+	<NavbarSlider {menuItems} {position} {activeIndex} onTabSwitch={handleTabSwitch} />
 {/if}
 
 {#snippet alertDisconnect()}
