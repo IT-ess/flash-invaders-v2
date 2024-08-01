@@ -20,7 +20,7 @@
 		"bits-ui": "^0.21.13",
 		"clsx": "^2.1.1",
 		"dotenv": "^16.4.5",
-		"embla-carousel-svelte": "^8.1.7",
+		"embla-carousel-svelte": "^8.1.8",
 		"formsnap": "^1.0.1",
 		"geolocation-utils": "^1.2.5",
 		"lucide-svelte": "^0.390.0",
@@ -32,9 +32,9 @@
 		"vaul-svelte": "^0.3.2"
 	},
 	"devDependencies": {
-		"@iconify/json": "^2.2.232",
+		"@iconify/json": "^2.2.233",
 		"@sveltejs/adapter-static": "^3.0.2",
-		"@sveltejs/kit": "^2.5.18",
+		"@sveltejs/kit": "^2.5.19",
 		"@sveltejs/vite-plugin-svelte": "^3.1.1",
 		"@tauri-apps/cli": "2.0.0-beta.21",
 		"@types/dom-view-transitions": "^1.0.5",

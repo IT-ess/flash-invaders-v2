@@ -4,6 +4,7 @@
 	import { Marquee } from '$lib/components/ui/marquee';
 	import type { PageData } from './$types';
 	import OcticonArrowRight16 from '~icons/octicon/arrow-right-16';
+	import Title from '$lib/components/Title.svelte';
 
 	let { data }: { data: PageData } = $props();
 	const { firstMarquee, secondMarquee } = data;
@@ -13,16 +14,7 @@
 </script>
 
 <div class="h-screen w-screen bg-black flex flex-col justify-evenly">
-	<h1
-		class="w-[246px] h-[52px] text-center text-5xl font-extrabold leading-[48px] mt-4 mx-auto font-firava"
-	>
-		<span class="text-black text-stroke">z</span><span class="text-[#ff473d]">w</span><span
-			class="text-[#ffd93e]">ie</span
-		><span class="text-[#0074cd]">te</span><span class="text-white">s</span><span
-			class="text-[#ff473d]">s</span
-		>
-	</h1>
-
+	<Title />
 	<div class="flex flex-col space-y-4">
 		<Marquee fade={true}>
 			{@render marqueeContent(firstMarquee)}
@@ -49,9 +41,3 @@
 		</div>
 	{/each}
 {/snippet}
-
-<style>
-	.text-stroke {
-		-webkit-text-stroke: 2px white;
-	}
-</style>

@@ -47,7 +47,8 @@
 		"begin": "Beginnen",
 		"submit": "Einreichen",
 		"cancel": "Abbrechen",
-		"ranking": "Rangliste"
+		"ranking": "Rangliste",
+		"tutorial": "Anleitung"
 	},
 	"profile": {
 		"title": "Mein Profil",

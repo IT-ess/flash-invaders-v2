@@ -47,7 +47,8 @@
 		"begin": "Commencer",
 		"submit": "Sauvegarder",
 		"cancel": "Annuler",
-		"ranking": "Classement"
+		"ranking": "Classement",
+		"tutorial": "Tutoriel"
 	},
 	"profile": {
 		"title": "Mon profil",

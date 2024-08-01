@@ -6,12 +6,16 @@
 	let {
 		url = $bindable(),
 		userId,
-		username
+		username,
+		size = 'default'
 	}: {
 		url: string | null;
 		userId: string;
 		username: string | null;
+		size?: 'lg' | 'default';
 	} = $props();
+
+	let classSize = size === 'lg' ? 'h-36 w-36' : 'h-20 w-20';
 
 	let uploading = $state(false);
 	let files: FileList | undefined = $state();
@@ -63,7 +67,7 @@
 	</span>
 	<label for="single">
 		<div class="inline-block">
-			<Avatar.Root class="h-20 w-20 mx-auto border-2 border-primary">
+			<Avatar.Root class="{classSize} mx-auto border-2 border-primary">
 				<Avatar.Image src={url} alt={username} />
 				<Avatar.Fallback>{username !== null ? username[0] : 'U'}</Avatar.Fallback>
 			</Avatar.Root>

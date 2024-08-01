@@ -19,11 +19,11 @@
 
 {#if buttonDisabled}
 	<Button variant="outline" class="opacity-50" onclick={() => toast.warning($t('tutorial.warning'))}
-		>{$t('tutorial.register')} <OcticonArrowRight16 class="ml-1" />
+		>{$t('common.nav.begin')} <OcticonArrowRight16 class="ml-1" />
 	</Button>
 {:else}
-	<Button href="/auth" variant="default">
-		{$t('tutorial.register')}
+	<Button href="home" variant="default">
+		{$t('common.nav.begin')}
 		<OcticonArrowRight16 class="ml-1" />
 	</Button>
 {/if}

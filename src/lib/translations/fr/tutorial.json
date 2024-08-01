@@ -1,11 +1,10 @@
 {
 	"header": "Règles du jeu",
-	"register": "Je m'enregistre ",
 	"welcome": {
 		"p1": "Bienvenue à la grande chasse aux",
 		"p2": "Vous trouverez ci-après plusieurs éléments des règles du jeu..."
 	},
-	"warning": "Merci de lire les règles avant de vous inscrire !",
+	"warning": "Merci de lire les règles avant de commencer !",
 	"sec1": {
 		"heading": "Fonctionnement",
 		"content": "Ce jeu fonctionne grâce à votre localisation (il faut donc l'autoriser quand on vous la demande). Pour pouvoir 'attraper' un Zwietess, il faut être à proximité (5m ~) et appuyer sur le bouton 'Chercher un Zwietess'. Il se peut que votre localisation soit trop peu précise, dans ce cas, vous pouvez vous déplacer de quelques mètres et réessayer."

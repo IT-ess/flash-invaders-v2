@@ -15,8 +15,6 @@
 	import OcticonArrowRight16 from '~icons/octicon/arrow-right-16';
 	import MaterialSymbolsAccountCircle from '~icons/material-symbols/account-circle';
 	import LoaderCircle from 'lucide-svelte/icons/loader-circle';
-	import { invalidateAll } from '$app/navigation';
-	import { onMount } from 'svelte';
 
 	let { data }: { data: SuperValidated<Infer<FormSchema>> } = $props();
 
@@ -56,7 +54,11 @@
 				error = (await supabase.auth.signInWithPassword({ email, password })).error;
 			}
 			if (error) throw error;
-			goto(`${defaultLocale}/home`);
+			if (isSignUp) {
+				goto(`${defaultLocale}/avatar`);
+			} else {
+				goto(`${defaultLocale}/home`);
+			}
 		} catch (error) {
 			if (error instanceof Error) {
 				alert(error.message);
