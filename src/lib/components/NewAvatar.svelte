@@ -67,7 +67,7 @@
 	</span>
 	<label for="single">
 		<div class="inline-block">
-			<Avatar.Root class="{classSize} mx-auto border-2 border-primary">
+			<Avatar.Root class="{classSize} mx-auto border-4 border-primary">
 				<Avatar.Image src={url} alt={username} />
 				<Avatar.Fallback>{username !== null ? username[0] : 'U'}</Avatar.Fallback>
 			</Avatar.Root>

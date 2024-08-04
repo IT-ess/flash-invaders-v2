@@ -1,8 +1,12 @@
 import { sessionState } from '$lib/session-state.svelte';
 import { error } from '@sveltejs/kit';
-import type { PageLoad } from './$types';
+import type { EntryGenerator, PageLoad } from './$types';
 import { supabase } from '$lib/supabase-client';
 import { downloadAvatar } from '$lib/utils/avatar-functions';
+
+export const entries: EntryGenerator = () => {
+	return [{ lang: 'fr' }, { lang: 'de' }];
+};
 
 export const load: PageLoad = async ({ url }) => {
 	if (!sessionState.getSession) {

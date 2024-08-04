@@ -8,12 +8,13 @@
 	import Fa6SolidMapLocationDot from '~icons/fa6-solid/map-location-dot';
 	import * as Card from '$lib/components/ui/card';
 	import GoToRegistration from '$lib/components/GoToRegistration.svelte';
+	import PageIndicator from '$lib/components/PageIndicator.svelte';
 	import { PUBLIC_PLATFORM } from '$env/static/public';
 
 	const isMobile = PUBLIC_PLATFORM === 'mobile' ? true : false;
 </script>
 
-<div class="min-h-screen flex items-center justify-center container">
+<div class="min-h-screen flex flex-col items-center justify-center container">
 	<Card.Root>
 		<Card.Header>
 			<Card.Title>{$t(`tutorial.header`)}</Card.Title>
@@ -91,4 +92,5 @@
 			<GoToRegistration />
 		</Card.Footer>
 	</Card.Root>
+	<PageIndicator totalPages={3} currentPage={2} />
 </div>

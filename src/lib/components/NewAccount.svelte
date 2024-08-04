@@ -46,14 +46,14 @@
 	};
 </script>
 
-<div>
+<div class="font-firava">
 	<div>
 		<NewAvatar bind:url {username} {userId} />
 	</div>
 	<form onsubmit={updateProfile} class="grid items-start gap-4 px-4">
 		<div class="grid gap-2">
-			<Label for="username">{$t(`common.profile.username`)}</Label>
-			<Input id="username" bind:value={username} />
+			<Label class="text-base font-medium" for="username">{$t(`common.profile.username`)}</Label>
+			<Input class="border-primary" id="username" bind:value={username} />
 		</div>
 		<Button type="submit">{$t(`common.nav.submit`)}</Button>
 	</form>

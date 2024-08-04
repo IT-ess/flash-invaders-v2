@@ -15,6 +15,7 @@
 	import OcticonArrowRight16 from '~icons/octicon/arrow-right-16';
 	import MaterialSymbolsAccountCircle from '~icons/material-symbols/account-circle';
 	import LoaderCircle from 'lucide-svelte/icons/loader-circle';
+	import PageIndicator from '$lib/components/PageIndicator.svelte';
 
 	let { data }: { data: SuperValidated<Infer<FormSchema>> } = $props();
 
@@ -69,7 +70,7 @@
 	};
 </script>
 
-<div class="min-h-screen flex items-center justify-center">
+<div class="min-h-screen flex flex-col items-center justify-center">
 	<Card.Root>
 		<Card.Header>
 			<Card.Title>{$t(`auth.register`)}</Card.Title>
@@ -153,4 +154,5 @@
 			{/if}
 		</Card.Footer>
 	</Card.Root>
+	<PageIndicator totalPages={3} currentPage={0} />
 </div>

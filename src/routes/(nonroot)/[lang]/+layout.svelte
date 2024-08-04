@@ -53,7 +53,7 @@
 </script>
 
 <div
-	class="fixed left-0 right-0 z-10 flex justify-between items-center shadow-md p-4 border-b-2 border-slate-300 bg-slate-300"
+	class="fixed left-0 right-0 z-10 flex justify-between items-center shadow-md p-4 border-b-2 border-slate-300 bg-slate-300 font-firava"
 >
 	{#if isDesktop.matches}
 		<div>
