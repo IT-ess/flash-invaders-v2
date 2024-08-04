@@ -1,5 +1,5 @@
 <script lang="ts">
-	import NewAvatar from '$lib/components/NewAvatar.svelte';
+	import Avatar from '$lib/components/Avatar.svelte';
 	import { t } from '$lib/translations/translations';
 	import type { PageData } from './$types';
 	import Title from '$lib/components/Title.svelte';
@@ -14,7 +14,7 @@
 <div class="h-screen w-screen container flex flex-col justify-between">
 	<div class="mt-8"><Title /></div>
 	<div>
-		<NewAvatar {username} url={fetchedImage} {userId} size="lg" />
+		<Avatar {username} url={fetchedImage} {userId} size="lg" />
 		<div class="text-center mt-12 font-firava">
 			<h2 class="text-4xl capitalize font-extrabold">{$t(`avatar.heading`)}</h2>
 			<p>{$t(`avatar.subheading`)}</p>

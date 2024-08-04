@@ -1,33 +1,24 @@
 <script lang="ts">
 	import { supabase } from '../supabase-client';
+	import * as Avatar from '$lib/components/ui/avatar';
+	import { downloadAvatar, updateAvatarPath } from '$lib/utils/avatar-functions';
 
 	let {
-		size,
 		url = $bindable(),
-		upload,
-		userId
-	}: { size: number; url: string | null; upload: Function; userId: string | undefined } = $props();
+		userId,
+		username,
+		size = 'default'
+	}: {
+		url: string | null;
+		userId: string;
+		username: string | null;
+		size?: 'lg' | 'default';
+	} = $props();
 
-	let avatarUrl: string | null = $state(null);
+	let classSize = size === 'lg' ? 'h-36 w-36' : 'h-20 w-20';
+
 	let uploading = $state(false);
 	let files: FileList | undefined = $state();
-
-	const downloadImage = async (path: string) => {
-		try {
-			const { data, error } = await supabase.storage.from('avatars').download(path);
-
-			if (error) {
-				throw error;
-			}
-
-			const url = URL.createObjectURL(data);
-			avatarUrl = url;
-		} catch (error) {
-			if (error instanceof Error) {
-				console.log('Error downloading image: ', error.message);
-			}
-		}
-	};
 
 	const uploadAvatar = async () => {
 		try {
@@ -45,13 +36,14 @@
 			const filePath = `${userId}/${Math.random()}.${fileExt}`;
 
 			let { error } = await supabase.storage.from('avatars').upload(filePath, file);
+			await updateAvatarPath(userId, filePath);
 
 			if (error) {
 				throw error;
 			}
 
 			url = filePath;
-			upload();
+			url = (await downloadAvatar(url)) ?? null;
 		} catch (error) {
 			if (error instanceof Error) {
 				alert(error.message);
@@ -60,36 +52,25 @@
 			uploading = false;
 		}
 	};
-
-	$effect(() => {
-		if (url) downloadImage(url);
-	});
 </script>
 
-<div style="width: {size}px" aria-live="polite">
-	{#if avatarUrl}
-		<img
-			src={avatarUrl}
-			alt={avatarUrl ? 'Avatar' : 'No image'}
-			class="avatar image"
-			style="height: {size}px; width: {size}px"
+<div class="text-center">
+	<span style="display:none">
+		<input
+			type="file"
+			id="single"
+			accept="image/*"
+			bind:files
+			onchange={uploadAvatar}
+			disabled={uploading}
 		/>
-	{:else}
-		<div class="avatar no-image" style="height: {size}px; width: {size}px"></div>
-	{/if}
-	<div style="width: {size}px">
-		<label class="button primary block" for="single">
-			{uploading ? 'Uploading ...' : 'Upload avatar'}
-		</label>
-		<span style="display:none">
-			<input
-				type="file"
-				id="single"
-				accept="image/*"
-				bind:files
-				onchange={uploadAvatar}
-				disabled={uploading}
-			/>
-		</span>
-	</div>
+	</span>
+	<label for="single">
+		<div class="inline-block">
+			<Avatar.Root class="{classSize} mx-auto border-4 border-primary">
+				<Avatar.Image src={url} alt={username} />
+				<Avatar.Fallback>{username !== null ? username[0] : 'U'}</Avatar.Fallback>
+			</Avatar.Root>
+		</div>
+	</label>
 </div>

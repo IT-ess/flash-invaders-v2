@@ -7,7 +7,7 @@
 	import { Button } from '$lib/components/ui/button/index.js';
 	import * as Avatar from '$lib/components/ui/avatar';
 	import type { LayoutData } from './$types';
-	import NewAccount from '$lib/components/NewAccount.svelte';
+	import Account from '$lib/components/Account.svelte';
 	import { page } from '$app/stores';
 	import { goto } from '$app/navigation';
 	import NavbarSlider from '$lib/components/NavbarSlider.svelte';
@@ -76,7 +76,7 @@
 							{$t('common.profile.description')}
 						</Dialog.Description>
 					</Dialog.Header>
-					<NewAccount bind:url {userId} {username} {score} {invaderCount} />
+					<Account bind:url {userId} {username} {score} {invaderCount} />
 				</Dialog.Content>
 			</Dialog.Root>
 		</div>
@@ -101,7 +101,7 @@
 							{$t('common.profile.description')}
 						</Drawer.Description>
 					</Drawer.Header>
-					<NewAccount bind:url {userId} {username} {score} {invaderCount} />
+					<Account bind:url {userId} {username} {score} {invaderCount} />
 					<Drawer.Footer class="pt-2">
 						<Drawer.Close asChild let:builder>
 							<Button variant="outline" builders={[builder]}>{$t('common.nav.cancel')}</Button>
