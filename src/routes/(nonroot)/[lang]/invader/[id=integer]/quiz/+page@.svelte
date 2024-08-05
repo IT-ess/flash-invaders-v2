@@ -33,7 +33,7 @@
 	}
 
 	async function onClickGoToHome() {
-		goto(`${lang}/home`);
+		goto(`/${lang}/home`);
 	}
 
 	const themeColorsBg = ['bg-bluejum', 'bg-yellowjum', 'bg-blackjum', 'bg-redjum'];
