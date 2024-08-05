@@ -27,7 +27,7 @@
 		<Button
 			size="lg"
 			variant="default"
-			href={isAlreadyLoggedId ? `${defaultLocale}/home` : 'tutorial'}
+			href={isAlreadyLoggedId ? `${defaultLocale}/home` : '/auth'}
 		>
 			{$t(`common.nav.begin`)}<OcticonArrowRight16 class="ml-1 mb-[4px]" /></Button
 		>

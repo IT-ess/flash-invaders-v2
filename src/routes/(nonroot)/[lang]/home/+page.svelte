@@ -1,6 +1,5 @@
 <script lang="ts">
 	import type { PageData } from './$types';
-	import { Spinner } from 'flowbite-svelte';
 	import { t } from '$lib/translations/translations';
 	import Button from '$lib/components/ui/button/button.svelte';
 	import { INVADERS, type Invader } from '$lib/game-data/invaders';
@@ -14,6 +13,7 @@
 	import LogosGoogleMaps from '~icons/logos/google-maps';
 	import type { ProfileRow } from '$lib/supabase-client';
 	import { Progress } from '$lib/components/ui/progress';
+	import { DoubleBounce } from 'svelte-loading-spinners';
 	import { page } from '$app/stores';
 
 	let successModal = $state(false);
@@ -185,14 +185,14 @@
 
 		<div class="flex flex-grow bg-gray-200 items-center justify-evenly w-full">
 			<div class="m-auto mt-14">
-				<div class="box-content h-44 w-44 p-4">
+				<div class="box-content h-48 w-48 p-4">
 					{#if loading}
-						<Spinner color="yellow" size="40" />
+						<DoubleBounce color="#FFD93E" size="11" unit="rem" duration="3s" />
 					{:else}
-						<span class="relative flex h-full w-full">
-							<OcticonRadioTower />
+						<span class="relative flex h-full w-full justify-center">
+							<OcticonRadioTower class="h-36 w-36 text-secondary" />
 							<span
-								class="animate-[ping_3s_infinite] absolute inline-flex h-full w-full rounded-full bg-bluejum-lighter opacity-25"
+								class="animate-[ping_3s_infinite] absolute inline-flex h-full w-full rounded-full bg-secondary opacity-10"
 							></span>
 						</span>
 					{/if}
@@ -200,7 +200,7 @@
 			</div>
 		</div>
 
-		<div class="p-4 w-full h-24 flex justify-center items-center space-x-4">
+		<div class="p-4 w-full h-24 flex justify-center items-center space-x-4 z-20">
 			<Button variant="default" size="lg" onclick={getInvadersWithinRadius}
 				>{$t('home.button.scan')}</Button
 			>
