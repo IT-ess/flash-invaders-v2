@@ -8,7 +8,7 @@ export const entries: EntryGenerator = () => {
 	return [{ lang: 'fr' }, { lang: 'de' }];
 };
 
-export const load: PageLoad = async ({ url }) => {
+export const load: PageLoad = async () => {
 	if (!sessionState.getSession) {
 		error(401, { message: 'Unauthorized' });
 	}
@@ -16,7 +16,6 @@ export const load: PageLoad = async ({ url }) => {
 	let userId = sessionState.getUserId;
 	let avatarUrl: string | null = null;
 	let username: string | null = null;
-	let score: number = 0;
 
 	if (userId !== null) {
 		try {
@@ -43,7 +42,7 @@ export const load: PageLoad = async ({ url }) => {
 		return {
 			session: sessionState.getSession,
 			userId,
-			fetchedImage: (await downloadAvatar(avatarUrl)) ?? null,
+			fetchedImage: downloadAvatar(avatarUrl),
 			username
 		};
 	} else {

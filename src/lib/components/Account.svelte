@@ -14,8 +14,6 @@
 		url: string | null;
 		userId: string;
 		username: string | null;
-		score: number;
-		invaderCount: number;
 	} = $props();
 
 	let loading = $state(false);

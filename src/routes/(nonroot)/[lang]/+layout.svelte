@@ -34,17 +34,27 @@
 	let newLang: string = $state('');
 	let newUrl: string = $state('');
 
+	let { fetchedImage, username, userId } = data;
+
+	let url: string | null = $state(null);
+	let open = $state(false);
+	const isDesktop = new MediaQuery('(min-width: 768px)');
+
 	$effect(() => {
+		if ($page.url.pathname.match('gallery')) {
+			activeIndex = 0;
+		}
+		if ($page.url.pathname.match('ranking')) {
+			activeIndex = 2;
+		}
 		newLang = $page.params.lang === 'fr' ? 'de' : 'fr';
 		newUrl = $page.url.pathname.replace($page.params.lang, newLang);
 		document.documentElement.lang = $page.params.lang;
+
+		fetchedImage.then((image) => {
+			url = image;
+		});
 	});
-
-	let { score, fetchedImage, username, invaderCount, userId } = data;
-
-	let url = $state(fetchedImage);
-	let open = $state(false);
-	const isDesktop = new MediaQuery('(min-width: 768px)');
 
 	function onClickSignOutAndGoToRoot() {
 		supabase.auth.signOut();
@@ -76,7 +86,7 @@
 							{$t('common.profile.description')}
 						</Dialog.Description>
 					</Dialog.Header>
-					<Account bind:url {userId} {username} {score} {invaderCount} />
+					<Account bind:url {userId} {username} />
 				</Dialog.Content>
 			</Dialog.Root>
 		</div>
@@ -101,7 +111,7 @@
 							{$t('common.profile.description')}
 						</Drawer.Description>
 					</Drawer.Header>
-					<Account bind:url {userId} {username} {score} {invaderCount} />
+					<Account bind:url {userId} {username} />
 					<Drawer.Footer class="pt-2">
 						<Drawer.Close asChild let:builder>
 							<Button variant="outline" builders={[builder]}>{$t('common.nav.cancel')}</Button>

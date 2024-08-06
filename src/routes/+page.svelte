@@ -5,6 +5,7 @@
 	import type { PageData } from './$types';
 	import OcticonArrowRight16 from '~icons/octicon/arrow-right-16';
 	import Title from '$lib/components/Title.svelte';
+	import type { MarqueeInfos } from './+page';
 
 	let { data }: { data: PageData } = $props();
 	const { firstMarquee, secondMarquee } = data;
@@ -16,10 +17,10 @@
 <div class="h-screen w-screen bg-black flex flex-col justify-evenly">
 	<Title />
 	<div class="flex flex-col space-y-4">
-		<Marquee fade={true}>
+		<Marquee fade>
 			{@render marqueeContent(firstMarquee)}
 		</Marquee>
-		<Marquee reverse={true} fade={true}>
+		<Marquee reverse fade>
 			{@render marqueeContent(secondMarquee)}
 		</Marquee>
 	</div>
@@ -34,7 +35,7 @@
 	</div>
 </div>
 
-{#snippet marqueeContent(marquee)}
+{#snippet marqueeContent(marquee: MarqueeInfos[])}
 	{#each marquee as { img, alt, color }}
 		<div class="w-[130px] h-[130px] {color} rounded-lg flex items-center justify-center">
 			<img class="m-8" src={img} {alt} />

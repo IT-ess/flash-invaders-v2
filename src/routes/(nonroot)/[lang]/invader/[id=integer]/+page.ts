@@ -1,7 +1,6 @@
-import { redirect } from '@sveltejs/kit';
-import { sessionState } from '$lib/session-state.svelte';
+import { error, redirect } from '@sveltejs/kit';
 import type { EntryGenerator, PageLoad } from './$types';
-import { checkInvaderPrivilege } from '$lib/utils/invader-counter';
+import type { InvaderPrivileges } from '$lib/utils/invader-counter';
 
 export const entries: EntryGenerator = () => {
 	const entries = [];
@@ -12,40 +11,22 @@ export const entries: EntryGenerator = () => {
 	return entries;
 };
 
-export const load = (async ({ params }) => {
-	const session = sessionState.getSession;
-	const invaderId = +params.id;
+export const load = (async ({ params, parent }) => {
+	const { privileges } = await parent();
 
-	if (!session) {
-		redirect(302, '/');
-	}
-	if (invaderId > 11) {
-		// should be ok since the matcher is restrictive
-		redirect(307, `/${params.lang}/home`);
-	}
-	const { user } = session;
-
-	const invaderPrivilege = await checkInvaderPrivilege(user.id, invaderId);
-
-	if (user === null) {
-		redirect(307, `/${params.lang}/home`);
-	}
-
-	switch (invaderPrivilege) {
+	switch (privileges[`inv${params.id}` as keyof InvaderPrivileges]) {
 		case 0:
 			redirect(307, `/${params.lang}/home`);
 		case 1:
 			return {
-				answered: false,
-				user
+				answered: false
 			};
 		case 2:
 			return {
-				answered: true,
-				user
+				answered: true
 			};
 		default:
 			// Should not happen since the matcher only gives some numbers
-			redirect(307, `/${params.lang}/home`);
+			error(500, { message: 'Auth privileges should be between 0 and 2' });
 	}
 }) satisfies PageLoad;

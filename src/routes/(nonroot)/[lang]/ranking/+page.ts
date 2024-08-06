@@ -23,12 +23,12 @@ export const load: PageLoad = async () => {
 
 		const profilePromises = data.map(async ({ id, username, score, avatar_url }) => {
 			const invaderCount = await invaderCounter(id);
-			return { username, score, avatar: (await downloadAvatar(avatar_url)) ?? null, invaderCount };
+			return { username, score, avatar: await downloadAvatar(avatar_url), invaderCount };
 		});
 
-		const profiles: Profile[] = await Promise.all(profilePromises);
+		// const profiles: Profile[] = await ;
 
-		return { profiles };
+		return { profiles: profilePromises };
 	} else {
 		error(401, { message: 'Unauthorized' });
 	}

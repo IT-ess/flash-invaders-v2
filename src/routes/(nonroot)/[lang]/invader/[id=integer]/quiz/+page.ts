@@ -1,4 +1,4 @@
-import { redirect } from '@sveltejs/kit';
+import { error, redirect } from '@sveltejs/kit';
 import { sessionState } from '$lib/session-state.svelte';
 import type { EntryGenerator, PageLoad } from './$types';
 import { checkInvaderPrivilege } from '$lib/utils/invader-counter';
@@ -19,15 +19,11 @@ export const load = (async ({ params }) => {
 	const lang = params.lang;
 
 	if (!session) {
-		redirect(302, '/');
-	}
-	if (invaderId > 11) {
-		// should be ok since the matcher is restrictive
-		redirect(307, `/${lang}/home`);
+		error(401, { message: 'Unauthorized' });
 	}
 	const { user } = session;
-
-	if (user === null) {
+	if (invaderId > 11 || user === null) {
+		// should be ok since the matcher is restrictive
 		redirect(307, `/${lang}/home`);
 	}
 
@@ -67,6 +63,6 @@ export const load = (async ({ params }) => {
 			return redirect(307, `/${params.lang}/invader/${params.id}`);
 		default:
 			// Should not happen since the matcher only gives some numbers
-			redirect(307, `/${params.lang}/home`);
+			error(500, { message: 'Auth privileges should be between 0 and 2' });
 	}
 }) satisfies PageLoad;

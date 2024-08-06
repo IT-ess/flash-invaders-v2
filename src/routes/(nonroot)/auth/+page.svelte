@@ -70,7 +70,7 @@
 	};
 </script>
 
-<div class="min-h-screen flex flex-col items-center justify-center">
+<div class="min-h-screen w-full flex flex-col items-center justify-center">
 	<Card.Root>
 		<Card.Header>
 			<Card.Title>{$t(`auth.register`)}</Card.Title>
@@ -80,7 +80,7 @@
 			<div class="row flex-center flex mt-4">
 				<div class="col-6 form-widget" aria-live="polite">
 					<form method="POST" use:enhance onsubmit={handleSubmission}>
-						<Form.Field {form} name="email" class="min-w-96">
+						<Form.Field {form} name="email" class="min-w-40">
 							<Form.Control let:attrs>
 								<Form.Label class="flex items-center">
 									<OcticonMail16 class="mr-1 mb-[1px]" />{$t(`auth.email.label`)}

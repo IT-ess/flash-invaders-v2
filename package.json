@@ -14,7 +14,7 @@
 	},
 	"license": "MIT",
 	"dependencies": {
-		"@supabase/supabase-js": "^2.45.0",
+		"@supabase/supabase-js": "^2.45.1",
 		"@tauri-apps/api": "2.0.0-rc.0",
 		"@tauri-apps/cli": "2.0.0-rc.1",
 		"@tauri-apps/plugin-shell": "2.0.0-rc.0",
@@ -43,7 +43,7 @@
 		"flowbite": "^2.5.1",
 		"flowbite-svelte": "^0.46.15",
 		"internal-ip": "^7.0.0",
-		"postcss": "^8.4.40",
+		"postcss": "^8.4.41",
 		"postcss-loader": "^8.1.1",
 		"prettier": "^3.3.3",
 		"prettier-plugin-svelte": "^3.2.6",

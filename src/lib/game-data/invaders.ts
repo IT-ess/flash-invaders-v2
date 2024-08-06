@@ -43,7 +43,7 @@ export let INVADERS: Invader[] = [
 		longitude: -0.8511354176095234,
 		imageUrl: '/zwietess/2.webp',
 		carouselCaptions: ['Clochers réunis', 'Vue face église Zwief', 'Vue intérieure église Zwief'],
-		carouselUrls: ['/context/2-1.jpg', '/context/2-2.jpg', '/context/2-3.jpg'],
+		carouselUrls: ['/context/2-1.jpg', '/context/2-2.jpeg', '/context/2-3.jpeg'],
 		itemsTypes: ['text'],
 		itemsSources: ['context.zwt2.content'],
 		itemsCaptions: ['']
@@ -142,7 +142,7 @@ export let INVADERS: Invader[] = [
 		longitude: -0.850128,
 		imageUrl: '/zwietess/7.webp',
 		carouselCaptions: ['Elus', 'Blason LT', 'Blason Zwief'],
-		carouselUrls: ['/context/7-1.jpg', '/context/7-2.jpg', '/context/7-3.jpg'],
+		carouselUrls: ['/context/7-1.png', '/context/7-2.jpg', '/context/7-3.jpg'],
 		itemsTypes: ['text'],
 		itemsSources: ['context.zwt7.content'],
 		itemsCaptions: ['']

@@ -4,13 +4,12 @@
 	import type { PageData } from './$types';
 	import * as Card from '$lib/components/ui/card';
 	import { AspectRatio } from '$lib/components/ui/aspect-ratio';
-	import type { InvadersInfos } from './+page.ts';
 	import { goto } from '$app/navigation';
 	import { page } from '$app/stores';
 	import OcticonLocation from '~icons/octicon/location';
+	import type { InvadersInfos } from '../+layout';
 
 	let { data }: { data: PageData } = $props();
-	data.invadersInfos;
 </script>
 
 {#snippet invaderCard(infos: InvadersInfos)}
@@ -25,17 +24,18 @@
 		>
 			<Card.Header>
 				<Card.Title>{$t(`common.zwt${infos.id}.name`)}</Card.Title>
-				<Card.Description class="flex items-center">
+				<Card.Description class="flex items-center space-x-1">
 					{#if infos.id === 100}
 						???
 					{:else}
-						<OcticonLocation />{infos.lat.toFixed(5)},{infos.long.toFixed(5)}
+						<OcticonLocation />
+						<p>{infos.lat.toFixed(5)},{infos.long.toFixed(5)}</p>
 					{/if}
 				</Card.Description>
 			</Card.Header>
 			<Card.Content>
-				<AspectRatio ratio={16 / 9} class="bg-muted">
-					<img src={infos.img} alt={infos.alt} class="rounded-md object-cover" />
+				<AspectRatio ratio={16 / 9} class="bg-muted rounded-sm shadow-md">
+					<img src={infos.img} alt={infos.alt} />
 				</AspectRatio>
 			</Card.Content>
 		</Card.Root>

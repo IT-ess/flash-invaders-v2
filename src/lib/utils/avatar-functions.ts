@@ -1,6 +1,6 @@
 import { supabase } from '$lib/supabase-client';
 
-export async function downloadAvatar(path: string | null) {
+export async function downloadAvatar(path: string | null): Promise<string | null> {
 	try {
 		if (path === null) {
 			throw new Error('No path provided');
@@ -18,6 +18,7 @@ export async function downloadAvatar(path: string | null) {
 			console.log('Error downloading image: ', error.message);
 		}
 	}
+	return null;
 }
 
 export async function updateAvatarPath(userId: string, url: string) {

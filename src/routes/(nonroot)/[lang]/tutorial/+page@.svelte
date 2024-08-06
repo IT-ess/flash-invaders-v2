@@ -14,7 +14,7 @@
 	const isMobile = PUBLIC_PLATFORM === 'mobile' ? true : false;
 </script>
 
-<div class="min-h-screen flex flex-col items-center justify-center container">
+<div class="min-h-screen w-full flex flex-col items-center justify-center container">
 	<Card.Root>
 		<Card.Header>
 			<Card.Title>{$t(`tutorial.header`)}</Card.Title>

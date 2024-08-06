@@ -26,7 +26,7 @@ function getMarqueeInfosArray(): MarqueeInfos[] {
 	return marqueeInfos;
 }
 
-type MarqueeInfos = {
+export type MarqueeInfos = {
 	alt: string;
 	img: string;
 	color: string;

@@ -75,7 +75,7 @@
 		<div class="my-2">
 			<Progress value={(questionPointer / questions.length) * 100} />
 		</div>
-		<div class="p-6 mt-2 bg-white">
+		<div class="p-6 mt-4 bg-white rounded-md font-semibold shadow-lg text-lg text-center ring-2">
 			<p>
 				{questions[questionPointer].question}
 			</p>
@@ -132,15 +132,15 @@
 			<p>...</p>
 		{:then _}
 			<div class="flex flex-col h-screen justify-center items-center space-y-4">
-				<h2 class="text-xl font-extrabold text-accent">{$t('quiz.submitted')}</h2>
+				<h2 class="text-xl font-extrabold text-primary">{$t('quiz.submitted')}</h2>
 				<Button type="submit" onclick={onClickGoToHome}>
 					{$t('quiz.home')}
 					<OcticonArrowRight16 class="ml-1 -mr-1 w-5 h-5" />
 				</Button>
+				<p class="font-semibold text-base">
+					Score : {score} / 100
+				</p>
 			</div>
-			<p>
-				Score : {score} / 100
-			</p>
 		{/await}
 	</div>
 {/if}

@@ -11,10 +11,10 @@
 	import OcticonRadioTower from '~icons/octicon/radio-tower';
 	import OcticonAlert from '~icons/octicon/alert';
 	import LogosGoogleMaps from '~icons/logos/google-maps';
-	import type { ProfileRow } from '$lib/supabase-client';
 	import { Progress } from '$lib/components/ui/progress';
 	import { DoubleBounce } from 'svelte-loading-spinners';
 	import { page } from '$app/stores';
+	import type { InvaderPrivileges } from '$lib/utils/invader-counter';
 
 	let successModal = $state(false);
 	let foundId: number | undefined = $state();
@@ -36,7 +36,8 @@
 	$effect(() => {
 		const timer = setTimeout(() => {
 			displayedScore = score;
-			displayedInvaderCount = invaderCount;
+			invaderCount.then((count) => (displayedInvaderCount = count));
+			preloadData(`/${lang}/ranking`);
 		}, 500);
 		return () => clearTimeout(timer);
 	});
@@ -71,7 +72,9 @@
 			})
 		);
 		const newlyFoundInvaders = foundInvaders.filter((invader) => {
-			const invaderPrivilegeForId = data.profile[`inv${invader.id}` as keyof ProfileRow] as number;
+			const invaderPrivilegeForId = data.privileges[
+				`inv${invader.id}` as keyof InvaderPrivileges
+			] as number;
 			if (invaderPrivilegeForId === 0) {
 				return true;
 			} else {
@@ -106,9 +109,6 @@
 
 	const matchLocalInvaders = (invader: Invader, userGeoLocation: LatitudeLongitude): Boolean =>
 		insideCircle(userGeoLocation, invader, +PUBLIC_SEARCH_RADIUS);
-
-	preloadData(`/${lang}/ranking`);
-	preloadData(`/${lang}/gallery`);
 </script>
 
 <div class="container my-8">
@@ -218,7 +218,7 @@
 			</div>
 			<div>
 				<p class="flex justify-between">
-					<span>{$t('home.invaders_found')}</span><span>{invaderCount}/12</span>
+					<span>{$t('home.invaders_found')}</span><span>{displayedInvaderCount}/12</span>
 				</p>
 				<Progress value={displayedInvaderCount} max={12} barBgClass="bg-secondary" />
 			</div>

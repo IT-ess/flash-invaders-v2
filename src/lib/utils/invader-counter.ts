@@ -18,3 +18,20 @@ export async function checkInvaderPrivilege(userId: string, invaderId: number): 
 	if (error) console.error(error);
 	return data ?? 0;
 }
+
+export type InvaderPrivileges = {
+	id: string;
+	inv0: number;
+	inv1: number;
+	inv2: number;
+	inv3: number;
+	inv4: number;
+	inv5: number;
+	inv6: number;
+	inv7: number;
+	inv8: number;
+	inv9: number;
+	inv10: number;
+	inv11: number;
+	updated_at: string | null;
+};

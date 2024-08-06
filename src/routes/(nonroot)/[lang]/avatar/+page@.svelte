@@ -9,12 +9,19 @@
 
 	let { data }: { data: PageData } = $props();
 	let { username, fetchedImage, userId } = data;
+
+	let url: string | null = $state(null);
+	$effect(() => {
+		fetchedImage.then((avatarUrl) => {
+			url = avatarUrl;
+		});
+	});
 </script>
 
 <div class="h-screen w-screen container flex flex-col justify-between">
 	<div class="mt-8"><Title /></div>
 	<div>
-		<Avatar {username} url={fetchedImage} {userId} size="lg" />
+		<Avatar bind:url {username} {userId} size="lg" />
 		<div class="text-center mt-12 font-firava">
 			<h2 class="text-4xl capitalize font-extrabold">{$t(`avatar.heading`)}</h2>
 			<p>{$t(`avatar.subheading`)}</p>
