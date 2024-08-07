@@ -114,7 +114,7 @@
 <div class="container my-8">
 	<main>
 		<Dialog.Root bind:open={successModal} closeOnOutsideClick={false}>
-			<Dialog.Content>
+			<Dialog.Content class="max-w-[80%] rounded-md">
 				<Dialog.Header>
 					<Dialog.Title>{$t('home.success_modal.message')}</Dialog.Title>
 					<Dialog.Description>
@@ -130,7 +130,7 @@
 			</Dialog.Content>
 		</Dialog.Root>
 		<Dialog.Root bind:open={failModal}>
-			<Dialog.Content>
+			<Dialog.Content class="max-w-[80%] rounded-md">
 				<Dialog.Header>
 					<Dialog.Title>{$t('home.fail_modal.title')}</Dialog.Title>
 					<Dialog.Description>
@@ -163,7 +163,7 @@
 			</Dialog.Content>
 		</Dialog.Root>
 		<Dialog.Root bind:open={geoFailModal}>
-			<Dialog.Content>
+			<Dialog.Content class="max-w-[80%] rounded-md">
 				<Dialog.Title>{$t('home.geo_fail_modal.title')}</Dialog.Title>
 				<Dialog.Description>
 					<div class="text-center">
@@ -200,7 +200,7 @@
 			</div>
 		</div>
 
-		<div class="p-4 w-full h-24 flex justify-center items-center space-x-4 z-20">
+		<div class="p-4 w-full flex justify-center items-center space-x-4 mt-16">
 			<Button variant="default" disabled={loading} size="lg" onclick={getInvadersWithinRadius}
 				>{$t('home.button.scan')}</Button
 			>
