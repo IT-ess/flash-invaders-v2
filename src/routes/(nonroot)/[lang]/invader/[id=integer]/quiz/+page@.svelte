@@ -36,37 +36,34 @@
 		goto(`/${lang}/home`);
 	}
 
-	const themeColorsBg = ['bg-bluejum', 'bg-yellowjum', 'bg-blackjum', 'bg-redjum'];
-	const themeColorsBgHover = [
-		'hover:bg-bluejum-light',
-		'hover:bg-yellowjum-light',
-		'hover:bg-blackjum-light',
-		'hover:bg-redjum-light'
-	];
-	const themeColorsBgFocus = [
-		'focus:bg-bluejum-lighter',
-		'focus:bg-yellowjum-lighter',
-		'focus:bg-blackjum-lighter',
-		'focus:bg-redjum-lighter'
-	];
+	const themeColorsBg = ['bg-blue-800', 'bg-blue-600', 'bg-blue-500', 'bg-blue-400'];
 
 	function computeButtonClasses(i: number): string {
-		const baseClasses = 'text-center px-4 py-7 text-lg text-white rounded-lg w-full';
+		const baseClasses = 'text-center text-wrap px-4 py-7 text-lg text-white rounded-lg w-full';
 		const ringClass = showAnswer
-			? getRingClassFromAnswer(questionPointer, i)
-			: 'focus:ring-4 focus:ring-blue-300';
-		const themeClass =
-			themeColorsBg[i] !== undefined
-				? themeColorsBg[i] + ' ' + themeColorsBgHover[i] + ' ' + themeColorsBgFocus[i]
-				: 'bg-blue-600 text-white';
+			? getRingClassFromAnswer(answers[questionPointer], i)
+			: 'focus:ring-4 focus:ring-secondary';
+		const themeClass = showAnswer
+			? getThemeClassFromAnswer(questionPointer, i)
+			: themeColorsBg[i] + ' hover:bg-slate-500 focus:bg-slate-500';
+
 		return `${baseClasses} ${ringClass} ${themeClass}`;
 	}
 
-	function getRingClassFromAnswer(questionPointer: number, answerIndex: number): string {
-		if (questions[questionPointer].correctIndex === answerIndex) {
-			return 'ring-4 ring-green-600';
+	function getRingClassFromAnswer(answerIndex: number, optionIndex: number): string {
+		if (answerIndex === optionIndex) {
+			return 'ring-4 ring-secondary';
+		} else {
+			return '';
 		}
-		return 'ring-4 ring-red-600';
+	}
+
+	function getThemeClassFromAnswer(questionPointer: number, answerIndex: number): string {
+		if (questions[questionPointer].correctIndex === answerIndex) {
+			return 'bg-green-500 disabled:opacity-100';
+		} else {
+			return 'bg-destructive disabled:opacity-100';
+		}
 	}
 </script>
 
@@ -83,6 +80,7 @@
 		<div class="flex flex-col justify-evenly flex-grow p-4">
 			{#each questions[questionPointer].options as opt, i}
 				<Button
+					disabled={showAnswer}
 					class={computeButtonClasses(i)}
 					onclick={() => {
 						answers[questionPointer] = i;
@@ -96,6 +94,7 @@
 		{#if showAnswer}
 			<div class="w-full flex flex-shrink-0 basis-28 justify-center items-center space-x-5">
 				<Button
+					variant="secondary"
 					onclick={() => {
 						if (questions[questionPointer].correctIndex === answers[questionPointer]) {
 							score += (questionPointer + 1) * 10; // the harder are the questions, the more points you get
@@ -116,6 +115,7 @@
 		{:else}
 			<div class="w-full flex flex-shrink-0 basis-28 justify-center items-center">
 				<Button
+					variant="secondary"
 					onclick={() => {
 						showAnswer = true;
 					}}

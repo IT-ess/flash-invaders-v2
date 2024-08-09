@@ -4,7 +4,7 @@
 	import OcticonRadioTower from '~icons/octicon/radio-tower';
 	import OcticonBrowser from '~icons/octicon/browser';
 	import OcticonBook from '~icons/octicon/book';
-	import OcticonArrowBoth from '~icons/octicon/arrow-both';
+	import MaterialSymbolsLanguage from '~icons/material-symbols/language';
 	import Fa6SolidMapLocationDot from '~icons/fa6-solid/map-location-dot';
 	import * as Card from '$lib/components/ui/card';
 	import GoToRegistration from '$lib/components/GoToRegistration.svelte';
@@ -42,7 +42,7 @@
 				</Accordion.Item>
 				<Accordion.Item value="item-2">
 					<Accordion.Trigger
-						><div class="w-6 h-6"><OcticonArrowBoth /></div>
+						><div class="w-6 h-6"><MaterialSymbolsLanguage /></div>
 						<span class="mr-5">{$t(`tutorial.sec2.heading`)}</span></Accordion.Trigger
 					>
 					<Accordion.Content>

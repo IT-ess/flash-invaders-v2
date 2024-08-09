@@ -7,11 +7,11 @@
 	"warning": "Bitte lesen Sie die Regeln, bevor Sie beginnen!",
 	"sec1": {
 		"heading": "Funktionsweise",
-		"content": "Dieses Spiel funktioniert über deinen Standort (du musst ihn also erlauben, wenn du danach gefragt wirst). Um einen Zwietess „fangen“ zu können, müssen Sie sich in der Nähe befinden (5m ~) und die Taste „Zwietess suchen“ drücken. Es kann sein, dass dein Standort zu ungenau ist, in diesem Fall kannst du ein paar Meter weitergehen und es erneut versuchen."
+		"content": "Um einen Zwietess 'fangen' zu können, müssen Sie sich in der Nähe befinden (5m ~) und auf die Schaltfläche 'Zwietess suchen' drücken. Wenn Ihre Geolokalisierung ungenau ist, können Sie sich ein paar Meter weiter bewegen und es erneut versuchen."
 	},
 	"sec2": {
-		"heading": "Navigation",
-		"content": "Sie haben oben auf jeder Seite eine Schaltfläche, mit der Sie in den Vollbildmodus wechseln können (funktioniert nicht auf dem iPhone), sowie eine Schaltfläche, mit der Sie jederzeit die Sprache wechseln können. Ihre Standardsprache wird bei der Anmeldung festgelegt. Es stehen Ihnen drei Seiten zur Verfügung: die Seite, auf der Sie nach Zwietess suchen können, die Galerie, in der Sie sich die gefundenen Zwietess noch einmal ansehen können, und der Kartenteil, in dem Sie die Suchgebiete sehen können."
+		"heading": "Übersetzungen",
+		"content": "Ihre Standardsprache wird bei der Anmeldung festgelegt. Sie können sie jederzeit über die Schaltfläche oben auf jeder Seite ändern."
 	},
 	"sec3": {
 		"heading": "Internetbrowser",
@@ -20,10 +20,10 @@
 	},
 	"sec4": {
 		"heading": "Regeln",
-		"content": "Die Punkte werden von Samstag, dem 20. Mai, 16 Uhr bis Sonntag, dem 21. Mai, 12 Uhr gezählt. Sie dürfen sich nur einmal anmelden, andernfalls werden Sie disqualifiziert. Jede Frage bringt je nach Schwierigkeitsgrad 10,20,30 oder 40 Punkte. Sie erfahren Ihre Punktzahl erst am Ende des Spiels, am Sonntag, und man kann das Quiz nur einmal beantworten. Der Gewinner erhält einen einzigartigen Preis!"
+		"content": "Sie dürfen sich nur einmal anmelden, sonst werden Sie disqualifiziert. Jede Frage bringt je nach Schwierigkeitsgrad 10,20,30 oder 40 Punkte, und Sie haben nur einen Versuch."
 	},
 	"sec5": {
 		"heading": "Karte",
-		"content": "Eine Google-Maps-Karte wird im Spiel zugänglich sein. Sie definiert 5 Suchgebiete, in denen Zwietess zu finden sind (die Anzahl ist auf jedem Gebiet angegeben). Wenn Sie die Google Maps-App haben und Chrome verwenden, sollte die Karte direkt in der Maps-App geöffnet werden."
+		"content": "Eine Google-Maps-Karte wird im Spiel zugänglich sein. Sie definiert 5 Suchgebiete, in denen Zwietess zu finden sind (die Anzahl ist auf jedem Gebiet angegeben)."
 	}
 }

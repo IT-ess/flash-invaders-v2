@@ -9,9 +9,6 @@ const config = {
 		container: {
 			center: true,
 			padding: '2rem'
-			// screens: {
-			// 	'2xl': '1400px'
-			// }
 		},
 		extend: {
 			colors: {
@@ -21,15 +18,15 @@ const config = {
 				background: 'hsl(var(--background) / <alpha-value>)',
 				foreground: 'hsl(var(--foreground) / <alpha-value>)',
 				primary: {
-					DEFAULT: '#0074CD',
-					hover: '#2996E9'
+					DEFAULT: 'hsl(var(--primary) / <alpha-value>)',
+					foreground: 'hsl(var(--primary-foreground) / <alpha-value>)'
 				},
 				secondary: {
-					DEFAULT: '#FFD93E',
+					DEFAULT: 'hsl(var(--secondary) / <alpha-value>)',
 					foreground: 'hsl(var(--secondary-foreground) / <alpha-value>)'
 				},
 				destructive: {
-					DEFAULT: '#FF473D',
+					DEFAULT: 'hsl(var(--destructive) / <alpha-value>)',
 					foreground: 'hsl(var(--destructive-foreground) / <alpha-value>)'
 				},
 				muted: {
@@ -47,11 +44,7 @@ const config = {
 				card: {
 					DEFAULT: 'hsl(var(--card) / <alpha-value>)',
 					foreground: 'hsl(var(--card-foreground) / <alpha-value>)'
-				},
-				bluejum: { DEFAULT: '#002153', light: '#37467e', lighter: '#646fab' },
-				yellowjum: { DEFAULT: '#FFCF00', light: '#caa100', lighter: '#977600' },
-				redjum: { DEFAULT: '#CF0821', light: '#f43d3a', lighter: '#ff6055' },
-				blackjum: { DEFAULT: '#000000', light: '#303030', lighter: '#5e5e5e' }
+				}
 			},
 			borderRadius: {
 				lg: 'var(--radius)',

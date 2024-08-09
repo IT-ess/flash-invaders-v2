@@ -135,20 +135,21 @@
 					<Dialog.Title>{$t('home.fail_modal.title')}</Dialog.Title>
 					<Dialog.Description>
 						<div class="text-center">
-							<OcticonAlert class="text-destructive h-12 w-12 text-center" />
-							<h4 class="mb-5 text-lg font-normal text-white dark:text-gray-400">
+							<OcticonAlert class="text-destructive h-12 w-12 mx-auto" />
+							<br />
+							<h4 class="mb-5 text-lg font-normal text-foreground dark:text-gray-400">
 								{$t('home.fail_modal.message')}
 							</h4>
 							{#if accuracy >= 40}
-								<h4 class="mb-5 text-lg font-normal text-red-500 dark:text-gray-400">
+								<h4 class="mb-5 text-lg font-semibold text-red-500 dark:text-gray-400">
 									{$t('home.fail_modal.bad_accuracy')}
 								</h4>
 							{:else if accuracy < 40 && accuracy >= 20}
-								<h4 class="mb-5 text-lg font-normal text-orange-400 dark:text-gray-400">
+								<h4 class="mb-5 text-lg font-semibold text-orange-400 dark:text-gray-400">
 									{$t('home.fail_modal.medium_accuracy')}
 								</h4>
 							{:else if accuracy < 20}
-								<h4 class="mb-5 text-lg font-normal text-green-600 dark:text-gray-400">
+								<h4 class="mb-5 text-lg font-semibold text-green-600 dark:text-gray-400">
 									{$t('home.fail_modal.good_accuracy')}
 								</h4>
 							{/if}
@@ -167,10 +168,10 @@
 				<Dialog.Title>{$t('home.geo_fail_modal.title')}</Dialog.Title>
 				<Dialog.Description>
 					<div class="text-center">
-						<div class="mx-auto mb-4 w-14 h-14 text-white dark:text-gray-200">
+						<div class="mx-auto mb-4 w-12 h-12 text-foreground dark:text-gray-200">
 							<OcticonRadioTower />
 						</div>
-						<h2 class="mb-5 text-lg font-normal text-white dark:text-gray-400">
+						<h2 class="mb-5 text-lg font-semibold text-foreground dark:text-gray-400">
 							{$t('home.geo_fail_modal.message')}
 						</h2>
 					</div>
