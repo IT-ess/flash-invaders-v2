@@ -1,6 +1,6 @@
 name: flash-invaders-v2
 options:
-  bundleIdPrefix: com.flashinvader.dev
+  bundleIdPrefix: com.flashinvader.zwietess
   deploymentTarget:
     iOS: 13.0
 fileGroups: [../../src]
@@ -10,9 +10,10 @@ configs:
 settingGroups:
   app:
     base:
-      PRODUCT_NAME: flash-invaders-v2
-      PRODUCT_BUNDLE_IDENTIFIER: com.flashinvader.dev
+      PRODUCT_NAME: Zwietess
+      PRODUCT_BUNDLE_IDENTIFIER: com.flashinvader.zwietess
       DEVELOPMENT_TEAM: U5M7X5V6ZG
+      CODE_SIGN_STYLE: Automatic
 targetTemplates:
   app:
     type: application
@@ -52,8 +53,8 @@ targets:
           - UIInterfaceOrientationPortraitUpsideDown
           - UIInterfaceOrientationLandscapeLeft
           - UIInterfaceOrientationLandscapeRight
-        CFBundleShortVersionString: 0.0.1
-        CFBundleVersion: 0.0.1
+        CFBundleShortVersionString: 0.0.3
+        CFBundleVersion: 0.0.3
     entitlements:
       path: flash-invaders-v2_iOS/flash-invaders-v2_iOS.entitlements
     scheme:
