@@ -121,7 +121,9 @@
 			</Drawer.Root>
 		</div>
 	{/if}
-	<h1 class="text-lg mr-4 font-semibold">{$t(`common.headers.${$page.url.pathname}`)}</h1>
+	<h1 class="text-3xl mr-4 font-normal font-pixelify">
+		{$t(`common.headers.${$page.url.pathname}`)}
+	</h1>
 	{#if $page.params.lang !== undefined && !$page.url.pathname.match('quiz')}
 		<div class="m-2">
 			<Button variant="outline" class="!p-2" onclick={() => goto(newUrl)}>

@@ -15,7 +15,7 @@
 </script>
 
 <div class="h-screen w-screen bg-black flex flex-col justify-evenly">
-	<Title />
+	<Title lang={defaultLocale} />
 	<div class="flex flex-col space-y-4">
 		<Marquee fade>
 			{@render marqueeContent(firstMarquee)}
@@ -24,7 +24,7 @@
 			{@render marqueeContent(secondMarquee)}
 		</Marquee>
 	</div>
-	<div class="items-center justify-center flex space-x-6">
+	<div class="items-center justify-center flex space-x-6 font-firava">
 		<Button
 			size="lg"
 			variant="default"

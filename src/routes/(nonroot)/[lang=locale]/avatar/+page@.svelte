@@ -6,9 +6,11 @@
 	import Button from '$lib/components/ui/button/button.svelte';
 	import OcticonArrowRight16 from '~icons/octicon/arrow-right-16';
 	import PageIndicator from '$lib/components/PageIndicator.svelte';
+	import { page } from '$app/stores';
 
 	let { data }: { data: PageData } = $props();
 	let { username, fetchedImage, userId } = data;
+	const lang = $page.params.lang;
 
 	let url: string | null = $state(null);
 	$effect(() => {
@@ -19,7 +21,7 @@
 </script>
 
 <div class="h-screen w-screen container flex flex-col justify-between">
-	<div class="mt-8"><Title /></div>
+	<div class="mt-8"><Title {lang} /></div>
 	<div>
 		<Avatar bind:url {username} {userId} size="lg" />
 		<div class="text-center mt-12 font-firava">

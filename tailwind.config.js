@@ -52,7 +52,8 @@ const config = {
 				sm: 'calc(var(--radius) - 4px)'
 			},
 			fontFamily: {
-				firava: ['Firava']
+				firava: ['Firava'],
+				pixelify: ['Pixelify Sans', 'sans-serif']
 			},
 			keyframes: {
 				'marquee-left': {
