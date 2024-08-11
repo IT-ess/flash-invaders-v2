@@ -14,11 +14,11 @@
 		>
 		<Table.Header class="bg-primary shadow-lg border-b-2 border-secondary">
 			<Table.Row>
-				<Table.Head class="text-white">{$t('ranking.rank')}</Table.Head>
+				<Table.Head class="text-white text-center">{$t('ranking.rank')}</Table.Head>
 				<Table.Head class="text-white">{$t('ranking.avatar')}</Table.Head>
-				<Table.Head class="text-white">{$t('ranking.username')}</Table.Head>
-				<Table.Head class="text-white">{$t('ranking.found')}</Table.Head>
-				<Table.Head class="text-white">{$t('ranking.score')}</Table.Head>
+				<Table.Head class="text-white text-center">{$t('ranking.username')}</Table.Head>
+				<Table.Head class="text-white text-center">{$t('ranking.found')}</Table.Head>
+				<Table.Head class="text-white text-center">{$t('ranking.score')}</Table.Head>
 			</Table.Row>
 		</Table.Header>
 		<Table.Body>

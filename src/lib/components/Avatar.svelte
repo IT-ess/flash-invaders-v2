@@ -15,10 +15,14 @@
 		size?: 'lg' | 'default';
 	} = $props();
 
-	let classSize = size === 'lg' ? 'h-36 w-36' : 'h-20 w-20';
-
 	let uploading = $state(false);
 	let files: FileList | undefined = $state();
+	let classUpload = $state('');
+
+	let classSize = size === 'lg' ? 'h-36 w-36' : 'h-20 w-20';
+	$effect(() => {
+		classUpload = uploading ? 'opacity-50 bg-slate-600' : '';
+	});
 
 	const uploadAvatar = async () => {
 		try {
@@ -67,7 +71,10 @@
 	</span>
 	<label for="single">
 		<div class="inline-block">
-			<Avatar.Root class="{classSize} mx-auto border-4 border-primary">
+			<Avatar.Root
+				class="{classSize} mx-auto border-4 border-primary {classUpload}"
+				loadingStatus={uploading ? 'loading' : 'loaded'}
+			>
 				<Avatar.Image src={url} alt={username} />
 				<Avatar.Fallback>{username !== null ? username[0] : 'U'}</Avatar.Fallback>
 			</Avatar.Root>
