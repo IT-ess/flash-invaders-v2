@@ -1,6 +1,6 @@
 name: flash-invaders-v2
 options:
-  bundleIdPrefix: com.flashinvader.zwietess
+  bundleIdPrefix: com.flashinvaders.zwietess
   deploymentTarget:
     iOS: 13.0
 fileGroups: [../../src]
@@ -11,8 +11,8 @@ settingGroups:
   app:
     base:
       PRODUCT_NAME: Zwietess
-      PRODUCT_BUNDLE_IDENTIFIER: com.flashinvader.zwietess
-      DEVELOPMENT_TEAM: U5M7X5V6ZG
+      PRODUCT_BUNDLE_IDENTIFIER: com.flashinvaders.zwietess
+      DEVELOPMENT_TEAM: 9A6YPCKFPC
       CODE_SIGN_STYLE: Automatic
 targetTemplates:
   app:

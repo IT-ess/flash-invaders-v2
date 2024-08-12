@@ -24,6 +24,8 @@
 	<string>LaunchScreen</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
     <string>Geolocalize Invaders</string>
+    <key>ITSAppUsesNonExemptEncryption</key>
+    <string>NO</string>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>arm64</string>
