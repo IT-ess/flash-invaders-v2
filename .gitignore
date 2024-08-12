@@ -15,3 +15,5 @@ src-tauri/gen/android/app/arm64/release/
 src-tauri/gen/android/keystore.properties
 
 src-tauri/gen/schemas/
+
+src-tauri/gen/apple/flash-invaders-v2_iOS/Zwietess.mobileprovision
