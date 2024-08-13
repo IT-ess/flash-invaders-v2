@@ -201,7 +201,7 @@
 			</div>
 		</div>
 
-		<div class="p-4 w-full flex justify-center items-center space-x-4 mt-16">
+		<div class="p-4 w-full flex justify-center items-center space-x-4 mt-12">
 			<Button variant="default" disabled={loading} size="lg" onclick={getInvadersWithinRadius}
 				>{$t('home.button.scan')}</Button
 			>
