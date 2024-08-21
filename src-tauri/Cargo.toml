@@ -1,6 +1,6 @@
 [package]
 name = "flash-invaders-v2"
-version = "0.1.0"
+version = "0.2.0"
 description = "A Tauri App to catch Invaders"
 authors = ["Alexis Loiseau"]
 edition = "2021"
