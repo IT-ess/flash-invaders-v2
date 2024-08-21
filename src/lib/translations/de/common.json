@@ -56,7 +56,8 @@
 		"username": "Benutzername",
 		"disconnect": "Trennen",
 		"disconnect_confirm": "Möchten Sie sich wirklich abmelden?",
-		"signOut": "Abmelden"
+		"sign_out": "Abmelden",
+		"delete_account": "Konto löschen"
 	},
 	"headers": {
 		"/de/home": "Suche",

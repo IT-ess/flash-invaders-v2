@@ -60,6 +60,12 @@
 		supabase.auth.signOut();
 		goto('/');
 	}
+
+	async function onClickDeleteAccountAndGoToRoot() {
+		await supabase.functions.invoke('delete_user_account');
+		supabase.auth.signOut();
+		goto('/');
+	}
 </script>
 
 <div
@@ -112,11 +118,6 @@
 						</Drawer.Description>
 					</Drawer.Header>
 					<Account bind:url {userId} {username} />
-					<Drawer.Footer class="pt-2">
-						<Drawer.Close asChild let:builder>
-							<Button variant="outline" builders={[builder]}>{$t('common.nav.cancel')}</Button>
-						</Drawer.Close>
-					</Drawer.Footer>
 				</Drawer.Content>
 			</Drawer.Root>
 		</div>
@@ -157,13 +158,19 @@
 					{$t('common.profile.disconnect_confirm')}
 				</AlertDialog.Description>
 			</AlertDialog.Header>
-			<AlertDialog.Footer>
+			<AlertDialog.Footer class="space-y-2">
 				<AlertDialog.Cancel>{$t('common.nav.cancel')}</AlertDialog.Cancel>
+				<AlertDialog.Action
+					class={buttonVariants({ variant: 'destructive', class: 'bg-black' })}
+					onclick={onClickDeleteAccountAndGoToRoot}
+				>
+					{$t('common.profile.delete_account')}
+				</AlertDialog.Action>
 				<AlertDialog.Action
 					class={buttonVariants({ variant: 'destructive' })}
 					onclick={onClickSignOutAndGoToRoot}
 				>
-					{$t('common.profile.signOut')}
+					{$t('common.profile.sign_out')}
 				</AlertDialog.Action>
 			</AlertDialog.Footer>
 		</AlertDialog.Content>

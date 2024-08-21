@@ -56,7 +56,8 @@
 		"username": "Pseudo",
 		"disconnect": "Déconnexion",
 		"disconnect_confirm": "Êtes-vous sûr de vouloir vous déconnecter ?",
-		"signOut": "Se déconnecter"
+		"sign_out": "Se déconnecter",
+		"delete_account": "Supprimer le compte"
 	},
 	"headers": {
 		"/fr/home": "Recherche",

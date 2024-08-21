@@ -82,7 +82,7 @@
 					>
 					<Accordion.Content>
 						<p class="mb-2 text-justify dark:text-blue-400">
-							{$t(`tutorial.sec1.content`)}
+							{$t(`tutorial.sec5.content`)}
 						</p>
 					</Accordion.Content>
 				</Accordion.Item>
