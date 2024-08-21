@@ -15,6 +15,7 @@
 	import { DoubleBounce } from 'svelte-loading-spinners';
 	import { page } from '$app/stores';
 	import type { InvaderPrivileges } from '$lib/utils/invader-counter';
+	import CtaButton from '$lib/components/CTAButton.svelte';
 
 	let successModal = $state(false);
 	let foundId: number | undefined = $state();
@@ -103,8 +104,6 @@
 		}
 
 		loading = false;
-
-		// TODO : if length > 1, filter out those already found ==> Or manage multiple invaders ?
 	}
 
 	const matchLocalInvaders = (invader: Invader, userGeoLocation: LatitudeLongitude): Boolean =>
@@ -186,32 +185,14 @@
 
 		<div class="flex flex-grow bg-gray-200 items-center justify-evenly w-full">
 			<div class="m-auto mt-14">
-				<div class="box-content h-48 w-48 p-4">
-					{#if loading}
-						<DoubleBounce color="#FFD93E" size="11" unit="rem" duration="3s" />
-					{:else}
-						<span class="relative flex h-full w-full justify-center">
-							<OcticonRadioTower class="h-36 w-36 text-secondary" />
-							<span
-								class="animate-[ping_3s_infinite] absolute inline-flex h-full w-full rounded-full bg-secondary opacity-10"
-							></span>
-						</span>
-					{/if}
+				<div class="box-content h-56 w-56 p-4">
+					<span class="relative flex h-full w-full justify-center">
+						<CtaButton handleOnClick={getInvadersWithinRadius} bind:loading />
+					</span>
 				</div>
 			</div>
 		</div>
 
-		<div class="p-4 w-full flex justify-center items-center space-x-4 mt-12">
-			<Button variant="default" disabled={loading} size="lg" onclick={getInvadersWithinRadius}
-				>{$t('home.button.scan')}</Button
-			>
-			<Button
-				variant="secondary"
-				size="lg"
-				href="https://www.google.com/maps/d/viewer?mid=1qDy-Qcv9ScGx97vlB1Wy_9tvOIumt0I"
-				>Maps<LogosGoogleMaps class="ml-1 mb-[4px]" /></Button
-			>
-		</div>
 		<div class="space-y-4">
 			<div>
 				<p class="flex justify-between">
@@ -231,6 +212,15 @@
 					barBgClass="bg-secondary"
 				/>
 			</div>
+		</div>
+		<div class="p-4 w-full flex justify-center items-center space-x-4 mt-12">
+			<Button
+				class="w-screen"
+				variant="secondary"
+				size="lg"
+				href="https://www.google.com/maps/d/viewer?mid=1qDy-Qcv9ScGx97vlB1Wy_9tvOIumt0I"
+				>Maps<LogosGoogleMaps class="ml-1 mb-[4px]" /></Button
+			>
 		</div>
 	</main>
 </div>
