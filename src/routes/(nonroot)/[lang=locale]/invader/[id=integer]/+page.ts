@@ -1,10 +1,11 @@
 import { error, redirect } from '@sveltejs/kit';
 import type { EntryGenerator, PageLoad } from './$types';
 import type { InvaderPrivileges } from '$lib/utils/invader-counter';
+import { INVADERS_STARTING_INDEX } from '$lib/game-data/invaders';
 
 export const entries: EntryGenerator = () => {
 	const entries = [];
-	for (let i = 0; i < 12; i++) {
+	for (let i = INVADERS_STARTING_INDEX; i < 12; i++) {
 		entries.push({ lang: 'fr', id: i.toString() });
 		entries.push({ lang: 'de', id: i.toString() });
 	}

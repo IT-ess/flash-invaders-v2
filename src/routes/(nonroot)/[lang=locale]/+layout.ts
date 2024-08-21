@@ -5,7 +5,7 @@ import type { LayoutLoad } from './$types';
 import { supabase, type ProfileRow } from '$lib/supabase-client';
 import { invaderCounter } from '$lib/utils/invader-counter';
 import { downloadAvatar } from '$lib/utils/avatar-functions';
-import { INVADERS } from '$lib/game-data/invaders';
+import { INVADERS, INVADERS_STARTING_INDEX } from '$lib/game-data/invaders';
 
 export const load: LayoutLoad = async ({ url, params }) => {
 	const { pathname } = url;
@@ -46,10 +46,10 @@ export const load: LayoutLoad = async ({ url, params }) => {
 
 function getInvaderFromState(userData: ProfileRow): InvadersInfos[] {
 	const invadersInfos: InvadersInfos[] = [];
-	for (let i = 0; i < 12; i++) {
+	for (let i = INVADERS_STARTING_INDEX; i < 12; i++) {
 		const invaderState = userData[`inv${i}` as keyof ProfileRow] as number;
 		if (invaderState > 0) {
-			const { id, imageUrl, name, latitude, longitude } = INVADERS[i];
+			const { id, imageUrl, name, latitude, longitude } = INVADERS[i - INVADERS_STARTING_INDEX];
 			invadersInfos.push({
 				id,
 				alt: name,

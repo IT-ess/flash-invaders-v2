@@ -3,6 +3,7 @@
 	import * as Avatar from '$lib/components/ui/avatar';
 	import * as Table from '$lib/components/ui/table';
 	import type { PageData } from './$types';
+	import { INVADERS_STARTING_INDEX } from '$lib/game-data/invaders';
 
 	let { data }: { data: PageData } = $props();
 	let { profiles } = data;
@@ -42,7 +43,7 @@
 							</Avatar.Root></Table.Cell
 						>
 						<Table.Cell>Name</Table.Cell>
-						<Table.Cell>?/12 👾</Table.Cell>
+						<Table.Cell>?/{12 - INVADERS_STARTING_INDEX} 👾</Table.Cell>
 						<Table.Cell class="font-semibold">Score</Table.Cell>
 					{:then { avatar, username, invaderCount, score }}
 						<Table.Cell
@@ -54,7 +55,7 @@
 							</Avatar.Root></Table.Cell
 						>
 						<Table.Cell>{username}</Table.Cell>
-						<Table.Cell>{invaderCount}/12 👾</Table.Cell>
+						<Table.Cell>{invaderCount}/{12 - INVADERS_STARTING_INDEX} 👾</Table.Cell>
 						<Table.Cell class="font-extrabold text-base text-center">{score}</Table.Cell>
 					{:catch}
 						<Table.Cell class="text-red-500">{$t('common.error')}</Table.Cell>

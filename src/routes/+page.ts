@@ -1,4 +1,4 @@
-import { INVADERS } from '$lib/game-data/invaders';
+import { INVADERS, INVADERS_STARTING_INDEX } from '$lib/game-data/invaders';
 import type { PageLoad } from './$types';
 
 const themeColorsBg = ['bg-[#ff473d]', 'bg-[#ffd93e]', 'bg-[#0074cd]', 'bg-white'];
@@ -11,7 +11,7 @@ export const load: PageLoad = async (event) => {
 
 function getMarqueeInfosArray(): MarqueeInfos[] {
 	const marqueeInfos: MarqueeInfos[] = [];
-	for (let i = 0; i < 12; i++) {
+	for (let i = INVADERS_STARTING_INDEX; i < 12; i++) {
 		const { imageUrl, name } = INVADERS[i];
 		marqueeInfos.push({
 			alt: name,

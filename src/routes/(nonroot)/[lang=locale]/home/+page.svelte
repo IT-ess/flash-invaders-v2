@@ -2,7 +2,7 @@
 	import type { PageData } from './$types';
 	import { t } from '$lib/translations/translations';
 	import Button from '$lib/components/ui/button/button.svelte';
-	import { INVADERS, type Invader } from '$lib/game-data/invaders';
+	import { INVADERS, INVADERS_STARTING_INDEX, type Invader } from '$lib/game-data/invaders';
 	import { PUBLIC_SEARCH_RADIUS } from '$env/static/public';
 	import * as Dialog from '$lib/components/ui/dialog';
 	import { supabase } from '$lib/supabase-client';
@@ -214,14 +214,22 @@
 		</div>
 		<div class="space-y-4">
 			<div>
-				<p class="flex justify-between"><span>Score</span><span>{score}/1200</span></p>
-				<Progress value={displayedScore} max={1200} />
+				<p class="flex justify-between">
+					<span>Score</span><span>{score}/{1200 - INVADERS_STARTING_INDEX * 100}</span>
+				</p>
+				<Progress value={displayedScore} max={1200 - INVADERS_STARTING_INDEX * 100} />
 			</div>
 			<div>
 				<p class="flex justify-between">
-					<span>{$t('home.invaders_found')}</span><span>{displayedInvaderCount}/12</span>
+					<span>{$t('home.invaders_found')}</span><span
+						>{displayedInvaderCount}/{12 - INVADERS_STARTING_INDEX}</span
+					>
 				</p>
-				<Progress value={displayedInvaderCount} max={12} barBgClass="bg-secondary" />
+				<Progress
+					value={displayedInvaderCount}
+					max={12 - INVADERS_STARTING_INDEX}
+					barBgClass="bg-secondary"
+				/>
 			</div>
 		</div>
 	</main>
