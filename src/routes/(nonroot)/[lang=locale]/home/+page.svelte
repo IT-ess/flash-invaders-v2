@@ -12,7 +12,6 @@
 	import OcticonAlert from '~icons/octicon/alert';
 	import LogosGoogleMaps from '~icons/logos/google-maps';
 	import { Progress } from '$lib/components/ui/progress';
-	import { DoubleBounce } from 'svelte-loading-spinners';
 	import { page } from '$app/stores';
 	import type { InvaderPrivileges } from '$lib/utils/invader-counter';
 	import CtaButton from '$lib/components/CTAButton.svelte';

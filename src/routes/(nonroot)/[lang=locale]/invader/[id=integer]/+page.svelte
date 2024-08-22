@@ -1,7 +1,6 @@
 <script lang="ts">
 	import { t } from '$lib/translations/translations';
 	import * as Carousel from '$lib/components/ui/carousel/index.ts';
-	import { Video } from 'flowbite-svelte';
 	import { Button } from '$lib/components/ui/button';
 	import { page } from '$app/stores';
 	import { INVADERS, INVADERS_STARTING_INDEX } from '$lib/game-data/invaders';
@@ -55,11 +54,12 @@
 						{#if caption}
 							<p class="text-muted-foreground">{caption}</p>
 						{/if}
-						<Video
-							src={source}
+						<video
 							controls
+							src={source}
 							class="w-full max-w-full h-auto rounded-lg border border-gray-200 dark:border-gray-700"
-						/>
+							><track kind="captions" /></video
+						>
 					</div>
 				{:else if type === 'audio'}
 					<div>
