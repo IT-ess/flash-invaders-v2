@@ -50,14 +50,14 @@ let INVADERS: Invader[] = [
 			'Elus fleur',
 			'Balons paix',
 			'Ancien combattants',
-			'Monument',
+			// 'Monument',
 			'Sortie église'
 		],
 		carouselUrls: [
 			'/context/3-1.jpg',
 			'/context/3-2.jpg',
 			'/context/3-3.jpg',
-			'/context/3-4.jpg',
+			// '/context/3-4.jpg', // to crop
 			'/context/3-5.jpg'
 		],
 		itemsTypes: ['text'],

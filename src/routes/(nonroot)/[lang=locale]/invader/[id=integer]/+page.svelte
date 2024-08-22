@@ -4,7 +4,7 @@
 	import { Video } from 'flowbite-svelte';
 	import { Button } from '$lib/components/ui/button';
 	import { page } from '$app/stores';
-	import { INVADERS } from '$lib/game-data/invaders';
+	import { INVADERS, INVADERS_STARTING_INDEX } from '$lib/game-data/invaders';
 	import { MediaQuery } from 'runed';
 	import type { PageData } from './$types';
 
@@ -13,7 +13,7 @@
 	let { data }: { data: PageData } = $props();
 
 	const { carouselCaptions, carouselUrls, itemsTypes, itemsSources, itemsCaptions } =
-		INVADERS[pageId];
+		INVADERS[pageId - INVADERS_STARTING_INDEX];
 
 	const carouselItems = carouselCaptions.map((caption, index) => ({
 		caption,

@@ -11,7 +11,7 @@ export const load: PageLoad = async (event) => {
 
 function getMarqueeInfosArray(): MarqueeInfos[] {
 	const marqueeInfos: MarqueeInfos[] = [];
-	for (let i = INVADERS_STARTING_INDEX; i < 12; i++) {
+	for (let i = 0; i < 12 - INVADERS_STARTING_INDEX; i++) {
 		const { imageUrl, name } = INVADERS[i];
 		marqueeInfos.push({
 			alt: name,
