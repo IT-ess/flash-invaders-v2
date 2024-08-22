@@ -183,13 +183,11 @@
 			</Dialog.Content>
 		</Dialog.Root>
 
-		<div class="flex flex-grow bg-gray-200 items-center justify-evenly w-full">
-			<div class="m-auto mt-14">
-				<div class="box-content h-56 w-56 p-4">
-					<span class="relative flex h-full w-full justify-center">
-						<CtaButton handleOnClick={getInvadersWithinRadius} bind:loading />
-					</span>
-				</div>
+		<div class="flex flex-grow items-center justify-evenly w-full">
+			<div class="box-content h-56 w-56 p-4">
+				<span class="relative flex h-full w-full justify-center">
+					<CtaButton handleOnClick={getInvadersWithinRadius} bind:loading />
+				</span>
 			</div>
 		</div>
 
