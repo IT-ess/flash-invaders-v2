@@ -30,7 +30,7 @@
 		34C070C76C99C6B2F944167C /* libflash_invaders_v2_lib.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libflash_invaders_v2_lib.a; sourceTree = "<group>"; };
 		3A84296FE377E5592A5E8CA6 /* lib.rs */ = {isa = PBXFileReference; lastKnownFileType = text; path = lib.rs; sourceTree = "<group>"; };
 		4D7935998E078246656B1F3F /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
-		543807F9C7083B2629C2434E /* Zwietess.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Zwietess.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		543807F9C7083B2629C2434E /* flash-invaders-v2_iOS.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; name = "flash-invaders-v2_iOS.app"; path = Zwietess.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7079026581511342C23EC490 /* main.rs */ = {isa = PBXFileReference; lastKnownFileType = text; path = main.rs; sourceTree = "<group>"; };
 		72BDE0749F56A44829D7684C /* MetalKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MetalKit.framework; path = System/Library/Frameworks/MetalKit.framework; sourceTree = SDKROOT; };
 		808002CBBBBB2F18A17730F7 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -135,7 +135,7 @@
 		D2BE8AF115B52260FE7D9A4C /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				543807F9C7083B2629C2434E /* Zwietess.app */,
+				543807F9C7083B2629C2434E /* flash-invaders-v2_iOS.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -168,7 +168,7 @@
 			);
 			name = "flash-invaders-v2_iOS";
 			productName = "flash-invaders-v2_iOS";
-			productReference = 543807F9C7083B2629C2434E /* Zwietess.app */;
+			productReference = 543807F9C7083B2629C2434E /* flash-invaders-v2_iOS.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -237,7 +237,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/zsh;
-			shellScript = "PATH=/Users/Alexis.Loiseau1/Library/pnpm:/opt/miniconda3/envs/py310/bin:/opt/miniconda3/condabin:/Users/Alexis.Loiseau1/.local/state/fnm_multishells/36469_1723505401529/bin:/Users/Alexis.Loiseau1/.cargo/bin:/Users/Alexis.Loiseau1/.rbenv/shims:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/Library/Apple/usr/bin:/usr/local/laps:/usr/local/munki:/Users/Alexis.Loiseau1/.cargo/bin pnpm tauri ios xcode-script -v --platform ${PLATFORM_DISPLAY_NAME:?} --sdk-root ${SDKROOT:?} --framework-search-paths \"${FRAMEWORK_SEARCH_PATHS:?}\" --header-search-paths \"${HEADER_SEARCH_PATHS:?}\" --gcc-preprocessor-definitions \"${GCC_PREPROCESSOR_DEFINITIONS:-}\" --configuration ${CONFIGURATION:?} ${FORCE_COLOR} ${ARCHS:?}\n";
+			shellScript = "RUST_BACKTRACE=full PATH=/Users/Alexis.Loiseau1/Library/pnpm:/opt/miniconda3/envs/py310/bin:/opt/miniconda3/condabin:/Users/Alexis.Loiseau1/.local/state/fnm_multishells/36469_1723505401529/bin:/Users/Alexis.Loiseau1/.cargo/bin:/Users/Alexis.Loiseau1/.rbenv/shims:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/Library/Apple/usr/bin:/usr/local/laps:/usr/local/munki:/Users/Alexis.Loiseau1/.cargo/bin pnpm tauri ios xcode-script -v --platform ${PLATFORM_DISPLAY_NAME:?} --sdk-root ${SDKROOT:?} --framework-search-paths \"${FRAMEWORK_SEARCH_PATHS:?}\" --header-search-paths \"${HEADER_SEARCH_PATHS:?}\" --gcc-preprocessor-definitions \"${GCC_PREPROCESSOR_DEFINITIONS:-}\" --configuration ${CONFIGURATION:?} ${FORCE_COLOR} ${ARCHS:?}\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -326,10 +326,9 @@
 				);
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "flash-invaders-v2_iOS/flash-invaders-v2_iOS.entitlements";
-				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9A6YPCKFPC;
-				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 9A6YPCKFPC;
 				ENABLE_BITCODE = NO;
 				"EXCLUDED_ARCHS[sdk=iphoneos*]" = "arm64-sim x86_64";
 				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = arm64;
@@ -365,7 +364,6 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.flashinvaders.zwietess;
 				PRODUCT_NAME = Zwietess;
-				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALID_ARCHS = "arm64  arm64-sim";
@@ -382,10 +380,9 @@
 				);
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "flash-invaders-v2_iOS/flash-invaders-v2_iOS.entitlements";
-				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9A6YPCKFPC;
-				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 9A6YPCKFPC;
 				ENABLE_BITCODE = NO;
 				"EXCLUDED_ARCHS[sdk=iphoneos*]" = "arm64-sim x86_64";
 				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = arm64;
@@ -421,7 +418,6 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.flashinvaders.zwietess;
 				PRODUCT_NAME = Zwietess;
-				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALID_ARCHS = "arm64  arm64-sim";
