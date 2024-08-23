@@ -26,6 +26,8 @@
     <string>Geolocalize Invaders</string>
     <key>ITSAppUsesNonExemptEncryption</key>
     <string>NO</string>
+    <key>NSCameraUsageDescription</key>
+    <string>Camera is used to take a picture of the player</string>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>arm64</string>
