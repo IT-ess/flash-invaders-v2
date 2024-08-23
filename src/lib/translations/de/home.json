@@ -18,5 +18,9 @@
 		"title": "Geolokalisierung fehlgeschlagen!",
 		"message": "Sie haben die Geolokalisierung nicht zugelassen."
 	},
+	"nfc_fail_modal": {
+		"title": "Falscher NFC-Tag",
+		"message": "Der gescannte NFC-Tag wird nicht erkannt."
+	},
 	"invaders_found": "Zwietess gefunden"
 }

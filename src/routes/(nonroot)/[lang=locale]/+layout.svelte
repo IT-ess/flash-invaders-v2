@@ -159,7 +159,7 @@
 				</AlertDialog.Description>
 			</AlertDialog.Header>
 			<AlertDialog.Footer class="space-y-2">
-				<AlertDialog.Cancel>{$t('common.nav.cancel')}</AlertDialog.Cancel>
+				<AlertDialog.Cancel class="sm:mt-2">{$t('common.nav.cancel')}</AlertDialog.Cancel>
 				<AlertDialog.Action
 					class={buttonVariants({ variant: 'destructive', class: 'bg-black' })}
 					onclick={onClickDeleteAccountAndGoToRoot}

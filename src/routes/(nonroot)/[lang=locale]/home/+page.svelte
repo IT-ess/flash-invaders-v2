@@ -2,28 +2,32 @@
 	import type { PageData } from './$types';
 	import { t } from '$lib/translations/translations';
 	import Button from '$lib/components/ui/button/button.svelte';
-	import { INVADERS, INVADERS_STARTING_INDEX, type Invader } from '$lib/game-data/invaders';
-	import { PUBLIC_SEARCH_RADIUS } from '$env/static/public';
+	import { INVADERS_STARTING_INDEX, type Invader } from '$lib/game-data/invaders';
+	import { PUBLIC_PLATFORM } from '$env/static/public';
 	import * as Dialog from '$lib/components/ui/dialog';
-	import { supabase } from '$lib/supabase-client';
-	import { insideCircle, type LatitudeLongitude } from 'geolocation-utils';
 	import { goto, preloadData } from '$app/navigation';
 	import OcticonRadioTower from '~icons/octicon/radio-tower';
 	import OcticonAlert from '~icons/octicon/alert';
 	import LogosGoogleMaps from '~icons/logos/google-maps';
+	import MdiNfc from '~icons/mdi/nfc';
 	import { Progress } from '$lib/components/ui/progress';
 	import { page } from '$app/stores';
 	import type { InvaderPrivileges } from '$lib/utils/invader-counter';
 	import CtaButton from '$lib/components/CTAButton.svelte';
+	import {
+		getInvaderFromTagContent,
+		getInvadersFromCoords,
+		updateUserPrivileges
+	} from '$lib/invader-utils';
+	import { readNfcTag } from '$lib/nfc-utils';
 
 	let successModal = $state(false);
-	let foundId: number | undefined = $state();
 	let failModal = $state(false);
 	let geoFailModal = $state(false);
+	let nfcFailModal = $state(false);
 	let loading = $state(false);
-	let foundInvader: Invader | undefined = $state();
+	let foundInvader: Invader | null = $state(null);
 	let accuracy = $state(40);
-	let localInvader: Invader | null = $state(null);
 
 	let { data }: { data: PageData } = $props();
 
@@ -61,16 +65,30 @@
 			);
 		});
 	}
-	async function getInvadersWithinRadius(): Promise<void> {
+
+	async function scanInvaderWithNfc() {
+		loading = true;
+		const tagContent = await readNfcTag();
+		if (!tagContent.match('zwietess://')) {
+			nfcFailModal = true;
+			return;
+		}
+		foundInvader = getInvaderFromTagContent(tagContent);
+		if (!foundInvader) {
+			nfcFailModal = true;
+			return;
+		}
+		await updateUserPrivileges(foundInvader.id, data.userId);
+		successModal = true;
+		loading = false;
+	}
+
+	async function searchInvadersWithGeolocation(): Promise<void> {
 		loading = true;
 		const { coords } = await getCurrentLocation();
 		accuracy = coords.accuracy;
-		const foundInvaders = INVADERS.filter((invader) =>
-			matchLocalInvaders(invader, {
-				latitude: coords.latitude,
-				longitude: coords.longitude
-			})
-		);
+
+		const foundInvaders = getInvadersFromCoords(coords);
 		const newlyFoundInvaders = foundInvaders.filter((invader) => {
 			const invaderPrivilegeForId = data.privileges[
 				`inv${invader.id}` as keyof InvaderPrivileges
@@ -83,30 +101,22 @@
 		});
 
 		if (newlyFoundInvaders.length > 0) {
-			localInvader = newlyFoundInvaders[0];
-			const { id } = localInvader;
-			foundInvader = localInvader;
-
-			const { error } = await supabase.rpc('update_user_permissions_and_score', {
-				invader_id: id,
-				user_id_input: data.userId,
-				permission_level: 1,
-				incremented_score: 0
-			});
-			if (error) {
-				console.error('Error updating user profile', error);
-			}
-			foundId = id;
+			foundInvader = newlyFoundInvaders[0];
+			await updateUserPrivileges(foundInvader.id, data.userId);
 			successModal = true;
 		} else {
 			failModal = true;
 		}
-
 		loading = false;
 	}
 
-	const matchLocalInvaders = (invader: Invader, userGeoLocation: LatitudeLongitude): Boolean =>
-		insideCircle(userGeoLocation, invader, +PUBLIC_SEARCH_RADIUS);
+	async function handleSearch() {
+		if (PUBLIC_PLATFORM === 'mobile') {
+			await scanInvaderWithNfc();
+		} else {
+			await searchInvadersWithGeolocation();
+		}
+	}
 </script>
 
 <div class="container my-8">
@@ -121,7 +131,10 @@
 					</Dialog.Description>
 				</Dialog.Header>
 				<Dialog.Footer>
-					<Button variant="secondary" type="submit" onclick={() => goto(`./invader/${foundId}`)}
+					<Button
+						variant="secondary"
+						type="submit"
+						onclick={() => goto(`./invader/${foundInvader?.id}`)}
 						>{$t(`home.success_modal.button`)}</Button
 					>
 				</Dialog.Footer>
@@ -166,10 +179,8 @@
 				<Dialog.Title>{$t('home.geo_fail_modal.title')}</Dialog.Title>
 				<Dialog.Description>
 					<div class="text-center">
-						<div class="mx-auto mb-4 w-12 h-12 text-foreground dark:text-gray-200">
-							<OcticonRadioTower />
-						</div>
-						<h2 class="mb-5 text-lg font-semibold text-foreground dark:text-gray-400">
+						<OcticonRadioTower class="mx-auto mb-4 w-12 h-12 text-destructive dark:text-gray-200" />
+						<h2 class="mb-5 text-lg font-semibold text-destructive dark:text-gray-400">
 							{$t('home.geo_fail_modal.message')}
 						</h2>
 					</div>
@@ -181,11 +192,29 @@
 				</Dialog.Footer>
 			</Dialog.Content>
 		</Dialog.Root>
+		<Dialog.Root bind:open={nfcFailModal}>
+			<Dialog.Content class="max-w-[80%] rounded-md">
+				<Dialog.Title>{$t('home.nfc_fail_modal.title')}</Dialog.Title>
+				<Dialog.Description>
+					<div class="text-center">
+						<MdiNfc class="mx-auto mb-4 w-12 h-12 text-destructive dark:text-gray-200" />
+						<h2 class="mb-5 text-lg font-semibold text-destructive dark:text-gray-400">
+							{$t('home.nfc_fail_modal.message')}
+						</h2>
+					</div>
+				</Dialog.Description>
+				<Dialog.Footer>
+					<Button variant="destructive" onclick={() => (nfcFailModal = false)}
+						>{$t('home.fail_modal.button')}</Button
+					>
+				</Dialog.Footer>
+			</Dialog.Content>
+		</Dialog.Root>
 
 		<div class="flex flex-grow items-center justify-evenly w-full">
-			<div class="box-content h-56 w-56 p-4">
+			<div class="box-content h-56 w-56 p-6">
 				<span class="relative flex h-full w-full justify-center">
-					<CtaButton handleOnClick={getInvadersWithinRadius} bind:loading />
+					<CtaButton handleOnClick={handleSearch} bind:loading />
 				</span>
 			</div>
 		</div>

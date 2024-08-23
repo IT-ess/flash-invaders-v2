@@ -10,7 +10,7 @@
 </script>
 
 <div class="my-8">
-	<Table.Root class="my-4">
+	<Table.Root class="mt-4 mb-32">
 		<Table.Caption class="text-primary font-semibold text-lg">{$t('ranking.caption')}</Table.Caption
 		>
 		<Table.Header class="bg-primary shadow-lg border-b-2 border-secondary">

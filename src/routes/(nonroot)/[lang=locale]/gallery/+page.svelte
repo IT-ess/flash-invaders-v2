@@ -42,7 +42,7 @@
 	</div>
 {/snippet}
 
-<main class="mt-10 mb-24">
+<main class="mt-10 mb-28">
 	{#each data.invadersInfos as infos}
 		{@render invaderCard(infos)}
 	{/each}

@@ -15,8 +15,12 @@
 		"button": "Voir le Zwietess"
 	},
 	"geo_fail_modal": {
-		"title": "Erreur",
+		"title": "Erreur de géolocalisation",
 		"message": "Vous n'avez pas autorisé la géolocalisation."
+	},
+	"nfc_fail_modal": {
+		"title": "Tag NFC incorrect",
+		"message": "Le tag NFC scanné n'est pas reconnu."
 	},
 	"invaders_found": "Zwietess trouvés"
 }
