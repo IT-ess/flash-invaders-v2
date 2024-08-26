@@ -13,3 +13,5 @@ vite.config.ts.timestamp-*
 src-tauri/gen/android/app/arm64/release/
 
 src-tauri/gen/android/keystore.properties
+
+src-tauri/gen/schemas/
