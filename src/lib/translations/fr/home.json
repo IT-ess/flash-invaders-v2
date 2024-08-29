@@ -22,5 +22,10 @@
 		"title": "Tag NFC incorrect",
 		"message": "Le tag NFC scanné n'est pas reconnu."
 	},
-	"invaders_found": "Zwietess trouvés"
+	"nfc_timeout_modal": {
+		"title": "Échec du scan",
+		"message": "La tentative de scan a expiré. Veuillez réessayer."
+	},
+	"invaders_found": "Zwietess trouvés",
+	"nfc_help_text": "Approchez votre téléphone du disque blanc situé sur le Zwietess"
 }

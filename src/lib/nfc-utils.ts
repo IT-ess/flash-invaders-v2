@@ -25,7 +25,17 @@ export function decodePayload(tag: Tag): string {
 	return text;
 }
 
-export async function readNfcTag(): Promise<string> {
-	const tag = await scan({ type: 'tag' }, { keepSessionAlive: true });
-	return decodePayload(tag);
+export async function readNfcTag(timeout: number = 10000): Promise<string | null> {
+	const scanPromise = scan({ type: 'tag' }, { keepSessionAlive: true });
+
+	const timeoutPromise = new Promise<never>((_, reject) =>
+		setTimeout(() => reject(new Error('Operation timed out')), timeout)
+	);
+
+	try {
+		const tag = await Promise.race([scanPromise, timeoutPromise]);
+		return decodePayload(tag);
+	} catch (error) {
+		return null;
+	}
 }

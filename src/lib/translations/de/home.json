@@ -22,5 +22,10 @@
 		"title": "Falscher NFC-Tag",
 		"message": "Der gescannte NFC-Tag wird nicht erkannt."
 	},
-	"invaders_found": "Zwietess gefunden"
+	"nfc_timeout_modal": {
+		"title": "Scan fehlgeschlagen",
+		"message": "Der Scanversuch ist abgelaufen. Bitte versuchen Sie es erneut."
+	},
+	"invaders_found": "Zwietess gefunden",
+	"nfc_help_text": "Halten Sie Ihr Telefon an die weiße Scheibe, die sich auf der Zwietess befindet."
 }

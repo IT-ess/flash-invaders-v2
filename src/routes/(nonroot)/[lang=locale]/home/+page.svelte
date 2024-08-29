@@ -20,11 +20,14 @@
 		updateUserPrivileges
 	} from '$lib/invader-utils';
 	import { readNfcTag } from '$lib/nfc-utils';
+	import { Toaster } from '$lib/components/ui/sonner';
+	import { toast } from 'svelte-sonner';
 
 	let successModal = $state(false);
 	let failModal = $state(false);
 	let geoFailModal = $state(false);
 	let nfcFailModal = $state(false);
+	let nfcTimeoutModal = $state(false);
 	let loading = $state(false);
 	let foundInvader: Invader | null = $state(null);
 	let accuracy = $state(40);
@@ -59,7 +62,7 @@
 				},
 				{
 					enableHighAccuracy: true,
-					timeout: 15000, // TODO : handle error if timeout
+					timeout: 15000,
 					maximumAge: 0
 				}
 			);
@@ -68,16 +71,26 @@
 
 	async function scanInvaderWithNfc() {
 		loading = true;
-		const tagContent = await readNfcTag();
+		toast.info($t('home.nfc_help_text'));
+		const tagContent = await readNfcTag(10000);
+		if (tagContent === null) {
+			toast.dismiss();
+			loading = false;
+			nfcTimeoutModal = true;
+			return;
+		}
 		if (!tagContent.match('zwietess://')) {
+			toast.dismiss();
 			nfcFailModal = true;
 			return;
 		}
 		foundInvader = getInvaderFromTagContent(tagContent);
 		if (!foundInvader) {
+			toast.dismiss();
 			nfcFailModal = true;
 			return;
 		}
+		toast.dismiss();
 		await updateUserPrivileges(foundInvader.id, data.userId);
 		successModal = true;
 		loading = false;
@@ -118,6 +131,8 @@
 		}
 	}
 </script>
+
+<Toaster richColors position="top-center" duration={9000} />
 
 <div class="container my-8">
 	<main>
@@ -205,6 +220,24 @@
 				</Dialog.Description>
 				<Dialog.Footer>
 					<Button variant="destructive" onclick={() => (nfcFailModal = false)}
+						>{$t('home.fail_modal.button')}</Button
+					>
+				</Dialog.Footer>
+			</Dialog.Content>
+		</Dialog.Root>
+		<Dialog.Root bind:open={nfcTimeoutModal}>
+			<Dialog.Content class="max-w-[80%] rounded-md">
+				<Dialog.Title>{$t('home.nfc_timeout_modal.title')}</Dialog.Title>
+				<Dialog.Description>
+					<div class="text-center">
+						<MdiNfc class="mx-auto mb-4 w-12 h-12 text-destructive dark:text-gray-200" />
+						<h2 class="mb-5 text-lg font-semibold text-destructive dark:text-gray-400">
+							{$t('home.nfc_timeout_modal.message')}
+						</h2>
+					</div>
+				</Dialog.Description>
+				<Dialog.Footer>
+					<Button variant="destructive" onclick={() => (nfcTimeoutModal = false)}
 						>{$t('home.fail_modal.button')}</Button
 					>
 				</Dialog.Footer>

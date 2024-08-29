@@ -1,5 +1,4 @@
 <script lang="ts">
-	import { page } from '$app/stores';
 	import { t } from '$lib/translations/translations';
 	import { Button } from '$lib/components/ui/button';
 	import { Toaster } from '$lib/components/ui/sonner';

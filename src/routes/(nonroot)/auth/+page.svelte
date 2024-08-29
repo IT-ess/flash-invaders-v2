@@ -16,15 +16,20 @@
 	import MaterialSymbolsAccountCircle from '~icons/material-symbols/account-circle';
 	import LoaderCircle from 'lucide-svelte/icons/loader-circle';
 	import PageIndicator from '$lib/components/PageIndicator.svelte';
+	import { Toaster } from '$lib/components/ui/sonner';
+	import { toast } from 'svelte-sonner';
 
 	let { data }: { data: SuperValidated<Infer<FormSchema>> } = $props();
 
 	const form = superForm(data, {
 		validators: zodClient(formSchema),
-		dataType: 'json'
+		dataType: 'json',
+		onError({ result }) {
+			toast.error(result.error.message || 'Unknown error');
+		}
 	});
 
-	const { form: formData, enhance } = form;
+	const { form: formData, enhance, message } = form;
 
 	let isSignUp = $state(true);
 	let loading = $state(false);
@@ -69,6 +74,8 @@
 		}
 	};
 </script>
+
+<Toaster richColors />
 
 <div class="min-h-screen w-full flex flex-col items-center justify-center">
 	<Card.Root>

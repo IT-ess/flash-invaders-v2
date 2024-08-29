@@ -24,8 +24,6 @@
 		caption: itemsCaptions[index],
 		type: itemsTypes[index]
 	}));
-
-	const isDesktop = new MediaQuery('(min-width: 768px)');
 </script>
 
 <div class="relative flex flex-col bg-gray-100 mt-10">
@@ -36,10 +34,8 @@
 					<Carousel.Item><img class="rounded-sm" src={url} alt={caption} /></Carousel.Item>
 				{/each}
 			</Carousel.Content>
-			{#if isDesktop.matches}
-				<Carousel.Previous />
-				<Carousel.Next />
-			{/if}
+			<Carousel.Previous class="ml-6" />
+			<Carousel.Next class="mr-6" />
 		</Carousel.Root>
 		<div class="mt-4 space-y-4">
 			{#each contents as { source, type, caption }}
