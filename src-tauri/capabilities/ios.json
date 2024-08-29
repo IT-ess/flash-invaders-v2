@@ -1,0 +1,8 @@
+{
+	"$schema": "../gen/schemas/iOS-schema.json",
+	"identifier": "ios",
+	"description": "Capability for the main window",
+	"windows": ["main"],
+	"permissions": ["core:default", "shell:allow-open", "nfc:default"],
+	"platforms": ["iOS"]
+}
