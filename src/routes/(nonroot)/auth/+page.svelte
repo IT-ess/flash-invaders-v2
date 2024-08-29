@@ -22,6 +22,7 @@
 	let { data }: { data: SuperValidated<Infer<FormSchema>> } = $props();
 
 	const form = superForm(data, {
+		SPA: true,
 		validators: zodClient(formSchema),
 		dataType: 'json',
 		onError({ result }) {
