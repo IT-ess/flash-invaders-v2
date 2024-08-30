@@ -14,12 +14,28 @@
 		424EA90F9D51BE50F2DED467 /* main.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2B4AE4A8F18E02CC38E35C0B /* main.mm */; };
 		4B7BA8F538F0FCAF9E71A653 /* libflash_invaders_v2_lib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 34C070C76C99C6B2F944167C /* libflash_invaders_v2_lib.a */; };
 		54ECBF022DDF4F13156660C7 /* Metal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F14D9D3A2B23764DEF16F85 /* Metal.framework */; };
+		6A0010A32C81F51A00F72642 /* CoreNFC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A0010A12C81F51600F72642 /* CoreNFC.framework */; };
+		6A0010A42C81F51A00F72642 /* CoreNFC.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6A0010A12C81F51600F72642 /* CoreNFC.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		99E79720A08D71392B684D7B /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A75088C32E3E0FCDD0B1D98A /* QuartzCore.framework */; };
 		AC902CB2696DAA7293220C9F /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D7935998E078246656B1F3F /* Security.framework */; };
 		D19EDC745F2A5231AABAA4C3 /* MetalKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 72BDE0749F56A44829D7684C /* MetalKit.framework */; };
 		F1572ACEB7BA3761DCD571A6 /* assets in Resources */ = {isa = PBXBuildFile; fileRef = DCD3C8C7A5A5D4E9E4290501 /* assets */; };
 		FD34397920D3DDF6F09EFD01 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE791A315C6B8A86512B5BEA /* WebKit.framework */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		6A0010A52C81F51A00F72642 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				6A0010A42C81F51A00F72642 /* CoreNFC.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		01C492D94AB4B698CDACEF80 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
@@ -31,6 +47,7 @@
 		3A84296FE377E5592A5E8CA6 /* lib.rs */ = {isa = PBXFileReference; lastKnownFileType = text; path = lib.rs; sourceTree = "<group>"; };
 		4D7935998E078246656B1F3F /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		543807F9C7083B2629C2434E /* Zwietess.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Zwietess.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		6A0010A12C81F51600F72642 /* CoreNFC.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreNFC.framework; path = System/Library/Frameworks/CoreNFC.framework; sourceTree = SDKROOT; };
 		7079026581511342C23EC490 /* main.rs */ = {isa = PBXFileReference; lastKnownFileType = text; path = main.rs; sourceTree = "<group>"; };
 		72BDE0749F56A44829D7684C /* MetalKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MetalKit.framework; path = System/Library/Frameworks/MetalKit.framework; sourceTree = SDKROOT; };
 		808002CBBBBB2F18A17730F7 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -49,6 +66,7 @@
 			files = (
 				4B7BA8F538F0FCAF9E71A653 /* libflash_invaders_v2_lib.a in Frameworks */,
 				006C651FAF96CE11565DAFA7 /* CoreGraphics.framework in Frameworks */,
+				6A0010A32C81F51A00F72642 /* CoreNFC.framework in Frameworks */,
 				54ECBF022DDF4F13156660C7 /* Metal.framework in Frameworks */,
 				D19EDC745F2A5231AABAA4C3 /* MetalKit.framework in Frameworks */,
 				99E79720A08D71392B684D7B /* QuartzCore.framework in Frameworks */,
@@ -64,6 +82,7 @@
 		1D55B96BD1C1B06E9A16B6F7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				6A0010A12C81F51600F72642 /* CoreNFC.framework */,
 				808002CBBBBB2F18A17730F7 /* CoreGraphics.framework */,
 				34C070C76C99C6B2F944167C /* libflash_invaders_v2_lib.a */,
 				0F14D9D3A2B23764DEF16F85 /* Metal.framework */,
@@ -161,6 +180,7 @@
 				C5832A0E4BEC91C06FD04AD4 /* Sources */,
 				A8702269ECB8D49BB4E754C1 /* Resources */,
 				C2BB881E7F36A82DADEEA3D3 /* Frameworks */,
+				6A0010A52C81F51A00F72642 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
