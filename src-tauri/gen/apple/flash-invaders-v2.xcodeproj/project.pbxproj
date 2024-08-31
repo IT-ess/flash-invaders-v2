@@ -338,6 +338,8 @@
 					"\".\"",
 				);
 				INFOPLIST_FILE = "flash-invaders-v2_iOS/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = Zwietess;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.education";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -365,7 +367,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.flashinvaders.zwietess;
 				PRODUCT_NAME = Zwietess;
-				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = ProvProfileWithNFC;
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = FlashInvadersProd;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALID_ARCHS = "arm64  arm64-sim";
@@ -394,6 +396,8 @@
 					"\".\"",
 				);
 				INFOPLIST_FILE = "flash-invaders-v2_iOS/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = Zwietess;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.education";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -421,7 +425,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.flashinvaders.zwietess;
 				PRODUCT_NAME = Zwietess;
-				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = ProvProfileWithNFC;
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = FlashInvadersProd;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALID_ARCHS = "arm64  arm64-sim";
