@@ -13,7 +13,6 @@ settingGroups:
       PRODUCT_NAME: Zwietess
       PRODUCT_BUNDLE_IDENTIFIER: com.flashinvaders.zwietess
       DEVELOPMENT_TEAM: 9A6YPCKFPC
-      CODE_SIGN_STYLE: Automatic
 targetTemplates:
   app:
     type: application
@@ -74,7 +73,7 @@ targets:
         EXCLUDED_ARCHS[sdk=iphoneos*]: arm64-sim x86_64
       groups: [app]
     dependencies:
-      - framework: libflash_invaders_v2_lib.a
+      - framework: libapp.a
         embed: false
       - sdk: CoreGraphics.framework
       - sdk: Metal.framework
@@ -82,6 +81,7 @@ targets:
       - sdk: QuartzCore.framework
       - sdk: Security.framework
       - sdk: UIKit.framework
+      - sdk: CoreNFC.framework
       - sdk: WebKit.framework
     preBuildScripts:
       - script: source ~/.zshrc && source ~/.profile
@@ -90,6 +90,6 @@ targets:
         name: Build Rust Code
         basedOnDependencyAnalysis: false
         outputFiles:
-          - $(SRCROOT)/Externals/x86_64/${CONFIGURATION}/libflash_invaders_v2_lib.a
-          - $(SRCROOT)/Externals/arm64/${CONFIGURATION}/libflash_invaders_v2_lib.a
-          - $(SRCROOT)/Externals/arm64-sim/${CONFIGURATION}/libflash_invaders_v2_lib.a
+          - $(SRCROOT)/Externals/x86_64/${CONFIGURATION}/libapp.a
+          - $(SRCROOT)/Externals/arm64/${CONFIGURATION}/libapp.a
+          - $(SRCROOT)/Externals/arm64-sim/${CONFIGURATION}/libapp.a
