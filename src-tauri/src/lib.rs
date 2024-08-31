@@ -7,7 +7,6 @@ pub fn run() {
             Ok(())
         })
         .plugin(tauri_plugin_shell::init())
-        .plugin(tauri_plugin_nfc::init())
         .run(tauri::generate_context!())
         .expect("error while running tauri application");
 }
