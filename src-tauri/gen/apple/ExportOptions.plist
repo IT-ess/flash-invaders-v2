@@ -7,7 +7,7 @@
     <key>provisioningProfiles</key>
         <dict>
             <key>com.flashinvaders.zwietess</key> <!-- set your app bundle identifier -->
-            <string>ProvProfileWithNFC.mobileprovision</string> <!-- set your provisioning profile name -->
+            <string>FlashInvadersProd.mobileprovision</string> <!-- set your provisioning profile name -->
         </dict>
 </dict>
 </plist>

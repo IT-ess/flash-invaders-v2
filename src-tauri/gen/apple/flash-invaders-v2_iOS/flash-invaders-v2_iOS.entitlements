@@ -6,10 +6,8 @@
 	<array>
 		<string>TAG</string>
 	</array>
-	<key>com.apple.application-identifier</key>
-    <string>$TEAM_ID.$IDENTIFIER</string>
     <key>com.apple.developer.team-identifier</key>
-    <string>$TEAM_ID</string>
+    <string>9A6YPCKFPC</string>
 	<key>com.apple.security.app-sandbox</key>
 	<true/>
 	<key>com.apple.security.files.downloads.read-write</key>
