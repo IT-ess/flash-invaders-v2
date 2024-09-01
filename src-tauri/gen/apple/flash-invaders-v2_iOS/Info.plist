@@ -28,8 +28,6 @@
 	<string>NO</string>
 	<key>NSCameraUsageDescription</key>
 	<string>Camera is used to take a picture of the player</string>
-	<key>NFCReaderUsageDescription</key>
-	<string>Read NFC tags to scan Invaders</string>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>arm64</string>
