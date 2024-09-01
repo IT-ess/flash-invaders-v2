@@ -9,6 +9,9 @@
 		"heading": "Fonctionnement",
 		"content": "Pour pouvoir 'attraper' un Zwietess, il faut être à proximité (5m ~) et appuyer sur le bouton 'Chercher un Zwietess'. Si votre géolocalisation est imprécise, vous pouvez vous déplacer de quelques mètres et réessayer."
 	},
+	"sec1_mobile": {
+		"content": "Pour pouvoir 'attraper' un Zwietess, il faut appuyer sur le bouton bleu puis approcher votre téléphone du disque blanc. Si votre téléphone vibre, c'est gagné !"
+	},
 	"sec2": {
 		"heading": "Traductions",
 		"content": "Votre langue par défaut est définie au moment de votre inscription. Vous pouvez la changer à tout moment grâce au bouton en haut de chaque page."

@@ -9,6 +9,9 @@
 		"heading": "Funktionsweise",
 		"content": "Um einen Zwietess 'fangen' zu können, müssen Sie sich in der Nähe befinden (5m ~) und auf die Schaltfläche 'Zwietess suchen' drücken. Wenn Ihre Geolokalisierung ungenau ist, können Sie sich ein paar Meter weiter bewegen und es erneut versuchen."
 	},
+	"sec1_mobile": {
+		"content": "Um einen Zwietess „fangen“ zu können, musst du den blauen Knopf drücken und dann dein Handy in die Nähe der weißen Scheibe bringen. Wenn dein Handy vibriert, hast du gewonnen!"
+	},
 	"sec2": {
 		"heading": "Übersetzungen",
 		"content": "Ihre Standardsprache wird bei der Anmeldung festgelegt. Sie können sie jederzeit über die Schaltfläche oben auf jeder Seite ändern."

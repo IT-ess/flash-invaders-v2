@@ -12,6 +12,7 @@
 	import { PUBLIC_PLATFORM } from '$env/static/public';
 
 	const isMobile = PUBLIC_PLATFORM === 'mobile' ? true : false;
+	const isIos = PUBLIC_PLATFORM === 'ios' ? true : false;
 </script>
 
 <div class="min-h-screen w-full flex flex-col items-center justify-center container">
@@ -36,7 +37,7 @@
 					>
 					<Accordion.Content>
 						<p class="mb-2 text-justify dark:text-blue-400">
-							{$t(`tutorial.sec1.content`)}
+							{$t(isMobile && !isIos ? `tutorial.sec1_mobile.content` : `tutorial.sec1.content`)}
 						</p>
 					</Accordion.Content>
 				</Accordion.Item>
@@ -51,7 +52,7 @@
 						</p>
 					</Accordion.Content>
 				</Accordion.Item>
-				{#if !isMobile}
+				{#if !isMobile && !isIos}
 					<Accordion.Item value="item-3">
 						<Accordion.Trigger
 							><div class="w-6 h-6"><OcticonBrowser /></div>
