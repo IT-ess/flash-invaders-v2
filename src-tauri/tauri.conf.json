@@ -1,6 +1,6 @@
 {
 	"productName": "Zwietess",
-	"version": "0.4.1",
+	"version": "1.0.0",
 	"identifier": "com.flashinvader.zwietess",
 	"build": {
 		"beforeDevCommand": "pnpm dev",
