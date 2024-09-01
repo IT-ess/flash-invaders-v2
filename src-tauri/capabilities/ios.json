@@ -3,6 +3,6 @@
 	"identifier": "ios",
 	"description": "Capability for the main window",
 	"windows": ["main"],
-	"permissions": ["core:default", "shell:allow-open", "nfc:default"],
+	"permissions": ["core:default", "shell:allow-open"],
 	"platforms": ["iOS"]
 }
