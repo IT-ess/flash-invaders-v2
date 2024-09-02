@@ -18,6 +18,8 @@
 	import PageIndicator from '$lib/components/PageIndicator.svelte';
 	import { Toaster } from '$lib/components/ui/sonner';
 	import { toast } from 'svelte-sonner';
+	import * as Dialog from '$lib/components/ui/dialog';
+	import OcticonAlert from '~icons/octicon/alert';
 
 	let { data }: { data: SuperValidated<Infer<FormSchema>> } = $props();
 
@@ -34,6 +36,8 @@
 
 	let isSignUp = $state(true);
 	let loading = $state(false);
+	let authFailModal = $state(false);
+	let authErrorMessage = $state('');
 	const defaultLocale = navigator.language.startsWith('de') ? 'de' : 'fr'; // get from cookie, user session, ...
 
 	const handleSubmission = async (event: Event) => {
@@ -68,7 +72,8 @@
 			}
 		} catch (error) {
 			if (error instanceof Error) {
-				alert(error.message);
+				authErrorMessage = error.message;
+				authFailModal = true;
 			}
 		} finally {
 			loading = false;
@@ -79,6 +84,24 @@
 <Toaster richColors />
 
 <div class="min-h-screen w-full flex flex-col items-center justify-center">
+	<Dialog.Root bind:open={authFailModal}>
+		<Dialog.Content class="max-w-[80%] rounded-md">
+			<Dialog.Title>Error</Dialog.Title>
+			<Dialog.Description>
+				<div class="text-center">
+					<OcticonAlert class="mx-auto mb-4 w-12 h-12 text-destructive dark:text-gray-200" />
+					<h2 class="mb-5 text-lg font-semibold text-destructive dark:text-gray-400">
+						{authErrorMessage}
+					</h2>
+				</div>
+			</Dialog.Description>
+			<Dialog.Footer>
+				<Button variant="destructive" onclick={() => (authFailModal = false)}
+					>{$t('home.fail_modal.button')}</Button
+				>
+			</Dialog.Footer>
+		</Dialog.Content>
+	</Dialog.Root>
 	<Card.Root>
 		<Card.Header>
 			<Card.Title>{$t(`auth.register`)}</Card.Title>

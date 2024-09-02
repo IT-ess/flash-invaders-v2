@@ -56,8 +56,8 @@
 		});
 	});
 
-	function onClickSignOutAndGoToRoot() {
-		supabase.auth.signOut();
+	async function onClickSignOutAndGoToRoot() {
+		await supabase.auth.signOut();
 		goto('/');
 	}
 
