@@ -26,6 +26,10 @@
 		"title": "Scan fehlgeschlagen",
 		"message": "Der Scanversuch ist abgelaufen. Bitte versuchen Sie es erneut."
 	},
+	"nfc_unavailable_modal": {
+		"title": "NFC-Scan Nicht verfügbar",
+		"message": "Der NFC-Scan ist nicht aktiviert. Aktivieren Sie ihn, indem Sie in den Einstellungen Ihres Telefons nach „NFC“ suchen."
+	},
 	"invaders_found": "Zwietess gefunden",
 	"nfc_help_text": "Halten Sie Ihr Telefon an die weiße Scheibe, die sich auf der Zwietess befindet."
 }

@@ -22,12 +22,14 @@
 	import { readNfcTag } from '$lib/nfc-utils';
 	import { Toaster } from '$lib/components/ui/sonner';
 	import { toast } from 'svelte-sonner';
+	import { isAvailable } from '@tauri-apps/plugin-nfc';
 
 	let successModal = $state(false);
 	let failModal = $state(false);
 	let geoFailModal = $state(false);
 	let nfcFailModal = $state(false);
 	let nfcTimeoutModal = $state(false);
+	let nfcNotAvailableModal = $state(false);
 	let loading = $state(false);
 	let foundInvader: Invader | null = $state(null);
 	let accuracy = $state(40);
@@ -71,6 +73,12 @@
 
 	async function scanInvaderWithNfc() {
 		loading = true;
+		const isNfcAvailable = await isAvailable();
+		if (!isNfcAvailable) {
+			loading = false;
+			nfcNotAvailableModal = true;
+			return;
+		}
 		toast.info($t('home.nfc_help_text'));
 		const tagContent = await readNfcTag(10000);
 		if (tagContent === null) {
@@ -202,6 +210,24 @@
 				</Dialog.Description>
 				<Dialog.Footer>
 					<Button variant="destructive" onclick={() => (geoFailModal = false)}
+						>{$t('home.fail_modal.button')}</Button
+					>
+				</Dialog.Footer>
+			</Dialog.Content>
+		</Dialog.Root>
+		<Dialog.Root bind:open={nfcNotAvailableModal}>
+			<Dialog.Content class="max-w-[80%] rounded-md">
+				<Dialog.Title>{$t('home.nfc_unavailable_modal.title')}</Dialog.Title>
+				<Dialog.Description>
+					<div class="text-center">
+						<MdiNfc class="mx-auto mb-4 w-12 h-12 text-destructive dark:text-gray-200" />
+						<h2 class="mb-5 text-lg font-semibold text-destructive dark:text-gray-400">
+							{$t('home.nfc_unavailable_modal.message')} bobobubu
+						</h2>
+					</div>
+				</Dialog.Description>
+				<Dialog.Footer>
+					<Button variant="destructive" onclick={() => (nfcNotAvailableModal = false)}
 						>{$t('home.fail_modal.button')}</Button
 					>
 				</Dialog.Footer>

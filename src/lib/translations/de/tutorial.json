@@ -28,5 +28,9 @@
 	"sec5": {
 		"heading": "Karte",
 		"content": "Eine Google-Maps-Karte wird im Spiel zugänglich sein. Sie definiert 5 Suchgebiete, in denen Zwietess zu finden sind (die Anzahl ist auf jedem Gebiet angegeben)."
+	},
+	"sec6_mobile": {
+		"heading": "NFC-Scan",
+		"content": "NFC muss zum Spielen aktiviert werden. Suchen Sie in den Einstellungen Ihres Telefons nach „NFC“, um es zu aktivieren."
 	}
 }

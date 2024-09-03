@@ -26,6 +26,10 @@
 		"title": "Échec du scan",
 		"message": "La tentative de scan a expiré. Veuillez réessayer."
 	},
+	"nfc_unavailable_modal": {
+		"title": "Scan NFC Indisponible",
+		"message": "Le scan NFC n'est pas activé. Activez-le en recherchant \"NFC\" dans les paramètres de votre téléphone."
+	},
 	"invaders_found": "Zwietess trouvés",
 	"nfc_help_text": "Approchez votre téléphone du disque blanc situé sur le Zwietess"
 }

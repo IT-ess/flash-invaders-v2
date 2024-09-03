@@ -28,5 +28,9 @@
 	"sec5": {
 		"heading": "Carte",
 		"content": "Une carte Google Maps sera accessible dans le jeu. Elle définit 5 zones de recherche où se trouvent des Zwietess (le nombre est indiqué sur chaque zone)."
+	},
+	"sec6_mobile": {
+		"heading": "Scan NFC",
+		"content": "L'activation du NFC est requise pour jouer. Recherchez \"NFC\" dans les paramètres de votre téléphone pour l'activer."
 	}
 }
