@@ -38,7 +38,7 @@ export const load: LayoutLoad = async ({ url, params }) => {
 		fetchedImage: downloadAvatar(avatarUrl),
 		username,
 		score,
-		invaderCount: invaderCounter(userId),
+		invaderCount: invaderCounter(userId, true),
 		invadersInfos: getInvaderFromState(data),
 		privileges: invadersPrivileges
 	};
