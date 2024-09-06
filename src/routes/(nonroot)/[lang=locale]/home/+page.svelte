@@ -99,7 +99,12 @@
 			return;
 		}
 		toast.dismiss();
-		await updateUserPrivileges(foundInvader.id, data.userId);
+		const invaderPrivilegeForId = data.privileges[
+			`inv${foundInvader.id}` as keyof InvaderPrivileges
+		] as number;
+		if (invaderPrivilegeForId === 0) {
+			await updateUserPrivileges(foundInvader.id, data.userId);
+		}
 		successModal = true;
 		loading = false;
 	}
