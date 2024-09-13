@@ -1,4 +1,5 @@
 {
+	"identifier": "com.flashinvader.zwietess",
 	"build": {
 		"beforeDevCommand": "pnpm dev",
 		"devUrl": "http://localhost:1420",

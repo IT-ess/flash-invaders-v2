@@ -42,5 +42,13 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>NFCReaderUsageDescription</key>
+	<string>Read NFC Tags</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Geolocalize Invaders</string>
+	<key>ITSAppUsesNonExemptEncryption</key>
+	<string>NO</string>
+	<key>NSCameraUsageDescription</key>
+	<string>Avatar</string>
 </dict>
 </plist>
