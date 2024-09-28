@@ -4,7 +4,6 @@
 	import { Button } from '$lib/components/ui/button';
 	import { page } from '$app/stores';
 	import { INVADERS, INVADERS_STARTING_INDEX } from '$lib/game-data/invaders';
-	import { MediaQuery } from 'runed';
 	import type { PageData } from './$types';
 
 	let pageId = +$page.params.id;
@@ -31,7 +30,7 @@
 		<Carousel.Root>
 			<Carousel.Content>
 				{#each carouselItems as { url, caption }}
-					<Carousel.Item><img class="rounded-sm" src={url} alt={caption} /></Carousel.Item>
+					<Carousel.Item><img class="rounded-sm mx-auto" src={url} alt={caption} /></Carousel.Item>
 				{/each}
 			</Carousel.Content>
 			<Carousel.Previous class="ml-6" />
