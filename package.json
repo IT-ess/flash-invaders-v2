@@ -16,7 +16,7 @@
 	"dependencies": {
 		"@supabase/supabase-js": "^2.45.4",
 		"@tauri-apps/api": "2.0.0-rc.6",
-		"@tauri-apps/cli": "2.0.0-rc.17",
+		"@tauri-apps/cli": "2.0.0-rc.18",
 		"@tauri-apps/plugin-nfc": "2.0.0-rc.1",
 		"@tauri-apps/plugin-shell": "2.0.0-rc.1",
 		"bits-ui": "^0.21.15",
@@ -34,7 +34,7 @@
 		"vaul-svelte": "^0.3.2"
 	},
 	"devDependencies": {
-		"@iconify/json": "^2.2.254",
+		"@iconify/json": "^2.2.255",
 		"@sveltejs/adapter-static": "^3.0.5",
 		"@sveltejs/kit": "^2.6.1",
 		"@sveltejs/vite-plugin-svelte": "4.0.0-next.6",
@@ -46,7 +46,7 @@
 		"postcss-loader": "^8.1.1",
 		"prettier": "^3.3.3",
 		"prettier-plugin-svelte": "^3.2.7",
-		"runed": "^0.15.2",
+		"runed": "^0.15.3",
 		"svelte": "5.0.0-next.260",
 		"svelte-check": "^3.8.6",
 		"svelte-loading-spinners": "^0.3.6",
