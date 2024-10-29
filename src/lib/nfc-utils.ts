@@ -26,7 +26,10 @@ export function decodePayload(tag: Tag): string {
 }
 
 export async function readNfcTag(timeout: number = 10000): Promise<string | null> {
-	const scanPromise = scan({ type: 'tag' }, { keepSessionAlive: true });
+	const scanPromise = scan(
+		{ type: 'tag', uri: { scheme: 'zwietess' } },
+		{ keepSessionAlive: true }
+	);
 
 	const timeoutPromise = new Promise<never>((_, reject) =>
 		setTimeout(() => reject(new Error('Operation timed out')), timeout)

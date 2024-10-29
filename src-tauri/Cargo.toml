@@ -12,13 +12,14 @@ name = "flash_invaders_v2_lib"
 crate-type = ["lib", "cdylib", "staticlib"]
 
 [build-dependencies]
-tauri-build = { version = "2.0.0-rc", features = [] }
+tauri-build = { version = "2.0.0", features = [] }
 
 [dependencies]
-tauri = { version = "2.0.0-rc", features = [] }
-tauri-plugin-shell = "2.0.0-rc"
+tauri = { version = "2.0.0", features = [] }
+tauri-plugin-shell = "2.0.0"
 serde = { version = "1", features = ["derive"] }
 serde_json = "1"
+tao = "=0.30.3"                                  # To remove as soon as 0.30.4 bug is fixed
 
 [profile.dev]
 incremental = true # Compile your binary in smaller steps.
@@ -31,4 +32,4 @@ panic = "abort"   # Higher performance by disabling panic handlers.
 strip = true      # Ensures debug symbols are removed.
 
 [target."cfg(any(target_os = \"android\", target_os = \"ios\"))".dependencies]
-tauri-plugin-nfc = "2.0.0-rc"
+tauri-plugin-nfc = "2.0.0"

@@ -227,7 +227,7 @@
 					<div class="text-center">
 						<MdiNfc class="mx-auto mb-4 w-12 h-12 text-destructive dark:text-gray-200" />
 						<h2 class="mb-5 text-lg font-semibold text-destructive dark:text-gray-400">
-							{$t('home.nfc_unavailable_modal.message')} bobobubu
+							{$t('home.nfc_unavailable_modal.message')}
 						</h2>
 					</div>
 				</Dialog.Description>
