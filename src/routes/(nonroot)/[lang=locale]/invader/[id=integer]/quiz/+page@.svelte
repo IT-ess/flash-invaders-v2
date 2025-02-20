@@ -70,7 +70,7 @@
 {#if !(questionPointer > answers.length - 1)}
 	<div class="flex flex-col h-screen p-2">
 		<div class="my-2">
-			<Progress value={(questionPointer / questions.length) * 100} />
+			<Progress value={(questionPointer / questions.length) * 100} class="bg-slate-300" />
 		</div>
 		<div class="p-6 mt-4 bg-white rounded-md font-semibold shadow-lg text-lg text-center ring-2">
 			<p>
