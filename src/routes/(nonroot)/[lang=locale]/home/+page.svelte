@@ -23,6 +23,7 @@
 	import { Toaster } from '$lib/components/ui/sonner';
 	import { toast } from 'svelte-sonner';
 	import { isAvailable } from '@tauri-apps/plugin-nfc';
+	import { AspectRatio } from '$lib/components/ui/aspect-ratio';
 
 	let successModal = $state(false);
 	let failModal = $state(false);
@@ -149,13 +150,15 @@
 
 <div class="container my-8">
 	<main>
-		<Dialog.Root bind:open={successModal} closeOnOutsideClick={false}>
+		<Dialog.Root bind:open={successModal}>
 			<Dialog.Content class="max-w-[80%] rounded-md">
 				<Dialog.Header>
 					<Dialog.Title>{$t('home.success_modal.message')}</Dialog.Title>
 					<Dialog.Description>
 						<span>{$t(`common.zwt${foundInvader?.id}.name`)}</span>
-						<img src={foundInvader?.imageUrl} alt={foundInvader?.name} />
+						<AspectRatio ratio={16 / 9} class="bg-muted">
+							<img src={foundInvader?.imageUrl} alt={foundInvader?.name} />
+						</AspectRatio>
 					</Dialog.Description>
 				</Dialog.Header>
 				<Dialog.Footer>
@@ -288,7 +291,11 @@
 				<p class="flex justify-between">
 					<span>Score</span><span>{score}/{1200 - INVADERS_STARTING_INDEX * 100}</span>
 				</p>
-				<Progress value={displayedScore} max={1200 - INVADERS_STARTING_INDEX * 100} />
+				<Progress
+					value={displayedScore}
+					max={1200 - INVADERS_STARTING_INDEX * 100}
+					class="bg-slate-300"
+				/>
 			</div>
 			<div>
 				<p class="flex justify-between">
@@ -299,7 +306,7 @@
 				<Progress
 					value={displayedInvaderCount}
 					max={12 - INVADERS_STARTING_INDEX}
-					barBgClass="bg-secondary"
+					class="bg-slate-300"
 				/>
 			</div>
 		</div>

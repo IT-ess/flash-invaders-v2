@@ -51,7 +51,7 @@
 			>
 		</Card.Header>
 		<Card.Content>
-			<Accordion.Root class="w-full">
+			<Accordion.Root type="single" class="w-full">
 				<Accordion.Item value="item-1">
 					<Accordion.Trigger
 						><div class="w-6 h-6"><OcticonRadioTower /></div>

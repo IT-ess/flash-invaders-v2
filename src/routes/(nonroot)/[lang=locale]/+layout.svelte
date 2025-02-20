@@ -1,12 +1,11 @@
 <script lang="ts">
 	import { t } from '$lib/translations/translations';
-	import { type Snippet } from 'svelte';
-	import { MediaQuery } from 'runed';
+	import { MediaQuery } from 'svelte/reactivity';
 	import * as Dialog from '$lib/components/ui/dialog/index.js';
 	import * as Drawer from '$lib/components/ui/drawer/index.js';
 	import { Button } from '$lib/components/ui/button/index.js';
 	import * as Avatar from '$lib/components/ui/avatar';
-	import type { LayoutData } from './$types';
+	import type { LayoutProps } from './$types';
 	import Account from '$lib/components/Account.svelte';
 	import { page } from '$app/stores';
 	import { goto } from '$app/navigation';
@@ -30,7 +29,7 @@
 		activeIndex = index;
 	}
 
-	let { children, data }: { children: Snippet; data: LayoutData } = $props();
+	let { children, data }: LayoutProps = $props();
 	let newLang: string = $state('');
 	let newUrl: string = $state('');
 
@@ -71,18 +70,14 @@
 <div
 	class="fixed left-0 right-0 z-10 flex justify-between items-center shadow-md p-4 border-b-2 border-slate-300 bg-slate-300 font-firava"
 >
-	{#if isDesktop.matches}
+	{#if isDesktop.current}
 		<div>
 			<Dialog.Root bind:open>
-				<Dialog.Trigger asChild let:builder>
-					<Button variant="ghost" builders={[builder]}
-						><Avatar.Root>
-							<Avatar.Image src={url} alt={username} />
-							<Avatar.Fallback
-								>{username !== null ? username[0].toUpperCase() : 'U'}</Avatar.Fallback
-							>
-						</Avatar.Root></Button
-					>
+				<Dialog.Trigger class={buttonVariants({ variant: 'ghost', size: 'icon' })}>
+					<Avatar.Root>
+						<Avatar.Image src={url} alt={username} />
+						<Avatar.Fallback>{username !== null ? username[0].toUpperCase() : 'U'}</Avatar.Fallback>
+					</Avatar.Root>
 				</Dialog.Trigger>
 				<Dialog.Content class="sm:max-w-[425px]">
 					{@render alertDisconnect()}
@@ -99,15 +94,11 @@
 	{:else}
 		<div class="pt-1">
 			<Drawer.Root bind:open>
-				<Drawer.Trigger asChild let:builder>
-					<Button variant="ghost" builders={[builder]}
-						><Avatar.Root>
-							<Avatar.Image src={url} alt={username} />
-							<Avatar.Fallback
-								>{username !== null ? username[0].toUpperCase() : 'U'}</Avatar.Fallback
-							>
-						</Avatar.Root></Button
-					>
+				<Drawer.Trigger class={buttonVariants({ variant: 'ghost', size: 'icon' })}>
+					<Avatar.Root>
+						<Avatar.Image src={url} alt={username} />
+						<Avatar.Fallback>{username !== null ? username[0].toUpperCase() : 'U'}</Avatar.Fallback>
+					</Avatar.Root>
 				</Drawer.Trigger>
 				<Drawer.Content>
 					{@render alertDisconnect()}
