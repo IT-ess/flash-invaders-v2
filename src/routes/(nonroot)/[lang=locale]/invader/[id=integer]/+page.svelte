@@ -2,11 +2,11 @@
 	import { t } from '$lib/translations/translations';
 	import * as Carousel from '$lib/components/ui/carousel/index.ts';
 	import { Button } from '$lib/components/ui/button';
-	import { page } from '$app/stores';
+	import { page } from '$app/state';
 	import { INVADERS, INVADERS_STARTING_INDEX } from '$lib/game-data/invaders';
 	import type { PageData } from './$types';
 
-	let pageId = +$page.params.id;
+	let pageId = +page.params.id;
 
 	let { data }: { data: PageData } = $props();
 
@@ -70,9 +70,9 @@
 		</div>
 	</div>
 	<div class="w-full h-24 flex justify-center items-center bg-gray-200 space-x-4">
-		<Button variant="secondary" href="/{$page.params.lang}/gallery">{$t('context.gallery')}</Button>
+		<Button variant="secondary" href="/{page.params.lang}/gallery">{$t('context.gallery')}</Button>
 		{#if !data.answered}
-			<Button href="./{$page.params.id}/quiz">{$t(`context.quiz`)}</Button>
+			<Button href="./{page.params.id}/quiz">{$t(`context.quiz`)}</Button>
 		{/if}
 	</div>
 </div>

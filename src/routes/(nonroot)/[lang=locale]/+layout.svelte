@@ -7,7 +7,7 @@
 	import * as Avatar from '$lib/components/ui/avatar';
 	import type { LayoutProps } from './$types';
 	import Account from '$lib/components/Account.svelte';
-	import { page } from '$app/stores';
+	import { page } from '$app/state';
 	import { goto } from '$app/navigation';
 	import NavbarSlider from '$lib/components/NavbarSlider.svelte';
 	import * as AlertDialog from '$lib/components/ui/alert-dialog';
@@ -40,15 +40,15 @@
 	const isDesktop = new MediaQuery('(min-width: 768px)');
 
 	$effect(() => {
-		if ($page.url.pathname.match('gallery')) {
+		if (page.url.pathname.match('gallery')) {
 			activeIndex = 0;
 		}
-		if ($page.url.pathname.match('ranking')) {
+		if (page.url.pathname.match('ranking')) {
 			activeIndex = 2;
 		}
-		newLang = $page.params.lang === 'fr' ? 'de' : 'fr';
-		newUrl = $page.url.pathname.replace($page.params.lang, newLang);
-		document.documentElement.lang = $page.params.lang;
+		newLang = page.params.lang === 'fr' ? 'de' : 'fr';
+		newUrl = page.url.pathname.replace(page.params.lang, newLang);
+		document.documentElement.lang = page.params.lang;
 
 		fetchedImage.then((image) => {
 			url = image;
@@ -114,12 +114,12 @@
 		</div>
 	{/if}
 	<h1 class="text-3xl mr-4 font-normal font-pixelify">
-		{$t(`common.headers.${$page.url.pathname}`)}
+		{$t(`common.headers.${page.url.pathname}`)}
 	</h1>
-	{#if $page.params.lang !== undefined && !$page.url.pathname.match('quiz')}
+	{#if page.params.lang !== undefined && !page.url.pathname.match('quiz')}
 		<div class="m-2">
 			<Button variant="outline" class="!p-2" onclick={() => goto(newUrl)}>
-				{#if $page.params.lang === 'fr'}
+				{#if page.params.lang === 'fr'}
 					🇫🇷
 				{:else}
 					🇩🇪
@@ -131,7 +131,7 @@
 <div class="pt-16">
 	{@render children()}
 </div>
-{#if !$page.url.pathname.match('invader')}
+{#if !page.url.pathname.match('invader')}
 	<NavbarSlider {menuItems} {position} {activeIndex} onTabSwitch={handleTabSwitch} />
 {/if}
 

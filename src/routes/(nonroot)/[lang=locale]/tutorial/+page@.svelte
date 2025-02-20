@@ -11,7 +11,7 @@
 	import GoToRegistration from '$lib/components/GoToRegistration.svelte';
 	import PageIndicator from '$lib/components/PageIndicator.svelte';
 	import { PUBLIC_PLATFORM } from '$env/static/public';
-	import { page } from '$app/stores';
+	import { page } from '$app/state';
 	import { goto } from '$app/navigation';
 	import { Button } from '$lib/components/ui/button/index.js';
 
@@ -22,9 +22,9 @@
 	let newUrl: string = $state('');
 
 	$effect(() => {
-		newLang = $page.params.lang === 'fr' ? 'de' : 'fr';
-		newUrl = $page.url.pathname.replace($page.params.lang, newLang);
-		document.documentElement.lang = $page.params.lang;
+		newLang = page.params.lang === 'fr' ? 'de' : 'fr';
+		newUrl = page.url.pathname.replace(page.params.lang, newLang);
+		document.documentElement.lang = page.params.lang;
 	});
 </script>
 
@@ -32,7 +32,7 @@
 	<Card.Root class="relative">
 		<div class="absolute right-2 top-2">
 			<Button variant="outline" class="!p-2" onclick={() => goto(newUrl)}>
-				{#if $page.params.lang === 'fr'}
+				{#if page.params.lang === 'fr'}
 					🇫🇷
 				{:else}
 					🇩🇪

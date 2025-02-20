@@ -2,14 +2,14 @@
 	import { t } from '$lib/translations/translations';
 	import { Button } from '$lib/components/ui/button';
 	import { Progress } from '$lib/components/ui/progress';
-	import { page } from '$app/stores';
+	import { page } from '$app/state';
 	import { supabase } from '$lib/supabase-client';
 	import { goto } from '$app/navigation';
 	import OcticonArrowRight16 from '~icons/octicon/arrow-right-16';
 	import type { PageData } from './$types';
 
-	let pageId = +$page.params.id;
-	let lang = $page.params.lang;
+	let pageId = +page.params.id;
+	let lang = page.params.lang;
 
 	let { data }: { data: PageData } = $props();
 

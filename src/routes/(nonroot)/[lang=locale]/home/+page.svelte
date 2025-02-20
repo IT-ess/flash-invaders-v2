@@ -11,7 +11,7 @@
 	import LogosGoogleMaps from '~icons/logos/google-maps';
 	import MdiNfc from '~icons/mdi/nfc';
 	import { Progress } from '$lib/components/ui/progress';
-	import { page } from '$app/stores';
+	import { page } from '$app/state';
 	import type { InvaderPrivileges } from '$lib/utils/invader-counter';
 	import CtaButton from '$lib/components/CTAButton.svelte';
 	import {
@@ -37,7 +37,7 @@
 
 	let { data }: { data: PageData } = $props();
 
-	let { lang } = $page.params;
+	let { lang } = page.params;
 
 	let { score, invaderCount } = data;
 	let displayedScore = $state(0);
