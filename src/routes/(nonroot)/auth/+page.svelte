@@ -66,9 +66,9 @@
 			}
 			if (error) throw error;
 			if (isSignUp) {
-				goto(`${defaultLocale}/avatar`);
+				await goto(`${defaultLocale}/avatar`);
 			} else {
-				goto(`${defaultLocale}/home`);
+				await goto(`${defaultLocale}/home`);
 			}
 		} catch (error) {
 			if (error instanceof Error) {
