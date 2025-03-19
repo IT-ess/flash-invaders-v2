@@ -112,11 +112,13 @@
 				<div class="col-6 form-widget" aria-live="polite">
 					<form method="POST" use:enhance onsubmit={handleSubmission}>
 						<Form.Field {form} name="email" class="min-w-40">
-							<Form.Control let:attrs>
-								<Form.Label class="flex items-center">
-									<OcticonMail16 class="mr-1 mb-[1px]" />{$t(`auth.email.label`)}
-								</Form.Label>
-								<Input {...attrs} type="email" bind:value={$formData.email} />
+							<Form.Control>
+								{#snippet children({ props })}
+									<Form.Label class="flex items-center">
+										<OcticonMail16 class="mr-1 mb-[1px]" />{$t(`auth.email.label`)}
+									</Form.Label>
+									<Input {...props} type="email" bind:value={$formData.email} />
+								{/snippet}
 							</Form.Control>
 							{#if isSignUp}
 								<Form.Description>{$t(`auth.email.helper`)}</Form.Description>
@@ -124,13 +126,15 @@
 							<Form.FieldErrors />
 						</Form.Field>
 						<Form.Field {form} name="password" class="mt-6">
-							<Form.Control let:attrs>
-								<Form.Label class="flex items-center"
-									><OcticonKeyAsterisk16 class="mr-1 mb-[1px]" />{$t(
-										`auth.password.label`
-									)}</Form.Label
-								>
-								<Input {...attrs} type="password" bind:value={$formData.password} />
+							<Form.Control>
+								{#snippet children({ props })}
+									<Form.Label class="flex items-center"
+										><OcticonKeyAsterisk16 class="mr-1 mb-[1px]" />{$t(
+											`auth.password.label`
+										)}</Form.Label
+									>
+									<Input {...props} type="password" bind:value={$formData.password} />
+								{/snippet}
 							</Form.Control>
 							{#if isSignUp}
 								<Form.Description>{$t(`auth.password.helper`)}</Form.Description>
@@ -139,13 +143,15 @@
 						</Form.Field>
 						{#if isSignUp}
 							<Form.Field {form} name="username" class="mt-6">
-								<Form.Control let:attrs>
-									<Form.Label class="flex items-center"
-										><MaterialSymbolsAccountCircle class="mr-1 mb-[1px]" />{$t(
-											`auth.username.label`
-										)}</Form.Label
-									>
-									<Input {...attrs} type="text" bind:value={$formData.username} />
+								<Form.Control>
+									{#snippet children({ props })}
+										<Form.Label class="flex items-center"
+											><MaterialSymbolsAccountCircle class="mr-1 mb-[1px]" />{$t(
+												`auth.username.label`
+											)}</Form.Label
+										>
+										<Input {...props} type="text" bind:value={$formData.username} />
+									{/snippet}
 								</Form.Control>
 								<Form.Description>{$t(`auth.username.helper`)}</Form.Description>
 								<Form.FieldErrors />
