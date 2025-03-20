@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { DoubleBounce } from 'svelte-loading-spinners';
+	import DoubleBounce from '$lib/components/spinners/DoubleBounce.svelte';
 	import MdiSpaceInvaders from '~icons/mdi/space-invaders';
 
 	let { handleOnClick, loading = $bindable() }: { handleOnClick: () => void; loading: boolean } =
@@ -13,7 +13,7 @@
 >
 	{#if loading}
 		<div class="absolute">
-			<DoubleBounce color="#2585ce" size="16" unit="rem" duration="3s" />
+			<DoubleBounce color="#2585ce" size="16" unit="rem" duration="3s" pause={false} />
 		</div>
 	{/if}
 	<div class={loading ? 'animate-[pulse_3s_infinite]' : ''}>

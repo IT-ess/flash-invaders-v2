@@ -6,11 +6,11 @@
 	import Button from '$lib/components/ui/button/button.svelte';
 	import OcticonArrowRight16 from '~icons/octicon/arrow-right-16';
 	import PageIndicator from '$lib/components/PageIndicator.svelte';
-	import { page } from '$app/stores';
+	import { page } from '$app/state';
 
 	let { data }: { data: PageData } = $props();
 	let { username, fetchedImage, userId } = data;
-	const lang = $page.params.lang;
+	const lang = page.params.lang;
 
 	let url: string | null = $state(null);
 	$effect(() => {

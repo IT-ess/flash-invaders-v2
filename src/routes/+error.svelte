@@ -1,11 +1,11 @@
 <script lang="ts">
 	import { t } from '$lib/translations/translations';
-	import { page } from '$app/stores';
+	import { page } from '$app/state';
 	import { Button } from '$lib/components/ui/button';
 </script>
 
-<h1>{$page.status}: {$page.error?.message}</h1>
-{#if $page.status === 401}
+<h1>{page.status}: {page.error?.message}</h1>
+{#if page.status === 401}
 	<Button variant="default" size="default" href="/auth">
 		{$t('common.nav.auth')}
 	</Button>

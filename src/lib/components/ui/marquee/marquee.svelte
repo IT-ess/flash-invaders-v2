@@ -1,16 +1,28 @@
 <script lang="ts">
 	import { cn } from '$lib/utils.js';
+	import type { Snippet } from 'svelte';
 	type Direction = 'left' | 'up';
-	export let direction: Direction = 'left';
-	export let pauseOnHover: boolean = false;
-	export let reverse: boolean = false;
-	export let fade: boolean = false;
-	export let innerClassName: string = '';
-	export let numberOfCopies: number = 2;
+	let {
+		direction = 'left',
+		pauseOnHover = false,
+		reverse = false,
+		fade = false,
+		innerClassName = '',
+		numberOfCopies = 2,
+		children
+	}: {
+		direction: Direction;
+		pauseOnHover: boolean;
+		reverse: boolean;
+		fade: boolean;
+		innerClassName: string;
+		numberOfCopies: number;
+		children: Snippet;
+	} = $props();
 </script>
 
 <div
-	class={cn(`group flex gap-[1rem] overflow-hidden ${$$restProps.class}`, {
+	class={cn(`group flex gap-[1rem] overflow-hidden`, {
 		'flex-row': direction === 'left',
 		'flex-col': direction !== 'left'
 	})}
@@ -40,7 +52,7 @@
 				innerClassName
 			)}
 		>
-			<slot />
+			{@render children?.()}
 		</div>
 	{/each}
 </div>

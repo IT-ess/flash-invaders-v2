@@ -1,21 +1,20 @@
 <script lang="ts">
 	import { t } from '$lib/translations/translations';
-	import { type Snippet } from 'svelte';
-	import { MediaQuery } from 'runed';
+	import { MediaQuery } from 'svelte/reactivity';
 	import * as Dialog from '$lib/components/ui/dialog/index.js';
 	import * as Drawer from '$lib/components/ui/drawer/index.js';
 	import { Button } from '$lib/components/ui/button/index.js';
 	import * as Avatar from '$lib/components/ui/avatar';
-	import type { LayoutData } from './$types';
+	import type { LayoutProps } from './$types';
 	import Account from '$lib/components/Account.svelte';
-	import { page } from '$app/stores';
+	import { page } from '$app/state';
 	import { goto } from '$app/navigation';
 	import NavbarSlider from '$lib/components/NavbarSlider.svelte';
 	import * as AlertDialog from '$lib/components/ui/alert-dialog';
 	import MaterialSymbolsExitToAppRounded from '~icons/material-symbols/exit-to-app-rounded';
 	import { buttonVariants } from '$lib/components/ui/button';
 	import { supabase } from '$lib/supabase-client';
-	import { Medal, Images, Radio } from 'lucide-svelte';
+	import { Medal, Images, Radio } from '@lucide/svelte';
 
 	const menuItems = [
 		{ text: 'common.nav.gallery', icon: Images, path: 'gallery' },
@@ -30,7 +29,7 @@
 		activeIndex = index;
 	}
 
-	let { children, data }: { children: Snippet; data: LayoutData } = $props();
+	let { children, data }: LayoutProps = $props();
 	let newLang: string = $state('');
 	let newUrl: string = $state('');
 
@@ -41,15 +40,15 @@
 	const isDesktop = new MediaQuery('(min-width: 768px)');
 
 	$effect(() => {
-		if ($page.url.pathname.match('gallery')) {
+		if (page.url.pathname.match('gallery')) {
 			activeIndex = 0;
 		}
-		if ($page.url.pathname.match('ranking')) {
+		if (page.url.pathname.match('ranking')) {
 			activeIndex = 2;
 		}
-		newLang = $page.params.lang === 'fr' ? 'de' : 'fr';
-		newUrl = $page.url.pathname.replace($page.params.lang, newLang);
-		document.documentElement.lang = $page.params.lang;
+		newLang = page.params.lang === 'fr' ? 'de' : 'fr';
+		newUrl = page.url.pathname.replace(page.params.lang, newLang);
+		document.documentElement.lang = page.params.lang;
 
 		fetchedImage.then((image) => {
 			url = image;
@@ -71,18 +70,14 @@
 <div
 	class="fixed left-0 right-0 z-10 flex justify-between items-center shadow-md p-4 border-b-2 border-slate-300 bg-slate-300 font-firava"
 >
-	{#if isDesktop.matches}
+	{#if isDesktop.current}
 		<div>
 			<Dialog.Root bind:open>
-				<Dialog.Trigger asChild let:builder>
-					<Button variant="ghost" builders={[builder]}
-						><Avatar.Root>
-							<Avatar.Image src={url} alt={username} />
-							<Avatar.Fallback
-								>{username !== null ? username[0].toUpperCase() : 'U'}</Avatar.Fallback
-							>
-						</Avatar.Root></Button
-					>
+				<Dialog.Trigger class={buttonVariants({ variant: 'ghost', size: 'icon' })}>
+					<Avatar.Root>
+						<Avatar.Image src={url} alt={username} />
+						<Avatar.Fallback>{username !== null ? username[0].toUpperCase() : 'U'}</Avatar.Fallback>
+					</Avatar.Root>
 				</Dialog.Trigger>
 				<Dialog.Content class="sm:max-w-[425px]">
 					{@render alertDisconnect()}
@@ -99,15 +94,11 @@
 	{:else}
 		<div class="pt-1">
 			<Drawer.Root bind:open>
-				<Drawer.Trigger asChild let:builder>
-					<Button variant="ghost" builders={[builder]}
-						><Avatar.Root>
-							<Avatar.Image src={url} alt={username} />
-							<Avatar.Fallback
-								>{username !== null ? username[0].toUpperCase() : 'U'}</Avatar.Fallback
-							>
-						</Avatar.Root></Button
-					>
+				<Drawer.Trigger class={buttonVariants({ variant: 'ghost', size: 'icon' })}>
+					<Avatar.Root>
+						<Avatar.Image src={url} alt={username} />
+						<Avatar.Fallback>{username !== null ? username[0].toUpperCase() : 'U'}</Avatar.Fallback>
+					</Avatar.Root>
 				</Drawer.Trigger>
 				<Drawer.Content>
 					{@render alertDisconnect()}
@@ -122,13 +113,13 @@
 			</Drawer.Root>
 		</div>
 	{/if}
-	<h1 class="text-3xl mr-4 font-normal font-pixelify">
-		{$t(`common.headers.${$page.url.pathname}`)}
+	<h1 class="text-3xl ml-2 font-normal font-pixelify">
+		{$t(`common.headers.${page.url.pathname}`)}
 	</h1>
-	{#if $page.params.lang !== undefined && !$page.url.pathname.match('quiz')}
+	{#if page.params.lang !== undefined && !page.url.pathname.match('quiz')}
 		<div class="m-2">
 			<Button variant="outline" class="!p-2" onclick={() => goto(newUrl)}>
-				{#if $page.params.lang === 'fr'}
+				{#if page.params.lang === 'fr'}
 					🇫🇷
 				{:else}
 					🇩🇪
@@ -140,7 +131,7 @@
 <div class="pt-16">
 	{@render children()}
 </div>
-{#if !$page.url.pathname.match('invader')}
+{#if !page.url.pathname.match('invader')}
 	<NavbarSlider {menuItems} {position} {activeIndex} onTabSwitch={handleTabSwitch} />
 {/if}
 

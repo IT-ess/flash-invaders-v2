@@ -47,6 +47,7 @@
 >
 	<ul class={position == 'left' ? 'list-none w-full relative' : 'list-none flex relative'}>
 		{#each menuItems as item, index}
+			{@const Icon = item.icon}
 			<!-- svelte-ignore a11y_no_noninteractive_element_interactions -->
 			<!-- svelte-ignore a11y_click_events_have_key_events -->
 			<li
@@ -69,18 +70,19 @@
 								: 'translate-y-[-64px] text-white'
 							: ''}"
 					>
-						<svelte:component this={item.icon} size={24} />
+						<Icon size={24} />
 					</span>
 				</a>
 			</li>
 		{/each}
 		{#if position == 'left'}
+			{@const Icon = menuItems[activeIndex].icon}
 			<div
 				class="indicator w-[50px] h-[50px] rounded-full border-primary {highlightColor} absolute right-[-38px] z-[2] transition-all duration-300 ease-in-out flex items-center justify-center"
 				style="top: {activeIndex * 72 + 2}px;"
 			>
 				<span class="icon text-white">
-					<svelte:component this={menuItems[activeIndex].icon} size={24} />
+					<Icon size={24} />
 				</span>
 			</div>
 		{:else}

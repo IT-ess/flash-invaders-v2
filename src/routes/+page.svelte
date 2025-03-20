@@ -17,10 +17,24 @@
 <div class="h-screen w-screen bg-black flex flex-col justify-evenly">
 	<Title lang={defaultLocale} />
 	<div class="flex flex-col space-y-4">
-		<Marquee fade>
+		<Marquee
+			fade
+			pauseOnHover={false}
+			direction="left"
+			reverse={false}
+			numberOfCopies={2}
+			innerClassName=""
+		>
 			{@render marqueeContent(firstMarquee)}
 		</Marquee>
-		<Marquee reverse fade>
+		<Marquee
+			reverse
+			fade
+			pauseOnHover={false}
+			direction="left"
+			numberOfCopies={2}
+			innerClassName=""
+		>
 			{@render marqueeContent(secondMarquee)}
 		</Marquee>
 	</div>

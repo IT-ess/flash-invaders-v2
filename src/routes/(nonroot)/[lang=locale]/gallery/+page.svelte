@@ -5,7 +5,7 @@
 	import * as Card from '$lib/components/ui/card';
 	import { AspectRatio } from '$lib/components/ui/aspect-ratio';
 	import { goto } from '$app/navigation';
-	import { page } from '$app/stores';
+	import { page } from '$app/state';
 	import OcticonLocation from '~icons/octicon/location';
 	import type { InvadersInfos } from '../+layout';
 
@@ -19,7 +19,7 @@
 				if (infos.id === 100) {
 					return;
 				}
-				goto(`/${$page.params.lang}/invader/${infos.id}`);
+				goto(`/${page.params.lang}/invader/${infos.id}`);
 			}}
 		>
 			<Card.Header>

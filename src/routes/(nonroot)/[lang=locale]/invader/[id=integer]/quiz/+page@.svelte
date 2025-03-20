@@ -2,14 +2,14 @@
 	import { t } from '$lib/translations/translations';
 	import { Button } from '$lib/components/ui/button';
 	import { Progress } from '$lib/components/ui/progress';
-	import { page } from '$app/stores';
+	import { page } from '$app/state';
 	import { supabase } from '$lib/supabase-client';
 	import { goto } from '$app/navigation';
 	import OcticonArrowRight16 from '~icons/octicon/arrow-right-16';
 	import type { PageData } from './$types';
 
-	let pageId = +$page.params.id;
-	let lang = $page.params.lang;
+	let pageId = +page.params.id;
+	let lang = page.params.lang;
 
 	let { data }: { data: PageData } = $props();
 
@@ -70,7 +70,7 @@
 {#if !(questionPointer > answers.length - 1)}
 	<div class="flex flex-col h-screen p-2">
 		<div class="my-2">
-			<Progress value={(questionPointer / questions.length) * 100} />
+			<Progress value={(questionPointer / questions.length) * 100} class="bg-slate-300" />
 		</div>
 		<div class="p-6 mt-4 bg-white rounded-md font-semibold shadow-lg text-lg text-center ring-2">
 			<p>
