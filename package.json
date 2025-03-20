@@ -15,7 +15,7 @@
 	"license": "MIT",
 	"dependencies": {
 		"@supabase/supabase-js": "^2.49.1",
-		"@tauri-apps/api": "2.3.0",
+		"@tauri-apps/api": "2.4.0",
 		"@tauri-apps/cli": "2.3.1",
 		"@tauri-apps/plugin-nfc": "2.2.0",
 		"@tauri-apps/plugin-shell": "2.2.0",
@@ -36,8 +36,7 @@
 		"cssnano": "^7.0.6",
 		"embla-carousel-svelte": "^8.5.2",
 		"formsnap": "^2.0.0",
-		"lucide-svelte": "^0.483.0",
-		"mode-watcher": "^0.4.1",
+		"mode-watcher": "^0.5.1",
 		"postcss": "^8.5.3",
 		"postcss-loader": "^8.1.1",
 		"prettier": "^3.5.3",

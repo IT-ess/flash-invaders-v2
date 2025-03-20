@@ -2,7 +2,7 @@
 	import { supabase } from '../supabase-client';
 	import * as Avatar from '$lib/components/ui/avatar';
 	import { downloadAvatar, updateAvatarPath } from '$lib/utils/avatar-functions';
-	import { Circle } from 'svelte-loading-spinners';
+	import Circle from '$lib/components/spinners/Circle.svelte';
 
 	let {
 		url = $bindable(),
@@ -74,7 +74,7 @@
 	<label for="single">
 		<div class="inline-block box-content">
 			{#if uploading}
-				<Circle color="#FFD93E" size={loaderClassSize} unit="rem" duration="3s" />
+				<Circle color="#FFD93E" size={loaderClassSize} unit="rem" duration="3s" pause={false} />
 			{:else}
 				<Avatar.Root
 					class="{avatarClassSize} mx-auto border-4 border-primary {classUpload}"

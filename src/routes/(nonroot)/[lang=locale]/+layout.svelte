@@ -14,7 +14,7 @@
 	import MaterialSymbolsExitToAppRounded from '~icons/material-symbols/exit-to-app-rounded';
 	import { buttonVariants } from '$lib/components/ui/button';
 	import { supabase } from '$lib/supabase-client';
-	import { Medal, Images, Radio } from 'lucide-svelte';
+	import { Medal, Images, Radio } from '@lucide/svelte';
 
 	const menuItems = [
 		{ text: 'common.nav.gallery', icon: Images, path: 'gallery' },
@@ -113,7 +113,7 @@
 			</Drawer.Root>
 		</div>
 	{/if}
-	<h1 class="text-3xl mr-4 font-normal font-pixelify">
+	<h1 class="text-3xl ml-2 font-normal font-pixelify">
 		{$t(`common.headers.${page.url.pathname}`)}
 	</h1>
 	{#if page.params.lang !== undefined && !page.url.pathname.match('quiz')}

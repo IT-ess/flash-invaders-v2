@@ -14,7 +14,7 @@
 	import { AuthError } from '@supabase/supabase-js';
 	import OcticonArrowRight16 from '~icons/octicon/arrow-right-16';
 	import MaterialSymbolsAccountCircle from '~icons/material-symbols/account-circle';
-	import LoaderCircle from 'lucide-svelte/icons/loader-circle';
+	import LoaderCircle from '@lucide/svelte/icons/loader-circle';
 	import PageIndicator from '$lib/components/PageIndicator.svelte';
 	import { Toaster } from '$lib/components/ui/sonner';
 	import { toast } from 'svelte-sonner';
