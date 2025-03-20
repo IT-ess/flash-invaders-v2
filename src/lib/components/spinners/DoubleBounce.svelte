@@ -3,12 +3,6 @@
 	import type { SpinnerTypes } from './spinner.types';
 	import { range, durationUnitRegex } from './utils';
 
-	// export let color: SpinnerTypes['color'] = '#FF3E00';
-	// export let unit: SpinnerTypes['unit'] = 'px';
-	// export let duration: SpinnerTypes['duration'] = '2.1s';
-	// export let size: SpinnerTypes['size'] = '60';
-	// export let pause: SpinnerTypes['pause'] = false;
-
 	let {
 		color = '#FF3E00',
 		unit = 'px',

@@ -1,11 +1,6 @@
 <!-- From svelte-loading-spinners, converted to svelte 5 -->
 <script lang="ts">
 	import type { SpinnerTypes } from './spinner.types';
-	// export let color: SpinnerTypes['color'] = '#FF3E00';
-	// export let unit: SpinnerTypes['unit'] = 'px';
-	// export let duration: SpinnerTypes['duration'] = '0.75s';
-	// export let size: SpinnerTypes['size'] = '60';
-	// export let pause: SpinnerTypes['pause'] = false;
 
 	let {
 		color = '#FF3E00',
