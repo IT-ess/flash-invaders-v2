@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 54;
+	objectVersion = 56;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -12,11 +12,13 @@
 		27A5EC4605A657EFAAEF75A5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 876C06E80D88ED856AA9EFEA /* LaunchScreen.storyboard */; };
 		3440A362C25076F05731F27F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AE3024B2F6ADED6713EA6B8B /* Assets.xcassets */; };
 		424EA90F9D51BE50F2DED467 /* main.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2B4AE4A8F18E02CC38E35C0B /* main.mm */; };
-		4B7BA8F538F0FCAF9E71A653 /* libflash_invaders_v2_lib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 34C070C76C99C6B2F944167C /* libflash_invaders_v2_lib.a */; };
+		52BEDD632D8D735500135070 /* nfc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52BEDD622D8D735200135070 /* nfc.swift */; };
 		54ECBF022DDF4F13156660C7 /* Metal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F14D9D3A2B23764DEF16F85 /* Metal.framework */; };
 		99E79720A08D71392B684D7B /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A75088C32E3E0FCDD0B1D98A /* QuartzCore.framework */; };
 		AC902CB2696DAA7293220C9F /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D7935998E078246656B1F3F /* Security.framework */; };
 		D19EDC745F2A5231AABAA4C3 /* MetalKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 72BDE0749F56A44829D7684C /* MetalKit.framework */; };
+		E4396F4BE866A39B5FB8F1C5 /* CoreNFC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4C72B5B0F6294FA38AAAB84 /* CoreNFC.framework */; };
+		F0A22383D1C3C581EE08A69B /* libapp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D1A427A12368C45316B5A596 /* libapp.a */; };
 		F1572ACEB7BA3761DCD571A6 /* assets in Resources */ = {isa = PBXBuildFile; fileRef = DCD3C8C7A5A5D4E9E4290501 /* assets */; };
 		FD34397920D3DDF6F09EFD01 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE791A315C6B8A86512B5BEA /* WebKit.framework */; };
 /* End PBXBuildFile section */
@@ -27,11 +29,11 @@
 		0F14D9D3A2B23764DEF16F85 /* Metal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Metal.framework; path = System/Library/Frameworks/Metal.framework; sourceTree = SDKROOT; };
 		215EE1FBE2513EDDDF7F2437 /* flash-invaders-v2_iOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "flash-invaders-v2_iOS.entitlements"; sourceTree = "<group>"; };
 		2B4AE4A8F18E02CC38E35C0B /* main.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = main.mm; sourceTree = "<group>"; };
-		34C070C76C99C6B2F944167C /* libflash_invaders_v2_lib.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libflash_invaders_v2_lib.a; sourceTree = "<group>"; };
-		3A84296FE377E5592A5E8CA6 /* lib.rs */ = {isa = PBXFileReference; path = lib.rs; sourceTree = "<group>"; };
+		3A84296FE377E5592A5E8CA6 /* lib.rs */ = {isa = PBXFileReference; lastKnownFileType = text; path = lib.rs; sourceTree = "<group>"; };
 		4D7935998E078246656B1F3F /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
-		543807F9C7083B2629C2434E /* flash-invaders-v2_iOS.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = "flash-invaders-v2_iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		7079026581511342C23EC490 /* main.rs */ = {isa = PBXFileReference; path = main.rs; sourceTree = "<group>"; };
+		52BEDD622D8D735200135070 /* nfc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = nfc.swift; sourceTree = "<group>"; };
+		543807F9C7083B2629C2434E /* Zwietess.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Zwietess.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		7079026581511342C23EC490 /* main.rs */ = {isa = PBXFileReference; lastKnownFileType = text; path = main.rs; sourceTree = "<group>"; };
 		72BDE0749F56A44829D7684C /* MetalKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MetalKit.framework; path = System/Library/Frameworks/MetalKit.framework; sourceTree = SDKROOT; };
 		808002CBBBBB2F18A17730F7 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		8156FB2320A93145C6A261C3 /* bindings.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = bindings.h; sourceTree = "<group>"; };
@@ -39,7 +41,9 @@
 		A75088C32E3E0FCDD0B1D98A /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		AE3024B2F6ADED6713EA6B8B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BE791A315C6B8A86512B5BEA /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
+		D1A427A12368C45316B5A596 /* libapp.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libapp.a; sourceTree = "<group>"; };
 		DCD3C8C7A5A5D4E9E4290501 /* assets */ = {isa = PBXFileReference; lastKnownFileType = folder; path = assets; sourceTree = SOURCE_ROOT; };
+		F4C72B5B0F6294FA38AAAB84 /* CoreNFC.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreNFC.framework; path = System/Library/Frameworks/CoreNFC.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,13 +51,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4B7BA8F538F0FCAF9E71A653 /* libflash_invaders_v2_lib.a in Frameworks */,
+				F0A22383D1C3C581EE08A69B /* libapp.a in Frameworks */,
 				006C651FAF96CE11565DAFA7 /* CoreGraphics.framework in Frameworks */,
 				54ECBF022DDF4F13156660C7 /* Metal.framework in Frameworks */,
 				D19EDC745F2A5231AABAA4C3 /* MetalKit.framework in Frameworks */,
 				99E79720A08D71392B684D7B /* QuartzCore.framework in Frameworks */,
 				AC902CB2696DAA7293220C9F /* Security.framework in Frameworks */,
 				1BFEE047A1ABAC278AB347BC /* UIKit.framework in Frameworks */,
+				E4396F4BE866A39B5FB8F1C5 /* CoreNFC.framework in Frameworks */,
 				FD34397920D3DDF6F09EFD01 /* WebKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -65,7 +70,8 @@
 			isa = PBXGroup;
 			children = (
 				808002CBBBBB2F18A17730F7 /* CoreGraphics.framework */,
-				34C070C76C99C6B2F944167C /* libflash_invaders_v2_lib.a */,
+				F4C72B5B0F6294FA38AAAB84 /* CoreNFC.framework */,
+				D1A427A12368C45316B5A596 /* libapp.a */,
 				0F14D9D3A2B23764DEF16F85 /* Metal.framework */,
 				72BDE0749F56A44829D7684C /* MetalKit.framework */,
 				A75088C32E3E0FCDD0B1D98A /* QuartzCore.framework */,
@@ -86,6 +92,7 @@
 		423B19860EF0C42C713BCE1E = {
 			isa = PBXGroup;
 			children = (
+				52BEDD622D8D735200135070 /* nfc.swift */,
 				DCD3C8C7A5A5D4E9E4290501 /* assets */,
 				AE3024B2F6ADED6713EA6B8B /* Assets.xcassets */,
 				876C06E80D88ED856AA9EFEA /* LaunchScreen.storyboard */,
@@ -135,7 +142,7 @@
 		D2BE8AF115B52260FE7D9A4C /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				543807F9C7083B2629C2434E /* flash-invaders-v2_iOS.app */,
+				543807F9C7083B2629C2434E /* Zwietess.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -168,7 +175,7 @@
 			);
 			name = "flash-invaders-v2_iOS";
 			productName = "flash-invaders-v2_iOS";
-			productReference = 543807F9C7083B2629C2434E /* flash-invaders-v2_iOS.app */;
+			productReference = 543807F9C7083B2629C2434E /* Zwietess.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -181,8 +188,8 @@
 				LastUpgradeCheck = 1430;
 				TargetAttributes = {
 					9B50FA400FFF89003B0C08B0 = {
-						DevelopmentTeam = U5M7X5V6ZG;
-						ProvisioningStyle = Automatic;
+						DevelopmentTeam = 9A6YPCKFPC;
+						LastSwiftMigration = 1610;
 					};
 				};
 			};
@@ -231,9 +238,9 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(SRCROOT)/Externals/x86_64/${CONFIGURATION}/libflash_invaders_v2_lib.a",
-				"$(SRCROOT)/Externals/arm64/${CONFIGURATION}/libflash_invaders_v2_lib.a",
-				"$(SRCROOT)/Externals/arm64-sim/${CONFIGURATION}/libflash_invaders_v2_lib.a",
+				"$(SRCROOT)/Externals/x86_64/${CONFIGURATION}/libapp.a",
+				"$(SRCROOT)/Externals/arm64/${CONFIGURATION}/libapp.a",
+				"$(SRCROOT)/Externals/arm64-sim/${CONFIGURATION}/libapp.a",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -247,6 +254,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				424EA90F9D51BE50F2DED467 /* main.mm in Sources */,
+				52BEDD632D8D735500135070 /* nfc.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -325,10 +333,10 @@
 					"arm64-sim",
 				);
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = "flash-invaders-v2_iOS/flash-invaders-v2_iOS.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = U5M7X5V6ZG;
+				DEVELOPMENT_TEAM = "9A6YPCKFPC";
 				ENABLE_BITCODE = NO;
 				"EXCLUDED_ARCHS[sdk=iphoneos*]" = "arm64-sim x86_64";
 				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = arm64;
@@ -341,12 +349,31 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				"LIBRARY_SEARCH_PATHS[arch=arm64-sim]" = "$(inherited) $(PROJECT_DIR)/Externals/arm64-sim/$(CONFIGURATION) $(SDKROOT)/usr/lib/swift $(TOOLCHAIN_DIR)/usr/lib/swift/$(PLATFORM_NAME) $(TOOLCHAIN_DIR)/usr/lib/swift-5.0/$(PLATFORM_NAME)";
-				"LIBRARY_SEARCH_PATHS[arch=arm64]" = "$(inherited) $(PROJECT_DIR)/Externals/arm64/$(CONFIGURATION) $(SDKROOT)/usr/lib/swift $(TOOLCHAIN_DIR)/usr/lib/swift/$(PLATFORM_NAME) $(TOOLCHAIN_DIR)/usr/lib/swift-5.0/$(PLATFORM_NAME)";
-				"LIBRARY_SEARCH_PATHS[arch=x86_64]" = "$(inherited) $(PROJECT_DIR)/Externals/x86_64/$(CONFIGURATION) $(SDKROOT)/usr/lib/swift $(TOOLCHAIN_DIR)/usr/lib/swift/$(PLATFORM_NAME) $(TOOLCHAIN_DIR)/usr/lib/swift-5.0/$(PLATFORM_NAME)";
-				PRODUCT_BUNDLE_IDENTIFIER = com.flashinvader.zwietess;
+				"LIBRARY_SEARCH_PATHS[arch=arm64-sim]" = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Externals/arm64-sim/$(CONFIGURATION)",
+					"$(SDKROOT)/usr/lib/swift",
+					"$(TOOLCHAIN_DIR)/usr/lib/swift/$(PLATFORM_NAME)",
+					"$(TOOLCHAIN_DIR)/usr/lib/swift-5.0/$(PLATFORM_NAME)",
+				);
+				"LIBRARY_SEARCH_PATHS[arch=arm64]" = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Externals/arm64/$(CONFIGURATION)",
+					"$(SDKROOT)/usr/lib/swift",
+					"$(TOOLCHAIN_DIR)/usr/lib/swift/$(PLATFORM_NAME)",
+					"$(TOOLCHAIN_DIR)/usr/lib/swift-5.0/$(PLATFORM_NAME)",
+				);
+				"LIBRARY_SEARCH_PATHS[arch=x86_64]" = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Externals/x86_64/$(CONFIGURATION)",
+					"$(SDKROOT)/usr/lib/swift",
+					"$(TOOLCHAIN_DIR)/usr/lib/swift/$(PLATFORM_NAME)",
+					"$(TOOLCHAIN_DIR)/usr/lib/swift-5.0/$(PLATFORM_NAME)",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.flashinvaders.zwietess;
 				PRODUCT_NAME = Zwietess;
 				SDKROOT = iphoneos;
+				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALID_ARCHS = "arm64  arm64-sim";
 			};
@@ -361,10 +388,10 @@
 					"arm64-sim",
 				);
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = "flash-invaders-v2_iOS/flash-invaders-v2_iOS.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = U5M7X5V6ZG;
+				DEVELOPMENT_TEAM = "9A6YPCKFPC";
 				ENABLE_BITCODE = NO;
 				"EXCLUDED_ARCHS[sdk=iphoneos*]" = "arm64-sim x86_64";
 				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = arm64;
@@ -377,12 +404,32 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				"LIBRARY_SEARCH_PATHS[arch=arm64-sim]" = "$(inherited) $(PROJECT_DIR)/Externals/arm64-sim/$(CONFIGURATION) $(SDKROOT)/usr/lib/swift $(TOOLCHAIN_DIR)/usr/lib/swift/$(PLATFORM_NAME) $(TOOLCHAIN_DIR)/usr/lib/swift-5.0/$(PLATFORM_NAME)";
-				"LIBRARY_SEARCH_PATHS[arch=arm64]" = "$(inherited) $(PROJECT_DIR)/Externals/arm64/$(CONFIGURATION) $(SDKROOT)/usr/lib/swift $(TOOLCHAIN_DIR)/usr/lib/swift/$(PLATFORM_NAME) $(TOOLCHAIN_DIR)/usr/lib/swift-5.0/$(PLATFORM_NAME)";
-				"LIBRARY_SEARCH_PATHS[arch=x86_64]" = "$(inherited) $(PROJECT_DIR)/Externals/x86_64/$(CONFIGURATION) $(SDKROOT)/usr/lib/swift $(TOOLCHAIN_DIR)/usr/lib/swift/$(PLATFORM_NAME) $(TOOLCHAIN_DIR)/usr/lib/swift-5.0/$(PLATFORM_NAME)";
-				PRODUCT_BUNDLE_IDENTIFIER = com.flashinvader.zwietess;
+				"LIBRARY_SEARCH_PATHS[arch=arm64-sim]" = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Externals/arm64-sim/$(CONFIGURATION)",
+					"$(SDKROOT)/usr/lib/swift",
+					"$(TOOLCHAIN_DIR)/usr/lib/swift/$(PLATFORM_NAME)",
+					"$(TOOLCHAIN_DIR)/usr/lib/swift-5.0/$(PLATFORM_NAME)",
+				);
+				"LIBRARY_SEARCH_PATHS[arch=arm64]" = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Externals/arm64/$(CONFIGURATION)",
+					"$(SDKROOT)/usr/lib/swift",
+					"$(TOOLCHAIN_DIR)/usr/lib/swift/$(PLATFORM_NAME)",
+					"$(TOOLCHAIN_DIR)/usr/lib/swift-5.0/$(PLATFORM_NAME)",
+				);
+				"LIBRARY_SEARCH_PATHS[arch=x86_64]" = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Externals/x86_64/$(CONFIGURATION)",
+					"$(SDKROOT)/usr/lib/swift",
+					"$(TOOLCHAIN_DIR)/usr/lib/swift/$(PLATFORM_NAME)",
+					"$(TOOLCHAIN_DIR)/usr/lib/swift-5.0/$(PLATFORM_NAME)",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.flashinvaders.zwietess;
 				PRODUCT_NAME = Zwietess;
 				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALID_ARCHS = "arm64  arm64-sim";
 			};

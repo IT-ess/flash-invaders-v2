@@ -3,7 +3,7 @@ pub fn run() {
     tauri::Builder::default()
         .setup(|app| {
             #[cfg(mobile)]
-            app.handle().plugin(tauri_plugin_nfc::init());
+            app.handle().plugin(tauri_plugin_nfc::init())?;
             Ok(())
         })
         .plugin(tauri_plugin_shell::init())
