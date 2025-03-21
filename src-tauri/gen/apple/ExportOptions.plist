@@ -3,11 +3,6 @@
 <plist version="1.0">
 <dict>
     <key>method</key>
-    <string>app-store-connect</string>
-    <key>provisioningProfiles</key>
-        <dict>
-            <key>com.flashinvaders.zwietess</key> <!-- set your app bundle identifier -->
-            <string>ProdWithoutNFC.mobileprovision</string> <!-- set your provisioning profile name -->
-        </dict>
+    <string>debugging</string>
 </dict>
 </plist>
