@@ -1,6 +1,7 @@
 {
 	"productName": "Zwietess",
 	"version": "1.4.0",
+	"identifier": "com.flashinvader.zwietess",
 	"app": {
 		"windows": [
 			{

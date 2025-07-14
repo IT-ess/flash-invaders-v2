@@ -20,6 +20,9 @@
 		"iOS": {
 			"developmentTeam": "9A6YPCKFPC",
 			"frameworks": ["CoreNFC"]
+		},
+		"android": {
+		  "minSdkVersion": 28
 		}
 	}
 }
