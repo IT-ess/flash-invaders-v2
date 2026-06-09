@@ -14,7 +14,7 @@ This is the v2 version of a webapp I made for the same event, named flash-invade
 ## Features and packages used
 
 - Application framework : Tauri (v2)
-- Frontend framework : Svelte + TailwindCSS (v5) with SvelteKit
+- Frontend framework : Svelte (v5) + TailwindCSS (v4) with SvelteKit
 - Frontend components : shadcn-svelte
 - NFC scan library : `tauri-plugin-nfc`
 - Backend and auth : Supabase

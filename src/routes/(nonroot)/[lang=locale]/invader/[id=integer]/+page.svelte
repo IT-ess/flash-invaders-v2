@@ -6,7 +6,7 @@
 	import { INVADERS, INVADERS_STARTING_INDEX } from '$lib/game-data/invaders';
 	import type { PageData } from './$types';
 
-	let pageId = +page.params.id;
+	let pageId = +(page.params.id ?? 1);
 
 	let { data }: { data: PageData } = $props();
 
@@ -26,7 +26,7 @@
 </script>
 
 <div class="relative flex flex-col bg-gray-100 mt-10">
-	<div class="bg-white pt-4 px-8 flex-grow flex flex-col overflow-y-auto pb-6 rounded-md shadow-lg">
+	<div class="bg-white pt-4 px-8 grow flex flex-col overflow-y-auto pb-6 rounded-md shadow-lg">
 		<Carousel.Root>
 			<Carousel.Content>
 				{#each carouselItems as { url, caption }}

@@ -10,7 +10,7 @@
 
 	let { data }: { data: PageData } = $props();
 	let { username, fetchedImage, userId } = data;
-	const lang = page.params.lang;
+	const lang = page.params.lang === 'de' ? 'de' : 'fr';
 
 	let url: string | null = $state(null);
 	$effect(() => {

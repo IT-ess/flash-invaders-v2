@@ -23,8 +23,8 @@
 
 	$effect(() => {
 		newLang = page.params.lang === 'fr' ? 'de' : 'fr';
-		newUrl = page.url.pathname.replace(page.params.lang, newLang);
-		document.documentElement.lang = page.params.lang;
+		newUrl = page.url.pathname.replace(newLang === 'fr' ? 'de' : 'fr', newLang);
+		document.documentElement.lang = newLang === 'fr' ? 'de' : 'fr';
 	});
 </script>
 

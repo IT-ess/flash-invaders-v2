@@ -39,7 +39,7 @@
 
 	let { lang } = page.params;
 
-	let { score, invaderCount } = data;
+	let { score, invaderCount } = $derived(data);
 	let displayedScore = $state(0);
 	let displayedInvaderCount = $state(0);
 

@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { onNavigate } from '$app/navigation';
 	import type { LayoutProps } from './$types';
-	import '../app.pcss';
+	import '../app.css';
 
 	let { children }: LayoutProps = $props();
 
