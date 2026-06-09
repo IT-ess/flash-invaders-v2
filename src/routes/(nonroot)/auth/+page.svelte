@@ -115,7 +115,7 @@
 							<Form.Control>
 								{#snippet children({ props })}
 									<Form.Label class="flex items-center">
-										<OcticonMail16 class="mr-1 mb-[1px]" />{$t(`auth.email.label`)}
+										<OcticonMail16 class="mr-1 mb-px" />{$t(`auth.email.label`)}
 									</Form.Label>
 									<Input {...props} type="email" bind:value={$formData.email} />
 								{/snippet}
@@ -129,7 +129,7 @@
 							<Form.Control>
 								{#snippet children({ props })}
 									<Form.Label class="flex items-center"
-										><OcticonKeyAsterisk16 class="mr-1 mb-[1px]" />{$t(
+										><OcticonKeyAsterisk16 class="mr-1 mb-px" />{$t(
 											`auth.password.label`
 										)}</Form.Label
 									>
@@ -146,7 +146,7 @@
 								<Form.Control>
 									{#snippet children({ props })}
 										<Form.Label class="flex items-center"
-											><MaterialSymbolsAccountCircle class="mr-1 mb-[1px]" />{$t(
+											><MaterialSymbolsAccountCircle class="mr-1 mb-px" />{$t(
 												`auth.username.label`
 											)}</Form.Label
 										>

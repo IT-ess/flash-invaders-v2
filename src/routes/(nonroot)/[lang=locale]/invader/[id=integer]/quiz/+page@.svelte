@@ -8,7 +8,7 @@
 	import OcticonArrowRight16 from '~icons/octicon/arrow-right-16';
 	import type { PageData } from './$types';
 
-	let pageId = +page.params.id;
+	let pageId = +(page.params.id ?? 1);
 	let lang = page.params.lang;
 
 	let { data }: { data: PageData } = $props();

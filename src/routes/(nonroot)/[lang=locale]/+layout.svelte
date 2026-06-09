@@ -33,7 +33,7 @@
 	let newLang: string = $state('');
 	let newUrl: string = $state('');
 
-	let { fetchedImage, username, userId } = data;
+	let { fetchedImage, username, userId } = $derived(data);
 
 	let url: string | null = $state(null);
 	let open = $state(false);
@@ -47,8 +47,8 @@
 			activeIndex = 2;
 		}
 		newLang = page.params.lang === 'fr' ? 'de' : 'fr';
-		newUrl = page.url.pathname.replace(page.params.lang, newLang);
-		document.documentElement.lang = page.params.lang;
+		newUrl = page.url.pathname.replace(newLang === 'fr' ? 'de' : 'fr', newLang);
+		document.documentElement.lang = newLang === 'fr' ? 'de' : 'fr';
 
 		fetchedImage.then((image) => {
 			url = image;
@@ -118,7 +118,7 @@
 	</h1>
 	{#if page.params.lang !== undefined && !page.url.pathname.match('quiz')}
 		<div class="m-2">
-			<Button variant="outline" class="!p-2" onclick={() => goto(newUrl)}>
+			<Button variant="outline" class="p-2!" onclick={() => goto(newUrl)}>
 				{#if page.params.lang === 'fr'}
 					🇫🇷
 				{:else}
