@@ -7,7 +7,7 @@
 	import { supabase } from '$lib/supabase-client';
 	import { formSchema, type FormSchema } from './zod-schema';
 	import { type SuperValidated, type Infer, superForm } from 'sveltekit-superforms';
-	import { zodClient } from 'sveltekit-superforms/adapters';
+	import { zod4Client } from 'sveltekit-superforms/adapters';
 	import * as Card from '$lib/components/ui/card';
 	import OcticonMail16 from '~icons/octicon/mail-16';
 	import OcticonKeyAsterisk16 from '~icons/octicon/key-asterisk-16';
@@ -25,7 +25,7 @@
 
 	const form = superForm(data, {
 		SPA: true,
-		validators: zodClient(formSchema),
+		validators: zod4Client(formSchema),
 		dataType: 'json',
 		onError({ result }) {
 			toast.error(result.error.message || 'Unknown error');
