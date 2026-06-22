@@ -1,8 +1,5 @@
-import {
-	PUBLIC_PLATFORM,
-	PUBLIC_SUPABASE_ANON_KEY,
-	PUBLIC_SUPABASE_URL
-} from '$env/static/public';
+import { PUBLIC_PLATFORM, PUBLIC_SUPABASE_ANON_KEY, PUBLIC_SUPABASE_URL } from '$env/static/public';
+import { browser } from '$app/environment';
 import { createClient, type SupportedStorage } from '@supabase/supabase-js';
 import { LazyStore } from '@tauri-apps/plugin-store';
 import { type Database } from './database.types';
@@ -13,7 +10,7 @@ import { type Database } from './database.types';
 // `localStorage` behaviour.
 let storage: SupportedStorage | undefined;
 
-if (PUBLIC_PLATFORM === 'mobile') {
+if (browser && PUBLIC_PLATFORM === 'mobile') {
 	const store = new LazyStore('supabase-auth.json');
 	storage = {
 		getItem: async (key) => (await store.get<string>(key)) ?? null,

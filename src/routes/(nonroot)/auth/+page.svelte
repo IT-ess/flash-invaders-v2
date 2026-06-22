@@ -23,6 +23,7 @@
 
 	let { data }: { data: SuperValidated<Infer<FormSchema>> } = $props();
 
+	// svelte-ignore state_referenced_locally
 	const form = superForm(data, {
 		SPA: true,
 		validators: zod4Client(formSchema),

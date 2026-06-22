@@ -20,8 +20,8 @@
 	let files: FileList | undefined = $state();
 	let classUpload = $state('');
 
-	let avatarClassSize = size === 'lg' ? 'h-36 w-36' : 'h-20 w-20';
-	let loaderClassSize = size === 'lg' ? 8 : 6;
+	let avatarClassSize = $derived(size === 'lg' ? 'h-36 w-36' : 'h-20 w-20');
+	let loaderClassSize = $derived(size === 'lg' ? 8 : 6);
 	$effect(() => {
 		classUpload = uploading ? 'opacity-50 bg-slate-600' : '';
 	});

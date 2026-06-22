@@ -9,7 +9,7 @@
 	import { sessionState } from '$lib/session-state.svelte';
 
 	let { data }: { data: PageData } = $props();
-	const { firstMarquee, secondMarquee } = data;
+	const { firstMarquee, secondMarquee } = $derived(data);
 	const defaultLocale = navigator.language.startsWith('de') ? 'de' : 'fr'; // get from cookie, user session, ...
 	const isAlreadyLoggedId = !!sessionState.getSession;
 </script>

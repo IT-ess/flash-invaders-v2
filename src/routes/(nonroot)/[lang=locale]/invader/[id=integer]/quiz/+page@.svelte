@@ -18,6 +18,7 @@
 	let showAnswer = $state(false);
 
 	const { questions } = $derived(data);
+	// svelte-ignore state_referenced_locally
 	let answers = new Array(questions.length).fill(null);
 
 	async function submitScore() {
