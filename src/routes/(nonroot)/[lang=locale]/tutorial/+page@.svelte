@@ -31,7 +31,7 @@
 <div class="min-h-screen w-full flex flex-col items-center justify-center container">
 	<Card.Root class="relative">
 		<div class="absolute right-2 top-2">
-			<Button variant="outline" class="!p-2" onclick={() => goto(newUrl)}>
+			<Button variant="outline" class="p-2!" onclick={() => goto(newUrl)}>
 				{#if page.params.lang === 'fr'}
 					🇫🇷
 				{:else}

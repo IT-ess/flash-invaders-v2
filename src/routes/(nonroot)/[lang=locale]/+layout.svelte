@@ -68,7 +68,7 @@
 </script>
 
 <div
-	class="fixed left-0 right-0 z-10 flex justify-between items-center shadow-md p-4 border-b-2 border-slate-300 bg-slate-300 font-firava"
+	class="sticky left-0 right-0 z-10 flex justify-between items-center shadow-md pt-safe px-safe-offset-2 border-b-2 border-slate-300 bg-slate-300 font-firava"
 >
 	{#if isDesktop.current}
 		<div>
@@ -128,9 +128,7 @@
 		</div>
 	{/if}
 </div>
-<div class="pt-16">
-	{@render children()}
-</div>
+{@render children()}
 {#if !page.url.pathname.match('invader')}
 	<NavbarSlider {menuItems} {position} {activeIndex} onTabSwitch={handleTabSwitch} />
 {/if}

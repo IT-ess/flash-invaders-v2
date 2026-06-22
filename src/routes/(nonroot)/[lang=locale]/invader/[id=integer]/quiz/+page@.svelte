@@ -17,7 +17,7 @@
 	let questionPointer = $state(0);
 	let showAnswer = $state(false);
 
-	const { questions } = data;
+	const { questions } = $derived(data);
 	let answers = new Array(questions.length).fill(null);
 
 	async function submitScore() {
@@ -77,7 +77,7 @@
 				{questions[questionPointer].question}
 			</p>
 		</div>
-		<div class="flex flex-col justify-evenly flex-grow p-4">
+		<div class="flex flex-col justify-evenly grow p-4">
 			{#each questions[questionPointer].options as opt, i}
 				<Button
 					disabled={showAnswer}
@@ -92,7 +92,7 @@
 		</div>
 
 		{#if showAnswer}
-			<div class="w-full flex flex-shrink-0 basis-28 justify-center items-center space-x-5">
+			<div class="w-full flex shrink-0 basis-28 justify-center items-center space-x-5">
 				<Button
 					variant="secondary"
 					onclick={() => {
@@ -113,7 +113,7 @@
 				{/if}
 			</div>
 		{:else}
-			<div class="w-full flex flex-shrink-0 basis-28 justify-center items-center">
+			<div class="w-full flex shrink-0 basis-28 justify-center items-center">
 				<Button
 					variant="secondary"
 					onclick={() => {

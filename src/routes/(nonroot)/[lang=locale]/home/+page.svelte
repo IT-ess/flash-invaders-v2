@@ -148,176 +148,174 @@
 
 <Toaster richColors position="top-center" duration={9000} />
 
-<div class="container my-8">
-	<main>
-		<Dialog.Root bind:open={successModal}>
-			<Dialog.Content class="max-w-[80%] rounded-md">
-				<Dialog.Header>
-					<Dialog.Title>{$t('home.success_modal.message')}</Dialog.Title>
-					<Dialog.Description>
-						<span>{$t(`common.zwt${foundInvader?.id}.name`)}</span>
-						<AspectRatio ratio={16 / 9} class="bg-muted">
-							<img src={foundInvader?.imageUrl} alt={foundInvader?.name} />
-						</AspectRatio>
-					</Dialog.Description>
-				</Dialog.Header>
-				<Dialog.Footer>
-					<Button
-						variant="secondary"
-						type="submit"
-						onclick={() => goto(`./invader/${foundInvader?.id}`)}
-						>{$t(`home.success_modal.button`)}</Button
-					>
-				</Dialog.Footer>
-			</Dialog.Content>
-		</Dialog.Root>
-		<Dialog.Root bind:open={failModal}>
-			<Dialog.Content class="max-w-[80%] rounded-md">
-				<Dialog.Header>
-					<Dialog.Title>{$t('home.fail_modal.title')}</Dialog.Title>
-					<Dialog.Description>
-						<div class="text-center">
-							<OcticonAlert class="text-destructive h-12 w-12 mx-auto" />
-							<br />
-							<h4 class="mb-5 text-lg font-normal text-foreground dark:text-gray-400">
-								{$t('home.fail_modal.message')}
+<main class="px-safe-offset-4">
+	<Dialog.Root bind:open={successModal}>
+		<Dialog.Content class="max-w-[80%] rounded-md">
+			<Dialog.Header>
+				<Dialog.Title>{$t('home.success_modal.message')}</Dialog.Title>
+				<Dialog.Description>
+					<span>{$t(`common.zwt${foundInvader?.id}.name`)}</span>
+					<AspectRatio ratio={16 / 9} class="bg-muted">
+						<img src={foundInvader?.imageUrl} alt={foundInvader?.name} />
+					</AspectRatio>
+				</Dialog.Description>
+			</Dialog.Header>
+			<Dialog.Footer>
+				<Button
+					variant="secondary"
+					type="submit"
+					onclick={() => goto(`./invader/${foundInvader?.id}`)}
+					>{$t(`home.success_modal.button`)}</Button
+				>
+			</Dialog.Footer>
+		</Dialog.Content>
+	</Dialog.Root>
+	<Dialog.Root bind:open={failModal}>
+		<Dialog.Content class="max-w-[80%] rounded-md">
+			<Dialog.Header>
+				<Dialog.Title>{$t('home.fail_modal.title')}</Dialog.Title>
+				<Dialog.Description>
+					<div class="text-center">
+						<OcticonAlert class="text-destructive h-12 w-12 mx-auto" />
+						<br />
+						<h4 class="mb-5 text-lg font-normal text-foreground dark:text-gray-400">
+							{$t('home.fail_modal.message')}
+						</h4>
+						{#if accuracy >= 40}
+							<h4 class="mb-5 text-lg font-semibold text-red-500 dark:text-gray-400">
+								{$t('home.fail_modal.bad_accuracy')}
 							</h4>
-							{#if accuracy >= 40}
-								<h4 class="mb-5 text-lg font-semibold text-red-500 dark:text-gray-400">
-									{$t('home.fail_modal.bad_accuracy')}
-								</h4>
-							{:else if accuracy < 40 && accuracy >= 20}
-								<h4 class="mb-5 text-lg font-semibold text-orange-400 dark:text-gray-400">
-									{$t('home.fail_modal.medium_accuracy')}
-								</h4>
-							{:else if accuracy < 20}
-								<h4 class="mb-5 text-lg font-semibold text-green-600 dark:text-gray-400">
-									{$t('home.fail_modal.good_accuracy')}
-								</h4>
-							{/if}
-						</div>
-					</Dialog.Description>
-				</Dialog.Header>
-				<Dialog.Footer>
-					<Button variant="destructive" onclick={() => (failModal = false)}
-						>{$t('home.fail_modal.button')}</Button
-					>
-				</Dialog.Footer>
-			</Dialog.Content>
-		</Dialog.Root>
-		<Dialog.Root bind:open={geoFailModal}>
-			<Dialog.Content class="max-w-[80%] rounded-md">
-				<Dialog.Title>{$t('home.geo_fail_modal.title')}</Dialog.Title>
-				<Dialog.Description>
-					<div class="text-center">
-						<OcticonRadioTower class="mx-auto mb-4 w-12 h-12 text-destructive dark:text-gray-200" />
-						<h2 class="mb-5 text-lg font-semibold text-destructive dark:text-gray-400">
-							{$t('home.geo_fail_modal.message')}
-						</h2>
+						{:else if accuracy < 40 && accuracy >= 20}
+							<h4 class="mb-5 text-lg font-semibold text-orange-400 dark:text-gray-400">
+								{$t('home.fail_modal.medium_accuracy')}
+							</h4>
+						{:else if accuracy < 20}
+							<h4 class="mb-5 text-lg font-semibold text-green-600 dark:text-gray-400">
+								{$t('home.fail_modal.good_accuracy')}
+							</h4>
+						{/if}
 					</div>
 				</Dialog.Description>
-				<Dialog.Footer>
-					<Button variant="destructive" onclick={() => (geoFailModal = false)}
-						>{$t('home.fail_modal.button')}</Button
-					>
-				</Dialog.Footer>
-			</Dialog.Content>
-		</Dialog.Root>
-		<Dialog.Root bind:open={nfcNotAvailableModal}>
-			<Dialog.Content class="max-w-[80%] rounded-md">
-				<Dialog.Title>{$t('home.nfc_unavailable_modal.title')}</Dialog.Title>
-				<Dialog.Description>
-					<div class="text-center">
-						<MdiNfc class="mx-auto mb-4 w-12 h-12 text-destructive dark:text-gray-200" />
-						<h2 class="mb-5 text-lg font-semibold text-destructive dark:text-gray-400">
-							{$t('home.nfc_unavailable_modal.message')}
-						</h2>
-					</div>
-				</Dialog.Description>
-				<Dialog.Footer>
-					<Button variant="destructive" onclick={() => (nfcNotAvailableModal = false)}
-						>{$t('home.fail_modal.button')}</Button
-					>
-				</Dialog.Footer>
-			</Dialog.Content>
-		</Dialog.Root>
-		<Dialog.Root bind:open={nfcFailModal}>
-			<Dialog.Content class="max-w-[80%] rounded-md">
-				<Dialog.Title>{$t('home.nfc_fail_modal.title')}</Dialog.Title>
-				<Dialog.Description>
-					<div class="text-center">
-						<MdiNfc class="mx-auto mb-4 w-12 h-12 text-destructive dark:text-gray-200" />
-						<h2 class="mb-5 text-lg font-semibold text-destructive dark:text-gray-400">
-							{$t('home.nfc_fail_modal.message')}
-						</h2>
-					</div>
-				</Dialog.Description>
-				<Dialog.Footer>
-					<Button variant="destructive" onclick={() => (nfcFailModal = false)}
-						>{$t('home.fail_modal.button')}</Button
-					>
-				</Dialog.Footer>
-			</Dialog.Content>
-		</Dialog.Root>
-		<Dialog.Root bind:open={nfcTimeoutModal}>
-			<Dialog.Content class="max-w-[80%] rounded-md">
-				<Dialog.Title>{$t('home.nfc_timeout_modal.title')}</Dialog.Title>
-				<Dialog.Description>
-					<div class="text-center">
-						<MdiNfc class="mx-auto mb-4 w-12 h-12 text-destructive dark:text-gray-200" />
-						<h2 class="mb-5 text-lg font-semibold text-destructive dark:text-gray-400">
-							{$t('home.nfc_timeout_modal.message')}
-						</h2>
-					</div>
-				</Dialog.Description>
-				<Dialog.Footer>
-					<Button variant="destructive" onclick={() => (nfcTimeoutModal = false)}
-						>{$t('home.fail_modal.button')}</Button
-					>
-				</Dialog.Footer>
-			</Dialog.Content>
-		</Dialog.Root>
+			</Dialog.Header>
+			<Dialog.Footer>
+				<Button variant="destructive" onclick={() => (failModal = false)}
+					>{$t('home.fail_modal.button')}</Button
+				>
+			</Dialog.Footer>
+		</Dialog.Content>
+	</Dialog.Root>
+	<Dialog.Root bind:open={geoFailModal}>
+		<Dialog.Content class="max-w-[80%] rounded-md">
+			<Dialog.Title>{$t('home.geo_fail_modal.title')}</Dialog.Title>
+			<Dialog.Description>
+				<div class="text-center">
+					<OcticonRadioTower class="mx-auto mb-4 w-12 h-12 text-destructive dark:text-gray-200" />
+					<h2 class="mb-5 text-lg font-semibold text-destructive dark:text-gray-400">
+						{$t('home.geo_fail_modal.message')}
+					</h2>
+				</div>
+			</Dialog.Description>
+			<Dialog.Footer>
+				<Button variant="destructive" onclick={() => (geoFailModal = false)}
+					>{$t('home.fail_modal.button')}</Button
+				>
+			</Dialog.Footer>
+		</Dialog.Content>
+	</Dialog.Root>
+	<Dialog.Root bind:open={nfcNotAvailableModal}>
+		<Dialog.Content class="max-w-[80%] rounded-md">
+			<Dialog.Title>{$t('home.nfc_unavailable_modal.title')}</Dialog.Title>
+			<Dialog.Description>
+				<div class="text-center">
+					<MdiNfc class="mx-auto mb-4 w-12 h-12 text-destructive dark:text-gray-200" />
+					<h2 class="mb-5 text-lg font-semibold text-destructive dark:text-gray-400">
+						{$t('home.nfc_unavailable_modal.message')}
+					</h2>
+				</div>
+			</Dialog.Description>
+			<Dialog.Footer>
+				<Button variant="destructive" onclick={() => (nfcNotAvailableModal = false)}
+					>{$t('home.fail_modal.button')}</Button
+				>
+			</Dialog.Footer>
+		</Dialog.Content>
+	</Dialog.Root>
+	<Dialog.Root bind:open={nfcFailModal}>
+		<Dialog.Content class="max-w-[80%] rounded-md">
+			<Dialog.Title>{$t('home.nfc_fail_modal.title')}</Dialog.Title>
+			<Dialog.Description>
+				<div class="text-center">
+					<MdiNfc class="mx-auto mb-4 w-12 h-12 text-destructive dark:text-gray-200" />
+					<h2 class="mb-5 text-lg font-semibold text-destructive dark:text-gray-400">
+						{$t('home.nfc_fail_modal.message')}
+					</h2>
+				</div>
+			</Dialog.Description>
+			<Dialog.Footer>
+				<Button variant="destructive" onclick={() => (nfcFailModal = false)}
+					>{$t('home.fail_modal.button')}</Button
+				>
+			</Dialog.Footer>
+		</Dialog.Content>
+	</Dialog.Root>
+	<Dialog.Root bind:open={nfcTimeoutModal}>
+		<Dialog.Content class="max-w-[80%] rounded-md">
+			<Dialog.Title>{$t('home.nfc_timeout_modal.title')}</Dialog.Title>
+			<Dialog.Description>
+				<div class="text-center">
+					<MdiNfc class="mx-auto mb-4 w-12 h-12 text-destructive dark:text-gray-200" />
+					<h2 class="mb-5 text-lg font-semibold text-destructive dark:text-gray-400">
+						{$t('home.nfc_timeout_modal.message')}
+					</h2>
+				</div>
+			</Dialog.Description>
+			<Dialog.Footer>
+				<Button variant="destructive" onclick={() => (nfcTimeoutModal = false)}
+					>{$t('home.fail_modal.button')}</Button
+				>
+			</Dialog.Footer>
+		</Dialog.Content>
+	</Dialog.Root>
 
-		<div class="flex flex-grow items-center justify-evenly w-full">
-			<div class="box-content h-56 w-56 p-6">
-				<span class="relative flex h-full w-full justify-center">
-					<CtaButton handleOnClick={handleSearch} bind:loading />
-				</span>
-			</div>
+	<div class="flex grow items-center justify-evenly w-full">
+		<div class="box-content h-56 w-56 p-6">
+			<span class="relative flex h-full w-full justify-center">
+				<CtaButton handleOnClick={handleSearch} bind:loading />
+			</span>
 		</div>
+	</div>
 
-		<div class="space-y-4">
-			<div>
-				<p class="flex justify-between">
-					<span>Score</span><span>{score}/{1200 - INVADERS_STARTING_INDEX * 100}</span>
-				</p>
-				<Progress
-					value={displayedScore}
-					max={1200 - INVADERS_STARTING_INDEX * 100}
-					class="bg-slate-300"
-				/>
-			</div>
-			<div>
-				<p class="flex justify-between">
-					<span>{$t('home.invaders_found')}</span><span
-						>{displayedInvaderCount}/{12 - INVADERS_STARTING_INDEX}</span
-					>
-				</p>
-				<Progress
-					value={displayedInvaderCount}
-					max={12 - INVADERS_STARTING_INDEX}
-					class="bg-slate-300"
-				/>
-			</div>
+	<div class="space-y-4">
+		<div>
+			<p class="flex justify-between">
+				<span>Score</span><span>{score}/{1200 - INVADERS_STARTING_INDEX * 100}</span>
+			</p>
+			<Progress
+				value={displayedScore}
+				max={1200 - INVADERS_STARTING_INDEX * 100}
+				class="bg-slate-300"
+			/>
 		</div>
-		<div class="p-4 w-full flex justify-center items-center space-x-4 mt-12">
-			<Button
-				class="w-screen"
-				variant="secondary"
-				size="lg"
-				href="https://www.google.com/maps/d/viewer?mid=1qDy-Qcv9ScGx97vlB1Wy_9tvOIumt0I"
-				>Maps<LogosGoogleMaps class="ml-1 mb-[4px]" /></Button
-			>
+		<div>
+			<p class="flex justify-between">
+				<span>{$t('home.invaders_found')}</span><span
+					>{displayedInvaderCount}/{12 - INVADERS_STARTING_INDEX}</span
+				>
+			</p>
+			<Progress
+				value={displayedInvaderCount}
+				max={12 - INVADERS_STARTING_INDEX}
+				class="bg-slate-300"
+			/>
 		</div>
-	</main>
-</div>
+	</div>
+	<div class="p-4 w-full flex justify-center items-center space-x-4 mt-12">
+		<Button
+			class="w-screen"
+			variant="secondary"
+			size="lg"
+			href="https://www.google.com/maps/d/viewer?mid=1qDy-Qcv9ScGx97vlB1Wy_9tvOIumt0I"
+			>Maps<LogosGoogleMaps class="ml-1 mb-1" /></Button
+		>
+	</div>
+</main>

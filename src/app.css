@@ -2,6 +2,8 @@
 
 @import 'tw-animate-css';
 
+@import 'tailwindcss-safe-area';
+
 @import 'shadcn-svelte/tailwind.css';
 
 @custom-variant dark (&:is(.dark *));
