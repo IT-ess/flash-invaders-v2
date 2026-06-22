@@ -13,7 +13,7 @@
 </script>
 
 {#snippet invaderCard(infos: InvadersInfos)}
-	<div class="space-y-5 items-center justify-center my-6">
+	<div class="space-y-5 items-center justify-center my-6 mx-safe-offset-4">
 		<Card.Root
 			onclick={() => {
 				if (infos.id === 100) {
@@ -42,7 +42,7 @@
 	</div>
 {/snippet}
 
-<main class="mt-10 mb-28">
+<main class="mb-safe-offset-28">
 	{#each data.invadersInfos as infos}
 		{@render invaderCard(infos)}
 	{/each}

@@ -9,7 +9,7 @@
 	import { page } from '$app/state';
 
 	let { data }: { data: PageData } = $props();
-	let { username, fetchedImage, userId } = data;
+	let { username, fetchedImage, userId } = $derived(data);
 	const lang = page.params.lang === 'de' ? 'de' : 'fr';
 
 	let url: string | null = $state(null);
@@ -31,6 +31,6 @@
 	</div>
 	<PageIndicator totalPages={3} currentPage={1} />
 	<Button class="mb-8 font-semibold" size="lg" variant="default" href="tutorial"
-		>{$t(`common.nav.tutorial`)}<OcticonArrowRight16 class="ml-1 mb-[4px]" /></Button
+		>{$t(`common.nav.tutorial`)}<OcticonArrowRight16 class="ml-1 mb-1" /></Button
 	>
 </div>

@@ -6,11 +6,11 @@
 	import { INVADERS_STARTING_INDEX } from '$lib/game-data/invaders';
 
 	let { data }: { data: PageData } = $props();
-	let { profiles } = data;
+	let { profiles } = $derived(data);
 </script>
 
 <div class="my-8">
-	<Table.Root class="mt-4 mb-32">
+	<Table.Root class="pb-safe">
 		<Table.Caption class="text-primary font-semibold text-lg">{$t('ranking.caption')}</Table.Caption
 		>
 		<Table.Header class="bg-primary shadow-lg border-b-2 border-secondary">
