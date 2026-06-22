@@ -14,6 +14,7 @@
 	},
 	"license": "MIT",
 	"dependencies": {
+		"@tauri-apps/plugin-store": "^2.4.3",
 		"dotenv": "^17.4.2"
 	},
 	"devDependencies": {

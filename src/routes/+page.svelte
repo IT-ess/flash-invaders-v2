@@ -6,12 +6,12 @@
 	import OcticonArrowRight16 from '~icons/octicon/arrow-right-16';
 	import Title from '$lib/components/Title.svelte';
 	import type { MarqueeInfos } from './+page';
+	import { sessionState } from '$lib/session-state.svelte';
 
 	let { data }: { data: PageData } = $props();
 	const { firstMarquee, secondMarquee } = data;
 	const defaultLocale = navigator.language.startsWith('de') ? 'de' : 'fr'; // get from cookie, user session, ...
-	const localStorageMatchingKeys = localStorage.key(0)?.match('sb') ?? [];
-	const isAlreadyLoggedId = localStorageMatchingKeys.length > 0;
+	const isAlreadyLoggedId = !!sessionState.getSession;
 </script>
 
 <div class="h-screen w-screen bg-black flex flex-col justify-evenly">
