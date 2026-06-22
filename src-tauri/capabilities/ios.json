@@ -8,7 +8,8 @@
   "permissions": [
     "core:default",
     "shell:allow-open",
-    "nfc:default"
+    "nfc:default",
+    "store:default"
   ],
   "platforms": [
     "iOS"
