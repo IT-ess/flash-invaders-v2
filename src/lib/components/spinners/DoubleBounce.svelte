@@ -11,8 +11,8 @@
 		pause = false
 	}: SpinnerTypes = $props();
 
-	let durationUnit: string = duration.match(durationUnitRegex)?.[0] ?? 's';
-	let durationNum: string = duration.replace(durationUnitRegex, '');
+	let durationUnit: string = $derived(duration.match(durationUnitRegex)?.[0] ?? 's');
+	let durationNum: string = $derived(duration.replace(durationUnitRegex, ''));
 </script>
 
 <div class="wrapper" style="--size: {size}{unit}; --color: {color}">
