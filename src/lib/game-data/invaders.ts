@@ -200,8 +200,8 @@ if (PUBLIC_IS_TUTORIAL_DISABLED === 'false') {
 	INVADERS.unshift({
 		id: 0,
 		name: 'Le tuto',
-		latitude: 46.99963718022231,
-		longitude: -0.8122978309235765,
+		latitude: 46.99963,
+		longitude: -0.812371,
 		imageUrl: '/zwietess/0.webp',
 		carouselCaptions: ['Jeu concours 1983', 'Arrosoirs', 'Logos'],
 		carouselUrls: ['/context/0-1.jpg', '/context/0-2.jpg', '/context/0-3.jpg'],
