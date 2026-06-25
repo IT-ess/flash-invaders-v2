@@ -40,7 +40,8 @@
 	const themeColorsBg = ['bg-blue-800', 'bg-blue-600', 'bg-blue-500', 'bg-blue-400'];
 
 	function computeButtonClasses(i: number): string {
-		const baseClasses = 'text-center text-wrap px-4 py-7 text-lg text-white rounded-lg w-full';
+		const baseClasses =
+			'text-center whitespace-normal h-auto min-h-20 px-4 py-4 text-lg text-white rounded-lg w-full';
 		const ringClass = showAnswer
 			? getRingClassFromAnswer(answers[questionPointer], i)
 			: 'focus:ring-4 focus:ring-secondary';
