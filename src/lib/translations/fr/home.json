@@ -14,22 +14,6 @@
 		"message": "Vous avez trouvé un Zwietess !",
 		"button": "Voir le Zwietess"
 	},
-	"geo_fail_modal": {
-		"title": "Erreur de géolocalisation",
-		"message": "Vous n'avez pas autorisé la géolocalisation."
-	},
-	"nfc_fail_modal": {
-		"title": "Tag NFC incorrect",
-		"message": "Le tag NFC scanné n'est pas reconnu."
-	},
-	"nfc_timeout_modal": {
-		"title": "Échec du scan",
-		"message": "La tentative de scan a expiré. Veuillez réessayer."
-	},
-	"nfc_unavailable_modal": {
-		"title": "Scan NFC Indisponible",
-		"message": "Le scan NFC n'est pas activé. Activez-le en recherchant \"NFC\" dans les paramètres de votre téléphone."
-	},
 	"invaders_found": "Zwietess trouvés",
 	"nfc_help_text": "Approchez votre téléphone du disque blanc situé sur le Zwietess"
 }

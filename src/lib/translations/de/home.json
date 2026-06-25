@@ -14,22 +14,6 @@
 		"message": "Sie haben einen Zwietess gefunden!",
 		"button": "Zwietess anzeigen"
 	},
-	"geo_fail_modal": {
-		"title": "Geolokalisierung fehlgeschlagen!",
-		"message": "Sie haben die Geolokalisierung nicht zugelassen."
-	},
-	"nfc_fail_modal": {
-		"title": "Falscher NFC-Tag",
-		"message": "Der gescannte NFC-Tag wird nicht erkannt."
-	},
-	"nfc_timeout_modal": {
-		"title": "Scan fehlgeschlagen",
-		"message": "Der Scanversuch ist abgelaufen. Bitte versuchen Sie es erneut."
-	},
-	"nfc_unavailable_modal": {
-		"title": "NFC-Scan Nicht verfügbar",
-		"message": "Der NFC-Scan ist nicht aktiviert. Aktivieren Sie ihn, indem Sie in den Einstellungen Ihres Telefons nach „NFC“ suchen."
-	},
 	"invaders_found": "Zwietess gefunden",
 	"nfc_help_text": "Halten Sie Ihr Telefon an die weiße Scheibe, die sich auf der Zwietess befindet."
 }

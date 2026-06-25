@@ -37,6 +37,7 @@ Copy `.env.example` to `.env` and fill in values. All vars are `PUBLIC_` (expose
 **Game data is hardcoded**, not in the database. Mosaic definitions (id, name, coordinates, image) live in `src/lib/game-data/invaders.ts` and quizzes in `src/lib/game-data/quiz.ts`. Supabase stores only user state (profiles, scores, permissions).
 
 **NFC scan flow:**
+
 1. Each physical tag encodes the URI `zwietess://invader${ID}`.
 2. `src/lib/nfc-utils.ts` scans (`@tauri-apps/plugin-nfc`, scheme filter `zwietess`) and manually decodes the NDEF text record payload.
 3. `src/lib/invader-utils.ts` (`getInvaderFromTagContent`) matches the URI to a hardcoded invader, and/or `getInvadersFromCoords` matches by GPS proximity using `geolocation-utils` `insideCircle`.
