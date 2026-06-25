@@ -16,6 +16,7 @@
 		getInvadersFromCoords,
 		updateUserPrivileges
 	} from '$lib/invader-utils';
+	import { openUrl } from '@tauri-apps/plugin-opener';
 	import { readNfcTag } from '$lib/nfc-utils';
 	import { Toaster } from '$lib/components/ui/sonner';
 	import { toast } from 'svelte-sonner';
@@ -202,7 +203,8 @@
 			class="w-screen"
 			variant="secondary"
 			size="lg"
-			href="https://www.google.com/maps/d/viewer?mid=1qDy-Qcv9ScGx97vlB1Wy_9tvOIumt0I"
+			onclick={() =>
+				openUrl('https://www.google.com/maps/d/viewer?mid=1qDy-Qcv9ScGx97vlB1Wy_9tvOIumt0I')}
 			>Maps<LogosGoogleMaps class="ml-1 mb-1" /></Button
 		>
 	</div>
