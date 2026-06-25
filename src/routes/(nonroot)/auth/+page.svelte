@@ -9,9 +9,6 @@
 	import { type SuperValidated, type Infer, superForm } from 'sveltekit-superforms';
 	import { zod4Client } from 'sveltekit-superforms/adapters';
 	import * as Card from '$lib/components/ui/card';
-	import OcticonMail16 from '~icons/octicon/mail-16';
-	import OcticonKeyAsterisk16 from '~icons/octicon/key-asterisk-16';
-	import { AuthError } from '@supabase/supabase-js';
 	import OcticonArrowRight16 from '~icons/octicon/arrow-right-16';
 	import MaterialSymbolsAccountCircle from '~icons/material-symbols/account-circle';
 	import LoaderCircle from '@lucide/svelte/icons/loader-circle';
@@ -33,44 +30,55 @@
 		}
 	});
 
-	const { form: formData, enhance, message } = form;
+	const { form: formData, enhance } = form;
 
-	let isSignUp = $state(true);
 	let loading = $state(false);
 	let authFailModal = $state(false);
 	let authErrorMessage = $state('');
 	const defaultLocale = navigator.language.startsWith('de') ? 'de' : 'fr'; // get from cookie, user session, ...
 
+	async function isUsernameTaken(username: string): Promise<boolean> {
+		const { data } = await supabase
+			.from('profiles')
+			.select('username')
+			.eq('username', username)
+			.maybeSingle();
+		return data !== null;
+	}
+
 	const handleSubmission = async (event: Event) => {
 		try {
 			event.preventDefault();
 			loading = true;
-			const email = $formData.email;
-			const password = $formData.password;
 			const username = $formData.username;
 
-			let error: AuthError | null = null;
-			if (isSignUp) {
-				error = (
-					await supabase.auth.signUp({
-						email,
-						password,
-						options: {
-							data: {
-								username
-							}
-						}
-					})
-				).error;
-			} else {
-				error = (await supabase.auth.signInWithPassword({ email, password })).error;
+			if (await isUsernameTaken(username)) {
+				authErrorMessage = $t('auth.username.taken');
+				authFailModal = true;
+				return;
 			}
-			if (error) throw error;
-			if (isSignUp) {
-				await goto(`${defaultLocale}/avatar`);
-			} else {
-				await goto(`${defaultLocale}/home`);
+
+			const { error } = await supabase.auth.signInAnonymously({
+				options: {
+					data: {
+						username
+					}
+				}
+			});
+			if (error) {
+				console.error('Anonymous sign-in failed', error);
+				// The profile-creation trigger raises a "Database error saving new
+				// user" if the name was claimed between the pre-check and sign-in;
+				// treat that as a taken username. Surface any other error verbatim so
+				// the real cause (e.g. anonymous sign-ins disabled) is visible.
+				authErrorMessage = error.message.includes('Database error')
+					? $t('auth.username.taken')
+					: error.message;
+				authFailModal = true;
+				return;
 			}
+
+			await goto(`${defaultLocale}/avatar`);
 		} catch (error) {
 			if (error instanceof Error) {
 				authErrorMessage = error.message;
@@ -112,85 +120,34 @@
 			<div class="row flex-center flex mt-4">
 				<div class="col-6 form-widget" aria-live="polite">
 					<form method="POST" use:enhance onsubmit={handleSubmission}>
-						<Form.Field {form} name="email" class="min-w-40">
-							<Form.Control>
-								{#snippet children({ props })}
-									<Form.Label class="flex items-center">
-										<OcticonMail16 class="mr-1 mb-px" />{$t(`auth.email.label`)}
-									</Form.Label>
-									<Input {...props} type="email" bind:value={$formData.email} />
-								{/snippet}
-							</Form.Control>
-							{#if isSignUp}
-								<Form.Description>{$t(`auth.email.helper`)}</Form.Description>
-							{/if}
-							<Form.FieldErrors />
-						</Form.Field>
-						<Form.Field {form} name="password" class="mt-6">
+						<Form.Field {form} name="username" class="min-w-40">
 							<Form.Control>
 								{#snippet children({ props })}
 									<Form.Label class="flex items-center"
-										><OcticonKeyAsterisk16 class="mr-1 mb-px" />{$t(
-											`auth.password.label`
+										><MaterialSymbolsAccountCircle class="mr-1 mb-px" />{$t(
+											`auth.username.label`
 										)}</Form.Label
 									>
-									<Input {...props} type="password" bind:value={$formData.password} />
+									<Input {...props} type="text" bind:value={$formData.username} />
 								{/snippet}
 							</Form.Control>
-							{#if isSignUp}
-								<Form.Description>{$t(`auth.password.helper`)}</Form.Description>
-							{/if}
+							<Form.Description>{$t(`auth.username.helper`)}</Form.Description>
 							<Form.FieldErrors />
 						</Form.Field>
-						{#if isSignUp}
-							<Form.Field {form} name="username" class="mt-6">
-								<Form.Control>
-									{#snippet children({ props })}
-										<Form.Label class="flex items-center"
-											><MaterialSymbolsAccountCircle class="mr-1 mb-px" />{$t(
-												`auth.username.label`
-											)}</Form.Label
-										>
-										<Input {...props} type="text" bind:value={$formData.username} />
-									{/snippet}
-								</Form.Control>
-								<Form.Description>{$t(`auth.username.helper`)}</Form.Description>
-								<Form.FieldErrors />
-							</Form.Field>
-						{/if}
 						{#if !loading}
 							<Form.Button class="text-white mt-4"
-								>{#if isSignUp}
-									{$t(`auth.signUp`)}
-								{:else}
-									{$t(`auth.signIn`)}
-								{/if}<OcticonArrowRight16 /></Form.Button
+								>{$t(`auth.signUp`)}<OcticonArrowRight16 /></Form.Button
 							>
 						{:else}
 							<Form.Button disabled class="text-white mt-4">
 								<LoaderCircle class="mr-2 h-4 w-4 animate-spin" />
-								{#if isSignUp}
-									{$t(`auth.signUp`)}
-								{:else}
-									{$t(`auth.signIn`)}
-								{/if}
+								{$t(`auth.signUp`)}
 							</Form.Button>
 						{/if}
 					</form>
 				</div>
 			</div>
 		</Card.Content>
-		<Card.Footer>
-			{#if isSignUp}
-				<Button variant="link" onclick={() => (isSignUp = false)}
-					>{$t(`auth.signUpSwitch.toSignIn`)}<OcticonArrowRight16 /></Button
-				>
-			{:else}
-				<Button variant="link" onclick={() => (isSignUp = true)}
-					>{$t(`auth.signUpSwitch.toSignUp`)}<OcticonArrowRight16 />
-				</Button>
-			{/if}
-		</Card.Footer>
 	</Card.Root>
 	<PageIndicator totalPages={3} currentPage={0} />
 </div>
