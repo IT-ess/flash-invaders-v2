@@ -6,10 +6,23 @@
 	import { INVADERS_STARTING_INDEX } from '$lib/game-data/invaders';
 
 	let { data }: { data: PageData } = $props();
-	let { profiles } = $derived(data);
+	let { profiles, currentUser } = $derived(data);
 </script>
 
 <div class="my-8">
+	{#snippet rankCell(i: number)}
+		<Table.Cell class="text-lg text-center">
+			{#if i === 0}
+				🥇
+			{:else if i === 1}
+				🥈
+			{:else if i === 2}
+				🥉
+			{:else}
+				{i + 1}
+			{/if}
+		</Table.Cell>
+	{/snippet}
 	<Table.Root class="pb-safe">
 		<Table.Caption class="text-primary font-semibold text-lg">{$t('ranking.caption')}</Table.Caption
 		>
@@ -24,19 +37,9 @@
 		</Table.Header>
 		<Table.Body>
 			{#each profiles as profile, i}
-				<Table.Row class="text-center">
-					<Table.Cell class="text-lg text-center">
-						{#if i === 0}
-							🥇
-						{:else if i === 1}
-							🥈
-						{:else if i === 2}
-							🥉
-						{:else}
-							{i + 1}
-						{/if}
-					</Table.Cell>
-					{#await profile}
+				{#await profile}
+					<Table.Row class="text-center">
+						{@render rankCell(i)}
 						<Table.Cell
 							><Avatar.Root>
 								<Avatar.Fallback>U</Avatar.Fallback>
@@ -45,7 +48,10 @@
 						<Table.Cell>Name</Table.Cell>
 						<Table.Cell>?/{12 - INVADERS_STARTING_INDEX} 👾</Table.Cell>
 						<Table.Cell class="font-semibold">Score</Table.Cell>
-					{:then { avatar, username, invaderCount, score }}
+					</Table.Row>
+				{:then { avatar, username, invaderCount, score, isCurrentUser }}
+					<Table.Row class={isCurrentUser ? 'bg-secondary text-center' : 'text-center'}>
+						{@render rankCell(i)}
 						<Table.Cell
 							><Avatar.Root>
 								<Avatar.Image src={avatar} alt={username} />
@@ -54,14 +60,39 @@
 								>
 							</Avatar.Root></Table.Cell
 						>
-						<Table.Cell>{username}</Table.Cell>
+						<Table.Cell
+							>{isCurrentUser ? `${username} (${$t('ranking.you')})` : username}</Table.Cell
+						>
 						<Table.Cell>{invaderCount}/{12 - INVADERS_STARTING_INDEX} 👾</Table.Cell>
 						<Table.Cell class="font-extrabold text-base text-center">{score}</Table.Cell>
-					{:catch}
+					</Table.Row>
+				{:catch}
+					<Table.Row class="text-center">
+						{@render rankCell(i)}
 						<Table.Cell class="text-red-500">{$t('common.error')}</Table.Cell>
-					{/await}
-				</Table.Row>
+					</Table.Row>
+				{/await}
 			{/each}
+			{#if currentUser}
+				{#await currentUser then me}
+					{#if me}
+						<Table.Row class="bg-secondary border-t-4 border-primary text-center">
+							<Table.Cell class="text-lg font-bold text-center">{me.rank}</Table.Cell>
+							<Table.Cell
+								><Avatar.Root>
+									<Avatar.Image src={me.avatar} alt={me.username} />
+									<Avatar.Fallback
+										>{me.username !== null ? me.username[0].toUpperCase() : 'U'}</Avatar.Fallback
+									>
+								</Avatar.Root></Table.Cell
+							>
+							<Table.Cell>{me.username} ({$t('ranking.you')})</Table.Cell>
+							<Table.Cell>{me.invaderCount}/{12 - INVADERS_STARTING_INDEX} 👾</Table.Cell>
+							<Table.Cell class="font-extrabold text-base text-center">{me.score}</Table.Cell>
+						</Table.Row>
+					{/if}
+				{/await}
+			{/if}
 		</Table.Body>
 	</Table.Root>
 </div>
