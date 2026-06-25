@@ -4,13 +4,14 @@
 	import { Toaster } from '$lib/components/ui/sonner';
 	import { toast } from 'svelte-sonner';
 	import OcticonArrowRight16 from '~icons/octicon/arrow-right-16';
+	import { onMount } from 'svelte';
 
 	let buttonDisabled = $state(true);
 
-	$effect(() => {
+	onMount(() => {
 		setTimeout(() => {
 			buttonDisabled = false;
-		}, 10000);
+		}, 2000);
 	});
 </script>
 
