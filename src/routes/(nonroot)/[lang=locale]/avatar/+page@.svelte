@@ -20,7 +20,7 @@
 	});
 </script>
 
-<div class="h-screen w-screen container flex flex-col justify-between">
+<div class="h-screen w-screen container flex flex-col justify-between py-safe">
 	<div class="mt-8"><Title {lang} /></div>
 	<div>
 		<Avatar bind:url {username} {userId} size="lg" />

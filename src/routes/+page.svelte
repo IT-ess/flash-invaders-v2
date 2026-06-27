@@ -14,7 +14,7 @@
 	const isAlreadyLoggedId = !!sessionState.getSession;
 </script>
 
-<div class="h-screen w-screen bg-black flex flex-col justify-evenly">
+<div class="h-screen w-screen bg-black flex flex-col justify-evenly py-safe">
 	<Title lang={defaultLocale} />
 	<div class="flex flex-col space-y-4">
 		<Marquee
@@ -44,7 +44,7 @@
 			variant="default"
 			href={isAlreadyLoggedId ? `${defaultLocale}/home` : '/auth'}
 		>
-			{$t(`common.nav.begin`)}<OcticonArrowRight16 class="ml-1 mb-[4px]" /></Button
+			{$t(`common.nav.begin`)}<OcticonArrowRight16 class="ml-1 mb-1" /></Button
 		>
 	</div>
 </div>

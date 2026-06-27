@@ -70,7 +70,7 @@
 </script>
 
 {#if !(questionPointer > answers.length - 1)}
-	<div class="flex flex-col h-screen p-2">
+	<div class="flex flex-col h-screen p-2 py-safe-offset-2">
 		<div class="my-2">
 			<Progress value={(questionPointer / questions.length) * 100} class="bg-slate-300" />
 		</div>
@@ -133,7 +133,7 @@
 		{#await submitScore()}
 			<p>...</p>
 		{:then _}
-			<div class="flex flex-col h-screen justify-center items-center space-y-4">
+			<div class="flex flex-col h-screen justify-center items-center space-y-4 py-safe">
 				<h2 class="text-xl font-extrabold text-primary">{$t('quiz.submitted')}</h2>
 				<Button type="submit" onclick={onClickGoToHome}>
 					{$t('quiz.home')}

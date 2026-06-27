@@ -9,7 +9,7 @@
 	let { profiles, currentUser } = $derived(data);
 </script>
 
-<div class="my-8">
+<div class="mb-safe-offset-28">
 	{#snippet rankCell(i: number)}
 		<Table.Cell class="text-lg text-center">
 			{#if i === 0}
