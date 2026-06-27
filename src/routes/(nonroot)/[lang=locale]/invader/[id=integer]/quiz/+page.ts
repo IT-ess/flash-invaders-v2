@@ -15,6 +15,7 @@ export const entries: EntryGenerator = () => {
 };
 
 export const load = (async ({ params }) => {
+	await sessionState.init();
 	const session = sessionState.getSession;
 	const invaderId = +params.id;
 	const lang = params.lang;

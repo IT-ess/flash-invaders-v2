@@ -2,13 +2,16 @@
 // so we will use adapter-static to prerender the app (SSG)
 
 import { loadTranslations } from '$lib/translations/translations';
+import { sessionState } from '$lib/session-state.svelte';
 import type { LayoutLoad } from './$types';
 
 // See: https://beta.tauri.app/start/frontend/sveltekit/ for more info
 export const prerender = true;
 export const ssr = false;
 
-export const load: LayoutLoad = () => {
+export const load: LayoutLoad = async () => {
+	// Restore the persisted auth session before any page/component reads it.
+	await sessionState.init();
 	const defaultLocale = navigator.language.startsWith('de') ? 'de' : 'fr'; // get from cookie, user session, ...
 	loadTranslations(defaultLocale); // keep this just before the `return`
 	return {};

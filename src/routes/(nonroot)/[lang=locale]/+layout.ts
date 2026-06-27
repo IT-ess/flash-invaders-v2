@@ -12,6 +12,7 @@ export const load: LayoutLoad = async ({ url, params }) => {
 	const defaultLocale = navigator.language.startsWith('de') ? 'de' : 'fr'; // get from cookie, user session, ...
 	const initLocale = params.lang || defaultLocale; // set default if no locale already set, I use directly path params rather than the global 'locale' store. I must provide some validation here.
 
+	await sessionState.init();
 	const session = sessionState.getSession;
 	const userId = sessionState.getUserId;
 

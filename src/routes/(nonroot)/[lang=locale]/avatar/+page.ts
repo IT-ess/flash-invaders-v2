@@ -9,6 +9,7 @@ export const entries: EntryGenerator = () => {
 };
 
 export const load: PageLoad = async () => {
+	await sessionState.init();
 	if (!sessionState.getSession) {
 		error(401, { message: 'Unauthorized' });
 	}

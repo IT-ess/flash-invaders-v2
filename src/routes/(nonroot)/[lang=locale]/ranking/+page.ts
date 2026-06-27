@@ -13,6 +13,7 @@ export const entries: EntryGenerator = () => {
 const cache = new Map();
 
 export const load: PageLoad = async () => {
+	await sessionState.init();
 	const userId = sessionState.getUserId;
 	if (!userId) {
 		error(401, { message: 'Unauthorized' });
