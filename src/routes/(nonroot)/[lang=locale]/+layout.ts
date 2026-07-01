@@ -59,12 +59,15 @@ function getInvaderFromState(userData: ProfileRow): InvadersInfos[] {
 				long: longitude
 			});
 		} else {
+			// Keep the invader hidden (id 100) but carry its hint picture so the
+			// gallery can offer a "tap for a hint" preview.
 			invadersInfos.push({
 				id: 100,
 				alt: 'placeholder',
 				img: '/question_mark.png',
 				lat: 0,
-				long: 0
+				long: 0,
+				hintImg: INVADERS[i - INVADERS_STARTING_INDEX]?.hintImageUrl
 			});
 		}
 	}
@@ -77,4 +80,5 @@ export type InvadersInfos = {
 	img: string;
 	lat: number;
 	long: number;
+	hintImg?: string;
 };

@@ -38,6 +38,10 @@
 	"zwt100": {
 		"name": "?"
 	},
+	"gallery": {
+		"hint_cta": "Für einen Hinweis tippen",
+		"zoom_help": "Zum Zoomen zwei Finger spreizen"
+	},
 	"nav": {
 		"gallery": "Galerie",
 		"search": "Suche",

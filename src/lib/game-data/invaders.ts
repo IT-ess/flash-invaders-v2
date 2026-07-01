@@ -8,6 +8,7 @@ export type Invader = {
 	latitude: number;
 	longitude: number;
 	imageUrl: string;
+	hintImageUrl?: string;
 	carouselCaptions: string[];
 	carouselUrls: string[];
 	itemsTypes: string[];
@@ -22,6 +23,7 @@ let INVADERS: Invader[] = [
 		latitude: 47.0050635,
 		longitude: -0.8502914,
 		imageUrl: '/zwietess/1.webp',
+		hintImageUrl: '/hints/1.avif',
 		carouselCaptions: ['Coeur logo', 'Ronde présentation', 'Arrivée 40e', 'BD Cercle'],
 		carouselUrls: ['/context/1-1.jpg', '/context/1-2.jpg', '/context/1-3.jpg', '/context/1-4.jpg'],
 		itemsTypes: ['text'],
@@ -34,6 +36,7 @@ let INVADERS: Invader[] = [
 		latitude: 47.004946958638584,
 		longitude: -0.8511354176095234,
 		imageUrl: '/zwietess/2.webp',
+		hintImageUrl: '/hints/2.avif',
 		carouselCaptions: ['Clochers réunis', 'Vue face église Zwief', 'Vue intérieure église Zwief'],
 		carouselUrls: ['/context/2-1.jpg', '/context/2-2.jpeg', '/context/2-3.jpeg'],
 		itemsTypes: ['text'],
@@ -46,6 +49,7 @@ let INVADERS: Invader[] = [
 		latitude: 47.004980731767795,
 		longitude: -0.8523743877935895,
 		imageUrl: '/zwietess/3.webp',
+		hintImageUrl: '/hints/3.avif',
 		carouselCaptions: [
 			'Elus fleur',
 			'Balons paix',
@@ -70,6 +74,7 @@ let INVADERS: Invader[] = [
 		latitude: 47.004983296815865,
 		longitude: -0.8519022234753352,
 		imageUrl: '/zwietess/4.webp',
+		hintImageUrl: '/hints/4.avif',
 		carouselCaptions: [
 			'Front de bus 1',
 			'Front de bus 2',
@@ -102,6 +107,7 @@ let INVADERS: Invader[] = [
 		latitude: 47.0055787,
 		longitude: -0.8551144,
 		imageUrl: '/zwietess/5.webp',
+		hintImageUrl: '/hints/5.avif',
 		carouselCaptions: ['Partition', 'Concert église', 'Weinrauch', 'BD chants'],
 		carouselUrls: ['/context/5-1.jpg', '/context/5-2.jpg', '/context/5-3.jpg', '/context/5-4.jpg'],
 		itemsTypes: ['text', 'audio'],
@@ -114,6 +120,7 @@ let INVADERS: Invader[] = [
 		latitude: 47.0075601,
 		longitude: -0.8518778,
 		imageUrl: '/zwietess/6.webp',
+		hintImageUrl: '/hints/6.avif',
 		carouselCaptions: ['Vue fête', 'Affiche', 'BD Hockete', 'Fête2', 'Album musique', 'Invitation'],
 		carouselUrls: [
 			'/context/6-1.jpg',
@@ -133,6 +140,7 @@ let INVADERS: Invader[] = [
 		latitude: 47.0047309,
 		longitude: -0.850128,
 		imageUrl: '/zwietess/7.webp',
+		hintImageUrl: '/hints/7.avif',
 		carouselCaptions: ['Elus', 'Blason LT', 'Blason Zwief'],
 		carouselUrls: ['/context/7-1.png', '/context/7-2.jpg', '/context/7-3.jpg'],
 		itemsTypes: ['text'],
@@ -145,6 +153,7 @@ let INVADERS: Invader[] = [
 		latitude: 47.00522784178306,
 		longitude: -0.8472995324521793,
 		imageUrl: '/zwietess/8.webp',
+		hintImageUrl: '/hints/8.avif',
 		carouselCaptions: ['Caisse jaune', 'Camion', 'Camion2', 'Local', 'Echope', 'Charette'],
 		carouselUrls: [
 			'/context/8-1.jpg',
@@ -164,6 +173,7 @@ let INVADERS: Invader[] = [
 		latitude: 47.00344172476325,
 		longitude: -0.85728023215241,
 		imageUrl: '/zwietess/9.webp',
+		hintImageUrl: '/hints/9.avif',
 		carouselCaptions: ['Masques Fasnet', 'Tessalis inauguration', 'Carnaval défilé'],
 		carouselUrls: ['/context/9-1.jpg', '/context/9-2.jpg', '/context/9-3.png'],
 		itemsTypes: ['text', 'video', 'video'],
@@ -176,6 +186,7 @@ let INVADERS: Invader[] = [
 		latitude: 47.00247501325306,
 		longitude: -0.8573560045634288,
 		imageUrl: '/zwietess/10.webp',
+		hintImageUrl: '/hints/10.avif',
 		carouselCaptions: ['Musique', 'Soirée thème gaulois', "Soirée d'adieu à l'ancienne"],
 		carouselUrls: ['/context/10-1.jpg', '/context/10-2.jpg', '/context/10-3.jpg'],
 		itemsTypes: ['text', 'video', 'video'],
@@ -188,6 +199,7 @@ let INVADERS: Invader[] = [
 		latitude: 47.000883875400184,
 		longitude: -0.8558925547807724,
 		imageUrl: '/zwietess/11.webp',
+		hintImageUrl: '/hints/11.avif',
 		carouselCaptions: ['Ghislaine devant chez elle'],
 		carouselUrls: ['/context/11-1.jpeg'],
 		itemsTypes: ['text'],

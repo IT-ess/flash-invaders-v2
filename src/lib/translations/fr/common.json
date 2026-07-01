@@ -38,6 +38,10 @@
 	"zwt100": {
 		"name": "?"
 	},
+	"gallery": {
+		"hint_cta": "Toucher pour un indice",
+		"zoom_help": "Pincez pour zoomer"
+	},
 	"nav": {
 		"gallery": "Galerie",
 		"search": "Recherche",
