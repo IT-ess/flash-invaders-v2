@@ -237,12 +237,14 @@
 			</Dialog.Footer>
 		</Dialog.Content>
 	</Dialog.Root>
-	<div class="flex grow items-center justify-evenly w-full">
-		<div class="box-content h-56 w-56 p-6">
-			<span class="relative flex h-full w-full justify-center">
-				<CtaButton handleOnClick={handleSearch} bind:loading />
-			</span>
-		</div>
+	<div class="flex grow items-center justify-center w-full py-8">
+		<CtaButton
+			handleOnClick={handleSearch}
+			bind:loading
+			label={$t('home.button.scan')}
+			scanningLabel={$t('home.button.scanning')}
+			hint={$t('home.button.hint')}
+		/>
 	</div>
 
 	<div class="space-y-4">

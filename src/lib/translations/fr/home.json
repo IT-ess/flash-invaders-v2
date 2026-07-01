@@ -1,6 +1,8 @@
 {
 	"button": {
-		"scan": "Chercher un Zwietess"
+		"scan": "Chercher un Zwietess",
+		"scanning": "Recherche en cours...",
+		"hint": "Appuyez pour scanner"
 	},
 	"fail_modal": {
 		"title": "Essaie encore !",

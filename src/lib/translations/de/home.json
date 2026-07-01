@@ -1,6 +1,8 @@
 {
 	"button": {
-		"scan": "Ein Zwietess suchen"
+		"scan": "Ein Zwietess suchen",
+		"scanning": "Suche läuft...",
+		"hint": "Zum Scannen tippen"
 	},
 	"fail_modal": {
 		"title": "Erneut versuchen!",
