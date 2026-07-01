@@ -3,11 +3,10 @@ import { sessionState } from '$lib/session-state.svelte';
 import type { EntryGenerator, PageLoad } from './$types';
 import { checkInvaderPrivilege } from '$lib/utils/invader-counter';
 import { QUIZ_DATA } from '$lib/game-data/quiz';
-import { INVADERS_STARTING_INDEX } from '$lib/game-data/invaders';
 
 export const entries: EntryGenerator = () => {
 	const entries = [];
-	for (let i = INVADERS_STARTING_INDEX; i < 12 - INVADERS_STARTING_INDEX; i++) {
+	for (let i = 0; i < 12; i++) {
 		entries.push({ lang: 'fr', id: i.toString() });
 		entries.push({ lang: 'de', id: i.toString() });
 	}

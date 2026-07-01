@@ -25,7 +25,7 @@ export const load: PageLoad = async () => {
 	} else {
 		const { data } = await supabase
 			.from('profiles')
-			.select('score, username, avatar_url, id')
+			.select('score, username, avatar_url, id, inv0')
 			.order('score', { ascending: false })
 			.range(0, 9);
 		profiles = data;
@@ -36,13 +36,14 @@ export const load: PageLoad = async () => {
 		error(500, { message: 'Internal Server Error' });
 	}
 
-	const profilePromises = profiles.map(async ({ id, username, score, avatar_url }) => {
-		const invaderCount = await invaderCounter(id, false);
+	const profilePromises = profiles.map(async ({ id, username, score, avatar_url, inv0 }) => {
+		const foundCount = await invaderCounter(id, false);
 		return {
 			username,
 			score,
 			avatar: await downloadAvatar(avatar_url),
-			invaderCount,
+			// Leaderboard counts base invaders only; the bonus surfaces via score.
+			invaderCount: foundCount - (inv0 > 0 ? 1 : 0),
 			isCurrentUser: id === userId
 		};
 	});
@@ -58,7 +59,7 @@ export const load: PageLoad = async () => {
 async function resolveCurrentUserRanking(userId: string) {
 	const { data: me } = await supabase
 		.from('profiles')
-		.select('score, username, avatar_url')
+		.select('score, username, avatar_url, inv0')
 		.eq('id', userId)
 		.single();
 
@@ -77,7 +78,7 @@ async function resolveCurrentUserRanking(userId: string) {
 		username: me.username,
 		score: me.score,
 		avatar: await downloadAvatar(me.avatar_url),
-		invaderCount: await invaderCounter(userId, false)
+		invaderCount: (await invaderCounter(userId, false)) - (me.inv0 > 0 ? 1 : 0)
 	};
 }
 
@@ -86,4 +87,5 @@ type SupabaseProfiles = {
 	username: string | null;
 	score: number;
 	avatar_url: string | null;
+	inv0: number;
 };

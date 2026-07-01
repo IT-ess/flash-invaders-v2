@@ -1,6 +1,13 @@
-import { PUBLIC_IS_TUTORIAL_DISABLED } from '$env/static/public';
+// Invader 0 is a "bonus" invader stuck on a movable panel: it only counts for a
+// user once they have scanned it. Ids 1..11 are the base game.
+export const BONUS_INVADER_ID = 0;
+export const BASE_INVADER_COUNT = 11;
 
-export const INVADERS_STARTING_INDEX = PUBLIC_IS_TUTORIAL_DISABLED === 'true' ? 1 : 0;
+// Per-user totals: the bonus is included only once the user has caught it.
+export function invaderTotals(bonusFound: boolean): { count: number; maxScore: number } {
+	const count = BASE_INVADER_COUNT + (bonusFound ? 1 : 0);
+	return { count, maxScore: count * 100 };
+}
 
 export type Invader = {
 	id: number;
@@ -17,6 +24,18 @@ export type Invader = {
 };
 
 let INVADERS: Invader[] = [
+	{
+		id: 0,
+		name: 'Le tuto',
+		latitude: 47.002679,
+		longitude: -0.857483,
+		imageUrl: '/zwietess/0.webp',
+		carouselCaptions: ['Jeu concours 1983', 'Arrosoirs', 'Logos'],
+		carouselUrls: ['/context/0-1.jpg', '/context/0-2.jpg', '/context/0-3.jpg'],
+		itemsTypes: ['text'],
+		itemsSources: ['context.zwt0.content'],
+		itemsCaptions: ['']
+	},
 	{
 		id: 1,
 		name: 'La ronde',
@@ -207,20 +226,5 @@ let INVADERS: Invader[] = [
 		itemsCaptions: ['']
 	}
 ] as const;
-
-if (PUBLIC_IS_TUTORIAL_DISABLED === 'false') {
-	INVADERS.unshift({
-		id: 0,
-		name: 'Le tuto',
-		latitude: 47.002679,
-		longitude: -0.857483,
-		imageUrl: '/zwietess/0.webp',
-		carouselCaptions: ['Jeu concours 1983', 'Arrosoirs', 'Logos'],
-		carouselUrls: ['/context/0-1.jpg', '/context/0-2.jpg', '/context/0-3.jpg'],
-		itemsTypes: ['text'],
-		itemsSources: ['context.zwt0.content'],
-		itemsCaptions: ['']
-	});
-}
 
 export { INVADERS };

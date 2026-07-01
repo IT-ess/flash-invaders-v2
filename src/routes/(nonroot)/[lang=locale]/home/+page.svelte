@@ -2,7 +2,7 @@
 	import type { PageData } from './$types';
 	import { t } from '$lib/translations/translations';
 	import Button from '$lib/components/ui/button/button.svelte';
-	import { INVADERS_STARTING_INDEX, type Invader } from '$lib/game-data/invaders';
+	import { invaderTotals, type Invader } from '$lib/game-data/invaders';
 	import * as Dialog from '$lib/components/ui/dialog';
 	import { goto, preloadData } from '$app/navigation';
 	import OcticonAlert from '~icons/octicon/alert';
@@ -42,6 +42,8 @@
 	let { lang } = page.params;
 
 	let { score, invaderCount } = $derived(data);
+	// Include the bonus invader (id 0) in the totals only once the user has caught it.
+	let totals = $derived(invaderTotals(data.privileges.inv0 > 0));
 	let displayedScore = $state(0);
 	let displayedInvaderCount = $state(0);
 
@@ -246,25 +248,15 @@
 	<div class="space-y-4">
 		<div>
 			<p class="flex justify-between">
-				<span>Score</span><span>{score}/{1200 - INVADERS_STARTING_INDEX * 100}</span>
+				<span>Score</span><span>{score}/{totals.maxScore}</span>
 			</p>
-			<Progress
-				value={displayedScore}
-				max={1200 - INVADERS_STARTING_INDEX * 100}
-				class="bg-slate-300"
-			/>
+			<Progress value={displayedScore} max={totals.maxScore} class="bg-slate-300" />
 		</div>
 		<div>
 			<p class="flex justify-between">
-				<span>{$t('home.invaders_found')}</span><span
-					>{displayedInvaderCount}/{12 - INVADERS_STARTING_INDEX}</span
-				>
+				<span>{$t('home.invaders_found')}</span><span>{displayedInvaderCount}/{totals.count}</span>
 			</p>
-			<Progress
-				value={displayedInvaderCount}
-				max={12 - INVADERS_STARTING_INDEX}
-				class="bg-slate-300"
-			/>
+			<Progress value={displayedInvaderCount} max={totals.count} class="bg-slate-300" />
 		</div>
 	</div>
 	<div class="p-4 w-full flex justify-center items-center space-x-4 mt-12">

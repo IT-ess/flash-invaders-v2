@@ -3,7 +3,7 @@
 	import * as Carousel from '$lib/components/ui/carousel/index.ts';
 	import { Button } from '$lib/components/ui/button';
 	import { page } from '$app/state';
-	import { INVADERS, INVADERS_STARTING_INDEX } from '$lib/game-data/invaders';
+	import { INVADERS } from '$lib/game-data/invaders';
 	import type { PageData } from './$types';
 
 	let pageId = +(page.params.id ?? 1);
@@ -11,7 +11,7 @@
 	let { data }: { data: PageData } = $props();
 
 	const { carouselCaptions, carouselUrls, itemsTypes, itemsSources, itemsCaptions } =
-		INVADERS[pageId - INVADERS_STARTING_INDEX];
+		INVADERS.find((invader) => invader.id === pageId) ?? INVADERS[0];
 
 	const carouselItems = carouselCaptions.map((caption, index) => ({
 		caption,

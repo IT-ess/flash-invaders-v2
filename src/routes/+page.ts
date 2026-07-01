@@ -1,4 +1,4 @@
-import { INVADERS, INVADERS_STARTING_INDEX } from '$lib/game-data/invaders';
+import { INVADERS, BONUS_INVADER_ID } from '$lib/game-data/invaders';
 import type { PageLoad } from './$types';
 
 const themeColorsBg = ['bg-[#ff473d]', 'bg-[#ffd93e]', 'bg-[#0074cd]', 'bg-white'];
@@ -11,8 +11,9 @@ export const load: PageLoad = async (event) => {
 
 function getMarqueeInfosArray(): MarqueeInfos[] {
 	const marqueeInfos: MarqueeInfos[] = [];
-	for (let i = 0; i < 12 - INVADERS_STARTING_INDEX; i++) {
-		const { imageUrl, name } = INVADERS[i];
+	// Decorative landing tiles: never show the bonus invader here.
+	for (const { id, imageUrl, name } of INVADERS) {
+		if (id === BONUS_INVADER_ID) continue;
 		marqueeInfos.push({
 			alt: name,
 			img: imageUrl,

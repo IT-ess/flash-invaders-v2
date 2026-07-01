@@ -3,7 +3,7 @@
 	import * as Avatar from '$lib/components/ui/avatar';
 	import * as Table from '$lib/components/ui/table';
 	import type { PageData } from './$types';
-	import { INVADERS_STARTING_INDEX } from '$lib/game-data/invaders';
+	import { BASE_INVADER_COUNT } from '$lib/game-data/invaders';
 
 	let { data }: { data: PageData } = $props();
 	let { profiles, currentUser } = $derived(data);
@@ -46,7 +46,7 @@
 							</Avatar.Root></Table.Cell
 						>
 						<Table.Cell>Name</Table.Cell>
-						<Table.Cell>?/{12 - INVADERS_STARTING_INDEX} 👾</Table.Cell>
+						<Table.Cell>?/{BASE_INVADER_COUNT} 👾</Table.Cell>
 						<Table.Cell class="font-semibold">Score</Table.Cell>
 					</Table.Row>
 				{:then { avatar, username, invaderCount, score, isCurrentUser }}
@@ -63,7 +63,7 @@
 						<Table.Cell
 							>{isCurrentUser ? `${username} (${$t('ranking.you')})` : username}</Table.Cell
 						>
-						<Table.Cell>{invaderCount}/{12 - INVADERS_STARTING_INDEX} 👾</Table.Cell>
+						<Table.Cell>{invaderCount}/{BASE_INVADER_COUNT} 👾</Table.Cell>
 						<Table.Cell class="font-extrabold text-base text-center">{score}</Table.Cell>
 					</Table.Row>
 				{:catch}
@@ -87,7 +87,7 @@
 								</Avatar.Root></Table.Cell
 							>
 							<Table.Cell>{me.username} ({$t('ranking.you')})</Table.Cell>
-							<Table.Cell>{me.invaderCount}/{12 - INVADERS_STARTING_INDEX} 👾</Table.Cell>
+							<Table.Cell>{me.invaderCount}/{BASE_INVADER_COUNT} 👾</Table.Cell>
 							<Table.Cell class="font-extrabold text-base text-center">{me.score}</Table.Cell>
 						</Table.Row>
 					{/if}
