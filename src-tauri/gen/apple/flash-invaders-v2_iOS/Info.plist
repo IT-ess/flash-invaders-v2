@@ -48,5 +48,16 @@
 	<string>NO</string>
 	<key>NSCameraUsageDescription</key>
 	<string>Avatar</string>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>zwietess</string>
+			</array>
+			<key>CFBundleURLName</key>
+			<string>zwietess</string>
+		</dict>
+	</array>
 </dict>
 </plist>
