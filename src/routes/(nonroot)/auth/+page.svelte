@@ -78,7 +78,7 @@
 				return;
 			}
 
-			await goto(`${defaultLocale}/avatar`);
+			await goto(`${defaultLocale}/tutorial`);
 		} catch (error) {
 			if (error instanceof Error) {
 				authErrorMessage = error.message;
@@ -149,5 +149,5 @@
 			</div>
 		</Card.Content>
 	</Card.Root>
-	<PageIndicator totalPages={3} currentPage={0} />
+	<PageIndicator totalPages={4} currentPage={0} />
 </div>

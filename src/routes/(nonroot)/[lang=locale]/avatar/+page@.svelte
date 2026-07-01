@@ -29,8 +29,8 @@
 			<p>{$t(`avatar.subheading`)}</p>
 		</div>
 	</div>
-	<PageIndicator totalPages={3} currentPage={1} />
-	<Button class="mb-8 font-semibold" size="lg" variant="default" href="tutorial"
-		>{$t(`common.nav.tutorial`)}<OcticonArrowRight16 class="ml-1 mb-1" /></Button
+	<PageIndicator totalPages={4} currentPage={3} />
+	<Button class="mb-8 font-semibold" size="lg" variant="default" href="home"
+		>{$t(`common.nav.begin`)}<OcticonArrowRight16 class="ml-1 mb-1" /></Button
 	>
 </div>

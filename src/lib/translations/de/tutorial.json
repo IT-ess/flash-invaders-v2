@@ -1,36 +1,26 @@
 {
-	"header": "Spielregeln",
 	"welcome": {
-		"p1": "Willkommen bei der großen Jagd nach",
-		"p2": "Unten finden Sie einige wichtige Spielregeln..."
+		"p1": "Willkommen bei der großen Jagd nach"
 	},
-	"warning": "Bitte lesen Sie die Regeln, bevor Sie beginnen!",
+	"next": "Weiter",
+	"scan": {
+		"heading": "Einen Zwietess fangen",
+		"location_title": "Per Standort",
+		"nfc_title": "Per NFC-Scan"
+	},
+	"quiz": {
+		"heading": "Das Quiz und die Punkte"
+	},
 	"sec1": {
-		"heading": "Funktionsweise",
 		"content": "Um einen Zwietess 'fangen' zu können, müssen Sie sich in der Nähe befinden (5m ~) und auf die Schaltfläche 'Zwietess suchen' drücken. Wenn Ihre Geolokalisierung ungenau ist, können Sie sich ein paar Meter weiter bewegen und es erneut versuchen."
 	},
 	"sec1_mobile": {
 		"content": "Um einen Zwietess „fangen“ zu können, musst du den blauen Knopf drücken und dann dein Handy in die Nähe der weißen Scheibe bringen. Wenn dein Handy vibriert, hast du gewonnen!"
 	},
-	"sec2": {
-		"heading": "Übersetzungen",
-		"content": "Ihre Standardsprache wird bei der Anmeldung festgelegt. Sie können sie jederzeit über die Schaltfläche oben auf jeder Seite ändern."
-	},
-	"sec3": {
-		"heading": "Internetbrowser",
-		"content": "Aus technischen Gründen verwenden Sie bitte den Chrome-Browser, um das Spiel zu spielen ( vor allem nicht Safari...). Sobald Sie Ihr Konto in diesem Browser erstellt haben, werden Sie automatisch wieder eingeloggt, wenn Sie das Spiel verlassen haben.",
-		"chrome": "Chrome herunterladen"
-	},
 	"sec4": {
-		"heading": "Regeln",
-		"content": "Sie dürfen sich nur einmal anmelden, sonst werden Sie disqualifiziert. Jede Frage bringt je nach Schwierigkeitsgrad 10,20,30 oder 40 Punkte, und Sie haben nur einen Versuch."
-	},
-	"sec5": {
-		"heading": "Karte",
-		"content": "Eine Google-Maps-Karte wird im Spiel zugänglich sein. Sie definiert 5 Suchgebiete, in denen Zwietess zu finden sind (die Anzahl ist auf jedem Gebiet angegeben)."
+		"content": "Sobald du einen Zwietess gefangen hast, beantworte ein Quiz mit 4 Fragen. Jede Frage bringt je nach Schwierigkeitsgrad 10, 20, 30 oder 40 Punkte, und du hast nur einen Versuch."
 	},
 	"sec6_mobile": {
-		"heading": "NFC-Scan",
 		"content": "NFC muss zum Spielen aktiviert werden. Suchen Sie in den Einstellungen Ihres Telefons nach „NFC“, um es zu aktivieren."
 	}
 }
