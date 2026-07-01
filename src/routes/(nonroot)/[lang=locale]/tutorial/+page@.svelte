@@ -49,11 +49,14 @@
 
 		{#if step === 0}
 			<Card.Header>
-				<Card.Title>{$t('tutorial.scan.heading')}</Card.Title>
+				<Card.Title class="font-pixelify">{$t('tutorial.scan.heading')}</Card.Title>
 				<Card.Description>
 					{$t('tutorial.welcome.p1')}
-					<span class="text-blue-600 italic">Zw</span><span class="text-red-500 italic">ie</span
-					><span class="text-black italic">te</span><span class="text-yellow-300 italic">ss</span> !
+					<span class="font-pixelify">
+						<span class="text-blue-600 italic">Zw</span><span class="text-red-500 italic">ie</span
+						><span class="text-black italic">te</span><span class="text-yellow-300 italic">ss</span
+						></span
+					> !
 				</Card.Description>
 			</Card.Header>
 			<Card.Content class="space-y-6">
@@ -81,7 +84,7 @@
 			</Card.Content>
 		{:else}
 			<Card.Header>
-				<Card.Title>{$t('tutorial.quiz.heading')}</Card.Title>
+				<Card.Title class="font-pixelify">{$t('tutorial.quiz.heading')}</Card.Title>
 			</Card.Header>
 			<Card.Content class="space-y-6">
 				<div class="flex items-start gap-4">

@@ -113,7 +113,7 @@
 	</Dialog.Root>
 	<Card.Root>
 		<Card.Header>
-			<Card.Title>{$t(`auth.register`)}</Card.Title>
+			<Card.Title class="font-pixelify">{$t(`auth.register`)}</Card.Title>
 			<Card.Description>{$t(`auth.caption`)}</Card.Description>
 		</Card.Header>
 		<Card.Content>

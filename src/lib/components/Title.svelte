@@ -5,7 +5,7 @@
 {#if lang === 'fr'}
 	<div class="text-center">
 		<h1 class="text-6xl font-extrabold mt-4 font-pixelify">
-			<span class="text-[#0074cd]">zwi</span><span class="text-white">et</span><span
+			<span class="text-[#0074cd]">zwi</span><span class="text-slate-300">et</span><span
 				class="text-[#ff473d]">ess</span
 			>
 		</h1>
