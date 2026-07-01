@@ -24,5 +24,15 @@
 		"android": {
 		  "minSdkVersion": 28
 		}
+	},
+	"plugins": {
+		"deep-link": {
+		  "mobile": [
+			{
+				"scheme": ["zwietess"],
+				"appLink": false
+			}
+			]
+		}
 	}
 }

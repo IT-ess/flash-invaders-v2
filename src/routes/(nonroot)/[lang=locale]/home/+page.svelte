@@ -24,6 +24,7 @@
 	import { toast } from 'svelte-sonner';
 	import { isAvailable } from '@tauri-apps/plugin-nfc';
 	import { AspectRatio } from '$lib/components/ui/aspect-ratio';
+	import { pendingInvader } from '$lib/pending-invader.svelte';
 
 	type SearchMethod = 'gps' | 'nfc';
 	type SearchResult = { invader: Invader; method: SearchMethod; isNew: boolean };
@@ -89,6 +90,9 @@
 		if (!(await isAvailable())) {
 			return null;
 		}
+		// Android delivers the scanned tag to both the NFC plugin and the deeplink
+		// path; suppress the deeplink echo for the duration of this scan.
+		pendingInvader.nfcScanGuardUntil = Date.now() + 12000;
 		toast.info($t('home.nfc_help_text'));
 		try {
 			const tagContent = await readNfcTag(10000);
@@ -121,20 +125,25 @@
 		});
 	}
 
+	// Open the success modal for a found invader, granting privileges/score the
+	// first time it's discovered. Shared by in-app search and deeplink launches.
+	async function showFoundInvader(result: SearchResult) {
+		foundInvader = result.invader;
+		foundMethod = result.method;
+		foundIsNew = result.isNew;
+		if (foundIsNew) {
+			await updateUserPrivileges(foundInvader.id, data.userId);
+		}
+		successModal = true;
+	}
+
 	async function handleSearch() {
 		loading = true;
 		try {
 			// Check GPS and NFC in parallel; keep whichever finds an invader first.
 			const result = await firstResult([findInvaderByGps(), findInvaderByNfc()]);
-			foundInvader = result?.invader ?? null;
-			foundMethod = result?.method ?? null;
-			foundIsNew = result?.isNew ?? true;
-			if (foundInvader) {
-				// Only grant privileges/score the first time it's discovered.
-				if (foundIsNew) {
-					await updateUserPrivileges(foundInvader.id, data.userId);
-				}
-				successModal = true;
+			if (result) {
+				await showFoundInvader(result);
 			} else {
 				failModal = true;
 			}
@@ -142,6 +151,15 @@
 			loading = false;
 		}
 	}
+
+	// A deeplink launch (NFC scan while the app was closed) stashes the invader in
+	// a global store; display it here, where privileges/score data is loaded.
+	$effect(() => {
+		const invader = pendingInvader.invader;
+		if (!invader) return;
+		pendingInvader.invader = null; // consume once
+		showFoundInvader({ invader, method: 'nfc', isNew: isNewlyFound(invader.id) });
+	});
 </script>
 
 <Toaster richColors position="top-center" duration={9000} />
