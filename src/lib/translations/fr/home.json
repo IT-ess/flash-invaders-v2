@@ -12,6 +12,7 @@
 	},
 	"success_modal": {
 		"message": "Vous avez trouvé un Zwietess !",
+		"already_found_message": "Zwietess déjà trouvé !",
 		"button": "Voir le Zwietess",
 		"found_by_gps": "Trouvé par géolocalisation",
 		"found_by_nfc": "Trouvé par scan NFC"

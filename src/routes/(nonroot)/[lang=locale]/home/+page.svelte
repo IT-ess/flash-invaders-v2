@@ -26,13 +26,14 @@
 	import { AspectRatio } from '$lib/components/ui/aspect-ratio';
 
 	type SearchMethod = 'gps' | 'nfc';
-	type SearchResult = { invader: Invader; method: SearchMethod };
+	type SearchResult = { invader: Invader; method: SearchMethod; isNew: boolean };
 
 	let successModal = $state(false);
 	let failModal = $state(false);
 	let loading = $state(false);
 	let foundInvader: Invader | null = $state(null);
 	let foundMethod: SearchMethod | null = $state(null);
+	let foundIsNew = $state(true);
 	let accuracy = $state(40);
 
 	let { data }: { data: PageData } = $props();
@@ -72,8 +73,11 @@
 		try {
 			const { coords } = await getCurrentLocation();
 			accuracy = coords.accuracy;
-			const invader = getInvadersFromCoords(coords).find((invader) => isNewlyFound(invader.id));
-			return invader ? { invader, method: 'gps' } : null;
+			// Prefer a not-yet-found invader, but still report one already collected so
+			// the caller can show the success dialog again.
+			const matches = getInvadersFromCoords(coords);
+			const invader = matches.find((invader) => isNewlyFound(invader.id)) ?? matches[0];
+			return invader ? { invader, method: 'gps', isNew: isNewlyFound(invader.id) } : null;
 		} catch {
 			return null;
 		}
@@ -92,7 +96,7 @@
 				return null;
 			}
 			const invader = getInvaderFromTagContent(tagContent);
-			return invader && isNewlyFound(invader.id) ? { invader, method: 'nfc' } : null;
+			return invader ? { invader, method: 'nfc', isNew: isNewlyFound(invader.id) } : null;
 		} finally {
 			toast.dismiss();
 		}
@@ -124,8 +128,12 @@
 			const result = await firstResult([findInvaderByGps(), findInvaderByNfc()]);
 			foundInvader = result?.invader ?? null;
 			foundMethod = result?.method ?? null;
+			foundIsNew = result?.isNew ?? true;
 			if (foundInvader) {
-				await updateUserPrivileges(foundInvader.id, data.userId);
+				// Only grant privileges/score the first time it's discovered.
+				if (foundIsNew) {
+					await updateUserPrivileges(foundInvader.id, data.userId);
+				}
 				successModal = true;
 			} else {
 				failModal = true;
@@ -142,7 +150,11 @@
 	<Dialog.Root bind:open={successModal}>
 		<Dialog.Content class="max-w-[80%] rounded-md">
 			<Dialog.Header>
-				<Dialog.Title>{$t('home.success_modal.message')}</Dialog.Title>
+				<Dialog.Title
+					>{foundIsNew
+						? $t('home.success_modal.message')
+						: $t('home.success_modal.already_found_message')}</Dialog.Title
+				>
 				<Dialog.Description>
 					<span>{$t(`common.zwt${foundInvader?.id}.name`)}</span>
 					{#if foundMethod === 'gps'}
