@@ -6,6 +6,8 @@
 	import * as Dialog from '$lib/components/ui/dialog';
 	import { goto, preloadData } from '$app/navigation';
 	import OcticonAlert from '~icons/octicon/alert';
+	import OcticonLocation from '~icons/octicon/location-16';
+	import MdiNfc from '~icons/mdi/nfc';
 	import LogosGoogleMaps from '~icons/logos/google-maps';
 	import { Progress } from '$lib/components/ui/progress';
 	import { page } from '$app/state';
@@ -23,10 +25,14 @@
 	import { isAvailable } from '@tauri-apps/plugin-nfc';
 	import { AspectRatio } from '$lib/components/ui/aspect-ratio';
 
+	type SearchMethod = 'gps' | 'nfc';
+	type SearchResult = { invader: Invader; method: SearchMethod };
+
 	let successModal = $state(false);
 	let failModal = $state(false);
 	let loading = $state(false);
 	let foundInvader: Invader | null = $state(null);
+	let foundMethod: SearchMethod | null = $state(null);
 	let accuracy = $state(40);
 
 	let { data }: { data: PageData } = $props();
@@ -50,7 +56,7 @@
 		return new Promise((resolve, reject) => {
 			navigator.geolocation.getCurrentPosition(resolve, reject, {
 				enableHighAccuracy: true,
-				timeout: 15000,
+				timeout: 10000,
 				maximumAge: 0
 			});
 		});
@@ -61,20 +67,21 @@
 	}
 
 	// Match by GPS proximity. Any failure (incl. denied permission) resolves to
-	// null so the caller can fall back to NFC.
-	async function findInvaderByGps(): Promise<Invader | null> {
+	// null. Runs in parallel with the NFC scan.
+	async function findInvaderByGps(): Promise<SearchResult | null> {
 		try {
 			const { coords } = await getCurrentLocation();
 			accuracy = coords.accuracy;
-			return getInvadersFromCoords(coords).find((invader) => isNewlyFound(invader.id)) ?? null;
+			const invader = getInvadersFromCoords(coords).find((invader) => isNewlyFound(invader.id));
+			return invader ? { invader, method: 'gps' } : null;
 		} catch {
 			return null;
 		}
 	}
 
-	// Fallback to scanning an NFC tag. Returns null when NFC is unavailable, times
-	// out, or the tag doesn't match a known invader.
-	async function findInvaderByNfc(): Promise<Invader | null> {
+	// Scan an NFC tag. Returns null when NFC is unavailable, times out, or the tag
+	// doesn't match a known invader. Runs in parallel with the GPS lookup.
+	async function findInvaderByNfc(): Promise<SearchResult | null> {
 		if (!(await isAvailable())) {
 			return null;
 		}
@@ -85,17 +92,38 @@
 				return null;
 			}
 			const invader = getInvaderFromTagContent(tagContent);
-			return invader && isNewlyFound(invader.id) ? invader : null;
+			return invader && isNewlyFound(invader.id) ? { invader, method: 'nfc' } : null;
 		} finally {
 			toast.dismiss();
 		}
 	}
 
+	// Resolve to the first truthy result, or null once every method resolved null.
+	// Plain Promise.race won't do: a fast null (e.g. NFC unavailable) would win and
+	// discard a still-pending success from the other method.
+	function firstResult(promises: Promise<SearchResult | null>[]): Promise<SearchResult | null> {
+		return new Promise((resolve) => {
+			let pending = promises.length;
+			for (const promise of promises) {
+				promise
+					.then((result) => {
+						if (result) resolve(result);
+						else if (--pending === 0) resolve(null);
+					})
+					.catch(() => {
+						if (--pending === 0) resolve(null);
+					});
+			}
+		});
+	}
+
 	async function handleSearch() {
 		loading = true;
 		try {
-			// Try GPS first; fall back to an NFC scan only if it finds nothing.
-			foundInvader = (await findInvaderByGps()) ?? (await findInvaderByNfc());
+			// Check GPS and NFC in parallel; keep whichever finds an invader first.
+			const result = await firstResult([findInvaderByGps(), findInvaderByNfc()]);
+			foundInvader = result?.invader ?? null;
+			foundMethod = result?.method ?? null;
 			if (foundInvader) {
 				await updateUserPrivileges(foundInvader.id, data.userId);
 				successModal = true;
@@ -117,6 +145,17 @@
 				<Dialog.Title>{$t('home.success_modal.message')}</Dialog.Title>
 				<Dialog.Description>
 					<span>{$t(`common.zwt${foundInvader?.id}.name`)}</span>
+					{#if foundMethod === 'gps'}
+						<span class="text-muted-foreground my-1 flex items-center gap-1 text-sm">
+							<OcticonLocation />
+							{$t('home.success_modal.found_by_gps')}
+						</span>
+					{:else if foundMethod === 'nfc'}
+						<span class="text-muted-foreground my-1 flex items-center gap-1 text-sm">
+							<MdiNfc />
+							{$t('home.success_modal.found_by_nfc')}
+						</span>
+					{/if}
 					<AspectRatio ratio={16 / 9} class="bg-muted">
 						<img src={foundInvader?.imageUrl} alt={foundInvader?.name} />
 					</AspectRatio>

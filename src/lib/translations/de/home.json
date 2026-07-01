@@ -12,7 +12,9 @@
 	},
 	"success_modal": {
 		"message": "Sie haben einen Zwietess gefunden!",
-		"button": "Zwietess anzeigen"
+		"button": "Zwietess anzeigen",
+		"found_by_gps": "Per Standort gefunden",
+		"found_by_nfc": "Per NFC-Scan gefunden"
 	},
 	"invaders_found": "Zwietess gefunden",
 	"nfc_help_text": "Halten Sie Ihr Telefon an die weiße Scheibe, die sich auf der Zwietess befindet."

@@ -12,7 +12,9 @@
 	},
 	"success_modal": {
 		"message": "Vous avez trouvé un Zwietess !",
-		"button": "Voir le Zwietess"
+		"button": "Voir le Zwietess",
+		"found_by_gps": "Trouvé par géolocalisation",
+		"found_by_nfc": "Trouvé par scan NFC"
 	},
 	"invaders_found": "Zwietess trouvés",
 	"nfc_help_text": "Approchez votre téléphone du disque blanc situé sur le Zwietess"
