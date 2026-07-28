@@ -2,9 +2,15 @@ import { sessionState } from '$lib/session-state.svelte';
 import { supabase } from '$lib/supabase-client';
 import { error } from '@sveltejs/kit';
 import type { EntryGenerator, PageLoad } from './$types';
-import { invaderCounter } from '$lib/utils/invader-counter';
+import { countFoundInvaders } from '$lib/game-data/invaders';
+import type { InvaderPrivileges } from '$lib/utils/invader-counter';
 import { downloadAvatar } from '$lib/utils/avatar-functions';
 import { browser } from '$app/environment';
+
+// Every `inv*` column, so the found count can be computed here instead of one
+// `count_found_invaders` RPC per leaderboard row.
+const PROFILE_COLUMNS =
+	'inv0, inv1, inv2, inv3, inv4, inv5, inv6, inv7, inv8, inv9, inv10, inv11';
 
 export const entries: EntryGenerator = () => {
 	return [{ lang: 'fr' }, { lang: 'de' }];
@@ -25,7 +31,7 @@ export const load: PageLoad = async () => {
 	} else {
 		const { data } = await supabase
 			.from('profiles')
-			.select('score, username, avatar_url, id, inv0')
+			.select(`score, username, avatar_url, id, ${PROFILE_COLUMNS}`)
 			.order('score', { ascending: false })
 			.range(0, 9);
 		profiles = data;
@@ -36,14 +42,14 @@ export const load: PageLoad = async () => {
 		error(500, { message: 'Internal Server Error' });
 	}
 
-	const profilePromises = profiles.map(async ({ id, username, score, avatar_url, inv0 }) => {
-		const foundCount = await invaderCounter(id, false);
+	const profilePromises = profiles.map(async (profile) => {
+		const { id, username, score, avatar_url } = profile;
 		return {
 			username,
 			score,
 			avatar: await downloadAvatar(avatar_url),
 			// Leaderboard counts base invaders only; the bonus surfaces via score.
-			invaderCount: foundCount - (inv0 > 0 ? 1 : 0),
+			invaderCount: countFoundInvaders(profile, false),
 			isCurrentUser: id === userId
 		};
 	});
@@ -59,7 +65,7 @@ export const load: PageLoad = async () => {
 async function resolveCurrentUserRanking(userId: string) {
 	const { data: me } = await supabase
 		.from('profiles')
-		.select('score, username, avatar_url, inv0')
+		.select(`score, username, avatar_url, ${PROFILE_COLUMNS}`)
 		.eq('id', userId)
 		.single();
 
@@ -78,7 +84,7 @@ async function resolveCurrentUserRanking(userId: string) {
 		username: me.username,
 		score: me.score,
 		avatar: await downloadAvatar(me.avatar_url),
-		invaderCount: (await invaderCounter(userId, false)) - (me.inv0 > 0 ? 1 : 0)
+		invaderCount: countFoundInvaders(me, false)
 	};
 }
 
@@ -87,5 +93,4 @@ type SupabaseProfiles = {
 	username: string | null;
 	score: number;
 	avatar_url: string | null;
-	inv0: number;
-};
+} & Pick<InvaderPrivileges, `inv${number}` & keyof InvaderPrivileges>;
