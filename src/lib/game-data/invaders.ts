@@ -1,13 +1,11 @@
 // Invader 0 is a "bonus" invader stuck on a movable panel: it only counts for a
 // user once they have scanned it. Ids 1..11 are the base game.
 export const BONUS_INVADER_ID = 0;
-export const BASE_INVADER_COUNT = 11;
 
-// Per-user totals: the bonus is included only once the user has caught it.
-export function invaderTotals(bonusFound: boolean): { count: number; maxScore: number } {
-	const count = BASE_INVADER_COUNT + (bonusFound ? 1 : 0);
-	return { count, maxScore: count * 100 };
-}
+// Invaders withheld for the anniversary event: they stay out of the gallery, the
+// counters, the leaderboard totals and both scan paths. Empty this array to bring
+// them back, nothing else to change.
+export const HIDDEN_INVADER_IDS: number[] = [5, 11];
 
 export type Invader = {
 	id: number;
@@ -23,7 +21,7 @@ export type Invader = {
 	itemsCaptions: string[];
 };
 
-let INVADERS: Invader[] = [
+const ALL_INVADERS: Invader[] = [
 	{
 		id: 0,
 		name: 'Le tuto',
@@ -225,6 +223,31 @@ let INVADERS: Invader[] = [
 		itemsSources: ['context.zwt11.content'],
 		itemsCaptions: ['']
 	}
-] as const;
+];
 
-export { INVADERS };
+// The one choke point: GPS matching, NFC matching, deeplinks, the gallery and the
+// landing marquee all read this, so hiding an invader here hides it everywhere.
+export const INVADERS: Invader[] = ALL_INVADERS.filter(
+	(invader) => !HIDDEN_INVADER_IDS.includes(invader.id)
+);
+
+export const BASE_INVADER_COUNT = INVADERS.filter(
+	(invader) => invader.id !== BONUS_INVADER_ID
+).length;
+
+// Per-user totals: the bonus is included only once the user has caught it.
+export function invaderTotals(bonusFound: boolean): { count: number; maxScore: number } {
+	const count = BASE_INVADER_COUNT + (bonusFound ? 1 : 0);
+	return { count, maxScore: count * 100 };
+}
+
+// How many invaders a profile row has found. Counted from the visible list rather
+// than the `count_found_invaders` RPC, which hardcodes `inv0..inv11` in SQL and
+// can't know what is hidden.
+export function countFoundInvaders(row: Record<string, unknown>, includeBonus: boolean): number {
+	return INVADERS.filter(
+		(invader) =>
+			(includeBonus || invader.id !== BONUS_INVADER_ID) &&
+			((row[`inv${invader.id}`] as number) ?? 0) > 0
+	).length;
+}

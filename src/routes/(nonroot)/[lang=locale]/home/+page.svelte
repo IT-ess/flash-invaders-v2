@@ -50,7 +50,7 @@
 	$effect(() => {
 		const timer = setTimeout(() => {
 			displayedScore = score;
-			invaderCount.then((count) => (displayedInvaderCount = count));
+			displayedInvaderCount = invaderCount;
 			preloadData(`/${lang}/ranking`);
 		}, 500);
 		return () => clearTimeout(timer);

@@ -3,9 +3,8 @@ import { loadTranslations } from '$lib/translations/translations';
 import { error } from '@sveltejs/kit';
 import type { LayoutLoad } from './$types';
 import { supabase, type ProfileRow } from '$lib/supabase-client';
-import { invaderCounter } from '$lib/utils/invader-counter';
 import { downloadAvatar } from '$lib/utils/avatar-functions';
-import { INVADERS, BONUS_INVADER_ID } from '$lib/game-data/invaders';
+import { INVADERS, BONUS_INVADER_ID, countFoundInvaders } from '$lib/game-data/invaders';
 
 export const load: LayoutLoad = async ({ url, params }) => {
 	const { pathname } = url;
@@ -39,7 +38,7 @@ export const load: LayoutLoad = async ({ url, params }) => {
 		fetchedImage: downloadAvatar(avatarUrl),
 		username,
 		score,
-		invaderCount: invaderCounter(userId, true),
+		invaderCount: countFoundInvaders(data, true),
 		invadersInfos: getInvaderFromState(data),
 		privileges: invadersPrivileges
 	};
