@@ -267,7 +267,7 @@
 			variant="secondary"
 			size="lg"
 			onclick={() =>
-				openUrl('https://www.google.com/maps/d/viewer?mid=1qDy-Qcv9ScGx97vlB1Wy_9tvOIumt0I')}
+				openUrl('https://www.google.com/maps/d/u/1/viewer?mid=1ZrIxnpEGhERn4mqMe98HV-mFPF7Fdvo&ll=47.00535219346273%2C-0.852460260619623&z=16')}
 			>Maps<LogosGoogleMaps class="ml-1 mb-1" /></Button
 		>
 	</div>

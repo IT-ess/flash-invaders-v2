@@ -25,8 +25,8 @@ const ALL_INVADERS: Invader[] = [
 	{
 		id: 0,
 		name: 'Le tuto',
-		latitude: 47.002679,
-		longitude: -0.857483,
+		latitude: 47.018341,
+		longitude: -0.829291,
 		imageUrl: '/zwietess/0.webp',
 		carouselCaptions: ['Jeu concours 1983', 'Arrosoirs', 'Logos'],
 		carouselUrls: ['/context/0-1.jpg', '/context/0-2.jpg', '/context/0-3.jpg'],
