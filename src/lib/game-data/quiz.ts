@@ -37,11 +37,11 @@ export function getQuizQuestions(lang: keyof QuizData, invaderId: number): QuizQ
 export let QUIZ_DATA: QuizData = {
 	fr: [
 		{
-			question1: "Quand a été signé le traité de l'Elysée ?",
-			options1: ['1953', '1963', '1973', '1983'],
-			index1: 1,
+			question1: 'Depuis combien de temps cette guinguette existe ?',
+			options1: ['3 ans', '4 ans', '5 ans', '6 ans'],
+			index1: 2,
 			question2: "Qui est l'artisan(e) des principaux logos du jumelage ?",
-			options2: ['Martin', 'Maïlys', 'Maryvone', 'Michel'],
+			options2: ['Martin Longuet', 'Maïlys Jaouen', 'Roselyne Champion', 'Michel Ferchaud'],
 			index2: 1,
 			question3: 'Pour quelle occasion ce logo fut-il créé ?',
 			options3: [
@@ -51,18 +51,12 @@ export let QUIZ_DATA: QuizData = {
 				"Ce logo n'a jamais existé"
 			],
 			index3: 2,
-			question4:
-				'Lors du premier voyage jeune en Allemagne, nos jeunes furent accueillis par deux personnages fondateurs du jumelage...',
-			options4: [
-				'Mme Butz & M.Ragg',
-				'Ernest Weinrauch & Dom Mocquereau',
-				"Konrad Adenauer et un représentant de l'OFAJ.",
-				"Personne, les Zwiefalter n'étaient pas prévenus de leur arrivée !"
-			],
-			index4: 0
+			question4: "Qui a été l'artisan du jeu des Zwietess lors du 50ème anniversaire ?",
+			options4: ['Margaux Geffard', 'Alexis Loiseau', 'Bastien Marquis', 'Jules Loiseau'],
+			index4: 1
 		},
 		{
-			question1: 'Dans quelle ville a été fondue la ronde de trois personnages ?',
+			question1: 'Dans quelle ville a été fondue la ronde des trois personnages ?',
 			options1: ['Munderkingen', 'Zwiefalten', 'Schussenried', 'Stuttgart'],
 			index1: 0,
 			question2: 'Où se situe l’autre exemplaire de cette ronde ?',
@@ -73,17 +67,17 @@ export let QUIZ_DATA: QuizData = {
 				'Dans le Biergarten'
 			],
 			index2: 2,
-			question3: 'Qui étaient les maires de nos deux communes à cette époque ?',
+			question3: 'Que réprésente le Cercle pour les tessouallais ?',
 			options3: [
-				'M.O. Malinge & H. Riedlinger',
-				'D. Landreau & A. Hepp',
-				'C. Fonteneau & K. Ragg',
-				'M. Gental & K. Kapeller'
+				'Le ptit blanc du dimanche midi',
+				"La maison d'Hugo Bondu",
+				'Un lieu de rencontre et de partage',
+				'Le repaire des jeunes'
 			],
-			index3: 0,
+			index3: 2,
 			question4:
-				"En quelle année a été célébré le Traité de l'Elysée, pour la première fois à La Tessoualle, autour de cette ronde ?",
-			options4: ['2005', '2009', '2013', '2017'],
+				'Combien y a-t-il de participants au voyage jeune de cette année (traducteur inclus !) ?',
+			options4: ['78', '80', '82', '83'],
 			index4: 1
 		},
 		{
@@ -98,37 +92,39 @@ export let QUIZ_DATA: QuizData = {
 			question2: 'En quelle année a été détruite cette église ?',
 			options2: ['1594', '1694', '1794', '1894'],
 			index2: 2,
-			question3: 'Quels étaient les noms des 2 prêtres officiant dans nos 2 communes en 1973 ?',
+			question3: "Que recherchent les français dans l'église de Zwiefalten ?",
 			options3: [
-				'Bonnenfant - K.Ragg',
-				'Mazarin - Krementz',
-				"L'abbé Mathis - Augustin Stegmüller",
-				'J.Boiteau - F.Gueter'
+				"L'ange noir",
+				'Le vin de messe',
+				"Ils essaient d'ouvrir les yeux",
+				'Le banc blanc'
 			],
-			index3: 3,
+			index3: 0,
 			question4: "Lequel de ces quatre couples s'est marié en cette église ?",
-			options4: ['Anton et Bernadette', 'Luc et Uschi', 'Michel et Doris', 'Pierrette & Marc'],
+			options4: [
+				"Gaël et Camille (avant qu'elle prenne la télé)",
+				'Luc et Uschi Chupin',
+				'Michel et Doris Ferchaud',
+				'Adi et Sophie'
+			],
 			index4: 2
 		},
 		{
 			question1:
-				'En quelle année la commémoration du 11 novembre 1918 a-t-elle eu lieu en présence des maires des deux communes ?',
-			options1: ['2014', '2016', '2018', '2020'],
-			index1: 2,
-			question2: 'Où se trouve une autre plaque commémorative de nos morts à La Tessoualle ?',
-			options2: ['Au Cercle', 'Au cimetière', "A l'église", 'A la Mairie'],
+				"Depuis la création de l'Allemagne, combien de fois nos deux pays ont été en guerre ?",
+			options1: ['2 fois', '3 fois', '4 fois', '5 fois'],
+			index1: 1,
+			question2: 'Combien de jours a duré la "grande" guerre 14-18 ?',
+			options2: ['1461 jours', '1491 jours', '1521 jours', '1561 jours'],
 			index2: 2,
-			question3: 'Où était installé le monument aux morts à son inauguration en 1921 ?',
-			options3: [
-				'Au cimetière',
-				'En bas de la place du Souvenir',
-				'Place de la Paix de La Tessoualle',
-				"Rue de l'Hôtel de Ville"
-			],
-			index3: 1,
-			question4: 'On parle de la guerre 14-18, mais sait-on combien de jours a duré cette guerre ?',
-			options4: ['1461 jours', '1491 jours', '1521 jours', '1561 jours'],
-			index4: 3
+			question3:
+				"Comment s'appelle l'organisme qui a renforcé les échanges de la jeunesse franco-allemande ?",
+			options3: ['OFAJ - DFJW', 'OFAG - DFWJ', 'OFAV - DFJO', 'OFAD - DJAF'],
+			index3: 0,
+			question4:
+				'En quelle année la commémoration du 11 novembre 1918 a-t-elle eu lieu en présence des maires des deux communes ?',
+			options4: ['2014', '2016', '2018', '2020'],
+			index4: 2
 		},
 		{
 			question1:
@@ -142,9 +138,9 @@ export let QUIZ_DATA: QuizData = {
 			options3: ['Michelin', 'Un sculpteur de renom', 'Un compagnon du devoir', 'Un maçon'],
 			index3: 2,
 			question4:
-				'Combien de jours Gérard et Claudie DURANDET ont-ils mis pour rallier à pied La Tessoualle à Zwiefalten en 2008 ?',
-			options4: ['38', '50', '58', '52'],
-			index4: 1
+				"En combien de jours Florent Longuet s'est rendu en vélo à Zwiefalten pour le Voyage Jeunes 2022 ?",
+			options4: ['5', '7', '9', '10'],
+			index4: 0
 		},
 		{
 			question1:
@@ -173,7 +169,7 @@ export let QUIZ_DATA: QuizData = {
 			options2: ['Choucroute', 'Maultaschen', 'Schweinekotelett', 'Kässpätzle'],
 			index2: 1,
 			question3: 'Combien de ces fêtes se sont déjà déroulées dans la vallée de la Garenne ?',
-			options3: ['50', '30', '20', '10'],
+			options3: ['7', '8', '9', '10'],
 			index3: 3,
 			question4: 'Où a été organisée la première fête de la bière à La Tessoualle ?',
 			options4: ['Lac du Verdon', 'Lac de Ribou', 'Vallée de La Garenne', 'Centre bourg'],
@@ -208,9 +204,9 @@ export let QUIZ_DATA: QuizData = {
 			question1: "Quels matériels d'importance sont stockés dans ce local ?",
 			options1: [
 				'La cave du Président du jumelage de La Tessoualle',
-				'Le car Dudule',
-				'Les tables et bancs du Comité',
-				"L'automobile de Michel Ferchaud"
+				'La remorque de la soirée de lundi dernier',
+				'Les tables, bancs et bières du Comité',
+				"Les bureaux des rédacteurs des Breaking News"
 			],
 			index1: 2,
 			question2:
@@ -220,38 +216,38 @@ export let QUIZ_DATA: QuizData = {
 			question3: "Quel est le degré d'alcool d'une '1521' ?",
 			options3: ['4,7°', '4,9°', '5,1°', '5,3°'],
 			index3: 2,
-			question4: 'Ce bâtiment a appartenu à une personnalité du jumelage, lequel ?',
-			options4: ['Gildas Ferchaud', 'Henri Girardeau', 'Luc Chupin', 'Denis Fouillet'],
-			index4: 1
+			question4: 'Quel français a été oublié lors du trajet retour du Voyage Jeune 2022 ?',
+			options4: ['Mathis Loiseau', 'Chrissy Graveleau', 'Emma Brin', 'Benjamin Chaumeil'],
+			index4: 0
 		},
 		{
 			question1: 'Que symbolise le masque du Rälle ?',
 			options1: ['Un chat', 'Un chien', 'Un ours', 'Un renard'],
 			index1: 0,
 			question2:
-				'Pour que le Maire coupe le cordon inaugural bleu-blanc-rouge de Tessallis, celui-ci fut maintenu en hauteur par deux porteurs, lesquels ?',
+				'Qui a roulé une pelle à un poisson lors du voyage 2023 ?',
 			options2: [
-				'Cater & Pillar',
-				'Pierre & David',
-				'Massey & Fergusson',
-				'Paul De Dion & Jean Bouton'
+				'Noah W',
+				'Jonas S',
+				'Maxime A',
+				'Martin B'
 			],
-			index2: 1,
-			question3: "Quel était le nom de l'Orchestre Harmonique de La Tessoualle avant l'an 2000 ?",
+			index2: 2,
+			question3: "Suite à quel voyage jeunes l'alcool fort a été interdit pendant le programme ?",
 			options3: [
-				"L'harmonie Saint Louis",
-				"L'harmonie Sainte Radegonde",
-				"L'harmonie Saint Joseph",
-				'La Tessoualle Orchestra'
+				"2011",
+				"2012",
+				"2013",
+				'2014'
 			],
 			index3: 2,
 			question4: 'Qui étaient les rois de la cérémonie du Fasnet 2023 ?',
-			options4: ['Uschi & Luc', 'Bernadette & Anton', 'Déborah & Markus', 'Adrian F & Sophie B'],
+			options4: ['Pius & Emily', 'La sardine & sardinette', 'Martin & Valentine', 'Adrian & Sophie'],
 			index4: 3
 		},
 		{
-			question1: 'Qui était le premier couple marié entre la Tessoualle et Zwiefalten ?',
-			options1: ['Uschi & Luc', 'Doris & Michel', 'Bernadette & Anton', 'Déborah & Markus'],
+			question1: "Comment s'appelle le chauffeur actuel du bus Français ?",
+			options1: ['René', 'Manu', 'Christophe', 'Rudy'],
 			index1: 2,
 			question2:
 				'Quel était le nom du jeu de la soirée d’adieu du Voyage Jeunes 2022 à La Tessoualle ?',
@@ -262,9 +258,9 @@ export let QUIZ_DATA: QuizData = {
 				'Le jeu des 12 mois'
 			],
 			index2: 0,
-			question3: "Quel est le nom du chant où nous 'Buvons à l'aimable [...]' ?",
-			options3: ['Fanchon', 'Madelon', 'Marine', 'Huguette'],
-			index3: 0,
+			question3: "En moyenne, combien de litres de bières sont écoulés lors d'une Hockete ?",
+			options3: ['1500 L', '2000 L', '2500 L', '3000 L'],
+			index3: 3,
 			question4:
 				"Où se retrouvent depuis quelques années français et allemands pour le 'vrai' départ lors des voyages jeunes ?",
 			options4: [
@@ -273,7 +269,7 @@ export let QUIZ_DATA: QuizData = {
 				'Sur la place de la Poste',
 				"Devant l'ancienne déchetterie"
 			],
-			index4: 3
+			index4: 2
 		},
 		{
 			question1: 'Quel était le prénom du grand-père de Richard ?',
