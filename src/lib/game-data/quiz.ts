@@ -293,11 +293,11 @@ export let QUIZ_DATA: QuizData = {
 	],
 	de: [
 		{
-			question1: 'Wann wurde der Élysée-Vertrag unterzeichnet?',
-			options1: ['1953', '1963', '1973', '1983'],
-			index1: 1,
+			question1: 'Seit wie vielen Jahren gibt es diese Guinguette schon?',
+			options1: ['3 Jahre', '4 Jahre', '5 Jahre', '6 Jahre'],
+			index1: 2,
 			question2: 'Wer ist der Schöpfer der wichtigsten Partnerschaftslogos?',
-			options2: ['Martin', 'Maïlys', 'Maryvone', 'Michel'],
+			options2: ['Martin Longuet', 'Maïlys Jaouen', 'Roselyne Champion', 'Michel Ferchaud'],
 			index2: 1,
 			question3: 'Für welchen Anlass wurde dieses Logo erstellt?',
 			options3: [
@@ -307,15 +307,9 @@ export let QUIZ_DATA: QuizData = {
 				'Dieses Logo hat nie existiert'
 			],
 			index3: 2,
-			question4:
-				'Während der ersten Jugendreise nach Deutschland wurden unsere Jugendlichen von zwei Gründerpersönlichkeiten der Städtepartnerschaft begrüßt...',
-			options4: [
-				'Frau Butz & Herr Ragg',
-				'Ernest Weinrauch & Dom Mocquereau',
-				'Konrad Adenauer und ein Vertreter der DFJW',
-				'Niemand, die Zwiefalter waren nicht über ihre Ankunft informiert!'
-			],
-			index4: 0
+			question4: 'Wer war der Schöpfer des Zwietess-Spiels beim 50. Jubiläum?',
+			options4: ['Margaux Geffard', 'Alexis Loiseau', 'Bastien Marquis', 'Jules Loiseau'],
+			index4: 1
 		},
 		{
 			question1: 'In welcher Stadt wurde die Runde aus drei Figuren gegossen?',
@@ -324,17 +318,17 @@ export let QUIZ_DATA: QuizData = {
 			question2: 'Wo ist die andere Kopie dieser Runde?',
 			options2: ['Rathaus Platz', 'Im Tessoualler Park', 'Am Ufer der Aach', 'Im Biergarten'],
 			index2: 2,
-			question3: 'Wer waren damals die Bürgermeister unserer beiden Gemeinden?',
+			question3: 'Was bedeutet der Cercle für die Tessoualler?',
 			options3: [
-				'M.O. Malinge & H. Riedlinger',
-				'D. Landreau & A. Hepp',
-				'C. Fonteneau & K. Ragg',
-				'M. Gental & K. Kapeller'
+				'Der kleine Weißwein am Sonntagmittag',
+				'Das Haus von Hugo Bondu',
+				'Ein Treffpunkt und Ort der Begegnung',
+				'Der Treffpunkt der Jugendlichen'
 			],
-			index3: 0,
+			index3: 2,
 			question4:
-				'In welchem ​​Jahr wurde in dieser Runde der Vertrag des Elysée zum ersten Mal in La Tessoualle gefeiert?',
-			options4: ['2005', '2009', '2013', '2017'],
+				'Wie viele Teilnehmer gibt es dieses Jahr bei der Jugendreise (Dolmetscher inbegriffen)?',
+			options4: ['78', '80', '82', '83'],
 			index4: 1
 		},
 		{
@@ -349,38 +343,39 @@ export let QUIZ_DATA: QuizData = {
 			question2: 'In welchem Jahr wurde diese Kirche zerstört?',
 			options2: ['1594', '1694', '1794', '1894'],
 			index2: 2,
-			question3: 'Wie hießen die beiden Priester, die 1973 in unseren beiden Gemeinden amtierten?',
+			question3: 'Wonach suchen die Franzosen in der Kirche von Zwiefalten?',
 			options3: [
-				'Bonnenfant - K. Ragg',
-				'Mazarin - Krementz',
-				'Pfarrer Mathis - Augustin Stegmüller',
-				'J. Boiteau - F. Gueter'
+				'Den schwarzen Engel',
+				'Den Messwein',
+				'Sie versuchen, die Augen zu öffnen',
+				'Die weiße Bank'
 			],
-			index3: 3,
+			index3: 0,
 			question4: 'Welches dieser vier Paare hat in dieser Kirche geheiratet?',
-			options4: ['Anton und Bernadette', 'Luc und Uschi', 'Michel und Doris', 'Pierrette & Marc'],
+			options4: [
+				'Gaël und Camille (bevor sie zum Fernsehen ging)',
+				'Luc und Uschi Chupin',
+				'Michel und Doris Ferchaud',
+				'Adi und Sophie'
+			],
 			index4: 2
 		},
 		{
 			question1:
-				'In welchem ​​Jahr fand die Gedenkfeier zum 11. November 1918 im Beisein der Bürgermeister der beiden Gemeinden statt?',
-			options1: ['2014', '2016', '2018', '2020'],
-			index1: 2,
-			question2: 'Wo ist eine weitere Gedenktafel, die an unseren Tod in La Tessoualle erinnert?',
-			options2: ['Am Cercle', 'Auf dem Friedhof', 'In der Kirche', 'Im Rathaus'],
+				'Seit der Gründung Deutschlands, wie oft waren unsere beiden Länder im Krieg?',
+			options1: ['2 Mal', '3 Mal', '4 Mal', '5 Mal'],
+			index1: 1,
+			question2: 'Wie viele Tage dauerte der „große" Krieg von 14-18?',
+			options2: ['1461 Tage', '1491 Tage', '1521 Tage', '1561 Tage'],
 			index2: 2,
-			question3: 'Wo stand das Kriegerdenkmal bei seiner Einweihung im Jahr 1921?',
-			options3: [
-				'Auf dem Friedhof',
-				'Unterhalb des Place du Souvenir',
-				'Place de la Paix de La Tessoualle',
-				'Hôtel de Ville Strasse'
-			],
-			index3: 1,
+			question3:
+				'Wie heißt die Organisation, die den deutsch-französischen Jugendaustausch gestärkt hat?',
+			options3: ['OFAJ - DFJW', 'OFAG - DFWJ', 'OFAV - DFJO', 'OFAD - DJAF'],
+			index3: 0,
 			question4:
-				'Wir sprechen über den 14-18-Krieg, aber wissen wir, wie viele Tage dieser Krieg dauerte?',
-			options4: ['1461 Tage', '1491 Tage', '1521 Tage', '1561 Tage'],
-			index4: 3
+				'In welchem Jahr fand die Gedenkfeier zum 11. November 1918 im Beisein der Bürgermeister der beiden Gemeinden statt?',
+			options4: ['2014', '2016', '2018', '2020'],
+			index4: 2
 		},
 		{
 			question1:
@@ -394,9 +389,9 @@ export let QUIZ_DATA: QuizData = {
 			options3: ['Michelin', 'Ein renommierter Bildhauer', 'Ein berühmter', 'Ein Maurer'],
 			index3: 2,
 			question4:
-				'Wie viele Tage brauchten Gérard und Claudie DURANDET im Jahr 2008 für die Wanderung von La Tessoualle nach Zwiefalten?',
-			options4: ['38', '50', '58', '52'],
-			index4: 1
+				'In wie vielen Tagen ist Florent Longuet mit dem Fahrrad zur Jugendreise 2022 nach Zwiefalten gefahren?',
+			options4: ['5', '7', '9', '10'],
+			index4: 0
 		},
 		{
 			question1:
@@ -423,7 +418,7 @@ export let QUIZ_DATA: QuizData = {
 			options2: ['Sauerkraut', 'Maultaschen', 'Schweinekotelett', 'Kässpätzle'],
 			index2: 1,
 			question3: 'Wie viele dieser Feste haben bereits im Garenne-Tal stattgefunden?',
-			options3: ['50', '30', '20', '10'],
+			options3: ['7', '8', '9', '10'],
 			index3: 3,
 			question4: 'Wo fand das erste Bierfest in La Tessoualle statt?',
 			options4: ['Verdon-See', 'Ribou-See', 'Garenne-Tal', 'Stadtmitte'],
@@ -458,9 +453,9 @@ export let QUIZ_DATA: QuizData = {
 			question1: 'Welche wichtigen Materialien werden in diesem Raum aufbewahrt?',
 			options1: [
 				'Der Keller des Präsidenten der Städtepartnerschaft La Tessoualle',
-				'Die Kutsche von Dudule',
-				'Die Tische und Bänke des Komitees',
-				'Das Automobil von Michel Ferchaud'
+				'Der Anhänger vom Montagabend',
+				'Die Tische, Bänke und Biere des Komitees',
+				'Die Büros der Breaking-News-Redakteure'
 			],
 			index1: 2,
 			question2:
@@ -470,38 +465,28 @@ export let QUIZ_DATA: QuizData = {
 			question3: 'Wie hoch ist der Alkoholgehalt eines „1521“?',
 			options3: ['4,7°', '4,9°', '5,1°', '5,3°'],
 			index3: 2,
-			question4: 'Dieses Gebäude gehörte einer Persönlichkeit der Städtepartnerschaft, welcher?',
-			options4: ['Gildas Ferchaud', 'Henri Girardeau', 'Luc Chupin', 'Denis Fouillet'],
-			index4: 1
+			question4: 'Welcher Franzose wurde bei der Rückfahrt der Jugendreise 2022 vergessen?',
+			options4: ['Mathis Loiseau', 'Chrissy Graveleau', 'Emma Brin', 'Benjamin Chaumeil'],
+			index4: 0
 		},
 		{
 			question1: 'Was symbolisiert die Rälle-Maske?',
 			options1: ['Eine Katze', 'Ein Hund', 'Ein Bär', 'Ein Fuchs'],
 			index1: 0,
-			question2:
-				'Damit der Bürgermeister die erste blau-weiß-rote Schnur von Tessallis durchtrennen konnte, wurde sie von zwei Trägern hochgehalten?',
-			options2: [
-				'Cater & Pillar',
-				'Pierre & David',
-				'Massey & Fergusson',
-				'Paul De Dion & Jean Bouton'
-			],
-			index2: 1,
-			question3: 'Wie hieß das Orchestre Harmonique de La Tessoualle vor dem Jahr 2000?',
-			options3: [
-				"L'harmonie Saint Louis",
-				"L'harmonie Sainte Radegonde",
-				"L'harmonie Saint Joseph",
-				'La Tessoualle Orchestra'
-			],
+			question2: 'Wer hat bei der Reise 2023 einen Fisch geküsst?',
+			options2: ['Noah W', 'Jonas S', 'Maxime A', 'Martin B'],
+			index2: 2,
+			question3:
+				'Nach welcher Jugendreise wurde harter Alkohol während des Programms verboten?',
+			options3: ['2011', '2012', '2013', '2014'],
 			index3: 2,
 			question4: 'Wer waren die Könige der Fasnet 2023-Zeremonie?',
-			options4: ['Uschi & Luc', 'Bernadette & Anton', 'Déborah & Markus', 'Adrian F & Sophie B'],
+			options4: ['Pius & Emily', 'Die Sardine & Sardinette', 'Martin & Valentine', 'Adrian & Sophie'],
 			index4: 3
 		},
 		{
-			question1: 'Wer war das erste Ehepaar zwischen Tessoualle und Zwiefalten?',
-			options1: ['Uschi & Luc', 'Doris & Michel', 'Bernadette & Anton', 'Déborah & Markus'],
+			question1: 'Wie heißt der aktuelle Fahrer des französischen Busses?',
+			options1: ['René', 'Manu', 'Christophe', 'Rudy'],
 			index1: 2,
 			question2: 'Wie hieß das Spiel bei der Abschiedsparty des Jugendfahrt 2022 in La Tessoualle?',
 			options2: [
@@ -511,9 +496,10 @@ export let QUIZ_DATA: QuizData = {
 				'Das Spiel für 12 Monate'
 			],
 			index2: 0,
-			question3: "Wie heißt das Lied, in dem wir „Buvons à l'aimable [...]“ ?",
-			options3: ['Fanchon', 'Madelon', 'Marine', 'Huguette'],
-			index3: 0,
+			question3:
+				'Wie viele Liter Bier werden im Durchschnitt bei einer Hockete ausgeschenkt?',
+			options3: ['1500 L', '2000 L', '2500 L', '3000 L'],
+			index3: 3,
 			question4:
 				'Wo trafen sich Franzosen und Deutsche in den letzten Jahren zum „richtigen“ Aufbruch bei Jugendreisen?',
 			options4: [
@@ -522,7 +508,7 @@ export let QUIZ_DATA: QuizData = {
 				'Auf dem Place de la Poste',
 				'Vor der alten Müllsammelstelle'
 			],
-			index4: 3
+			index4: 2
 		},
 		{
 			question1: 'Welcher Vorname hatte Richards Großvater?',
