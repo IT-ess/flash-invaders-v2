@@ -2,7 +2,7 @@ import { error, redirect } from '@sveltejs/kit';
 import { sessionState } from '$lib/session-state.svelte';
 import type { EntryGenerator, PageLoad } from './$types';
 import { checkInvaderPrivilege } from '$lib/utils/invader-counter';
-import { QUIZ_DATA } from '$lib/game-data/quiz';
+import { getQuizQuestions } from '$lib/game-data/quiz';
 
 export const entries: EntryGenerator = () => {
 	const entries = [];
@@ -30,36 +30,17 @@ export const load = (async ({ params }) => {
 
 	const invaderPrivilege = await checkInvaderPrivilege(user.id, invaderId);
 
-	const questionsByLang = lang === 'fr' ? QUIZ_DATA.fr : QUIZ_DATA.de;
-	const flatQuestions = questionsByLang[invaderId];
-	const questions = [
-		{
-			question: flatQuestions.question1,
-			options: flatQuestions.options1,
-			correctIndex: flatQuestions.index1
-		},
-		{
-			question: flatQuestions.question2,
-			options: flatQuestions.options2,
-			correctIndex: flatQuestions.index2
-		},
-		{
-			question: flatQuestions.question3,
-			options: flatQuestions.options3,
-			correctIndex: flatQuestions.index3
-		},
-		{
-			question: flatQuestions.question4,
-			options: flatQuestions.options4,
-			correctIndex: flatQuestions.index4
-		}
-	];
+	// both locales are shipped so the quiz can be switched in place, without losing progress
+	const questionsByLang = {
+		fr: getQuizQuestions('fr', invaderId),
+		de: getQuizQuestions('de', invaderId)
+	};
 
 	switch (invaderPrivilege) {
 		case 0:
 			redirect(307, `/${params.lang}/home`);
 		case 1:
-			return { user, questions };
+			return { user, questionsByLang };
 		case 2:
 			return redirect(307, `/${params.lang}/invader/${params.id}`);
 		default:

@@ -18,6 +18,22 @@ export type QuizData = {
 	de: QuizQuestions[];
 };
 
+export type QuizQuestion = {
+	question: string;
+	options: string[];
+	correctIndex: number;
+};
+
+export function getQuizQuestions(lang: keyof QuizData, invaderId: number): QuizQuestion[] {
+	const q = QUIZ_DATA[lang][invaderId];
+	return [
+		{ question: q.question1, options: q.options1, correctIndex: q.index1 },
+		{ question: q.question2, options: q.options2, correctIndex: q.index2 },
+		{ question: q.question3, options: q.options3, correctIndex: q.index3 },
+		{ question: q.question4, options: q.options4, correctIndex: q.index4 }
+	];
+}
+
 export let QUIZ_DATA: QuizData = {
 	fr: [
 		{

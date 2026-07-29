@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { t } from '$lib/translations/translations';
+	import { t, loadTranslations } from '$lib/translations/translations';
 	import { Button } from '$lib/components/ui/button';
 	import { Progress } from '$lib/components/ui/progress';
 	import { page } from '$app/state';
@@ -16,10 +16,17 @@
 	let score = $state(0);
 	let questionPointer = $state(0);
 	let showAnswer = $state(false);
+	let quizLang: 'fr' | 'de' = $state(page.params.lang === 'de' ? 'de' : 'fr');
 
-	const { questions } = $derived(data);
+	const questions = $derived(data.questionsByLang[quizLang]);
 	// svelte-ignore state_referenced_locally
 	let answers = new Array(questions.length).fill(null);
+
+	// switches the quiz only: the URL locale still drives the rest of the app on the way out
+	async function toggleQuizLang() {
+		quizLang = quizLang === 'fr' ? 'de' : 'fr';
+		await loadTranslations(quizLang, page.url.pathname);
+	}
 
 	async function submitScore() {
 		const { error } = await supabase.rpc('update_user_permissions_and_score', {
@@ -71,6 +78,15 @@
 
 {#if !(questionPointer > answers.length - 1)}
 	<div class="flex flex-col h-screen p-2 py-safe-offset-2">
+		<div class="flex justify-end">
+			<Button variant="outline" class="p-2!" onclick={toggleQuizLang}>
+				{#if quizLang === 'fr'}
+					🇫🇷
+				{:else}
+					🇩🇪
+				{/if}
+			</Button>
+		</div>
 		<div class="my-2">
 			<Progress value={(questionPointer / questions.length) * 100} class="bg-slate-300" />
 		</div>
