@@ -20,7 +20,7 @@
 
 	const questions = $derived(data.questionsByLang[quizLang]);
 	// svelte-ignore state_referenced_locally
-	let answers = new Array(questions.length).fill(null);
+	let answers = $state(new Array(questions.length).fill(null));
 
 	// switches the quiz only: the URL locale still drives the rest of the app on the way out
 	async function toggleQuizLang() {
@@ -49,12 +49,15 @@
 	function computeButtonClasses(i: number): string {
 		const baseClasses =
 			'text-center whitespace-normal h-auto min-h-20 px-4 py-4 text-lg text-white rounded-lg w-full';
+		const isSelected = answers[questionPointer] === i;
 		const ringClass = showAnswer
 			? getRingClassFromAnswer(answers[questionPointer], i)
-			: 'focus:ring-4 focus:ring-secondary';
+			: isSelected
+				? 'ring-4 ring-secondary'
+				: '';
 		const themeClass = showAnswer
 			? getThemeClassFromAnswer(questionPointer, i)
-			: themeColorsBg[i] + ' hover:bg-slate-500 focus:bg-slate-500';
+			: `${isSelected ? 'bg-slate-500' : themeColorsBg[i]} hover:bg-slate-500`;
 
 		return `${baseClasses} ${ringClass} ${themeClass}`;
 	}
